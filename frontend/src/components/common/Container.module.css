@@ -1,0 +1,12 @@
+.container {
+  max-width: 700px;
+  min-width: 700px;
+  margin: 0 auto;
+  background-color: aqua;
+}
+
+/* @media (max-width: 840px) {
+  .container {
+    padding: 0 calc(14px * 5);
+  }
+} */
