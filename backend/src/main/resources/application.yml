@@ -6,10 +6,10 @@ spring:
       - mail
       - filter
       - aws
-#  security:
-#    user:
-#      name: user
-#      password: 1234
+  security:
+    user:
+      name: user
+      password: 1234
 
   jpa:
     open-in-view: false
