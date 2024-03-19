@@ -12,10 +12,12 @@ import org.hibernate.annotations.Where;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+/* 인덱스테이블 생성*/
 @Table(name = "member", indexes = {
         @Index(name = "unique_index_email", columnList = "email"),
         @Index(name = "unique_index_nickname", columnList = "nickname")
 })
+/* soft delete 관련 */
 @Where(clause = "is_deleted = false")
 @SQLDelete(sql = "UPDATE member SET is_deleted = TRUE WHERE member_id = ?")
 public class Member extends BaseEntity {
