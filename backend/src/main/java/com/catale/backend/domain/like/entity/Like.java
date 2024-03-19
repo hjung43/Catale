@@ -13,6 +13,7 @@ import org.hibernate.annotations.Where;
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Where(clause = "is_deleted = false")
+@Table(name = "likes")
 @SQLDelete(sql = "UPDATE image SET is_deleted = TRUE WHERE image_id = ?")
 public class Like {
     @Id
