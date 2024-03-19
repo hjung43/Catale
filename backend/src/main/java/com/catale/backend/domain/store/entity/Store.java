@@ -29,4 +29,5 @@ public class Store {
 
     @Column(name = "park_available")
     private boolean park_available;
+
 }

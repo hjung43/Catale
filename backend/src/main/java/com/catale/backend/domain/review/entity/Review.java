@@ -30,16 +30,22 @@ public class Review {
     @JoinColumn(name = "member_id")
     private Member member;
 
+    @Column(name = "content")
     private String content;
 
+    @Column(name = "rate")
     private int rate;
 
+    @Column(name = "sweet")
     private int sweet;
 
+    @Column(name = "bitter")
     private int bitter;
 
+    @Column(name = "sour")
     private int sour;
 
+    @Column(name = "sparking")
     private int sparking;
 
 
