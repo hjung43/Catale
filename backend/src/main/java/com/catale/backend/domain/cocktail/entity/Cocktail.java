@@ -20,6 +20,7 @@ public class Cocktail {
     @JoinColumn(name = "image_id")
     private Image image;
 
+    @Column(name = "name")
     private String name;
 
     @Column(name = "alc")
