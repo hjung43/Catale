@@ -1,6 +1,7 @@
 package com.catale.backend.domain.image.entity;
 
 import com.catale.backend.domain.base.BaseEntity;
+import com.catale.backend.domain.store.entity.Store;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.SQLDelete;
@@ -22,5 +23,9 @@ public class Image extends BaseEntity {
 
     @Column(name = "image_url")
     private String url;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "store_id")
+    private Store store;
 
 }
