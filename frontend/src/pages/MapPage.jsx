@@ -6,8 +6,11 @@ import Nav from "../components/common/Nav";
 import Storebox from "../components/map/Storebox";
 import { markerdataB } from "../components/map/data/markerDataB";
 import { markerdataG } from "../components/map/data/markerDataG";
+import { useState } from "react";
 
 export default function MapPage() {
+  const [nowclick, setNowclick] = useState();
+
   return (
     <>
       <Container>
@@ -17,15 +20,15 @@ export default function MapPage() {
             <div>근처</div>
           </div>
         </Header>
-        <Map />
+        <Map setNowclick={setNowclick} />
         <div className={styles.main}>
           <div className={styles.동이름}>봉명동</div>
           {markerdataB.map((data, index) => (
-            <Storebox key={index} store={data} />
+            <Storebox key={index} store={data} nowclick={nowclick} />
           ))}
           <div className={styles.동이름}>궁동</div>
           {markerdataG.map((data, index) => (
-            <Storebox key={index} store={data} />
+            <Storebox key={index} store={data} nowclick={nowclick} />
           ))}
         </div>
         <Nav num={2} />

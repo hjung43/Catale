@@ -1,7 +1,7 @@
 import s from "classnames";
 import styles from "./Box.module.css";
-function Box({ children }) {
-  return <div className={s(styles.box)}>{children}</div>;
+function Box({ children, color }) {
+  return <div className={s(color ? styles.box2 : styles.box)}>{children}</div>;
 }
 
 export default Box;
