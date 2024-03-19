@@ -1,7 +1,7 @@
 .container {
   max-width: 450px;
   margin: 0 auto;
-  background-color: aqua;
+  background-color: #1f2544;
 }
 
 /* @media (max-width: 840px) {
