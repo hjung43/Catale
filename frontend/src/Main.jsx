@@ -47,7 +47,7 @@ function Main() {
           </Route>
           <Route path="map">
             <Route index element={<MapPage />} />
-            <Route path="detail" element={<StoreDetailPage />} />
+            <Route path="detail/:storenumber" element={<StoreDetailPage />} />
           </Route>
           <Route path="diary/:year">
             <Route path=":month" element={<DiaryPage />} />

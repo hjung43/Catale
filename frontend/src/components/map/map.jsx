@@ -11,7 +11,7 @@ function makeInfowindowContent(title) {
     `;
 }
 
-export default function Map() {
+export default function Map({ setNowclick }) {
   const { kakao } = window;
   const mapRef = useRef(null);
 
@@ -45,6 +45,12 @@ export default function Map() {
         "mouseover",
         makeOverListener(map, marker, infowindow)
       );
+      kakao.maps.event.addListener(marker, "click", function () {
+        // 마커 위에 인포윈도우를 표시합니다
+        setNowclick(el.number);
+        console.log(el.number);
+      });
+
       kakao.maps.event.addListener(
         marker,
         "mouseout",
@@ -64,6 +70,11 @@ export default function Map() {
         "mouseover",
         makeOverListener(map, marker, infowindow)
       );
+      kakao.maps.event.addListener(marker, "click", function () {
+        // 마커 위에 인포윈도우를 표시합니다
+        setNowclick(el.number);
+        console.log(el.number);
+      });
       kakao.maps.event.addListener(
         marker,
         "mouseout",
