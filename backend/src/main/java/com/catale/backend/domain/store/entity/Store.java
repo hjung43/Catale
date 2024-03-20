@@ -2,12 +2,16 @@ package com.catale.backend.domain.store.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 
 @Entity
 @Getter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Where(clause = "is_deleted = false")
+@SQLDelete(sql = "UPDATE image SET is_deleted = TRUE WHERE image_id = ?")
 public class Store {
 
     @Id
@@ -15,19 +19,19 @@ public class Store {
     @Column(name = "store_id")
     private Long id;
 
-    @Column(name = "group_available")
-    private boolean group_available;
+    @Column(name = "group_available", nullable = false)
+    private boolean groupAvailable;
 
-    @Column(name = "reservation_available")
-    private boolean reservation_available;
+    @Column(name = "reservation_available", nullable = false)
+    private boolean reservationAvailable;
 
-    @Column(name = "pet_available")
-    private boolean pet_available;
+    @Column(name = "pet_available", nullable = false)
+    private boolean petAvailable;
 
-    @Column(name = "wifi_available")
-    private boolean wifi_available;
+    @Column(name = "wifi_available", nullable = false)
+    private boolean wifiAvailable;
 
-    @Column(name = "park_available")
-    private boolean park_available;
+    @Column(name = "park_available", nullable = false)
+    private boolean parkAvailable;
 
 }
