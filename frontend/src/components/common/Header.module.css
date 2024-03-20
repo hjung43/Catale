@@ -46,6 +46,7 @@
   width: 100%;
   z-index: 2;
   height: 5.5rem;
+  max-width: 450px;
 }
 .text {
   padding: 1rem;

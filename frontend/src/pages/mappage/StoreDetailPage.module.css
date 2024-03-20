@@ -1,3 +1,4 @@
+
 :root {
   /* 배경색 */
   --main1: #1f2544;
@@ -35,4 +36,15 @@
   --feel3: #fbdfff;
   --feel4: #ffd4ca;
   --feel5: #ffb0b0;
+
 }
+
+.head {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+.head div {
+  font-size: 1.7em;
+}
+

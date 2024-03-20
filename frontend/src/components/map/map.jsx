@@ -20,7 +20,7 @@ export default function Map({ setNowclick }) {
 
     const options = {
       center: new kakao.maps.LatLng(36.3573677, 127.34691),
-      level: 6,
+      level: 4,
     };
 
     // 지도 생성
