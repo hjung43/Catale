@@ -20,18 +20,18 @@ public class Menu {
     @Column(name = "menu_id")
     private Long id;
 
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "store_id")
-//    private Store store;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "store_id")
+    private Store store;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "cocktail_id")
     private Cocktail cocktail;
 
-    @Column(name = "is_signature")
+    @Column(name = "is_signature", nullable = false)
     private boolean isSignature;
 
-    @Column(name = "price")
+    @Column(name = "price", nullable = false)
     private int price;
 
 }
