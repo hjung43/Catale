@@ -46,3 +46,91 @@
 .main {
   padding: 6rem 0 4rem;
 }
+.recommendTitle {
+  display: flex;
+  justify-content: space-between;
+}
+.recommend {
+  display: flex;
+  padding: 0.5rem;
+}
+.data {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.changePreference {
+  text-align: end;
+}
+.flex {
+  display: flex;
+  margin: 1rem;
+  gap: 1rem;
+}
+.con {
+  background-color: var(--main2);
+  padding: 1rem;
+  border-radius: 1rem;
+  position: relative;
+  width: 100%;
+}
+.likeCocktail,
+.myCocktail {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 7rem;
+}
+.arrow_icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+.feel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.lottie {
+  position: absolute;
+  width: 70%;
+  bottom: 0;
+  right: 0;
+}
+.profile {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem;
+}
+.profile_left {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.profile_right {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+}
+
+.profile_email {
+  margin-top: 0.3rem;
+  font-size: 0.7rem;
+  color: var(--main4);
+}
+.profile_img {
+  width: 4rem;
+  margin-left: 0.5rem;
+}
+.setting,
+.logout {
+  width: 1.5rem;
+  margin-right: 0.5rem;
+}
