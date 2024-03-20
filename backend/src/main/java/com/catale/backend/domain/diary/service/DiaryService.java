@@ -27,7 +27,7 @@ public class DiaryService {
         return new DiaryGetResponseDto(diary);
     }
     @Transactional
-    public void insertDiary(DiaryGetResponseDto dto){
+    public void insertDiary(DiaryGetRequestDto dto){
         Diary diary = Diary.builder()
 //                .member(memberRepository)
 //                .cocktail()

@@ -1,5 +1,6 @@
 package com.catale.backend.domain.diary.controller;
 
+import com.catale.backend.domain.diary.dto.DiaryGetRequestDto;
 import com.catale.backend.domain.diary.dto.DiaryGetResponseDto;
 import com.catale.backend.domain.diary.service.DiaryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,7 @@ public class DiaryController {
         return new ResponseEntity<DiaryGetResponseDto>(diary, HttpStatus.OK);
     }
     @PostMapping("/diary")
-    public ResponseEntity<?> createDiary(@RequestBody DiaryGetResponseDto dto){
+    public ResponseEntity<?> createDiary(@RequestBody DiaryGetRequestDto dto){
         diaryService.insertDiary(dto);
         return new ResponseEntity<>(HttpStatus.OK);
     }
