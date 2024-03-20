@@ -22,7 +22,9 @@ export default function MapPage() {
             <div>근처</div>
           </div>
         </Header>
-        <Map setNowclick={setNowclick} />
+        <div className={styles.map}>
+          <Map setNowclick={setNowclick} />
+        </div>
         <div className={styles.main}>
           <div className={styles.동이름}>봉명동</div>
           {markerdataB.map((data) => (
