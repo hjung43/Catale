@@ -1,0 +1,31 @@
+.storeInfo {
+  display: flex;
+  flex-direction: column;
+  background-color: #464a6d;
+}
+.중간디브 {
+  height: 1.1rem;
+  background-color: #1f2544;
+}
+.topInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 1rem;
+  padding-bottom: 1.5rem;
+}
+.topInfo div {
+  display: flex;
+  align-items: center;
+  font-size: 1.1rem;
+  padding: 0.5rem 0rem 0.5rem 1rem;
+  gap: 0.4rem;
+}
+.가게사진 img {
+  width: 200px;
+  height: 200px;
+}
+.topInfo img {
+  width: 1.7rem;
+  height: 1.7rem;
+}
