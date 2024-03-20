@@ -1,14 +1,14 @@
 package com.catale.backend.domain.member.repository.custom;
 
+import static com.catale.backend.domain.image.entity.QImage.image;
+import static com.catale.backend.domain.member.entity.QMember.member;
+
 import com.catale.backend.domain.member.dto.MemberInfoDto;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 
 import java.util.Optional;
-
-import static com.catale.backend.domain.image.entity.QImage.image;
-import static com.catale.backend.domain.member.entity.QMember.member;
 
 @RequiredArgsConstructor
 public class MemberRepositoryImpl implements MemberRepositoryCustom {

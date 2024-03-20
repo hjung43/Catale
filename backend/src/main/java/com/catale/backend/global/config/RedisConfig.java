@@ -19,7 +19,7 @@ import java.util.Map;
 
 @Configuration
 @EnableCaching
-@EnableRedisRepositories(basePackages = "com.mybrary.backend.global.jwt.repository")
+@EnableRedisRepositories(basePackages = "com.catale.backend.global.jwt.repository")
 public class RedisConfig {
 
     @Value("${spring.data.redis.host}")
@@ -37,7 +37,6 @@ public class RedisConfig {
     public RedisCacheManager cacheManager(RedisConnectionFactory connectionFactory) {
         return RedisCacheManager.builder(connectionFactory)
                                 .cacheDefaults(defaultCacheConfig())
-                                .withInitialCacheConfigurations(getRedisCacheConfigurationMap())
                                 .build();
     }
 
@@ -53,20 +52,5 @@ public class RedisConfig {
                                       .entryTtl(Duration.ofHours(1));
     }
 
-    private RedisCacheConfiguration rollingPaperCacheConfig() {
-        return RedisCacheConfiguration.defaultCacheConfig()
-                                      .serializeKeysWith(
-                                          RedisSerializationContext.SerializationPair.fromSerializer(
-                                              new StringRedisSerializer()))
-                                      .serializeValuesWith(
-                                          RedisSerializationContext.SerializationPair.fromSerializer(
-                                              new GenericJackson2JsonRedisSerializer()))
-                                      .entryTtl(Duration.ofMinutes(5));
-    }
 
-    private Map<String, RedisCacheConfiguration> getRedisCacheConfigurationMap() {
-        Map<String, RedisCacheConfiguration> cacheConfigurations = new HashMap<>();
-        cacheConfigurations.put("rollingPaper", rollingPaperCacheConfig());
-        return cacheConfigurations;
-    }
 }

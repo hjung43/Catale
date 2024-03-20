@@ -1,7 +1,7 @@
 package com.catale.backend.global.config;
 
-import com.mybrary.backend.global.interceptor.NicknameValidInterceptor;
-import com.mybrary.backend.global.resolver.AccessTokenArgumentResolver;
+import com.catale.backend.global.interceptor.NicknameValidInterceptor;
+import com.catale.backend.global.resolver.AccessTokenArgumentResolver;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;

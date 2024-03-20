@@ -78,10 +78,10 @@ public enum ResponseCode {
     MY_THREAD_LIST_FETCHED(HttpStatus.OK, "나의 쓰레드 목록이 성공적으로 조회되었습니다."),
     OTHER_MEMBER_THREAD_LIST_FETCHED(HttpStatus.OK, "특정 회원의 쓰레드 목록이 성공적으로 조회되었습니다."),
 
-    /* 마이브러리(MyBrary) */
-    MYBRARY_FETCHED(HttpStatus.OK, "나의 마이브러리 정보가 성공적으로 조회되었습니다."),
-    OTHER_MYBRARY_FETCHED(HttpStatus.OK, "다른 회원의 마이브러리 정보가 성공적으로 조회되었습니다."),
-    MYBRARY_UPDATED(HttpStatus.OK, "마이브러리 정보가 성공적으로 업데이트되었습니다."),
+    /* 마이브러리(catale) */
+    catale_FETCHED(HttpStatus.OK, "나의 마이브러리 정보가 성공적으로 조회되었습니다."),
+    OTHER_catale_FETCHED(HttpStatus.OK, "다른 회원의 마이브러리 정보가 성공적으로 조회되었습니다."),
+    catale_UPDATED(HttpStatus.OK, "마이브러리 정보가 성공적으로 업데이트되었습니다."),
 
     /* 알림(Notification) */
     NOTIFICATION_FETCHED(HttpStatus.OK, "알림 목록이 성공적으로 조회되었습니다."),

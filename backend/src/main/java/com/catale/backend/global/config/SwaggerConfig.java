@@ -12,8 +12,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @OpenAPIDefinition(
-    info = @Info(title = "MyBrary API 명세서",
-                 description = "MyBrary 서비스 API 명세서",
+    info = @Info(title = "catale API 명세서",
+                 description = "catale 서비스 API 명세서",
                  version = "v1"))
 @Configuration
 public class SwaggerConfig {
@@ -106,10 +106,10 @@ public class SwaggerConfig {
     }
 
     @Bean
-    public GroupedOpenApi mybraryGroup() {
+    public GroupedOpenApi cataleGroup() {
         return GroupedOpenApi.builder()
                              .group("j. 마이브러리")
-                             .pathsToMatch("/api/v1/mybrary/**")
+                             .pathsToMatch("/api/v1/catale/**")
                              .build();
     }
 

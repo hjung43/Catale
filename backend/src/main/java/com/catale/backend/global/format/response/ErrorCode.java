@@ -52,9 +52,9 @@ public enum ErrorCode {
     FOLLOW_NOT_FOUND(HttpStatus.NOT_FOUND, "팔로우 데이터를 찾을 수 없습니다."),
 
     // 마이브러리 예외 처리
-    MYBRARY_NOT_FOUND(HttpStatus.NOT_FOUND, "마이브러리를 찾을 수 없습니다."),
-    MYBRARY_MISMATCH(HttpStatus.BAD_REQUEST, "마이브러리 수정을 할 수 없습니다."),
-    MYBRARY_ACCESS_DENIED(HttpStatus.BAD_REQUEST, "마이브러리에 접근할 수 없습니다."),
+    catale_NOT_FOUND(HttpStatus.NOT_FOUND, "마이브러리를 찾을 수 없습니다."),
+    catale_MISMATCH(HttpStatus.BAD_REQUEST, "마이브러리 수정을 할 수 없습니다."),
+    catale_ACCESS_DENIED(HttpStatus.BAD_REQUEST, "마이브러리에 접근할 수 없습니다."),
 
     // 책 예외 처리
     BOOK_CREATE_FAILED(HttpStatus.BAD_REQUEST, "책을 생성할 수 없습니다."),

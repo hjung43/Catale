@@ -1,9 +1,11 @@
 package com.catale.backend.domain.member.service;
 
+import com.catale.backend.domain.member.dto.LoginRequestDto;
 import com.catale.backend.domain.member.dto.SignupRequestDto;
 import com.catale.backend.domain.member.entity.Member;
 import com.catale.backend.domain.member.repository.MemberRepository;
 import com.catale.backend.global.exception.member.DuplicateEmailException;
+import com.catale.backend.global.exception.member.InvalidLoginAttemptException;
 import com.catale.backend.global.exception.member.PasswordMismatchException;
 import org.springframework.transaction.annotation.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -56,11 +58,11 @@ public class MemberService {
         throw new DuplicateEmailException();
     }
 
-//    private void isPasswordMatchingWithEncoded(String input, String encoded) {
-//        if (!passwordEncoder.matches(input, encoded)) {
-//            throw new InvalidLoginAttemptException();
-//        }
-//    }
+    private void isPasswordMatchingWithEncoded(String input, String encoded) {
+        if (!passwordEncoder.matches(input, encoded)) {
+            throw new InvalidLoginAttemptException();
+        }
+    }
 
     private void checkPasswordConfirmation(String password, String passwordConfirm) {
         if (!password.equals(passwordConfirm)) {
