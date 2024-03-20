@@ -13,15 +13,37 @@ import searchA from "../../assets/icon/searchA.png";
 import searchB from "../../assets/icon/searchB.png";
 import userA from "../../assets/icon/userA.png";
 import userB from "../../assets/icon/userB.png";
+import { useNavigate } from "react-router-dom";
 
 function Nav({ num }) {
+  const navigate = useNavigate();
   return (
     <div className={s(styles.nav)}>
-      <img src={num === 1 ? searchB : searchA} alt="search_icon" />
-      <img src={num === 2 ? mapB : mapA} alt="map_icon" />
-      <img src={num === 3 ? homeB : homeA} alt="home_icon" />
-      <img src={num === 4 ? calB : calA} alt="calendar_icon" />
-      <img src={num === 5 ? userB : userA} alt="user_icon" />
+      <img
+        src={num === 1 ? searchB : searchA}
+        alt="search_icon"
+        onClick={() => navigate("/search")}
+      />
+      <img
+        src={num === 2 ? mapB : mapA}
+        alt="map_icon"
+        onClick={() => navigate("/map")}
+      />
+      <img
+        src={num === 3 ? homeB : homeA}
+        alt="home_icon"
+        onClick={() => navigate("/bar")}
+      />
+      <img
+        src={num === 4 ? calB : calA}
+        alt="calendar_icon"
+        onClick={() => navigate(`/diary/${2024}/${3}`)}
+      />
+      <img
+        src={num === 5 ? userB : userA}
+        alt="user_icon"
+        onClick={() => navigate("/my")}
+      />
     </div>
   );
 }
