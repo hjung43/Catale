@@ -2,6 +2,7 @@ package com.catale.backend.domain.member.entity;
 
 import com.catale.backend.domain.base.BaseEntity;
 import com.catale.backend.domain.image.entity.Image;
+import com.catale.backend.domain.member.dto.SignupRequestDto;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.SQLDelete;
@@ -59,15 +60,14 @@ public class Member extends BaseEntity {
     private int sparking;
 
 
-//    public static Member of(SignupRequestDto requestDto, String encodedPassword, Image profileImage) {
-//        return Member.builder()
-//                .email(requestDto.getEmail())
-//                .password(encodedPassword)
-//                .name(requestDto.getName())
-//                .nickname(requestDto.getNickname())
-//                .profileImage(profileImage)
-//                .build();
-//    }
+    public static Member of(SignupRequestDto requestDto, String encodedPassword, boolean isSocial) {
+        return Member.builder()
+                .email(requestDto.getEmail())
+                .password(encodedPassword)
+                .nickname(requestDto.getNickname())
+                .isSocial(isSocial)
+                .build();
+    }
 
     public void updatePassword(String password) {
         this.password = password;
