@@ -4,13 +4,18 @@ import { markerdataB, markerdataG } from "./data/markerData";
 
 function makeInfowindowContent(title) {
   return `
-    <div style="padding: 10px; background-color: black; font-size : 1rem;">
+    <div style="padding: 10px; background-color: black; font-size: 1rem;">
         <h2>${title}</h2>
     </div>
-    `;
+  `;
 }
 
-export default function Map({ setNowclick }) {
+export default function Map({
+  setNowclick,
+  nowlocatex = "36.3599377",
+  nowlocatey = "127.34791",
+  level = "4",
+}) {
   const { kakao } = window;
   const mapRef = useRef(null);
 
@@ -19,8 +24,8 @@ export default function Map({ setNowclick }) {
     if (!container) return; // 요소가 없으면 함수를 종료합니다.
 
     const options = {
-      center: new kakao.maps.LatLng(36.3573677, 127.34691),
-      level: 4,
+      center: new kakao.maps.LatLng(nowlocatex, nowlocatey),
+      level: level,
     };
 
     // 지도 생성
