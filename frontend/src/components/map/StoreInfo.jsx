@@ -1,8 +1,9 @@
-import Container from "../../components/common/Container";
+import Container from "../common/Container";
 import styles from "./StoreInfo.module.css";
 import { useParams } from "react-router-dom";
-import { markerdataB, markerdataG } from "../../components/map/data/markerData";
+import { markerdataB, markerdataG } from "./data/markerData";
 import Storepicture from "./Storepicture";
+import Storemenu from "./Storemenu";
 import IconTel from "../../assets/icon/IconTel.png";
 import IconTime from "../../assets/icon/IconTime.png";
 import IconInsta from "../../assets/icon/IconInsta.png";
@@ -29,7 +30,7 @@ export default function StoreDetailPage() {
           <div className={styles.topInfo}>
             {selectedStore.영업시간 && (
               <div>
-                <img src={IconTime} />
+                <img src={IconTime} alt="" />
                 {selectedStore.영업시간}
               </div>
             )}
@@ -38,25 +39,26 @@ export default function StoreDetailPage() {
             )}
             {selectedStore.주소 && (
               <div>
-                <img src={IconMap} />
+                <img src={IconMap} alt="" />
                 {selectedStore.주소}
               </div>
             )}
             {selectedStore.tel && (
               <div>
-                <img src={IconTel} />
+                <img src={IconTel} alt="" />
                 {selectedStore.tel}
               </div>
             )}
             {selectedStore.insta && (
               <div>
-                <img src={IconInsta} />
+                <img src={IconInsta} alt="" />
                 <a href={selectedStore.insta}>{selectedStore.insta}</a>
               </div>
             )}
           </div>
           <div className={styles.중간디브} />
           <Storepicture storenumber={storenumber} />
+          <Storemenu storenumber={storenumber} />
         </div>
       </Container>
     </>

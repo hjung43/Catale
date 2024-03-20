@@ -2,7 +2,7 @@ import Container from "../../components/common/Container";
 import styles from "./StoreDetailPage.module.css";
 import Header from "../../components/common/Header";
 import Map from "../../components/map/map";
-import StoreInfo from "./StoreInfo";
+import StoreInfo from "../../components/map/StoreInfo";
 import { useParams, useNavigate } from "react-router-dom";
 
 export default function StoreDetailPage() {
