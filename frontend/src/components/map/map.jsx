@@ -1,11 +1,10 @@
 import { useEffect, useRef } from "react";
 import styles from "./map.module.css";
-import { markerdataB } from "./data/markerDataB";
-import { markerdataG } from "./data/markerDataG";
+import { markerdataB, markerdataG } from "./data/markerData";
 
 function makeInfowindowContent(title) {
   return `
-    <div style="padding: 10px; background-color: black; font-size : 1em;">
+    <div style="padding: 10px; background-color: black; font-size : 1rem;">
         <h2>${title}</h2>
     </div>
     `;
@@ -14,10 +13,6 @@ function makeInfowindowContent(title) {
 export default function Map({ setNowclick }) {
   const { kakao } = window;
   const mapRef = useRef(null);
-
-  useEffect(() => {
-    mapscript();
-  }, []);
 
   const mapscript = () => {
     const container = mapRef.current; // mapRef를 통해 요소를 가져옵니다.
@@ -82,6 +77,10 @@ export default function Map({ setNowclick }) {
       );
     });
   };
+
+  useEffect(() => {
+    mapscript();
+  }, []);
 
   // 인포윈도우를 표시하는 클로저를 만드는 함수
   function makeOverListener(map, marker, infowindow) {
