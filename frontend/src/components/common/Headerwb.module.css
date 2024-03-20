@@ -1,0 +1,23 @@
+.header {
+  /* width: 100%; */
+  max-width: 450px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 3rem 1rem 1rem;
+}
+.left {
+  width: 10%;
+}
+.left img {
+  width: 20px;
+}
+.right {
+  width: 10%;
+  text-align: end;
+}
+.title {
+  font-size: 1.5rem;
+  width: 80%;
+  text-align: center;
+}

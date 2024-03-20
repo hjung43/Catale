@@ -36,3 +36,13 @@
   --feel4: #ffd4ca;
   --feel5: #ffb0b0;
 }
+
+.title {
+  font-size: 1.5rem;
+}
+.chart {
+  width: 70%;
+}
+.main {
+  padding: 6rem 0 4rem;
+}
