@@ -9,9 +9,13 @@ import Chart from "chart.js/auto";
 import Lottie from "lottie-react";
 import Cocktail1 from "../../assets/lottie/Cocktail1.json";
 import Cocktail2 from "../../assets/lottie/Cocktail2.json";
+import MyFeel from "../../components/my/MyFeel";
+import profile from "../../assets/common/profile.png";
+import setting from "../../assets/common/setting.png";
+import logout from "../../assets/common/logout.png";
 
 export default function MyPage() {
-  const chartRef = useRef(null);
+  const chartRef = useRef();
 
   useEffect(() => {
     const myChartRef = chartRef.current.getContext("2d");
@@ -67,18 +71,17 @@ export default function MyPage() {
       <div className={styles.main}>
         <div className={styles.profile}>
           <div className={styles.profile_left}>
-            <div>이미지</div>
+            <img src={profile} alt="profile" className={styles.profile_img} />
             <div>
               <div>서또카늘</div>
               <div className={styles.profile_email}>seo_m98@naver.com</div>
             </div>
           </div>
           <div className={styles.profile_right}>
-            <div>이미지</div>
-            <div>이미지</div>
+            <img src={setting} alt="setting" className={styles.setting} />
+            <img src={logout} alt="logout" className={styles.logout} />
           </div>
         </div>
-
         <Box>
           <div className={styles.recommendTitle}>
             <div>나의 취향</div>
@@ -119,6 +122,7 @@ export default function MyPage() {
             <div>나의 기분</div>
             <img src={arrow} alt="arrow" className={styles.arrow_icon} />
           </div>
+          <MyFeel />
         </Box>
       </div>
       <Nav num={5} />
