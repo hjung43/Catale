@@ -15,7 +15,7 @@ export default function Storepicture({ storenumber }) {
     <>
       <div className={styles.picturemain}>
         <div className={styles.가게사진}>
-          <img src={pictureData[picturenumber]} />
+          <img src={pictureData[picturenumber]} alt="" />
         </div>
         <div className={styles.numberbox}>
           {numberData.map((number) => (
@@ -24,9 +24,9 @@ export default function Storepicture({ storenumber }) {
               onClick={() => setPicturenumber(number)}
             >
               {number === picturenumber ? (
-                <img className={styles.click} src={Clickyes} />
+                <img className={styles.click} src={Clickyes} alt="" />
               ) : (
-                <img className={styles.click} src={Clickno} />
+                <img className={styles.click} src={Clickno} alt="" />
               )}
             </div>
           ))}

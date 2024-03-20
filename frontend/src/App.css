@@ -57,7 +57,7 @@
 
 html {
   font-family: var(--gmarket-sans);
-  font-weight: 400;
+  font-weight: 700;
   font-size: 16px;
 }
 
@@ -74,7 +74,7 @@ h5,
 h6,
 button {
   font-family: var(--gmarket-sans);
-  font-weight: 400;
+  font-weight: 700;
   margin: 0;
   padding: 0;
   color: #fafaff;

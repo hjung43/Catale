@@ -1,0 +1,27 @@
+.menumain {
+  background-color: #1f2544;
+}
+.메뉴폰트 {
+  padding: 1.3rem 1rem 0.5rem 1rem;
+  font-size: 1.5rem;
+}
+.칵테일하나 {
+  display: flex;
+  justify-content: space-around;
+}
+.boxtop {
+  padding: 1.3rem 1rem 0.5rem 1rem;
+}
+
+/* 
+
+
+*/
+
+.칵테일박스 {
+  padding-bottom: 1rem;
+}
+.boxtop {
+  display: flex;
+  justify-content: space-between;
+}
