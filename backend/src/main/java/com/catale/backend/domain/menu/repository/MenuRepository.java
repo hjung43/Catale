@@ -1,4 +1,6 @@
 package com.catale.backend.domain.menu.repository;
 
-public class MenuRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface MenuRepository extends JpaRepository {
 }
