@@ -13,7 +13,7 @@ import org.hibernate.annotations.Where;
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Where(clause = "is_deleted = false")
-@SQLDelete(sql = "UPDATE image SET is_deleted = TRUE WHERE image_id = ?")
+@SQLDelete(sql = "UPDATE menu SET is_deleted = TRUE WHERE image_id = ?")
 public class Menu {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
