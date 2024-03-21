@@ -6,6 +6,7 @@ import com.catale.backend.domain.member.entity.Member;
 import com.catale.backend.domain.member.repository.MemberRepository;
 import com.catale.backend.global.exception.member.DuplicateEmailException;
 import com.catale.backend.global.exception.member.InvalidLoginAttemptException;
+import com.catale.backend.global.exception.member.MemberNotFoundException;
 import com.catale.backend.global.exception.member.PasswordMismatchException;
 import org.springframework.transaction.annotation.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -38,6 +39,10 @@ public class MemberService {
         memberRepository.save(member);
 
         return member.getId();
+    }
+
+    public Member findMember(String email) {
+        return memberRepository.searchByEmail(email).orElseThrow(MemberNotFoundException::new);
     }
 
 

@@ -3,9 +3,10 @@ spring:
     active: dev
     include:
       - jwt
-      - mail
       - filter
-      - aws
+      - db
+      - dev
+
   security:
     user:
       name: user
