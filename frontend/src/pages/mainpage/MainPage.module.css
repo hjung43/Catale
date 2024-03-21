@@ -43,6 +43,33 @@
   align-items: center;
   position: relative;
 }
+.재료상자 {
+  position: absolute;
+  top: 5%;
+  width: 100%;
+  max-width: 450px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+.재료글자 {
+  color: white;
+}
+.재료 {
+  border-radius: 34px;
+  background: rgba(255, 255, 255, 0.16);
+  border: solid 2px white;
+  color: rgb(245, 191, 191);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.4rem 3rem;
+}
+
 .배경바 {
   width: 100%;
 }

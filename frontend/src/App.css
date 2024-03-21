@@ -38,8 +38,15 @@
 }
 
 @font-face {
-  font-family: "NEXON Lv2 Gothic";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv2 Gothic.woff")
+  font-family: "TTHakgyoansimJiugaeR";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2402_keris@1.0/TTHakgyoansimJiugaeR.woff2")
+    format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "GongGothicMedium";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.0/GongGothicMedium.woff")
     format("woff");
   font-weight: normal;
   font-style: normal;
@@ -51,15 +58,15 @@
  */
 
 :root {
-  --gmarket-sans: "NEXON Lv2 Gothic";
+  --gmarket-sans: "GongGothicMedium";
   /* --noto-sans: -apple-system, "Noto Sans KR", sans-serif; */
 }
 
-html {
+/* html {
   font-family: var(--gmarket-sans);
-  font-weight: 700;
+  font-weight: 100;
   font-size: 16px;
-}
+} */
 
 textarea,
 input,
@@ -74,7 +81,7 @@ h5,
 h6,
 button {
   font-family: var(--gmarket-sans);
-  font-weight: 700;
+  font-weight: 100;
   margin: 0;
   padding: 0;
   color: #fafaff;
