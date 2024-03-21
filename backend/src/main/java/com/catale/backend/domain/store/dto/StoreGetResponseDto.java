@@ -23,7 +23,7 @@ public class StoreGetResponseDto {
     private boolean wifiAvailable;
     private boolean parkAvailable;
     private List<MenuGetResponseDto> menus;
-//    private List<ImageGetResponseDto> images;
+    private List<String> images;
 
     public StoreGetResponseDto(Store store){
         this.id = store.getId();
@@ -37,11 +37,11 @@ public class StoreGetResponseDto {
             menuList.add(new MenuGetResponseDto(menu));
         }
         this.menus = menuList;
-//        List<ImageGetResponseDto> imageList = new ArrayList<>();
-//        for (Image image : store.getImages()){
-//            imageList.add(new MenuGetResponseDto(menu));
-//        }
-//        this.menus = imageList;
+        List<String> imageList = new ArrayList<>();
+        for (Image image : store.getImages()){
+            imageList.add(image.getUrl());
+        }
+        this.images = imageList;
 
     }
 
