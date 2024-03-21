@@ -34,4 +34,15 @@ public class Store {
     @Column(name = "park_available", nullable = false)
     private boolean parkAvailable;
 
+    @Column(name = "reservation_available")
+    private boolean reservation_available;
+
+    @Column(name = "pet_available")
+    private boolean pet_available;
+
+    @Column(name = "wifi_available")
+    private boolean wifi_available;
+
+    @Column(name = "park_available")
+    private boolean park_available;
 }
