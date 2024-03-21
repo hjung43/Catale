@@ -2,6 +2,7 @@ package com.catale.backend.domain.diary.controller;
 
 import com.catale.backend.domain.diary.dto.DiaryGetRequestDto;
 import com.catale.backend.domain.diary.dto.DiaryGetResponseDto;
+import com.catale.backend.domain.diary.dto.DiaryMonthResponseDto;
 import com.catale.backend.domain.diary.service.DiaryService;
 import com.catale.backend.domain.member.entity.Member;
 import com.catale.backend.domain.member.service.MemberService;
@@ -15,6 +16,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -43,6 +45,14 @@ public class DiaryController {
     public ResponseEntity<?> deleteDiary(@PathVariable Long diaryId){
         diaryService.deleteDiary(diaryId);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+    @GetMapping("/diary")
+    public ResponseEntity<?> getDiaryMonth(@Parameter(hidden = true) Authentication authentication, @RequestParam int year, @RequestParam int month){
+        Member me = memberService.findMember(authentication.getName());
+        Long memberId = me.getId();
+
+        List<DiaryMonthResponseDto> list = diaryService.getDiarys(year,month,memberId);
+        return new ResponseEntity<List<DiaryMonthResponseDto>>(list, HttpStatus.OK);
     }
 
 }
