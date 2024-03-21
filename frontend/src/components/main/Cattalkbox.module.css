@@ -1,0 +1,29 @@
+.고양이말풍선 {
+  position: absolute;
+  top: 10rem;
+}
+.말풍선 {
+  width: 100%;
+  max-width: 450px;
+}
+.고양이이름 {
+  position: absolute;
+  top: 15%;
+  left: 2rem;
+}
+.고양이내용 {
+  position: absolute;
+  top: 39%;
+  left: 0px;
+  right: 0px;
+  display: flex;
+  justify-content: center;
+  color: black;
+}
+
+.고양이다음 {
+  position: absolute;
+  bottom: 26%;
+  right: 2rem;
+  font-size: 0.8rem;
+}

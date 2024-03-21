@@ -32,7 +32,12 @@ export default function StoreDetailPage() {
             <div>{storenumber}</div>
           </div>
         </Header>
-        <Map nowlocatex={nowlocatex} nowlocatey={nowlocatey} level="2" />
+        <Map
+          nowlocatex={nowlocatex}
+          nowlocatey={nowlocatey}
+          level="2"
+          markerData={selectedStore.selectedStore}
+        />
         <StoreInfo selectedStore={selectedStore} />
       </Container>
     </>

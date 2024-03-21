@@ -9,12 +9,17 @@ function makeInfowindowContent(title) {
     </div>
   `;
 }
+function notNowclick(title) {
+  console.log(title);
+}
+const allData = [...markerdataB, ...markerdataG];
 
 export default function Map({
-  setNowclick,
+  setNowclick = notNowclick,
   nowlocatex = "36.3599377",
   nowlocatey = "127.34791",
   level = "4",
+  markerData = allData,
 }) {
   const { kakao } = window;
   const mapRef = useRef(null);
@@ -32,7 +37,7 @@ export default function Map({
     const map = new kakao.maps.Map(container, options);
 
     // 마커 추가
-    markerdataB.forEach((el) => {
+    markerData.forEach((el) => {
       const marker = new kakao.maps.Marker({
         map: map,
         position: new kakao.maps.LatLng(el.lat, el.lng),
@@ -51,30 +56,6 @@ export default function Map({
         console.log(el.number);
       });
 
-      kakao.maps.event.addListener(
-        marker,
-        "mouseout",
-        makeOutListener(infowindow)
-      );
-    });
-    markerdataG.forEach((el) => {
-      const marker = new kakao.maps.Marker({
-        map: map,
-        position: new kakao.maps.LatLng(el.lat, el.lng),
-      });
-      const infowindow = new kakao.maps.InfoWindow({
-        content: makeInfowindowContent(el.title),
-      });
-      kakao.maps.event.addListener(
-        marker,
-        "mouseover",
-        makeOverListener(map, marker, infowindow)
-      );
-      kakao.maps.event.addListener(marker, "click", function () {
-        // 마커 위에 인포윈도우를 표시합니다
-        setNowclick(el.number);
-        console.log(el.number);
-      });
       kakao.maps.event.addListener(
         marker,
         "mouseout",
