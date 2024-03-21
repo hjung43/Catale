@@ -5,6 +5,7 @@ import com.catale.backend.domain.diary.dto.DiaryGetResponseDto;
 import com.catale.backend.domain.diary.entity.Diary;
 import com.catale.backend.domain.diary.repository.DiaryRepository;
 import com.catale.backend.domain.member.repository.MemberRepository;
+import com.catale.backend.global.exception.member.MemberNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,18 +19,18 @@ import java.util.Optional;
 public class DiaryService {
     @Autowired
     private final DiaryRepository diaryRepository;
-//    private final MemberRepository memberRepository;
+    private final MemberRepository memberRepository;
 
 
     @Transactional
-    public DiaryGetResponseDto findById(Long id){
+    public DiaryGetResponseDto getDiary(Long id){
         Diary diary = diaryRepository.findById(id).orElseThrow(NullPointerException::new);
         return new DiaryGetResponseDto(diary);
     }
     @Transactional
-    public void insertDiary(DiaryGetRequestDto dto){
+    public void postDiary(Long memberId, DiaryGetRequestDto dto){
         Diary diary = Diary.builder()
-//                .member(memberRepository)
+                .member(memberRepository.findById(memberId).orElseThrow(MemberNotFoundException::new))
 //                .cocktail()
                 .mood(dto.getMood())
                 .comment(dto.getComment())
@@ -42,7 +43,7 @@ public class DiaryService {
         diaryRepository.save(diary);
     }
     @Transactional
-    public void deleteById(Long diaryId){
+    public void deleteDiary(Long diaryId){
         diaryRepository.deleteById(diaryId);
     }
 
