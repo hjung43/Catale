@@ -1,9 +1,14 @@
 package com.catale.backend.domain.store.entity;
 
+import com.catale.backend.domain.image.entity.Image;
+import com.catale.backend.domain.menu.entity.Menu;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -11,13 +16,19 @@ import org.hibernate.annotations.Where;
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Where(clause = "is_deleted = false")
-@SQLDelete(sql = "UPDATE image SET is_deleted = TRUE WHERE image_id = ?")
+@SQLDelete(sql = "UPDATE store SET is_deleted = TRUE WHERE image_id = ?")
 public class Store {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "store_id")
     private Long id;
+
+    @OneToMany(mappedBy = "store")
+    private List<Menu> menus = new ArrayList<Menu>();
+
+    @OneToMany(mappedBy = "store")
+    private List<Image> images = new ArrayList<Image>();
 
     @Column(name = "group_available", nullable = false)
     private boolean groupAvailable;
