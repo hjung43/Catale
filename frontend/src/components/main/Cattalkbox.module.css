@@ -4,16 +4,16 @@
 }
 .말풍선 {
   width: 100%;
+  max-width: 450px;
 }
 .고양이이름 {
   position: absolute;
-  top: 1.9rem;
+  top: 15%;
   left: 2rem;
-  background-color: #2e293e;
 }
 .고양이내용 {
   position: absolute;
-  top: 5.1rem;
+  top: 39%;
   left: 0px;
   right: 0px;
   display: flex;
@@ -23,7 +23,7 @@
 
 .고양이다음 {
   position: absolute;
-  bottom: 3rem;
+  bottom: 26%;
   right: 2rem;
   font-size: 0.8rem;
 }

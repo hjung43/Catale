@@ -5,6 +5,7 @@ import 배경바 from "../../assets/bartender/임시바배경.png";
 import React from "react";
 import { useState } from "react";
 import Cattalkbox from "../../components/main/Cattalkbox";
+import { talkarr } from "./Talkdata/Talkarr";
 
 export default function MainPage() {
   const [talknum, setTalknum] = useState(1);
@@ -16,6 +17,11 @@ export default function MainPage() {
         <div className={styles.임시바}>
           <img className={styles.배경바} src={배경바} alt="" />
         </div>
+        <Cattalkbox
+          talknum={talknum}
+          setTalknum={setTalknum}
+          talkarr={talkarr[talknum]}
+        />
       </div>
       <Nav num={3} />
     </Container>
