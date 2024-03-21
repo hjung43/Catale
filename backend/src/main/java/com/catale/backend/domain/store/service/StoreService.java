@@ -36,5 +36,4 @@ public class StoreService {
         return new StoreGetResponseDto(store);
     }
 
-
 }
