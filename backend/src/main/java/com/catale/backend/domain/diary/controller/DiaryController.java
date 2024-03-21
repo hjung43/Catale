@@ -21,7 +21,8 @@ import java.util.Optional;
 
 @Controller
 @RequiredArgsConstructor
-public class DiaryController {
+public class
+DiaryController {
 
     private final DiaryService diaryService;
     private final MemberService memberService;
