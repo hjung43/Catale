@@ -1,21 +1,36 @@
 import s from "classnames";
 import styles from "./Usertalkbox.module.css";
-import 유저말풍선 from "../../assets/bartender/유저말풍선.png";
-import { Usertalk } from "../../pages/mainpage/Talkdata/Usertalk";
+import { usertalk } from "../../pages/mainpage/Talkdata/Usertalk";
 import React from "react";
 
-export default function Usertalkbox({ talknum, setTalknum }) {
+export default function Usertalkbox({
+  talknum,
+  setTalknum,
+  talkarr,
+  selectnum = -1,
+  말풍선,
+}) {
   return (
     <>
-      <div className={styles.유저말풍선}>
-        <img className={styles.말풍선} src={유저말풍선} alt="" />
-        <div className={styles.유저이름}>고먐미</div>
-        <div className={styles.유저내용}>{Usertalk[talknum].talk}</div>
-        <div
-          className={styles.고양이다음}
-          onClick={() => setTalknum(talknum + 1)}
-        >
-          click !
+      <div className={styles.말풍선위치}>
+        <div className={styles.유저말풍선}>
+          {/* <img className={styles.말풍선} src={말풍선} alt="" /> */}
+
+          <div className={styles.유저이름}>심규리</div>
+          <div className={styles.유저내용}>
+            {selectnum == -1 ? (
+              <div>{usertalk[talkarr.usertalk].talk}</div>
+            ) : (
+              <div>{usertalk[talkarr[selectnum].usertalk].talk}</div>
+            )}
+          </div>
+          <div
+            className={styles.유저다음}
+            onClick={() => setTalknum(talknum + 1)}
+          >
+            <div className={styles.click}>click !</div>
+            <div className={styles.역삼각형}></div>
+          </div>
         </div>
       </div>
     </>

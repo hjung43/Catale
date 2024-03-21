@@ -15,6 +15,7 @@ export const talkarr = [
     cat: 2,
     cattalk: 2,
     user: 2, //2는 대화하러왔니?
+    select: 1,
   },
   [
     {
@@ -84,7 +85,8 @@ export const talkarr = [
     num: 11,
     cat: 2,
     cattalk: 9,
-    user: 5, //5는 내가느낀 감정들이 맞나?
+    user: 2, //2는 대화하러왔니?
+    select: 2,
   },
   {
     num: 12,
@@ -144,7 +146,8 @@ export const talkarr = [
     num: 21,
     cat: 2,
     cattalk: 17,
-    user: 8, //도수를 고르는거
+    user: 3, //도수고르기 선택지3개여서 3
+    select: 3,
   },
   [
     {
