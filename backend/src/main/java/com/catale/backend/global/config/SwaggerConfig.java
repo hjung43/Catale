@@ -37,7 +37,7 @@ public class SwaggerConfig {
     public GroupedOpenApi all() {
         return GroupedOpenApi.builder()
                              .group("a. 전체")
-                             .pathsToMatch("/api/v1/**")
+                             .pathsToMatch("/api/**")
                              .build();
     }
 
@@ -45,7 +45,7 @@ public class SwaggerConfig {
     public GroupedOpenApi memberGroup() {
         return GroupedOpenApi.builder()
                              .group("b. 회원")
-                             .pathsToMatch("/api/v1/member/**")
+                             .pathsToMatch("/api/member/**")
                              .build();
     }
 
@@ -53,7 +53,7 @@ public class SwaggerConfig {
     public GroupedOpenApi bookGroup() {
         return GroupedOpenApi.builder()
                              .group("c. 책")
-                             .pathsToMatch("/api/v1/book/**")
+                             .pathsToMatch("/api/book/**")
                              .build();
     }
 
@@ -61,7 +61,7 @@ public class SwaggerConfig {
     public GroupedOpenApi categoryGroup() {
         return GroupedOpenApi.builder()
                              .group("d. 카테고리")
-                             .pathsToMatch("/api/v1/category/**")
+                             .pathsToMatch("/api/category/**")
                              .build();
     }
 
@@ -69,7 +69,7 @@ public class SwaggerConfig {
     public GroupedOpenApi chatGroup() {
         return GroupedOpenApi.builder()
                              .group("e. 채팅")
-                             .pathsToMatch("/api/v1/chat/**")
+                             .pathsToMatch("/api/chat/**")
                              .build();
     }
 
@@ -77,7 +77,7 @@ public class SwaggerConfig {
     public GroupedOpenApi commentGroup() {
         return GroupedOpenApi.builder()
                              .group("f. 댓글")
-                             .pathsToMatch("/api/v1/comment/**")
+                             .pathsToMatch("/api/comment/**")
                              .build();
     }
 
@@ -85,7 +85,7 @@ public class SwaggerConfig {
     public GroupedOpenApi paperGroup() {
         return GroupedOpenApi.builder()
                              .group("g. 페이퍼")
-                             .pathsToMatch("/api/v1/paper/**")
+                             .pathsToMatch("/api/paper/**")
                              .build();
     }
 
@@ -93,7 +93,7 @@ public class SwaggerConfig {
     public GroupedOpenApi threadGroup() {
         return GroupedOpenApi.builder()
                              .group("h. 스레드")
-                             .pathsToMatch("/api/v1/thread/**")
+                             .pathsToMatch("/api/thread/**")
                              .build();
     }
 
@@ -101,7 +101,7 @@ public class SwaggerConfig {
     public GroupedOpenApi imageGroup() {
         return GroupedOpenApi.builder()
                              .group("i. 이미지")
-                             .pathsToMatch("/api/v1/image/**")
+                             .pathsToMatch("/api/image/**")
                              .build();
     }
 
@@ -109,7 +109,7 @@ public class SwaggerConfig {
     public GroupedOpenApi cataleGroup() {
         return GroupedOpenApi.builder()
                              .group("j. 마이브러리")
-                             .pathsToMatch("/api/v1/catale/**")
+                             .pathsToMatch("/api/catale/**")
                              .build();
     }
 
@@ -117,7 +117,7 @@ public class SwaggerConfig {
     public GroupedOpenApi notificationGroup() {
         return GroupedOpenApi.builder()
                              .group("k. 알림")
-                             .pathsToMatch("/api/v1/notification/**")
+                             .pathsToMatch("/api/notification/**")
                              .build();
     }
 
@@ -125,7 +125,7 @@ public class SwaggerConfig {
     public GroupedOpenApi searchGroup() {
         return GroupedOpenApi.builder()
                              .group("l. 검색")
-                             .pathsToMatch("/api/v1/search/**")
+                             .pathsToMatch("/api/search/**")
                              .build();
     }
 
@@ -133,7 +133,7 @@ public class SwaggerConfig {
     public GroupedOpenApi rollingPaperGroup() {
         return GroupedOpenApi.builder()
                              .group("m. 롤링페이퍼")
-                             .pathsToMatch("/api/v1/rollingpaper/**")
+                             .pathsToMatch("/api/rollingpaper/**")
                              .build();
     }
 
