@@ -37,6 +37,7 @@ public class Diary {
     @Column(name = "reason",nullable = false)
     private String reason;
 
+
     @Column(name = "diary_month", nullable = false)
     private int month;
 
