@@ -1,9 +1,14 @@
 package com.catale.backend.domain.store.entity;
 
+import com.catale.backend.domain.image.entity.Image;
+import com.catale.backend.domain.menu.entity.Menu;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -18,6 +23,12 @@ public class Store {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "store_id")
     private Long id;
+
+    @OneToMany(mappedBy = "store")
+    private List<Menu> menus = new ArrayList<Menu>();
+
+    @OneToMany(mappedBy = "store")
+    private List<Image> images = new ArrayList<Image>();
 
     @Column(name = "group_available", nullable = false)
     private boolean groupAvailable;
