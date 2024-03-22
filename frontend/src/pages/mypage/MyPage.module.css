@@ -37,9 +37,6 @@
   --feel5: #ffb0b0;
 }
 
-.title {
-  font-size: 1.5rem;
-}
 .chart {
   width: 70%;
   padding-top: 2rem;
@@ -51,7 +48,7 @@
   left: -1rem;
 }
 .main {
-  padding: 3rem 0 4rem;
+  padding: 4rem 0 4rem;
 }
 .recommendTitle {
   display: flex;
