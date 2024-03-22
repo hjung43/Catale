@@ -48,7 +48,7 @@
   max-width: 450px;
 }
 .text {
-  padding: 1rem 0.5rem 0.5rem;
+  padding: 1rem;
   font-size: x-large;
   display: flex;
   gap: 0.5rem;
