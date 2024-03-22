@@ -49,16 +49,53 @@ public class SwaggerConfig {
                              .build();
     }
 
+    @Bean
+    public GroupedOpenApi cocktailGroup() {
+        return GroupedOpenApi.builder()
+                .group("c. 칵테일")
+                .pathsToMatch("/api/v1/cocktail/**")
+                .build();
+    }
 
-
+    @Bean
+    public GroupedOpenApi diaryGroup() {
+        return GroupedOpenApi.builder()
+                .group("d. 다이어리")
+                .pathsToMatch("/api/v1/diary/**")
+                .build();
+    }
     @Bean
     public GroupedOpenApi imageGroup() {
         return GroupedOpenApi.builder()
-                             .group("i. 이미지")
-                             .pathsToMatch("/api/v1/image/**")
+                .group("e. 이미지")
+                .pathsToMatch("/api/v1/image/**")
+                .build();
+    }
+
+
+    @Bean
+    public GroupedOpenApi menuGroup() {
+        return GroupedOpenApi.builder()
+                             .group("f. 메뉴")
+                             .pathsToMatch("/api/v1/menu/**")
                              .build();
     }
 
+    @Bean
+    public GroupedOpenApi reviewGroup() {
+        return GroupedOpenApi.builder()
+                .group("g. 리뷰")
+                .pathsToMatch("/api/v1/review/**")
+                .build();
+    }
+
+    @Bean
+    public GroupedOpenApi storeGroup() {
+        return GroupedOpenApi.builder()
+                .group("h. 가게")
+                .pathsToMatch("/api/v1/store/**")
+                .build();
+    }
 
 
 }
