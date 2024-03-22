@@ -3,14 +3,12 @@ package com.catale.backend.domain.member.dto;
 import lombok.*;
 
 @Getter
-@Setter
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+public class LoginResponseDto {
 
-public class LoginRequestDto {
-
-    private String email;
-
-    private String password;
+    private String token;
+    private MemberInfo memberInfo;
 
 }
