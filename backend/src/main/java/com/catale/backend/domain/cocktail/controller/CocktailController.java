@@ -37,7 +37,7 @@ public class CocktailController {
     private final CocktailService cocktailService;
 
     @Operation(summary = "칵테일 전체 조회", description = "칵테일 리스트 전체 조회")
-    @GetMapping("/cocktail")
+    @GetMapping
     public ResponseEntity<?> getAllCocktailList(
             @Parameter(hidden = true) Authentication authentication,
             @PageableDefault(page = 0, size = 10) SpringDataWebProperties.Pageable page) {
@@ -50,7 +50,7 @@ public class CocktailController {
 //        return response.success(ResponseCode.MEMBER_SIGNUP_SUCCESS, cocktailService.getAll
     }
     @Operation(summary = "내가 좋아요한 칵테일 조회", description = "내가 좋아요한 칵테일 리스트 조회")
-    @GetMapping("/cocktail/like")
+    @GetMapping("/like")
     public ResponseEntity<?> getLikcCocktailList(@Parameter(hidden = true) Authentication authentication,
                                                  @PageableDefault(page = 0, size = 10) SpringDataWebProperties.Pageable page){
         Member me = memberService.findMember(authentication.getName());
@@ -60,7 +60,7 @@ public class CocktailController {
         return new ResponseEntity<List<CocktailGetLikeResponseDto>>(list,HttpStatus.OK);
     }
     @Operation(summary = "칵테일 상세 조회", description = "칵테일 상세 조회")
-    @GetMapping("/cocktail/{cocktailId}")
+    @GetMapping("/{cocktailId}")
     public ResponseEntity<?> getCocktailDetail( @Parameter(hidden = true) Authentication authentication, @PathVariable Long cocktailId){
 
         Member me = memberService.findMember(authentication.getName());
