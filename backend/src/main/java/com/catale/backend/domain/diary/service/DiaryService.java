@@ -29,10 +29,10 @@ public class DiaryService {
 
 
     @Transactional
-    public DiaryGetResponseDto getDiary(Long id){
-        Diary diary = diaryRepository.findById(id).orElseThrow(NullPointerException::new);
-        return new DiaryGetResponseDto(diary);
+    public DiaryGetResponseDto getDiaryDetail(Long diaryId){
+        return diaryRepository.getDiaryDetail(diaryId).orElseThrow(NullPointerException::new);
     }
+
     @Transactional
     public List<DiaryMonthResponseDto> getDiarys(int year, int month, Long memberId){
         List<DiaryMonthResponseDto> diaryList = diaryRepository.getDiraryMonth(year,month,memberId).orElseThrow(NullPointerException::new);
