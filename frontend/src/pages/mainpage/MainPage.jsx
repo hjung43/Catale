@@ -28,7 +28,7 @@ export default function MainPage() {
             <div className={styles.재료상자}>
               <div className={styles.재료}>
                 <div className={styles.재료글자}>오늘의 재료</div>
-                {nowemonum}
+                <div className={styles.감정선택요소}>{nowemonum}</div>
               </div>
             </div>
           </>
