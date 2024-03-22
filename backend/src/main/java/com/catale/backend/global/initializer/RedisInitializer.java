@@ -15,7 +15,7 @@ public class RedisInitializer implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         redisTemplate.execute((RedisCallback<? extends Object>) connection -> {
-            connection.flushAll();
+//            connection.flushAll();
             return null;
         });
     }
