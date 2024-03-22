@@ -13,7 +13,7 @@ export default function Cattalk11({ talkarr, 말풍선, todayemo }) {
 
   useEffect(() => {
     if (todayemo.length === 1) {
-      const moodIndex = Math.floor(todayemo[0] / 10); // 십의 자리수 구하기
+      const moodIndex = Math.floor(todayemo[0] / 10);
       const talkObj = {
         talk: mood1[moodIndex][todayemo[0] % 10],
         color: selectcolor[moodIndex],
@@ -21,7 +21,7 @@ export default function Cattalk11({ talkarr, 말풍선, todayemo }) {
       setTalkObjects([talkObj]);
     } else if (todayemo.length === 2) {
       const newTalkObjects = todayemo.map((emo, index) => {
-        const moodIndex = Math.floor(emo / 10); // 십의 자리수 구하기
+        const moodIndex = Math.floor(emo / 10);
         const talk =
           index === todayemo.length - 1
             ? mood1[moodIndex][emo % 10]
@@ -32,7 +32,7 @@ export default function Cattalk11({ talkarr, 말풍선, todayemo }) {
       setTalkObjects(newTalkObjects);
     } else if (todayemo.length === 3) {
       const newTalkObjects = todayemo.map((emo, index) => {
-        const moodIndex = Math.floor(emo / 10); // 십의 자리수 구하기
+        const moodIndex = Math.floor(emo / 10);
         const talk =
           index === todayemo.length - 1
             ? mood1[moodIndex][emo % 10]
