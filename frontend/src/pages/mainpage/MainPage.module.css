@@ -36,16 +36,57 @@
   --feel4: #ffd4ca;
   --feel5: #ffb0b0;
 }
+/* 
+
+
+
+
+
+
+
+
+
+
+*/
+/* 이거로 일단 임시바의 크기를 지정해줬어 */
+.aspectcontainer {
+  position: relative;
+  width: 100%;
+  padding-top: 110%; /* 16:9 비율을 위한 값 (세로 / 가로 * 100%) */
+}
+
+.aspectcontent {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+/* 
+
+
+
+
+
+
+
+
+
+*/
 .임시바 {
+  height: 60%;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
+  /* background-color: red; */
 }
 .재료상자 {
   position: absolute;
-  top: 5%;
+  top: 2.4%;
   width: 100%;
   max-width: 450px;
   display: flex;
@@ -59,7 +100,7 @@
 }
 .재료 {
   border-radius: 34px;
-  background: rgba(255, 255, 255, 0.16);
+  background: rgba(104, 102, 101, 0.402);
   border: solid 2px white;
   color: rgb(245, 191, 191);
   display: flex;
@@ -67,13 +108,16 @@
   justify-content: center;
   align-items: center;
   gap: 1rem;
-  padding: 0.4rem 3rem;
+  padding: 0.3rem 3rem;
 }
 
 .배경바 {
-  width: 100%;
+  width: 50%;
 }
 .main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
   height: 100%;
   background: linear-gradient(180deg, #46322b 45.37%, #2e293e 65.01%);

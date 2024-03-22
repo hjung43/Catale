@@ -15,7 +15,7 @@ export default function Cattalkbox({
   console.log(talkarr);
   return (
     <>
-      {selectnum === -1 && talkarr.cat != 0 && (
+      {selectnum === -1 && talkarr.cat != 0 && talkarr.cat != 3 && (
         <div className={styles.고양이말풍선}>
           {talkarr.cat != 3 ? (
             <img className={styles.말풍선} src={말풍선} alt="" />
@@ -42,6 +42,27 @@ export default function Cattalkbox({
               </div>
             </>
           )}
+          {talkarr.cat === 1 && (
+            <div
+              className={styles.고양이다음}
+              onClick={() => setTalknum(talknum + 1)}
+            >
+              <div className={styles.click}>click !</div>
+              <div className={styles.역삼각형}></div>
+            </div>
+          )}
+        </div>
+      )}
+      {selectnum === -1 && talkarr.cat != 0 && talkarr.cat === 3 && (
+        <div className={styles.고양이말풍선2}>
+          {talkarr.cat != 3 ? (
+            <img className={styles.말풍선} src={말풍선} alt="" />
+          ) : (
+            <>
+              <div className={styles.만들자말풍선} />
+            </>
+          )}
+
           {talkarr.cat === 3 && (
             <>
               <div className={styles.고양이내용파랑}>
