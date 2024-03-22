@@ -33,9 +33,23 @@ export default function MainPage() {
             </div>
           </>
         )}
-        <div className={styles.임시바}>
+        {/* 주석 단 이유는 별로여서 */}
+        {/* <div
+          className={styles.임시바}
+          style={{
+            backgroundImage: `url(${배경바})`,
+            backgroundSize: "cover",
+          }}
+        >
           <img className={styles.배경바} src={배경바} alt="" />
+        </div> */}
+        {/* 이거로 지금 배경바 크기를 지정해놨음 */}
+        <div className={styles.aspectcontainer}>
+          <div className={styles.aspectcontent}>
+            <img src={배경바} alt="" />
+          </div>
         </div>
+        {/*  */}
         {talknum != 3 &&
           talknum != 4 &&
           talknum != 10 &&
