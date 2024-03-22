@@ -26,21 +26,21 @@ public class DiaryService {
     private final CocktailRepository cocktailRepository;
     private final MemberRepository memberRepository;
 
-
-
+    //다이어리 상세조회
     @Transactional
     public DiaryGetResponseDto getDiaryDetail(Long diaryId){
         return diaryRepository.getDiaryDetail(diaryId).orElseThrow(NullPointerException::new);
     }
-
+    //월 별 다이어리 조회
     @Transactional
     public List<DiaryMonthResponseDto> getDiarys(int year, int month, Long memberId){
         List<DiaryMonthResponseDto> diaryList = diaryRepository.getDiraryMonth(year,month,memberId).orElseThrow(NullPointerException::new);
         return diaryList;
     }
-
+    // 다이어리 등록
     @Transactional
-    public void postDiary(Long memberId,DiaryGetRequestDto dto){
+    public Long postDiary(Long memberId,DiaryGetRequestDto dto){
+        //칵테일 레포지토리에서 칵테일 아이디로 칵테일 찾아서 저장
         Cocktail cocktail = cocktailRepository.findById(dto.getCocktailId()).orElseThrow(NullPointerException::new);
         Diary diary = Diary.builder()
                 .member(memberRepository.findById(memberId).orElseThrow(MemberNotFoundException::new))
@@ -52,9 +52,13 @@ public class DiaryService {
                 .emotion2(dto.getEmotion2())
                 .emotion3(dto.getEmotion3())
                 .build();
-        diaryRepository.save(diary);
-    }
+        Diary saveDiary = diaryRepository.save(diary);
+        if(saveDiary.getId() == null){
 
+        }
+        return saveDiary.getId();
+    }
+    //다이어리 삭제
     @Transactional
     public void deleteDiary(Long diaryId){
         diaryRepository.deleteById(diaryId);
