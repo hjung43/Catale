@@ -27,7 +27,7 @@ public class StoreController {
     private final StoreService storeService;
 
     @Operation(summary = "가게 리스트 전체 조회", description = "가게 리스트 전체 조회")
-    @GetMapping("/store")
+    @GetMapping
     public ResponseEntity<?> findAllStore(){
 
         List<StoreGetResponseDto> stores = storeService.StoreFindAll();
@@ -35,7 +35,7 @@ public class StoreController {
     }
 
     @Operation(summary = "가게 상세 조회", description = "가게 상세 페이지 조회")
-    @GetMapping("/store/{storeId}")
+    @GetMapping("/{storeId}")
     public ResponseEntity<?> findStore(@PathVariable Long storeId){
         StoreGetResponseDto store = storeService.findById(storeId);
         return new ResponseEntity<StoreGetResponseDto>(store, HttpStatus.OK);
