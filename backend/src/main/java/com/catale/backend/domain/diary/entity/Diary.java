@@ -14,7 +14,7 @@ import org.hibernate.annotations.Where;
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Where(clause = "is_deleted = false")
-@SQLDelete(sql = "UPDATE diary SET is_deleted = TRUE WHERE image_id = ?")
+@SQLDelete(sql = "UPDATE diary SET is_deleted = TRUE WHERE diary_id = ?")
 public class Diary extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

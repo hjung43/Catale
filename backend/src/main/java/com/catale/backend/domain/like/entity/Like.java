@@ -1,5 +1,6 @@
 package com.catale.backend.domain.like.entity;
 
+import com.catale.backend.domain.base.BaseEntity;
 import com.catale.backend.domain.cocktail.entity.Cocktail;
 import com.catale.backend.domain.member.entity.Member;
 import jakarta.persistence.*;
@@ -14,11 +15,11 @@ import org.hibernate.annotations.Where;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Where(clause = "is_deleted = false")
 @Table(name = "likes")
-@SQLDelete(sql = "UPDATE likes SET is_deleted = TRUE WHERE image_id = ?")
-public class Like {
+@SQLDelete(sql = "UPDATE likes SET is_deleted = TRUE WHERE likes_id = ?")
+public class Like extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "like_id")
+    @Column(name = "likes_id")
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)

@@ -1,15 +1,20 @@
 package com.catale.backend.domain.cocktail.entity;
 
+import com.catale.backend.domain.base.BaseEntity;
 import com.catale.backend.domain.image.entity.Image;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 
 @Entity
 @Getter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Cocktail {
+@Where(clause = "is_deleted = false")
+@SQLDelete(sql = "UPDATE cocktail SET is_deleted = TRUE WHERE cocktail_id = ?")
+public class Cocktail extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
