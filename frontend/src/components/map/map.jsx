@@ -9,13 +9,13 @@ function makeInfowindowContent(title) {
     </div>
   `;
 }
-function notNowclick(title) {
-  console.log(title);
-}
+// function notNowclick(title) {
+//   console.log(title);
+// }
 const allData = [...markerdataB, ...markerdataG];
 
 export default function Map({
-  setNowclick = notNowclick,
+  setNowclick,
   nowlocatex = "36.3599377",
   nowlocatey = "127.34791",
   level = "4",
