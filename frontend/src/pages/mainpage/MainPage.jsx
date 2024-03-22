@@ -13,6 +13,7 @@ import 고양이말풍선 from "../../assets/bartender/고양이말풍선.png";
 import 유저말풍선 from "../../assets/bartender/유저말풍선.png";
 import Useremothree from "../../components/main/Useremothree";
 import { mood1, mood2 } from "../mainpage/Emodata/Emotionthree";
+import Cattalk11 from "../../components/main/Cattalk11";
 export default function MainPage() {
   const [talknum, setTalknum] = useState(1);
   const [selectnum, setSeletnum] = useState(0);
@@ -35,7 +36,7 @@ export default function MainPage() {
                 <div className={styles.감정선택요소}>
                   <div>{nowemonum}</div>
                   {todayemo.map((emo) => (
-                    <>{emo}</>
+                    <div>{emo}</div>
                   ))}
                 </div>
               </div>
@@ -52,6 +53,7 @@ export default function MainPage() {
         {talknum !== 3 &&
           talknum !== 4 &&
           talknum !== 10 &&
+          talknum !== 11 &&
           talknum !== 14 &&
           talknum !== 16 &&
           talknum !== 22 && (
@@ -79,12 +81,23 @@ export default function MainPage() {
             selectcheck={selectcheck}
           />
         )}
+        {talknum === 11 && (
+          <Cattalk11
+            talkarr={talkarr[talknum]}
+            말풍선={고양이말풍선}
+            todayemo={todayemo}
+          />
+        )}
+        {/* 얘들은 선택하는 거여서 어떤 선택을했는지 가져가야해 그리고
+        11번같은 경우는 내가 선택한 감정을 확인해주는 역할을 해야해 */}
         {(talknum === 2 || talknum === 11 || talknum === 21) && (
           <Userselctbox
             talknum={talknum}
             setTalknum={setTalknum}
             talkarr={talkarr[talknum]}
             setSeletnum={setSeletnum}
+            setTodayemo={setTodayemo}
+            setSelectcheck={setSelectcheck}
           />
         )}
         {(talknum === 3 || talknum === 22) && (

@@ -83,6 +83,8 @@
 .감정선택요소 {
   font-size: 0.8rem;
   color: rgb(245, 191, 191);
+  display: flex;
+  gap: 0.5rem;
 }
 .재료 {
   border-radius: 34px;

@@ -57,6 +57,25 @@
   justify-content: center;
   margin-bottom: 3px;
 }
+.고양이내용11 {
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* font-size: 1.1rem; */
+  font-size: medium;
+  color: rgb(255, 255, 255);
+  -webkit-text-stroke: 1.2px rgb(59, 59, 59);
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.594);
+  margin-bottom: 3px;
+}
+.감정대화 {
+  display: flex;
+  gap: 0.3rem;
+}
 .고양이내용파랑 {
   position: absolute;
   left: 0px;
