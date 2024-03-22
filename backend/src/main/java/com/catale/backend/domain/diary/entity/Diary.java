@@ -1,5 +1,6 @@
 package com.catale.backend.domain.diary.entity;
 
+import com.catale.backend.domain.base.BaseEntity;
 import com.catale.backend.domain.cocktail.entity.Cocktail;
 import com.catale.backend.domain.member.entity.Member;
 import jakarta.persistence.*;
@@ -14,7 +15,7 @@ import org.hibernate.annotations.Where;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Where(clause = "is_deleted = false")
 @SQLDelete(sql = "UPDATE diary SET is_deleted = TRUE WHERE image_id = ?")
-public class Diary {
+public class Diary extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "diary_id")

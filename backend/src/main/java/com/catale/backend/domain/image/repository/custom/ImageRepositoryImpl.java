@@ -1,0 +1,20 @@
+package com.catale.backend.domain.image.repository.custom;
+
+import com.catale.backend.domain.image.entity.Image;
+import com.querydsl.jpa.impl.JPAQueryFactory;
+import lombok.RequiredArgsConstructor;
+
+import static com.catale.backend.domain.image.entity.QImage.image;
+
+@RequiredArgsConstructor
+public class ImageRepositoryImpl implements ImageRepositoryCustom{
+
+    private final JPAQueryFactory query;
+    @Override
+    public Long updateMemberImage(Long imageId, String imageUrl) {
+        return query.update(image)
+                .set(image.url, imageUrl)
+                .where(image.id.eq(imageId))
+                .execute();
+    }
+}

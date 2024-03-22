@@ -19,6 +19,7 @@ public class StoreController {
     @Autowired
     StoreService storeService;
 
+    // 모든 가게 조회
     @GetMapping("/store")
     public ResponseEntity<?> findAllStore(){
 
@@ -26,6 +27,7 @@ public class StoreController {
         return new ResponseEntity<List<StoreGetResponseDto>>(stores, HttpStatus.OK);
     }
 
+    //가게 상세 조회
     @GetMapping("/store/{storeId}")
     public ResponseEntity<?> findStore(@PathVariable Long storeId){
         StoreGetResponseDto store = storeService.findById(storeId);
