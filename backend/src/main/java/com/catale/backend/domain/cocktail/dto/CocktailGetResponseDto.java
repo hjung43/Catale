@@ -1,7 +1,15 @@
 package com.catale.backend.domain.cocktail.dto;
 
 import com.catale.backend.domain.cocktail.entity.Cocktail;
+
 import lombok.Data;
+
+
+import com.catale.backend.domain.review.dto.ReviewGetResponseDto;
+import lombok.Data;
+
+import java.util.List;
+
 
 @Data
 public class CocktailGetResponseDto {
@@ -29,6 +37,10 @@ public class CocktailGetResponseDto {
     private int emotion3;
     private int likeCount;
     private int fruit;
+
+    private List<ReviewGetResponseDto> reviewList;
+    private boolean isLike;
+
 
     public CocktailGetResponseDto(Cocktail cocktail) {
         this.id = cocktail.getId();
