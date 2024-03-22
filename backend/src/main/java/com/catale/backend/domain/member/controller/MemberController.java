@@ -1,5 +1,6 @@
 package com.catale.backend.domain.member.controller;
 
+import com.catale.backend.domain.member.dto.LoginRequestDto;
 import com.catale.backend.domain.member.dto.SignupRequestDto;
 import com.catale.backend.domain.member.service.MemberService;
 import com.catale.backend.global.format.code.ApiResponse;
@@ -37,6 +38,19 @@ public class MemberController {
         Long savedId = memberService.create(requestDto);
         return response.success(ResponseCode.MEMBER_SIGNUP_SUCCESS, savedId);
 
+    }
+
+    @Operation(summary = "일반 로그인", description = "일반 로그인")
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@Valid @RequestBody LoginRequestDto requestDto,
+                                   BindingResult bindingResult,
+                                   HttpServletResponse httpServletResponse) {
+
+        if (bindingResult.hasErrors()) {
+            return response.fail(bindingResult);
+        }
+
+        return response.success(ResponseCode.LOGIN_SUCCESS, memberService.login(requestDto, httpServletResponse));
     }
 
 //    @Operation(summary = "소셜 회원가입", description = "소셜 회원가입")
@@ -81,18 +95,6 @@ public class MemberController {
 //    }
 //
 //
-//    @Operation(summary = "일반 로그인", description = "일반 로그인")
-//    @PostMapping("/login")
-//    public ResponseEntity<?> login(@Valid @RequestBody LoginRequestDto requestDto,
-//                                   BindingResult bindingResult,
-//                                   HttpServletResponse httpServletResponse) {
-//
-//        if (bindingResult.hasErrors()) {
-//            return response.fail(bindingResult);
-//        }
-//
-//        return response.success(ResponseCode.LOGIN_SUCCESS, memberService.login(requestDto, httpServletResponse));
-//    }
 //
 //    @Operation(summary = "소셜 로그인", description = "소셜 로그인")
 //    @PostMapping("/login/social")

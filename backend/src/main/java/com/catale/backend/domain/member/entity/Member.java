@@ -44,20 +44,25 @@ public class Member extends BaseEntity {
     @Column(name = "is_social", nullable = false)
     private boolean isSocial;
 
+    @Builder.Default
     @Column(name = "alc")
-    private int alc;
+    private int alc = -1;   //초기값, 이 값이 -1이면 아직 취향정보를 등록하지 않음을 나타냄
 
+    @Builder.Default
     @Column(name = "sweet")
-    private int sweet;
+    private int sweet = 0;
 
+    @Builder.Default
     @Column(name = "sour")
-    private int sour;
+    private int sour = 0;
 
+    @Builder.Default
     @Column(name = "bitter")
-    private int bitter;
+    private int bitter = 0;
 
+    @Builder.Default
     @Column(name = "sparking")
-    private int sparking;
+    private int sparking = 0;
 
 
     public static Member of(SignupRequestDto requestDto, String encodedPassword, boolean isSocial) {
