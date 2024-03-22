@@ -49,53 +49,7 @@ public class SwaggerConfig {
                              .build();
     }
 
-    @Bean
-    public GroupedOpenApi bookGroup() {
-        return GroupedOpenApi.builder()
-                             .group("c. 책")
-                             .pathsToMatch("/api/v1/book/**")
-                             .build();
-    }
 
-    @Bean
-    public GroupedOpenApi categoryGroup() {
-        return GroupedOpenApi.builder()
-                             .group("d. 카테고리")
-                             .pathsToMatch("/api/v1/category/**")
-                             .build();
-    }
-
-    @Bean
-    public GroupedOpenApi chatGroup() {
-        return GroupedOpenApi.builder()
-                             .group("e. 채팅")
-                             .pathsToMatch("/api/v1/chat/**")
-                             .build();
-    }
-
-    @Bean
-    public GroupedOpenApi commentGroup() {
-        return GroupedOpenApi.builder()
-                             .group("f. 댓글")
-                             .pathsToMatch("/api/v1/comment/**")
-                             .build();
-    }
-
-    @Bean
-    public GroupedOpenApi paperGroup() {
-        return GroupedOpenApi.builder()
-                             .group("g. 페이퍼")
-                             .pathsToMatch("/api/v1/paper/**")
-                             .build();
-    }
-
-    @Bean
-    public GroupedOpenApi threadGroup() {
-        return GroupedOpenApi.builder()
-                             .group("h. 스레드")
-                             .pathsToMatch("/api/v1/thread/**")
-                             .build();
-    }
 
     @Bean
     public GroupedOpenApi imageGroup() {
@@ -105,36 +59,6 @@ public class SwaggerConfig {
                              .build();
     }
 
-    @Bean
-    public GroupedOpenApi cataleGroup() {
-        return GroupedOpenApi.builder()
-                             .group("j. 마이브러리")
-                             .pathsToMatch("/api/v1/catale/**")
-                             .build();
-    }
 
-    @Bean
-    public GroupedOpenApi notificationGroup() {
-        return GroupedOpenApi.builder()
-                             .group("k. 알림")
-                             .pathsToMatch("/api/v1/notification/**")
-                             .build();
-    }
-
-    @Bean
-    public GroupedOpenApi searchGroup() {
-        return GroupedOpenApi.builder()
-                             .group("l. 검색")
-                             .pathsToMatch("/api/v1/search/**")
-                             .build();
-    }
-
-    @Bean
-    public GroupedOpenApi rollingPaperGroup() {
-        return GroupedOpenApi.builder()
-                             .group("m. 롤링페이퍼")
-                             .pathsToMatch("/api/v1/rollingpaper/**")
-                             .build();
-    }
 
 }
