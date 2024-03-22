@@ -15,7 +15,7 @@ import org.hibernate.annotations.Where;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 /* soft delete 관련 */
 @Where(clause = "is_deleted = false")
-@SQLDelete(sql = "UPDATE review SET is_deleted = TRUE WHERE member_id = ?")
+@SQLDelete(sql = "UPDATE review SET is_deleted = TRUE WHERE review_id = ?")
 public class Review extends BaseEntity {
 
     @Id

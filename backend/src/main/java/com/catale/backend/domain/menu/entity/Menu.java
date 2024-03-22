@@ -1,5 +1,6 @@
 package com.catale.backend.domain.menu.entity;
 
+import com.catale.backend.domain.base.BaseEntity;
 import com.catale.backend.domain.cocktail.entity.Cocktail;
 import com.catale.backend.domain.store.entity.Store;
 import jakarta.persistence.*;
@@ -13,8 +14,8 @@ import org.hibernate.annotations.Where;
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Where(clause = "is_deleted = false")
-@SQLDelete(sql = "UPDATE menu SET is_deleted = TRUE WHERE image_id = ?")
-public class Menu {
+@SQLDelete(sql = "UPDATE menu SET is_deleted = TRUE WHERE menu_id = ?")
+public class Menu extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "menu_id")
