@@ -1,4 +1,3 @@
-import s from "classnames";
 import styles from "./Usertalkbox.module.css";
 import { usertalk } from "../../pages/mainpage/Talkdata/Usertalk";
 import React from "react";
@@ -18,7 +17,7 @@ export default function Usertalkbox({
 
           <div className={styles.유저이름}>심규리</div>
           <div className={styles.유저내용}>
-            {selectnum == -1 ? (
+            {selectnum === -1 ? (
               <div>{usertalk[talkarr.usertalk].talk}</div>
             ) : (
               <div>{usertalk[talkarr[selectnum].usertalk].talk}</div>
