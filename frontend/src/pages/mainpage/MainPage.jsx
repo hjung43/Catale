@@ -1,4 +1,4 @@
-import Container from "../../components/common/Container";
+import ContainerMain from "../../components/common/ContainerMain";
 import styles from "./MainPage.module.css";
 import Nav from "../../components/common/Nav";
 import 배경바 from "../../assets/bartender/임시바배경.png";
@@ -25,7 +25,7 @@ export default function MainPage() {
   // cattalk에서 0은 없는거 1은 다음버튼있는거 2는 다음버튼없는거 3은 고르시오
   // usertakl에서 0은 없는거 1은 대화 2,3,4,5,6,7은 특정고르기
   return (
-    <Container>
+    <ContainerMain>
       <div className={styles.main}>
         {talknum >= 8 && nowemonum !== -1 && (
           <>
@@ -123,6 +123,6 @@ export default function MainPage() {
         )}
       </div>
       <Nav num={3} />
-    </Container>
+    </ContainerMain>
   );
 }

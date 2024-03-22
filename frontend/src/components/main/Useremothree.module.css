@@ -1,9 +1,9 @@
 .감정선택칸 {
   /* width: 89%; */
   padding: 1rem 1rem 1rem;
-  max-height: 36%;
-  margin: 1rem 1rem 4rem;
   overflow: auto;
+  height: 36%;
+  margin: 1rem 1rem 4rem;
   border: solid 2px rgb(131, 131, 131);
   border-radius: 20px;
   display: flex;
