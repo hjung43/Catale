@@ -6,12 +6,16 @@ import com.catale.backend.domain.diary.dto.DiaryMonthResponseDto;
 import com.catale.backend.domain.diary.service.DiaryService;
 import com.catale.backend.domain.member.entity.Member;
 import com.catale.backend.domain.member.service.MemberService;
+import com.catale.backend.global.format.code.ApiResponse;
+import com.catale.backend.global.format.response.ResponseCode;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -27,7 +31,7 @@ import java.util.Optional;
 @RequestMapping("/api/v1/diary")
 public class
 DiaryController {
-
+    private final ApiResponse response;
     private final DiaryService diaryService;
     private final MemberService memberService;
 
@@ -36,8 +40,9 @@ DiaryController {
     public ResponseEntity<?> getDiary(@Parameter(hidden = true) Authentication authentication,
                                       @PathVariable Long diaryId){
         DiaryGetResponseDto diary = diaryService.getDiaryDetail(diaryId);
-        return new ResponseEntity<DiaryGetResponseDto>(diary, HttpStatus.OK);
+        return response.success(ResponseCode.DIARY_INFO_FETCHED,diary);
     }
+
     @Operation(summary = "다이어리 저장", description = "데일리 칵테일 추천 후 다이어리에 저장")
     @PostMapping
     public ResponseEntity<?> postDiary(@Parameter(hidden = true) Authentication authentication,
@@ -45,23 +50,28 @@ DiaryController {
         Member me = memberService.findMember(authentication.getName());
         Long memberId = me.getId();
 
-        diaryService.postDiary(memberId, dto);
-        return new ResponseEntity<>(HttpStatus.OK);
+        Long diaryId = diaryService.postDiary(memberId, dto);
+        return response.success(ResponseCode.DIARY_CREATED,diaryId);
     }
     @Operation(summary = "다이어리 삭제", description = "다이어리 삭제")
     @DeleteMapping("/{diaryId}")
     public ResponseEntity<?> deleteDiary(@PathVariable Long diaryId){
+
         diaryService.deleteDiary(diaryId);
-        return new ResponseEntity<>(HttpStatus.OK);
+
+        return response.success(ResponseCode.DIARY_DELETED);
     }
-    @Operation(summary = "월별 다이어리 조회", description = "월별 다이어리 전체 조회")
+
+    @Operation(summary = "월별 다이어리 조회", description = "월별 다이어리 리스트 조회")
     @GetMapping
-    public ResponseEntity<?> getDiaryMonth(@Parameter(hidden = true) Authentication authentication, @RequestParam int year, @RequestParam int month){
+    public ResponseEntity<?> getDiaryMonth(@Parameter(hidden = true) Authentication authentication,
+                                           @RequestParam int year, @RequestParam int month){
+
         Member me = memberService.findMember(authentication.getName());
         Long memberId = me.getId();
 
         List<DiaryMonthResponseDto> list = diaryService.getDiarys(year,month,memberId);
-        return new ResponseEntity<List<DiaryMonthResponseDto>>(list, HttpStatus.OK);
+        return response.success(ResponseCode.MONTHLY_DIARY_LIST_FETCHED,list);
     }
 
 }

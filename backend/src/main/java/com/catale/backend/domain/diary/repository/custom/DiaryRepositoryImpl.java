@@ -2,23 +2,22 @@ package com.catale.backend.domain.diary.repository.custom;
 
 import com.catale.backend.domain.diary.dto.DiaryGetResponseDto;
 import com.catale.backend.domain.diary.dto.DiaryMonthResponseDto;
-import com.catale.backend.domain.diary.entity.QDiary;
-import com.catale.backend.domain.member.dto.MemberInfoDto;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 import java.util.Optional;
 
 import static com.catale.backend.domain.cocktail.entity.QCocktail.cocktail;
 import static com.catale.backend.domain.diary.entity.QDiary.diary;
-import static com.catale.backend.domain.image.entity.QImage.image;
 import static com.catale.backend.domain.member.entity.QMember.member;
 
 @RequiredArgsConstructor
 public class DiaryRepositoryImpl implements DiaryRepositoryCustom{
     private final JPAQueryFactory query;
+    //월 별 다이어리 조회
     @Override
     public Optional<List<DiaryMonthResponseDto>> getDiraryMonth(int year, int month, Long memberId) {
         return Optional.ofNullable(query.select(
@@ -31,7 +30,7 @@ public class DiaryRepositoryImpl implements DiaryRepositoryCustom{
                         .and(diary.isDeleted.eq(false)))
                 .fetch());
     }
-
+    //다이어리 상세 조회
     @Override
     public Optional<DiaryGetResponseDto> getDiaryDetail(Long diaryId) {
         return Optional.ofNullable(query.select(
@@ -44,7 +43,8 @@ public class DiaryRepositoryImpl implements DiaryRepositoryCustom{
                 .from(diary)
                 .leftJoin(cocktail).on(diary.cocktail.id.eq(cocktail.id))
                 .where(diary.id.eq(diaryId)
-                .and(diary.isDeleted.eq(false)))
+                .and(diary.isDeleted.eq(false))
+                        .and(cocktail.isDeleted.eq(false)))
                 .fetchOne()
         );
 
