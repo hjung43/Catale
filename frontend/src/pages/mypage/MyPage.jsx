@@ -13,6 +13,8 @@ import MyFeel from "../../components/my/MyFeel";
 import profile from "../../assets/common/profile.png";
 import setting from "../../assets/common/setting.png";
 import logout from "../../assets/common/logout.png";
+import edit from "../../assets/common/edit.png";
+import { useNavigate } from "react-router-dom";
 
 export default function MyPage() {
   const [chartOptions, setChartOptions] = useState({
@@ -21,12 +23,8 @@ export default function MyPage() {
         enabled: false,
       },
       chart: {
-        width: "10%",
         id: "radar-chart",
         toolbar: { show: false },
-        style: {
-          margin: "300px",
-        },
       },
       xaxis: {
         categories: ["단맛", "쓴맛", "신맛", "도수", "탄산"],
@@ -101,6 +99,8 @@ export default function MyPage() {
       },
     ],
   });
+  const navigate = useNavigate();
+
   return (
     <Container>
       <Header>마이페이지</Header>
@@ -119,11 +119,17 @@ export default function MyPage() {
           </div>
         </div>
         <Box>
-          <div className={styles.recommendTitle}>
+          <div
+            className={styles.recommendTitle}
+            onClick={() => navigate("recommend")}
+          >
             <div>나의 취향</div>
-            <div>취향 칵테일 보러가기</div>
+            <div className={styles.button}>취향 칵테일 보러가기</div>
           </div>
-          <div className={styles.recommend}>
+          <div
+            className={styles.recommend}
+            onClick={() => navigate("recommend")}
+          >
             <div className={styles.chart}>
               <Chart
                 className={styles.chartC}
@@ -142,17 +148,23 @@ export default function MyPage() {
               <div>탄산 : 100%</div>
             </div>
           </div>
-          <div className={styles.changePreference}>취향변경</div>
+          <div
+            className={styles.changePreference}
+            onClick={() => navigate("changepreference")}
+          >
+            <img src={edit} alt="edit" className={styles.edit_icon} />
+            <div>취향변경</div>
+          </div>
         </Box>
         <div className={styles.flex}>
-          <div className={styles.con}>
+          <div className={styles.con} onClick={() => navigate("mycocktail")}>
             <div className={styles.myCocktail}>
               <div>마신 칵테일</div>
               <img src={arrow} alt="arrow" className={styles.arrow_icon} />
             </div>
             <Lottie animationData={Cocktail1} className={styles.lottie} />
           </div>
-          <div className={styles.con}>
+          <div className={styles.con} onClick={() => navigate("likedcocktail")}>
             <div className={styles.likeCocktail}>
               <div>좋아요</div>
               <img src={arrow} alt="arrow" className={styles.arrow_icon} />
@@ -161,11 +173,14 @@ export default function MyPage() {
           </div>
         </div>
         <Box>
-          <div className={styles.feel}>
+          <div className={styles.feel} onClick={() => navigate("monthlymood")}>
             <div>나의 기분</div>
             <img src={arrow} alt="arrow" className={styles.arrow_icon} />
           </div>
-          <div className={styles.feelChart}>
+          <div
+            className={styles.feelChart}
+            onClick={() => navigate("monthlymood")}
+          >
             <MyFeel />
           </div>
         </Box>
