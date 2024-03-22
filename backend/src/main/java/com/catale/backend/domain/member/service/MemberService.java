@@ -102,7 +102,8 @@ public class MemberService {
     }
 
     private void removeOldRefreshToken(LoginRequestDto requestDto, Member member) {
-        refreshTokenRepository.findById(member.getEmail())
+//        log.info("email:" + member.getEmail());
+        refreshTokenRepository.findByEmail(member.getEmail())
                 .ifPresent(refreshTokenRepository::delete);
         log.info("event=DeleteExistingRefreshToken, email={}", requestDto.getEmail());
     }

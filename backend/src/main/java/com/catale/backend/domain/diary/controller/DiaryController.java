@@ -66,6 +66,7 @@ DiaryController {
     @GetMapping
     public ResponseEntity<?> getDiaryMonth(@Parameter(hidden = true) Authentication authentication,
                                            @RequestParam int year, @RequestParam int month){
+
         Member me = memberService.findMember(authentication.getName());
         Long memberId = me.getId();
 
