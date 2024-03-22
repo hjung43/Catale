@@ -30,7 +30,7 @@ DiaryController {
     @GetMapping("/diary/{diaryId}")
     public ResponseEntity<?> getDiary(@Parameter(hidden = true) Authentication authentication,
                                       @PathVariable Long diaryId){
-        DiaryGetResponseDto diary = diaryService.getDiary(diaryId);
+        DiaryGetResponseDto diary = diaryService.getDiaryDetail(diaryId);
         return new ResponseEntity<DiaryGetResponseDto>(diary, HttpStatus.OK);
     }
     @PostMapping("/diary")
