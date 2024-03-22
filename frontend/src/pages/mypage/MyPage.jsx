@@ -4,8 +4,8 @@ import Nav from "../../components/common/Nav";
 import Header from "../../components/common/Header";
 import Box from "../../components/common/Box";
 import arrow from "../../assets/common/arrow2.png";
-import React, { useEffect, useRef } from "react";
-import Chart from "chart.js/auto";
+import React, { useState } from "react";
+import Chart from "react-apexcharts";
 import Lottie from "lottie-react";
 import Cocktail1 from "../../assets/lottie/Cocktail1.json";
 import Cocktail2 from "../../assets/lottie/Cocktail2.json";
@@ -15,54 +15,92 @@ import setting from "../../assets/common/setting.png";
 import logout from "../../assets/common/logout.png";
 
 export default function MyPage() {
-  const chartRef = useRef();
-
-  useEffect(() => {
-    const myChartRef = chartRef.current.getContext("2d");
-    new Chart(myChartRef, {
-      type: "radar",
-      data: {
-        labels: ["단맛", "쓴맛", "신맛", "도수", "탄산"],
-        datasets: [
-          {
-            label: "My First Dataset",
-            data: [80, 20, 70, 20, 80],
-            // fill: true,
-            backgroundColor: "rgba(255, 99, 132, 0.2)",
-            borderColor: "rgb(255, 99, 132)",
-            pointBackgroundColor: "rgb(255, 99, 132)",
-            pointBorderColor: "#fff",
-            pointHoverBackgroundColor: "#fff",
-            pointHoverBorderColor: "rgb(255, 99, 132)",
-          },
-        ],
+  const [chartOptions, setChartOptions] = useState({
+    options: {
+      tooltip: {
+        enabled: false,
       },
-      options: {
-        scales: {
-          r: {
-            min: 0,
-            max: 100,
-            ticks: {
-              stepSize: 20,
-              backdropColor: "rgba(12, 13, 13, 0)",
-              color: "rgba(12, 13, 13, 0)",
-              fontSize: 145,
-            },
-            color: "#ffffff",
+      chart: {
+        width: "10%",
+        id: "radar-chart",
+        toolbar: { show: false },
+        style: {
+          margin: "300px",
+        },
+      },
+      xaxis: {
+        categories: ["단맛", "쓴맛", "신맛", "도수", "탄산"],
+        labels: {
+          style: {
+            colors: ["#b287f7", "#e59cff", "#fbdfff", "#ffd4ca", "#ffb0b0"],
+            fontSize: "0.8rem",
+            fontFamily: "GongGothicMedium",
           },
         },
       },
-      //   options: {
-      //     scales: {
-      //       r: {
-      //         ticks: {
-      //           color: "#ffffff", // 여기서 원하는 색상으로 변경할 수 있어
-      //         },
-      //       },
-      //     },
+      yaxis: {
+        max: 120,
+        min: 0,
+        stepSize: 20,
+        labels: {
+          style: {
+            colors: [
+              "#00000000",
+              "#00000000",
+              "#00000000",
+              "#00000000",
+              "#00000000",
+              "#00000000",
+              "#00000000",
+            ],
+            fontSize: "0.8rem",
+            fontFamily: "GongGothicMedium",
+          },
+        },
+      },
+      // dataLabels: {
+      //   enabled: true,
+      //   background: {
+      //     enabled: true,
+      //     borderRadius: 2,
       //   },
-    });
-  }, []);
+      // },
+      markers: {
+        size: 3,
+        hover: {
+          size: 10,
+        },
+        colors: "#a4b8ff",
+        strokeColors: "#bb7ef8",
+      },
+      stroke: {
+        show: true,
+        width: 2,
+        colors: ["#464a6d"],
+        dashArray: 0,
+      },
+      fill: {
+        opacity: 0.7,
+        colors: ["#9c9ec6"],
+      },
+      plotOptions: {
+        radar: {
+          polygons: {
+            fill: {
+              colors: ["#fafaff", "#e6e7ff"],
+              fontFamily: "GongGothicMedium",
+            },
+          },
+        },
+      },
+    },
+    series: [
+      {
+        name: "",
+        data: [80, 20, 60, 40, 100],
+      },
+    ],
+  });
   return (
     <Container>
       <Header>
@@ -89,14 +127,21 @@ export default function MyPage() {
           </div>
           <div className={styles.recommend}>
             <div className={styles.chart}>
-              <canvas ref={chartRef} />
+              <Chart
+                className={styles.chartC}
+                options={chartOptions.options}
+                series={chartOptions.series}
+                type="radar"
+                width={230}
+                height={230}
+              />
             </div>
             <div className={styles.data}>
-              <div>신맛ㅋㅋ</div>
-              <div>신맛ㅋㅋ</div>
-              <div>신맛ㅋㅋ</div>
-              <div>신맛ㅋㅋ</div>
-              <div>신맛ㅋㅋ</div>
+              <div>단맛 : 80%</div>
+              <div>쓴맛 : 20%</div>
+              <div>신맛 : 60%</div>
+              <div>도수 : 40%</div>
+              <div>탄산 : 100%</div>
             </div>
           </div>
           <div className={styles.changePreference}>취향변경</div>
@@ -122,7 +167,9 @@ export default function MyPage() {
             <div>나의 기분</div>
             <img src={arrow} alt="arrow" className={styles.arrow_icon} />
           </div>
-          <MyFeel />
+          <div className={styles.feelChart}>
+            <MyFeel />
+          </div>
         </Box>
       </div>
       <Nav num={5} />
