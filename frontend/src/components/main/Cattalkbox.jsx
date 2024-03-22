@@ -1,8 +1,8 @@
 import styles from "./Cattalkbox.module.css";
-// import 고양이말풍선 from "../../assets/bartender/고양이말풍선.png";
-// import 파란말풍선 from "../../assets/bartender/파란말풍선.png";
 import { cattalk } from "../../pages/mainpage/Talkdata/Cattalk";
 import React from "react";
+import { mood1, mood2 } from "../../pages/mainpage/Emodata/Emotionthree";
+import { selectcolor } from "../../pages/mainpage/Emodata/Emocolor";
 
 export default function Cattalkbox({
   talknum,
@@ -12,7 +12,6 @@ export default function Cattalkbox({
   selectcheck,
   말풍선,
 }) {
-  // console.log(talkarr);
   return (
     <>
       {selectnum === -1 && talkarr.cat !== 0 && talkarr.cat !== 3 && (
