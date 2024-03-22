@@ -46,6 +46,15 @@ public enum ErrorCode {
 
     PROFILE_UPDATE_FAILED(HttpStatus.BAD_REQUEST, "회원정보를 수정할 수 없습니다."),
 
+    //다이어리 예외 처리
+    DIARY_CREATE_FAILED(HttpStatus.BAD_REQUEST, "다이어리를 생성할 수 없습니다."),
+    DIARY_NOT_FOUND(HttpStatus.NOT_FOUND, "다이어리를 찾을 수 없습니다."),
+    DIARY_DELETE_FAILED(HttpStatus.BAD_REQUEST, "다이어리를 삭제할 수 없습니다."),
+
+
+
+
+
     // 팔로우 관련 예외 처리
     FOLLOWING_NOT_FOUND(HttpStatus.NOT_FOUND, "팔로잉 리스트를 찾을 수 없습니다."),
     FOLLOWER_NOT_FOUND(HttpStatus.NOT_FOUND, "팔로워 리스트를 찾을 수 없습니다."),

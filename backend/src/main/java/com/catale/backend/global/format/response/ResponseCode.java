@@ -33,6 +33,12 @@ public enum ResponseCode {
     NICKNAME_AVAILABLE(HttpStatus.OK, "사용 가능한 닉네임입니다"),
     DUPLICATE_NICKNAME(HttpStatus.OK, "중복된 닉네임입니다"),
 
+    /* 다이어리(Diary */
+    MONTHLY_DIARY_LIST_FETCHED(HttpStatus.OK, "월 별 다이어리 리스트가 성공적으로 조회되었습니다."),
+    DIARY_CREATED(HttpStatus.OK, "다이어리가 성공적으로 생성되었습니다."),
+    DIARY_INFO_FETCHED(HttpStatus.OK, "다이어리 정보가 성공적으로 조회되었습니다."),
+    DIARY_DELETED(HttpStatus.OK, "다이어리가 성공적으로 삭제되었습니다."),
+
 
     /* 책(Book) */
     BOOK_LIST_FETCHED(HttpStatus.OK, "나의 책 목록이 성공적으로 조회되었습니다."),
