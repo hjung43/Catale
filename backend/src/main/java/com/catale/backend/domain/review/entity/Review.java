@@ -1,5 +1,6 @@
 package com.catale.backend.domain.review.entity;
 
+import com.catale.backend.domain.base.BaseEntity;
 import com.catale.backend.domain.cocktail.entity.Cocktail;
 import com.catale.backend.domain.member.entity.Member;
 import jakarta.persistence.*;
@@ -15,7 +16,7 @@ import org.hibernate.annotations.Where;
 /* soft delete 관련 */
 @Where(clause = "is_deleted = false")
 @SQLDelete(sql = "UPDATE review SET is_deleted = TRUE WHERE member_id = ?")
-public class Review {
+public class Review extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
