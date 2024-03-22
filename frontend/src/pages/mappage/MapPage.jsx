@@ -17,10 +17,8 @@ export default function MapPage() {
     <>
       <Container>
         <Header>
-          <div className={styles.head}>
-            <div className={styles.지역이름}>유성구</div>
-            <div>근처</div>
-          </div>
+          <div className={styles.지역이름}>유성구</div>
+          <div>근처</div>
         </Header>
         <div className={styles.map}>
           <Map setNowclick={setNowclick} />

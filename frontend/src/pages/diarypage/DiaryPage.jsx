@@ -127,9 +127,7 @@ export default function DiaryPage() {
   return (
     <Container>
       <Header>
-        <div className={styles.title}>
-          {year}년 {month + 1}월
-        </div>
+        {year}년 {month + 1}월
       </Header>
       <div className={styles.main}>
         <div>

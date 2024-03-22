@@ -103,9 +103,7 @@ export default function MyPage() {
   });
   return (
     <Container>
-      <Header>
-        <div className={styles.title}>마이페이지</div>
-      </Header>
+      <Header>마이페이지</Header>
       <div className={styles.main}>
         <div className={styles.profile}>
           <div className={styles.profile_left}>

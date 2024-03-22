@@ -45,9 +45,11 @@
   top: 0px;
   width: 100%;
   z-index: 2;
-  height: 5.5rem;
   max-width: 450px;
 }
 .text {
-  padding: 1rem;
+  padding: 1rem 0.5rem 0.5rem;
+  font-size: x-large;
+  display: flex;
+  gap: 0.5rem;
 }
