@@ -28,13 +28,8 @@ public class ReviewService {
     @Transactional
     public List<ReviewGetResponseDto> getReviews(Long cocktailId){
         //아이디로 리뷰 리스트 찾기
-        List<Review> list = reviewRepository.findAllById(Collections.singletonList(cocktailId));
-        List<ReviewGetResponseDto> reviewDtoList = new ArrayList<>(); //리뷰 저장할 Dto리스트
-        //Entity Dto로 변환
-        for(Review r : list){
-            reviewDtoList.add(new ReviewGetResponseDto(r));
-        }
-        return reviewDtoList;
+        List<ReviewGetResponseDto> list = reviewRepository.findByCocktailId(cocktailId).orElseThrow(MemberNotFoundException::new);
+        return list;
     }
 
     @Transactional
