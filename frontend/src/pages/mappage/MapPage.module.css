@@ -42,14 +42,7 @@
   max-width: 450px;
   top: 0px;
 } */
-.head {
-  display: flex;
-  align-items: center;
-  gap: 0.5em;
-}
-.head div {
-  font-size: 1.7em;
-}
+
 .지역이름 {
   background: var(
     --point,
@@ -70,7 +63,6 @@
   padding: 1em 0.6em 0.1em 0.8em;
 }
 .main {
-  /* margin-top: 25rem; */
   background-color: #1f2544;
   padding-bottom: 7rem;
 }
