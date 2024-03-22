@@ -7,9 +7,7 @@ import Box from "../components/common/Box";
 export default function SearchPage() {
   return (
     <Container>
-      <Header>
-        <div className={styles.title}>검색</div>
-      </Header>
+      <Header>검색</Header>
       <div className={styles.main}>
         {/* <Box>
           <div className={styles.chart}>

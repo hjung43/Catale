@@ -1,10 +1,10 @@
 import Container from "../../components/common/Container";
 import styles from "./StoreDetailPage.module.css";
-import Header from "../../components/common/Header";
 import Map from "../../components/map/map";
 import StoreInfo from "../../components/map/StoreInfo";
 import { useParams, useNavigate } from "react-router-dom";
 import { markerdataB, markerdataG } from "../../components/map/data/markerData";
+import Headerwb from "../../components/common/Headerwb";
 
 export default function StoreDetailPage() {
   const { storenumber } = useParams();
@@ -24,14 +24,7 @@ export default function StoreDetailPage() {
   return (
     <>
       <Container>
-        <Header>
-          <div className={styles.head}>
-            <div onClick={() => navigate(-1)} className={styles.특수기호}>
-              &lt;
-            </div>
-            <div>{storenumber}</div>
-          </div>
-        </Header>
+        <Headerwb title={storenumber} />
         <Map
           nowlocatex={nowlocatex}
           nowlocatey={nowlocatey}
