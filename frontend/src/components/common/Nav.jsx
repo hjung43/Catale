@@ -37,7 +37,7 @@ function Nav({ num }) {
       <img
         src={num === 4 ? calB : calA}
         alt="calendar_icon"
-        onClick={() => navigate(`/diary/${2024}/${3}`)}
+        onClick={() => navigate(`/diary`)}
       />
       <img
         src={num === 5 ? userB : userA}

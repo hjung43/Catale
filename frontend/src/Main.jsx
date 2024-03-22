@@ -49,9 +49,9 @@ function Main() {
             <Route index element={<MapPage />} />
             <Route path="detail/:storenumber" element={<StoreDetailPage />} />
           </Route>
-          <Route path="diary/:year">
-            <Route path=":month" element={<DiaryPage />} />
-            <Route path=":date" element={<DatePage />} />
+          <Route path="diary">
+            <Route index element={<DiaryPage />} />
+            <Route path=":diaryId" element={<DatePage />} />
           </Route>
           <Route path="search" element={<SearchPage />} />
           <Route path="my">
