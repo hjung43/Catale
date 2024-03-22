@@ -27,6 +27,13 @@ public class MemberRepositoryImpl implements MemberRepositoryCustom {
 
     }
 
+    @Override
+    public boolean isNicknameDuplicate(String nickname) {
+        return query
+            .selectFrom(member)
+            .where(member.nickname.eq(nickname))
+            .fetchCount() > 0;
+    }
 
 
 }

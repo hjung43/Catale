@@ -123,4 +123,8 @@ public class MemberService {
             throw new PasswordMismatchException();
         }
     }
+
+    public boolean checkNicknameDuplication(String nickname) {
+        return memberRepository.isNicknameDuplicate(nickname);
+    }
 }

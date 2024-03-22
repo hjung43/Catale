@@ -3,6 +3,7 @@ package com.catale.backend.domain.member.controller;
 import com.catale.backend.domain.member.dto.LoginRequestDto;
 import com.catale.backend.domain.member.dto.SignupRequestDto;
 import com.catale.backend.domain.member.service.MemberService;
+import com.catale.backend.global.annotation.Nickname;
 import com.catale.backend.global.format.code.ApiResponse;
 import com.catale.backend.global.format.response.ResponseCode;
 import io.swagger.v3.oas.annotations.Operation;
@@ -53,6 +54,14 @@ public class MemberController {
         return response.success(ResponseCode.LOGIN_SUCCESS, memberService.login(requestDto, httpServletResponse));
     }
 
+    @Operation(summary = "닉네임 중복 검사", description = "닉네임의 중복 여부를 검사")
+    @GetMapping("/nickname/{nickname}/exists")
+    public ResponseEntity<?> nicknameExists(@Nickname @PathVariable String nickname) {
+        boolean result = memberService.checkNicknameDuplication(nickname);
+        return response.success(result ? ResponseCode.DUPLICATE_NICKNAME : ResponseCode.NICKNAME_AVAILABLE, result);
+    }
+
+
 //    @Operation(summary = "소셜 회원가입", description = "소셜 회원가입")
 //    @PostMapping("/social")
 //    public ResponseEntity<?> signupBySocial(@Valid @RequestBody SignupRequestDto requestDto,
@@ -87,12 +96,6 @@ public class MemberController {
 //                mailService.confirmAuthCode(requestDto.getEmail(), requestDto.getAuthNum(), servletResponse));
 //    }
 //
-//    @Operation(summary = "닉네임 중복 검사", description = "닉네임의 중복 여부를 검사")
-//    @GetMapping("/nickname/{nickname}/exists")
-//    public ResponseEntity<?> nicknameExists(@Nickname @PathVariable String nickname) {
-//        boolean result = memberService.checkNicknameDuplication(nickname);
-//        return response.success(result ? ResponseCode.DUPLICATE_NICKNAME : ResponseCode.NICKNAME_AVAILABLE, result);
-//    }
 //
 //
 //

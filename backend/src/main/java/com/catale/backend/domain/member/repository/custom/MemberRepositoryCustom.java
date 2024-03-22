@@ -9,4 +9,6 @@ public interface MemberRepositoryCustom {
 
     Optional<MemberInfoDto> getMemberInfo(Long memberId);
 
+    boolean isNicknameDuplicate(String nickname);
+
 }
