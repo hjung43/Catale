@@ -42,9 +42,7 @@ export default function StoreDetailPage(selectedStore) {
             {selectedStore.selectedStore.insta && (
               <div>
                 <img src={IconInsta} alt="" />
-                <a href={selectedStore.selectedStore.insta}>
-                  {selectedStore.selectedStore.insta}
-                </a>
+                <a href={selectedStore.selectedStore.insta}>instagram</a>
               </div>
             )}
           </div>
