@@ -5,6 +5,8 @@ import com.catale.backend.domain.member.service.MemberService;
 import com.catale.backend.domain.review.dto.ReviewGetRequestDto;
 import com.catale.backend.domain.review.dto.ReviewGetResponseDto;
 import com.catale.backend.domain.review.service.ReviewService;
+import com.catale.backend.global.format.code.ApiResponse;
+import com.catale.backend.global.format.response.ResponseCode;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -26,6 +28,7 @@ import java.util.List;
 @RequestMapping("/api/v1/review")
 public class ReviewController {
 
+    private final ApiResponse response;
     private ReviewService reviewService;
     private MemberService memberService;
 
@@ -35,7 +38,7 @@ public class ReviewController {
                                         @PageableDefault(page = 0, size = 10) Pageable page){
 
         List<ReviewGetResponseDto> reviewList = reviewService.getReviews(cocktailId);
-        return new ResponseEntity<List<ReviewGetResponseDto>>(reviewList, HttpStatus.OK);
+        return response.success(ResponseCode.REVIEW_LIST_FETCHED,reviewList);
     }
     @Operation(summary = "칵테일 리뷰 작성", description = "칵테일에 대한 리뷰 작성")
     @PostMapping
@@ -43,14 +46,13 @@ public class ReviewController {
                                         @Valid @RequestBody ReviewGetRequestDto dto){
         Member me = memberService.findMember(authentication.getName());
         Long memberId = me.getId();
-
         Long reviewId = reviewService.postReview(memberId, dto);
-        return new ResponseEntity<Long>(reviewId, HttpStatus.OK);
+        return response.success(ResponseCode.REVIEW_CREATED,reviewId);
     }
     @Operation(summary = "칵테일 리뷰 삭제", description = "칵테일 리뷰 삭제")
     @DeleteMapping("/{reviewId}")
     public ResponseEntity<?> deletReview(@PathVariable Long reviewId){
         Long id = reviewService.deleteReview(reviewId);
-        return new ResponseEntity<Long>(id, HttpStatus.OK);
+        return response.success(ResponseCode.DIARY_DELETED);
     }
 }

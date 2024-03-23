@@ -8,6 +8,8 @@ import com.catale.backend.domain.review.dto.ReviewGetResponseDto;
 import com.catale.backend.domain.review.entity.Review;
 import com.catale.backend.domain.review.repository.ReviewRepository;
 import com.catale.backend.global.exception.member.MemberNotFoundException;
+import com.catale.backend.global.exception.review.ReviewListNotFoundException;
+import com.catale.backend.global.exception.review.ReviewNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,7 +30,7 @@ public class ReviewService {
     @Transactional
     public List<ReviewGetResponseDto> getReviews(Long cocktailId){
         //아이디로 리뷰 리스트 찾기
-        List<ReviewGetResponseDto> list = reviewRepository.findByCocktailId(cocktailId).orElseThrow(MemberNotFoundException::new);
+        List<ReviewGetResponseDto> list = reviewRepository.findByCocktailId(cocktailId).orElseThrow(ReviewListNotFoundException::new);
         return list;
     }
 
@@ -52,7 +54,7 @@ public class ReviewService {
     @Transactional
     public Long deleteReview(Long reviewId){
         //리뷰id가 있는지 확인하고 삭제하기
-        reviewRepository.findById(reviewId).orElseThrow(MemberNotFoundException::new);
+        reviewRepository.findById(reviewId).orElseThrow(ReviewNotFoundException::new);
         reviewRepository.deleteById(reviewId);
 
         return reviewId;
