@@ -51,7 +51,11 @@ public enum ErrorCode {
     DIARY_NOT_FOUND(HttpStatus.NOT_FOUND, "다이어리를 찾을 수 없습니다."),
     DIARY_DELETE_FAILED(HttpStatus.BAD_REQUEST, "다이어리를 삭제할 수 없습니다."),
 
-
+    //리뷰 예외 처리
+    REVIEW_LIST_NOT_FOUND(HttpStatus.NOT_FOUND, "해당 칵테일의 리뷰 리스트를 찾을 수 없습니다."),
+    REVIEW_CREATE_FAILED(HttpStatus.NOT_FOUND, "리뷰를 생성할 수 없습니다."),
+    REVIEW_DELETE_FAILED(HttpStatus.NOT_FOUND, "리뷰를 삭제할 수 없습니다."),
+    REVIEW_NOT_FOUND(HttpStatus.NOT_FOUND, "리뷰를 찾을 수 없습니다."),
 
 
 
