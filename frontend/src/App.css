@@ -62,11 +62,9 @@
   /* --noto-sans: -apple-system, "Noto Sans KR", sans-serif; */
 }
 
-/* html {
-  font-family: var(--gmarket-sans);
-  font-weight: 100;
-  font-size: 16px;
-} */
+html {
+  background-color: var(--main1);
+}
 
 textarea,
 input,

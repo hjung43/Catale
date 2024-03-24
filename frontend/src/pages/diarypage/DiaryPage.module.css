@@ -55,6 +55,7 @@
 
 /* 기본 날짜칸  */
 .date {
+  position: relative;
   padding: 0.3rem 0.3rem 0.3rem;
   font-size: x-small;
   border-radius: 0.5rem;
@@ -82,6 +83,7 @@
   background-color: #00000000;
   border: none;
   text-shadow: none;
+  z-index: -1;
 }
 .specialDate {
   background-color: var(--main3);
@@ -112,16 +114,14 @@
 .glass {
   width: 130%;
   position: absolute;
+  z-index: 1;
   bottom: 0;
   left: -0.32rem;
   right: 0;
 }
-.glass2 {
-  width: 100%;
-  height: 2.2rem;
-  margin-top: 0.3rem;
-  /* position: absolute; */
-  /* bottom: 0; */
-  /* left: -0.3rem; */
-  /* right: 0; */
+.number {
+  position: absolute;
+  z-index: 10;
+  top: 0.3rem;
+  left: 0.3rem;
 }

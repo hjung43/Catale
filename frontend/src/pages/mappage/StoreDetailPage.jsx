@@ -24,7 +24,7 @@ export default function StoreDetailPage() {
   return (
     <>
       <Container>
-        <Headerwb title={storenumber} />
+        <Headerwb title={selectedStore.title} />
         <Map
           nowlocatex={nowlocatex}
           nowlocatey={nowlocatey}

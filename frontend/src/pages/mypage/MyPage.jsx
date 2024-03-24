@@ -114,7 +114,12 @@ export default function MyPage() {
             </div>
           </div>
           <div className={styles.profile_right}>
-            <img src={setting} alt="setting" className={styles.setting} />
+            <img
+              src={setting}
+              alt="setting"
+              className={styles.setting}
+              onClick={() => navigate("/settings")}
+            />
             <img src={logout} alt="logout" className={styles.logout} />
           </div>
         </div>

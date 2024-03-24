@@ -204,20 +204,16 @@ export default function DiaryPage() {
                       boxShadow: `0 0 10px 0 var(--feel${specialDateInfo.mood})`,
                     }}
                   >
-                    {d.date.getDate()}
+                    <div className={styles.number}>{d.date.getDate()}</div>
                     {dateStyles[dateString] && (
                       <div>
-                        <div
-                          className={styles.glass2}
-                          style={{
-                            background: `linear-gradient(0deg, ${specialDateInfo.color1} 40%, ${specialDateInfo.color2} 50%, ${specialDateInfo.color3} 60%, ${specialDateInfo.color3} 100%)`,
-                          }}
-                        ></div>
-
                         <img
                           src={glasses[specialDateInfo.glass]}
                           alt="glass"
                           className={styles.glass}
+                          style={{
+                            background: `linear-gradient(0deg, ${specialDateInfo.color1} 1%, ${specialDateInfo.color1} 40%, ${specialDateInfo.color2} 50%, ${specialDateInfo.color3} 60%, ${specialDateInfo.color3} 98%, #00000000 99%, #00000000 100%)`,
+                          }}
                         />
                       </div>
                     )}
@@ -227,7 +223,7 @@ export default function DiaryPage() {
                 // 특별한 날짜에 해당하는 정보가 없을 경우 처리
                 return (
                   <div key={index} className={className}>
-                    {d.date.getDate()}
+                    <div className={styles.number}>{d.date.getDate()}</div>
                   </div>
                 );
               }
