@@ -22,52 +22,52 @@ public class Cocktail extends BaseEntity {
     private Long id;
 
     @OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.REMOVE})
-    @JoinColumn(name = "image_id")
+    @JoinColumn(name = "image_id", nullable = false)
     private Image image;
 
-    @Column(name = "name")
+    @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "alc")
+    @Column(name = "alc", nullable = false)
     private int alc;
 
-    @Column(name = "sweet")
+    @Column(name = "sweet", nullable = false)
     private int sweet;
 
-    @Column(name = "sour")
+    @Column(name = "sour", nullable = false)
     private int sour;
 
-    @Column(name = "bitter")
+    @Column(name = "bitter", nullable = false)
     private int bitter;
 
-    @Column(name = "sparking")
+    @Column(name = "sparking", nullable = false)
     private int sparking;
 
     /* 칵테일의 색은 1~9까지로 나뉘어짐,
     * 1: 핑크 / 2: 빨강 / 3: 주황 / 4: 노랑 / 5: 갈색 / 6: 클리어 / 7: 초록 / 8: 화이트 / 9: 파랑
     *  */
-    @Column(name = "color1")
-    private int color1;
+    @Column(name = "color1", nullable = false)
+    private String color1;
 
-    @Column(name = "color2")
-    private int color2;
+    @Column(name = "color2", nullable = false)
+    private String color2;
 
-    @Column(name = "color3")
-    private int color3;
+    @Column(name = "color3", nullable = false)
+    private String color3;
 
-    @Column(name = "glass")
+    @Column(name = "glass", nullable = false)
     private int glass;
 
-    @Column(name = "content")
+    @Column(name = "content", nullable = false, columnDefinition = "TEXT")
     private String content;
 
-    @Column(name = "ingredient")
+    @Column(name = "ingredient", nullable = false, length = 1000)
     private String ingredient;
 
-    @Column(name = "base")
+    @Column(name = "base", nullable = false)
     private int base;
 
-    @Column(name = "emotion1")
+    @Column(name = "emotion1", nullable = false)
     private int emotion1;
 
     @Column(name = "emotion2")
@@ -76,11 +76,10 @@ public class Cocktail extends BaseEntity {
     @Column(name = "emotion3")
     private int emotion3;
 
-    @Column(name = "like_count")
+    @Column(name = "like_count", nullable = false)
     private int likeCount;
 
     @Column(name = "fruit")
     private int fruit;
-
 
 }

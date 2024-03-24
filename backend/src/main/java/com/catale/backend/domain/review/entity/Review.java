@@ -31,22 +31,22 @@ public class Review extends BaseEntity {
     @JoinColumn(name = "member_id")
     private Member member;
 
-    @Column(name = "content")
+    @Column(name = "content", columnDefinition = "TEXT", nullable = false)
     private String content;
 
-    @Column(name = "rate")
+    @Column(name = "rate", nullable = false)
     private int rate;
 
-    @Column(name = "sweet")
+    @Column(name = "sweet", nullable = false)
     private int sweet;
 
-    @Column(name = "bitter")
+    @Column(name = "bitter", nullable = false)
     private int bitter;
 
-    @Column(name = "sour")
+    @Column(name = "sour", nullable = false)
     private int sour;
 
-    @Column(name = "sparking")
+    @Column(name = "sparking", nullable = false)
     private int sparking;
 
 
