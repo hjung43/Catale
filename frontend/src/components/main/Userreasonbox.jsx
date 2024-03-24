@@ -12,47 +12,30 @@ export default function Userreasonbox({
   const selectcolor = ["#708FFE"];
 
   const [clickedIndexes, setClickedIndexes] = useState([]);
-  const [toastVisible, setToastVisible] = useState(false);
   const [customReason, setCustomReason] = useState(""); // 사용자가 입력한 기분을 저장할 상태 추가
 
-  const removeValue = () => {
-    setTodayreason("");
-    setClickedIndexes([]);
-    setSelectcheck(false);
-  };
+  const [open, setOpen] = useState(false);
 
   const clickevent = (string, index) => {
-    setCustomReason("");
-    if (todayreason === string) {
-      removeValue(); // 이미 존재하는 값이라면 제거
-    } else if (clickedIndexes.length < 1) {
-      setTodayreason(string);
-      setClickedIndexes([index]);
-      setSelectcheck(true);
-    } else {
-      setToastVisible(true);
-      setTimeout(() => {
-        setToastVisible(false);
-      }, 2000); // 2초 후에 토스트를 숨김
-    }
+    setOpen(false);
+    setTodayreason(string);
+    setClickedIndexes([index]);
+    setSelectcheck(true);
   };
 
-  // const checkLength = () => {
-  //   if (todayreason === "") {
-  //     // 사용자가 직접 입력한 기분도 확인
-  //     setSelectcheck(false);
-  //   } else {
-  //     setSelectcheck(true);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   checkLength();
-  // }, [todayreason]); // 사용자가 직접 입력한 기분도 감시
+  const openwrite = () => {
+    if (customReason !== "") {
+      setSelectcheck(true);
+    } else {
+      setSelectcheck(false);
+    }
+    setTodayreason(customReason);
+    setClickedIndexes([]);
+    setOpen(true);
+  };
 
   useEffect(() => {
     if (customReason != "") {
-      setClickedIndexes([]);
       setSelectcheck(true);
     } else {
       setSelectcheck(false);
@@ -88,23 +71,31 @@ export default function Userreasonbox({
               {mod}
             </div>
           ))}
+          <div
+            className={styles.상자하나}
+            onClick={() => openwrite()}
+            style={{
+              backgroundColor: open ? selectcolor : backcolor,
+            }}
+          >
+            {customReason === "" ? "직접 입력" : `${customReason}`}
+          </div>
         </>
         {/* 텍스트 입력 필드 */}
-        <input
-          type="text"
-          placeholder="직접 입력"
-          value={customReason}
-          onChange={handleCustomReasonChange}
-          style={{ color: "black" }}
-        />
-        {/* 직접 입력한 기분 추가 버튼 */}
-        <button onClick={check}>추가</button>
+        {/* <button onClick={check}>추가</button> */}
+        {open && (
+          <div>
+            <input
+              type="text"
+              placeholder="직접 입력"
+              value={customReason}
+              onChange={handleCustomReasonChange}
+              style={{ color: "black" }}
+            />
+            {/* 직접 입력한 기분 추가 버튼 */}
+          </div>
+        )}
       </div>
-      {toastVisible && (
-        <div className={styles.toast}>
-          최대 1개의 기분을 선택할 수 있습니다.
-        </div>
-      )}
     </>
   );
 }

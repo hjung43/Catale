@@ -14,5 +14,4 @@ export const reasonone = [
   "이유6",
   "이유7",
   "이유8",
-  "이유9",
 ];

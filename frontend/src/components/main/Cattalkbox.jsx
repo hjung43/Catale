@@ -40,10 +40,6 @@ export default function Cattalkbox({
   };
 
   const handleNext = () => {
-    // clearInterval(intervalId);
-    // setCurrentText("");
-    // setShowNextButton(false);
-    // setTalknum((prevTalknum) => prevTalknum + 1);
     setTalknum(talknum + 1);
   };
 
