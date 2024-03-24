@@ -138,6 +138,7 @@ export default function MainPage() {
             mood1={mood1}
           />
         )}
+        {/*  */}
         {talknum === 14 && (
           //여기서는 오늘 감정에 가장 영향을 준것을 고르는건데 string을 저장하게 해야해
           <Userreasonbox
