@@ -77,7 +77,7 @@ export default function Cattalkbox({
                         </React.Fragment>
                       ))}
                   </div>
-                  {talknum === 10 && selectcheck && (
+                  {(talknum === 10 || talknum === 14) && selectcheck && (
                     <div
                       className={styles.네모박스}
                       onClick={() => setTalknum(talknum + 1)}

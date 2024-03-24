@@ -13,14 +13,18 @@ import 고양이말풍선 from "../../assets/bartender/고양이말풍선.png";
 import 유저말풍선 from "../../assets/bartender/유저말풍선.png";
 import Useremothree from "../../components/main/Useremothree";
 import { mood1, mood2 } from "../mainpage/Emodata/Emotionthree";
+import { reasonone } from "./Emodata/Reasonone";
 import Cattalk11 from "../../components/main/Cattalk11";
+import Userreasonbox from "../../components/main/Userreasonbox";
 export default function MainPage() {
   const [talknum, setTalknum] = useState(1);
   const [selectnum, setSeletnum] = useState(0);
   //이건 오늘의 기분 하나를 담은거야
   const [nowemonum, setNowemonum] = useState(-1);
-
+  //이거는 오늘의감정 최대 3개담은거
   const [todayemo, setTodayemo] = useState([]);
+  //이거는 오늘기분에 대해 한가지 이유를 가져갈거
+  const [todayreason, setTodayreason] = useState("");
   //선택했는지확인
   const [selectcheck, setSelectcheck] = useState(false);
   // cattalk에서 0은 없는거 1은 다음버튼있는거 2는 다음버튼없는거 3은 고르시오
@@ -132,6 +136,14 @@ export default function MainPage() {
             setTodayemo={setTodayemo}
             setSelectcheck={setSelectcheck}
             mood1={mood1}
+          />
+        )}
+        {talknum === 14 && (
+          //여기서는 오늘 감정에 가장 영향을 준것을 고르는건데 string을 저장하게 해야해
+          <Userreasonbox
+            setSelectcheck={setSelectcheck}
+            todayreason={todayreason}
+            setTodayreason={setTodayreason}
           />
         )}
       </div>
