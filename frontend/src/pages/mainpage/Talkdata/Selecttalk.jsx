@@ -45,7 +45,7 @@ export const selelctalk = [
     },
     {
       talk: "오늘은 좀 쎈거로 마시고싶어",
-      num: 1,
+      num: 2,
     },
   ],
 ];
