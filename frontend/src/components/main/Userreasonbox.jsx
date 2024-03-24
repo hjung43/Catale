@@ -1,23 +1,100 @@
-import s from "classnames";
-import styles from "./Usertalkbox.module.css";
-import 유저말풍선 from "../../assets/bartender/유저말풍선.png";
-import { Usertalk } from "../../pages/mainpage/Talkdata/Usertalk";
-import React from "react";
+import styles from "./Userreasonbox.module.css";
+import React, { useState, useEffect } from "react";
+import { reasonone } from "../../pages/mainpage/Emodata/Reasonone";
 
-export default function Userreasonbox({ talknum, setTalknum }) {
+export default function Userreasonbox({
+  todayreason,
+  setTodayreason,
+  setSelectcheck,
+}) {
+  const backcolor = ["#EDF1FF"];
+  const fontcolor = ["#1D1D1D"];
+  const selectcolor = ["#708FFE"];
+
+  const [clickedIndexes, setClickedIndexes] = useState([]);
+  const [toastVisible, setToastVisible] = useState(false);
+  const [customReason, setCustomReason] = useState(""); // 사용자가 입력한 기분을 저장할 상태 추가
+
+  const removeValue = () => {
+    setTodayreason("");
+    setClickedIndexes([]);
+  };
+
+  const clickevent = (string, index) => {
+    if (todayreason === string) {
+      removeValue(); // 이미 존재하는 값이라면 제거
+    } else if (clickedIndexes.length < 1) {
+      setTodayreason(string);
+      setClickedIndexes([index]);
+    } else {
+      setToastVisible(true);
+      setTimeout(() => {
+        setToastVisible(false);
+      }, 2000); // 2초 후에 토스트를 숨김
+    }
+  };
+
+  const checkLength = () => {
+    if (todayreason === "" && customReason === "") {
+      // 사용자가 직접 입력한 기분도 확인
+      setSelectcheck(false);
+    } else {
+      setSelectcheck(true);
+    }
+  };
+
+  useEffect(() => {
+    checkLength();
+  }, [todayreason, customReason]); // 사용자가 직접 입력한 기분도 감시
+
+  const handleCustomReasonChange = (e) => {
+    setCustomReason(e.target.value); // 사용자가 입력한 기분 업데이트
+  };
+
+  const addCustomReason = () => {
+    if (customReason.trim() !== "") {
+      setTodayreason(customReason); // 사용자가 입력한 기분을 선택된 기분으로 설정
+      setCustomReason(""); // 입력 필드 초기화
+    }
+  };
+
   return (
     <>
-      <div className={styles.유저말풍선}>
-        <img className={styles.말풍선} src={유저말풍선} alt="" />
-        <div className={styles.유저이름}>고먐미</div>
-        <div className={styles.유저내용}>{Usertalk[talknum].talk}</div>
-        <div
-          className={styles.고양이다음}
-          onClick={() => setTalknum(talknum + 1)}
-        >
-          click !
-        </div>
+      <div className={styles.감정선택칸}>
+        <>
+          {reasonone.map((mod, index) => (
+            <div
+              className={`${styles.상자하나} ${
+                clickedIndexes.includes(index) ? styles.selected : ""
+              }`}
+              key={index}
+              onClick={() => clickevent(mod, index)}
+              style={{
+                backgroundColor: clickedIndexes.includes(index)
+                  ? selectcolor
+                  : backcolor,
+              }}
+            >
+              {mod}
+            </div>
+          ))}
+        </>
+        {/* 텍스트 입력 필드 */}
+        <input
+          type="text"
+          placeholder="직접 입력"
+          value={customReason}
+          onChange={handleCustomReasonChange}
+          style={{ color: "black" }}
+        />
+        {/* 직접 입력한 기분 추가 버튼 */}
+        {/* <button onClick={addCustomReason}>추가</button> */}
       </div>
+      {toastVisible && (
+        <div className={styles.toast}>
+          최대 1개의 기분을 선택할 수 있습니다.
+        </div>
+      )}
     </>
   );
 }
