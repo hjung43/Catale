@@ -12,8 +12,8 @@ public class ImageService {
 
     private final ImageRepository imageRepository;
     @Transactional
-    public Long updateMemberImage(Long imageId, String imageUrl){
-       return imageRepository.updateMemberImage(imageId, imageUrl);
+    public Long updateMemberImage(Long memberId, String imageUrl){
+       return imageRepository.updateMemberImage(memberId, imageUrl);
 
     }
 

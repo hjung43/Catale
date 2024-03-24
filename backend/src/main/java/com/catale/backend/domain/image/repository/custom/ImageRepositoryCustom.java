@@ -6,5 +6,5 @@ import java.util.Optional;
 
 public interface ImageRepositoryCustom{
 
-    Long updateMemberImage(Long imageId, String imageUrl);
+    Long updateMemberImage(Long memberId, String imageUrl);
 }

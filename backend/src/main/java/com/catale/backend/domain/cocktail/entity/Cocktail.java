@@ -21,8 +21,7 @@ public class Cocktail extends BaseEntity {
     @Column(name = "cocktail_id")
     private Long id;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.REMOVE})
-    @JoinColumn(name = "image_id", nullable = false)
+    @OneToOne(mappedBy = "cocktail")
     private Image image;
 
     @Column(name = "name", nullable = false)

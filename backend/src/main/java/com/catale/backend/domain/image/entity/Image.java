@@ -1,6 +1,8 @@
 package com.catale.backend.domain.image.entity;
 
 import com.catale.backend.domain.base.BaseEntity;
+import com.catale.backend.domain.cocktail.entity.Cocktail;
+import com.catale.backend.domain.member.entity.Member;
 import com.catale.backend.domain.store.entity.Store;
 import jakarta.persistence.*;
 import lombok.*;
@@ -27,5 +29,13 @@ public class Image extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "store_id")
     private Store store;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "member_id")
+    private Member member;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "cocktail_id")
+    private Cocktail cocktail;
 
 }
