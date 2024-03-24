@@ -11,38 +11,49 @@ export default function Cattalk11({ talkarr, 말풍선, todayemo }) {
   //이게 이제 1일때 2일때 3일때를 나눠야해
   const [talkObjects, setTalkObjects] = useState([]);
 
+  const [currentText, setCurrentText] = useState("");
+  const [currentText2, setCurrentText2] = useState("");
+  const [intervalId, setIntervalId] = useState(null);
+
   useEffect(() => {
-    if (todayemo.length === 1) {
-      const moodIndex = Math.floor(todayemo[0] / 10);
-      const talkObj = {
-        talk: mood1[moodIndex][todayemo[0] % 10],
-        color: selectcolor[moodIndex],
-      };
-      setTalkObjects([talkObj]);
-    } else if (todayemo.length === 2) {
-      const newTalkObjects = todayemo.map((emo, index) => {
-        const moodIndex = Math.floor(emo / 10);
-        const talk =
-          index === todayemo.length - 1
-            ? mood1[moodIndex][emo % 10]
-            : mood2[moodIndex][emo % 10];
-        const color = selectcolor[moodIndex];
-        return { talk, color };
-      });
-      setTalkObjects(newTalkObjects);
-    } else if (todayemo.length === 3) {
-      const newTalkObjects = todayemo.map((emo, index) => {
-        const moodIndex = Math.floor(emo / 10);
-        const talk =
-          index === todayemo.length - 1
-            ? mood1[moodIndex][emo % 10]
-            : mood2[moodIndex][emo % 10];
-        const color = selectcolor[moodIndex];
-        return { talk, color };
-      });
-      setTalkObjects(newTalkObjects);
-    }
+    const newTalkObjects = todayemo.map((emo, index) => {
+      const moodIndex = Math.floor(emo / 10);
+      const talk =
+        index === todayemo.length - 1
+          ? mood1[moodIndex][emo % 10]
+          : mood2[moodIndex][emo % 10];
+      const color = selectcolor[moodIndex];
+      return { talk, color };
+    });
+    setTalkObjects(newTalkObjects);
+    showText(" 오늘은");
   }, [todayemo]);
+
+  const showText = (text) => {
+    let charIndex = 0;
+    const id = setInterval(() => {
+      setCurrentText((prevText) => prevText + text[charIndex]);
+      charIndex++;
+      if (charIndex === text.length - 1) {
+        clearInterval(id);
+        showEndText(" 하루였구냥!");
+      }
+    }, 60);
+    setIntervalId(id);
+  };
+
+  const showEndText = (text) => {
+    let charIndex = 0;
+    const id = setInterval(() => {
+      setCurrentText2((prevText) => prevText + text[charIndex]);
+      charIndex++;
+      if (charIndex === text.length - 1) {
+        clearInterval(id);
+      }
+    }, 60);
+    setIntervalId(id);
+  };
+
   return (
     <>
       <div className={styles.고양이말풍선}>
@@ -59,13 +70,13 @@ export default function Cattalk11({ talkarr, 말풍선, todayemo }) {
             <div className={styles.고양이이름}>고먐미</div>
             <div className={styles.고양이내용11}>
               <>
-                <div>오늘은</div>
+                <div>{currentText}</div>
                 <div className={styles.감정대화}>
                   {talkObjects.map((talkObj) => (
                     <div style={{ color: talkObj.color }}>{talkObj.talk}</div>
                   ))}
                 </div>
-                <div>하루였구냥!</div>
+                <div>{currentText2}!</div>
               </>
             </div>
           </>
