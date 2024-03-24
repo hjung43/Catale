@@ -18,14 +18,17 @@ export default function Userreasonbox({
   const removeValue = () => {
     setTodayreason("");
     setClickedIndexes([]);
+    setSelectcheck(false);
   };
 
   const clickevent = (string, index) => {
+    setCustomReason("");
     if (todayreason === string) {
       removeValue(); // 이미 존재하는 값이라면 제거
     } else if (clickedIndexes.length < 1) {
       setTodayreason(string);
       setClickedIndexes([index]);
+      setSelectcheck(true);
     } else {
       setToastVisible(true);
       setTimeout(() => {
@@ -34,28 +37,35 @@ export default function Userreasonbox({
     }
   };
 
-  const checkLength = () => {
-    if (todayreason === "" && customReason === "") {
-      // 사용자가 직접 입력한 기분도 확인
-      setSelectcheck(false);
-    } else {
-      setSelectcheck(true);
-    }
-  };
+  // const checkLength = () => {
+  //   if (todayreason === "") {
+  //     // 사용자가 직접 입력한 기분도 확인
+  //     setSelectcheck(false);
+  //   } else {
+  //     setSelectcheck(true);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   checkLength();
+  // }, [todayreason]); // 사용자가 직접 입력한 기분도 감시
 
   useEffect(() => {
-    checkLength();
-  }, [todayreason, customReason]); // 사용자가 직접 입력한 기분도 감시
+    if (customReason != "") {
+      setClickedIndexes([]);
+      setSelectcheck(true);
+    } else {
+      setSelectcheck(false);
+    }
+  }, [customReason]); // 사용자가 직접 입력한 기분도 감시
 
   const handleCustomReasonChange = (e) => {
     setCustomReason(e.target.value); // 사용자가 입력한 기분 업데이트
+    setTodayreason(e.target.value);
   };
 
-  const addCustomReason = () => {
-    if (customReason.trim() !== "") {
-      setTodayreason(customReason); // 사용자가 입력한 기분을 선택된 기분으로 설정
-      setCustomReason(""); // 입력 필드 초기화
-    }
+  const check = () => {
+    console.log(todayreason);
   };
 
   return (
@@ -88,7 +98,7 @@ export default function Userreasonbox({
           style={{ color: "black" }}
         />
         {/* 직접 입력한 기분 추가 버튼 */}
-        {/* <button onClick={addCustomReason}>추가</button> */}
+        <button onClick={check}>추가</button>
       </div>
       {toastVisible && (
         <div className={styles.toast}>

@@ -1,8 +1,6 @@
 import styles from "./Cattalkbox.module.css";
 import { cattalk } from "../../pages/mainpage/Talkdata/Cattalk";
-import React from "react";
-import { mood1, mood2 } from "../../pages/mainpage/Emodata/Emotionthree";
-import { selectcolor } from "../../pages/mainpage/Emodata/Emocolor";
+import React, { useState, useEffect } from "react";
 
 export default function Cattalkbox({
   talknum,
@@ -12,6 +10,51 @@ export default function Cattalkbox({
   selectcheck,
   말풍선,
 }) {
+  //이런조건이여야 고양이가 말을함
+  const [currentText, setCurrentText] = useState("");
+  const [showNextButton, setShowNextButton] = useState(false);
+  const [intervalId, setIntervalId] = useState(null);
+
+  useEffect(() => {
+    clearInterval(intervalId);
+    setCurrentText("");
+    setShowNextButton(false);
+    if (selectnum === -1 && talkarr.cat !== 0 && talkarr.cat !== 3) {
+      showText(cattalk[talkarr.cattalk].talk);
+    } else if (selectnum !== -1 && talkarr[selectnum].cat !== 0) {
+      showText(cattalk[talkarr[selectnum].cattalk].talk);
+    }
+  }, [talknum, talkarr, selectnum]);
+
+  const showText = (text) => {
+    let charIndex = 0;
+    const id = setInterval(() => {
+      setCurrentText((prevText) => prevText + text[charIndex]);
+      charIndex++;
+      if (charIndex === text.length - 1) {
+        clearInterval(id);
+        setShowNextButton(true);
+      }
+    }, 60);
+    setIntervalId(id);
+  };
+
+  const handleNext = () => {
+    // clearInterval(intervalId);
+    // setCurrentText("");
+    // setShowNextButton(false);
+    // setTalknum((prevTalknum) => prevTalknum + 1);
+    setTalknum(talknum + 1);
+  };
+
+  const renderTextWithLineBreaks = (text) => {
+    return text.split("\n").map((line, index) => (
+      <React.Fragment key={index}>
+        {line}
+        <br />
+      </React.Fragment>
+    ));
+  };
   return (
     <>
       {selectnum === -1 && talkarr.cat !== 0 && talkarr.cat !== 3 && (
@@ -27,25 +70,21 @@ export default function Cattalkbox({
           {talkarr.cat !== 3 && (
             <>
               <div className={styles.고양이이름}>고먐미</div>
-              <div className={styles.고양이내용}>
-                <>
-                  {cattalk[talkarr.cattalk].talk
-                    .split("\n")
-                    .map((line, index) => (
-                      <React.Fragment key={index}>
-                        {line}
-                        <br />
-                      </React.Fragment>
-                    ))}
-                </>
-              </div>
+
+              {talknum !== 8 && (
+                <div className={styles.고양이내용}>
+                  {renderTextWithLineBreaks(currentText)}
+                </div>
+              )}
+              {talknum === 8 && (
+                <div className={styles.고양이내용}>
+                  {cattalk[talkarr.cattalk].talk}
+                </div>
+              )}
             </>
           )}
           {talkarr.cat === 1 && (
-            <div
-              className={styles.고양이다음}
-              onClick={() => setTalknum(talknum + 1)}
-            >
+            <div className={styles.고양이다음} onClick={() => handleNext()}>
               <div className={styles.click}>click !</div>
               <div className={styles.역삼각형}></div>
             </div>
@@ -105,16 +144,7 @@ export default function Cattalkbox({
           <img className={styles.말풍선} src={말풍선} alt="" />
           <div className={styles.고양이이름}>고먐미</div>
           <div className={styles.고양이내용}>
-            <>
-              {cattalk[talkarr[selectnum].cattalk].talk
-                .split("\n")
-                .map((line, index) => (
-                  <React.Fragment key={index}>
-                    {line}
-                    <br />
-                  </React.Fragment>
-                ))}
-            </>
+            {renderTextWithLineBreaks(currentText)}
           </div>
           {talknum === 4 && selectnum === 0 ? (
             <div className={styles.고양이다음} onClick={() => setTalknum(2)}>
@@ -122,10 +152,7 @@ export default function Cattalkbox({
               <div className={styles.역삼각형}></div>
             </div>
           ) : (
-            <div
-              className={styles.고양이다음}
-              onClick={() => setTalknum(talknum + 1)}
-            >
+            <div className={styles.고양이다음} onClick={() => handleNext()}>
               <div className={styles.click}>click !</div>
               <div className={styles.역삼각형}></div>
             </div>
