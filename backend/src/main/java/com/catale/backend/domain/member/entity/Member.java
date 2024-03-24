@@ -28,8 +28,7 @@ public class Member extends BaseEntity {
     @Column(name = "member_id")
     private Long id;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.REMOVE})
-    @JoinColumn(name = "profile_image_id")
+    @OneToOne(mappedBy = "member")
     private Image profileImage;
 
     @Column(name = "nickname",nullable = false, unique = true)
@@ -78,9 +77,9 @@ public class Member extends BaseEntity {
         this.password = password;
     }
 
-    public void uploadProfileImage(Image profileImage) {
-        this.profileImage = profileImage;
-    }
+//    public void uploadProfileImage(Image profileImage) {
+//        this.profileImage = profileImage;
+//    }
 
     public void updateNickname(String nickname) {
         this.nickname = nickname;

@@ -25,9 +25,9 @@ public class CocktailGetResponseDto {
     /* 칵테일의 색은 1~9까지로 나뉘어짐,
      * 1: 핑크 / 2: 빨강 / 3: 주황 / 4: 노랑 / 5: 갈색 / 6: 클리어 / 7: 초록 / 8: 화이트 / 9: 파랑
      *  */
-    private int color1;
-    private int color2;
-    private int color3;
+    private String color1;
+    private String color2;
+    private String color3;
     private int glass;
     private String content;
     private String ingredient;

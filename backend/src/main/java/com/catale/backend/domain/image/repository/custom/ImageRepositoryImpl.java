@@ -11,10 +11,10 @@ public class ImageRepositoryImpl implements ImageRepositoryCustom{
 
     private final JPAQueryFactory query;
     @Override
-    public Long updateMemberImage(Long imageId, String imageUrl) {
+    public Long updateMemberImage(Long memberId, String imageUrl) {
         return query.update(image)
                 .set(image.url, imageUrl)
-                .where(image.id.eq(imageId))
+                .where(image.member.id.eq(memberId))
                 .execute();
     }
 }
