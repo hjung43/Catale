@@ -36,3 +36,11 @@
   --feel4: #ffd4ca;
   --feel5: #ffb0b0;
 }
+.main {
+  margin: 1rem;
+  padding: 4rem 0 4rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
