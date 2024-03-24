@@ -32,10 +32,10 @@ public class Member extends BaseEntity {
     @JoinColumn(name = "profile_image_id")
     private Image profileImage;
 
-    @Column(name = "nickname", length = 10, nullable = false, unique = true)
+    @Column(name = "nickname",nullable = false, unique = true)
     private String nickname;
 
-    @Column(name = "email", length = 50, updatable = false, unique = true)
+    @Column(name = "email", updatable = false, unique = true)
     private String email;
 
     @Column(name = "password", nullable = false)

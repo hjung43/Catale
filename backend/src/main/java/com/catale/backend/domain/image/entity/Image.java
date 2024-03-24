@@ -21,7 +21,7 @@ public class Image extends BaseEntity {
     @Column(name = "image_id")
     private Long id;
 
-    @Column(name = "image_url")
+    @Column(name = "image_url", length = 1000, nullable = false)
     private String url;
 
     @ManyToOne(fetch = FetchType.LAZY)
