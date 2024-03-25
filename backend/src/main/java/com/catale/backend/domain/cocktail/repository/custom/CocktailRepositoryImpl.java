@@ -6,6 +6,7 @@ import com.catale.backend.domain.cocktail.dto.CocktailListResponseDto;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 import java.util.Optional;
@@ -18,17 +19,19 @@ public class CocktailRepositoryImpl implements CocktailRepositoryCustom {
     private final JPAQueryFactory query;
 
     @Override
-    public Optional<List<CocktailListResponseDto>> getCocktails() {
+    public Optional<List<CocktailListResponseDto>> getCocktails(Pageable page) {
         return Optional.ofNullable(query.select(Projections.constructor(CocktailListResponseDto.class,
                         cocktail.id, cocktail.name, cocktail.color1, cocktail.color2, cocktail.color3, cocktail.glass))
                 .from(cocktail)
                         .where(cocktail.isDeleted.eq(false))
                         .orderBy(cocktail.likeCount.desc())
+                .offset(page.getOffset())
+                .limit(page.getPageSize())
                 .fetch());
     }
 
     @Override
-    public Optional<List<CocktailGetLikeResponseDto>> getLikeCoctails(Long memberId) {
+    public Optional<List<CocktailGetLikeResponseDto>> getLikeCoctails(Long memberId, Pageable page) {
         return Optional.ofNullable(query.select(Projections.constructor(CocktailGetLikeResponseDto.class,
                 cocktail.id, cocktail.name, cocktail.color1, cocktail.color2, cocktail.color3, cocktail.glass))
                 .from(like)
@@ -37,6 +40,8 @@ public class CocktailRepositoryImpl implements CocktailRepositoryCustom {
                         .and(like.isDeleted.eq(false))
                         .and(cocktail.isDeleted.eq(false)))
                         .orderBy(like.createdAt.desc())
+                .offset(page.getOffset())
+                .limit(page.getPageSize())
                 .fetch());
     }
 
