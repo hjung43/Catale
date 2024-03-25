@@ -1,0 +1,9 @@
+.유저말풍선 {
+  width: 60%;
+  max-height: 35%;
+  overflow: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}

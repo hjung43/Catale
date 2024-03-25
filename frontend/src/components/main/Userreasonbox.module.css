@@ -32,3 +32,14 @@
   position: absolute;
   top: 40%;
 }
+.인풋창 {
+  padding: 0.2rem 0rem 0.2rem 0.6rem;
+  font-size: smaller;
+  background-color: aliceblue;
+  border-radius: 20px;
+}
+.인풋창:focus {
+  background-color: #cdd8ff;
+  border-radius: 20px;
+  outline-color: rgb(174, 211, 234);
+}
