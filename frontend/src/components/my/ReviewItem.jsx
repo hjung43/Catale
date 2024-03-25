@@ -6,10 +6,16 @@ import glass4 from "../../assets/glass/glass4.png";
 import glass5 from "../../assets/glass/glass5.png";
 import glass6 from "../../assets/glass/glass6.png";
 import glass7 from "../../assets/glass/glass7.png";
+import arrow from "../../assets/common/arrow5.png";
+import star from "../../assets/common/star.png";
+import noneStar from "../../assets/common/noneStar.png";
+import trash from "../../assets/common/trash.png";
 import like from "../../assets/common/like.png";
 import noneLike from "../../assets/common/noneLike.png";
+import { useState } from "react";
 
 export default function ReviewItem({ item, setList }) {
+  const [toggle, setToggle] = useState([false, 0]);
   const glasses = [
     glass1,
     glass1,
@@ -32,35 +38,90 @@ export default function ReviewItem({ item, setList }) {
   ];
   const toggleLike = () => {
     setList((prevList) =>
-      prevList.map((item) =>
-        item.id === item.id ? { ...item, like: !item.like } : item
+      prevList.map((items) =>
+        items.id === item.id ? { ...items, like: !items.like } : items
       )
     );
   };
+  const toggleReview = () => {
+    // setList((prevList) =>
+    //   prevList.map((items) =>
+    //     items.id === item.id ? { ...items, like: !items.like } : items
+    //   )
+    // );
+  };
   return (
-    <div className={styles.item}>
-      <img
-        src={glasses[item.glass]}
-        alt="glass"
-        className={styles.glass}
-        style={{
-          background: `linear-gradient(0deg, ${item.color1} ${
-            num[item.glass][0]
-          }%, ${item.color2} ${num[item.glass][1]}%, ${item.color3} ${
-            num[item.glass][2]
-          }%, ${item.color3} 100%)`,
-        }}
-      />
-      <div>
-        <div className={styles.text}>{item.name}</div>
-        <div className={styles.subtext}>{item.text}</div>
+    <>
+      <div className={styles.item}>
+        <img
+          src={glasses[item.glass]}
+          alt="glass"
+          className={styles.glass}
+          style={{
+            background: `linear-gradient(0deg, ${item.color1} ${
+              num[item.glass][0]
+            }%, ${item.color2} ${num[item.glass][1]}%, ${item.color3} ${
+              num[item.glass][2]
+            }%, ${item.color3} 100%)`,
+          }}
+        />
+        <div className={styles.review_text}>
+          <div className={styles.flex}>
+            <div className={styles.text}>{item.name}</div>
+          </div>
+          <div className={styles.subtext}>{item.text}</div>
+        </div>
+        <div className={styles.icon}>
+          <img
+            src={item.like ? like : noneLike}
+            alt="like"
+            className={styles.like}
+            onClick={toggleLike} // 클릭하면 toggleLike 함수를 호출
+          />
+          <img
+            src={arrow}
+            alt="arrow"
+            className={styles.toggle}
+            onClick={() => setToggle([!toggle[0], toggle[1] + 180])}
+            style={{ transform: `rotate(${toggle[1]}deg)` }}
+          />
+        </div>
       </div>
-      <img
-        src={item.like ? like : noneLike}
-        alt="like"
-        className={styles.like}
-        onClick={toggleLike} // 클릭하면 toggleLike 함수를 호출
-      />
-    </div>
+      <div
+        style={{
+          minHeight: toggle[0] ? `${item.review.length * 110 + 10}px` : "0",
+        }}
+        className={styles.review}
+      >
+        {item.review.map((rev) => (
+          <>
+            <hr className={styles.hr} />
+            <div className={styles.review_flex}>
+              <div className={styles.review_left}>
+                <div className={styles.review_top}>
+                  <div>
+                    {Array.from({ length: 5 }).map((_, i) => (
+                      <img
+                        src={rev.rate > i ? star : noneStar}
+                        alt="star"
+                        className={styles.star}
+                      />
+                    ))}
+                  </div>
+                  <div className={styles.review_date}>{rev.create_at}</div>
+                </div>
+                <div className={styles.review_content}>{rev.content}</div>
+                <div className={styles.review_sweet}>{`단맛:${
+                  rev.sweet * 20
+                }% | 쓴맛:${rev.bitter * 20}% | 신맛:${rev.sour * 20}% | 탄산:${
+                  rev.sparkling * 20
+                }%`}</div>
+              </div>
+              <img src={trash} alt="trash" className={styles.trash} />
+            </div>
+          </>
+        ))}
+      </div>
+    </>
   );
 }
