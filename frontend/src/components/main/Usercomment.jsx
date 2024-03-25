@@ -15,19 +15,14 @@ export default function Usercomment({ todaycomment, setTodaycomment }) {
   return (
     <>
       <div className={styles.유저말풍선}>
-        <div>{todaycomment}</div>
-        <div>
-          <input
-            type="text"
-            placeholder="직접 입력"
-            value={todaycomment}
-            onChange={handleCustomReasonChange}
-            className={styles.인풋창}
-            style={{ color: "black" }}
-          />
-          {/* 직접 입력한 기분 추가 버튼 */}
-        </div>
-        <button onClick={checkcomment}>확인</button>
+        <textarea
+          placeholder="오늘 하루에 대한 코멘트"
+          value={todaycomment}
+          onChange={handleCustomReasonChange}
+          className={styles.인풋창}
+          style={{ color: "black" }}
+        />
+        {/* <button onClick={checkcomment}>확인</button> */}
       </div>
     </>
   );

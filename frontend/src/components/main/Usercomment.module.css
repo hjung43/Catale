@@ -1,9 +1,25 @@
 .유저말풍선 {
+  max-height: 50%;
   width: 60%;
-  max-height: 35%;
-  overflow: auto;
+  height: 20%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  /* background-color: aliceblue; */
+}
+.인풋창 {
+  width: 100%;
+  height: 100%;
+  padding: 2rem 1rem;
+  background-color: aliceblue;
+  display: flex;
+  resize: vertical; /* 입력 창의 크기 조절 방향을 수직으로 설정 */
+  overflow-y: auto; /* 수직으로 넘칠 때 스크롤 바 표시 */
+  border-radius: 20px;
+}
+.인풋창:focus {
+  background-color: #dde4ff;
+  border-radius: 20px;
+  outline-color: rgb(174, 211, 234);
 }
