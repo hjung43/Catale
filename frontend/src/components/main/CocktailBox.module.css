@@ -2,11 +2,11 @@
   position: relative;
   width: 45%;
   border-radius: 1rem;
-  /* background-color: var(--main3); */
 }
 .glass {
   width: 100%;
   border-radius: 1rem;
+  box-shadow: 0 0 10px 0 var(--main3);
 }
 .text {
   text-align: center;
