@@ -1,0 +1,23 @@
+.item {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+}
+.glass {
+  width: 5rem;
+  border-radius: 1rem;
+}
+.like {
+  position: absolute;
+  top: -0.5rem;
+  right: -0.5rem;
+  width: 1.5rem;
+}
+.text {
+  margin: 0 1rem;
+}
+.subtext {
+  margin: 0.5rem 1rem;
+  font-size: smaller;
+  color: var(--main4);
+}
