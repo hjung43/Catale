@@ -32,6 +32,7 @@ export default function Cattalkbox({
       talkarr[selectnum].cat !== 0 &&
       talkarr[selectnum].cattalk === 3
     ) {
+      //3번일때는 랜덤으로 보내줘잉~
       showText(
         cattalk[talkarr[selectnum].cattalk].talk[Math.floor(Math.random() * 4)]
       );
