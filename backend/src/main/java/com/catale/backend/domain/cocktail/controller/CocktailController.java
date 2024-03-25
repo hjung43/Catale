@@ -1,9 +1,6 @@
 package com.catale.backend.domain.cocktail.controller;
 
-import com.catale.backend.domain.cocktail.dto.CocktailGetLikeResponseDto;
-import com.catale.backend.domain.cocktail.dto.CocktailGetResponseDto;
-import com.catale.backend.domain.cocktail.dto.CocktailLikeResponseDto;
-import com.catale.backend.domain.cocktail.dto.CocktailListResponseDto;
+import com.catale.backend.domain.cocktail.dto.*;
 import com.catale.backend.domain.cocktail.entity.Cocktail;
 import com.catale.backend.domain.cocktail.service.CocktailService;
 import com.catale.backend.domain.member.dto.SignupRequestDto;
@@ -86,7 +83,15 @@ public class CocktailController {
         return response.success(ResponseCode.COCKTAIL_DETAIL_FETCHED, cocktailService.getCocktailLikeResult(memberId, cocktailId));
     }
 
-
+    @Operation(summary = "오늘의 칵테일", description = "오늘의 칵테일, 연관 칵테일 목록 조회")
+    @GetMapping("/today")
+    public ResponseEntity<?> getTodayCocktail(
+            @Parameter(hidden = true) Authentication authentication,
+            @RequestBody GetTodayCocktailRequest getTodayCocktailRequest) {
+        Member me = memberService.findMember(authentication.getName());
+        Long memberId = me.getId();
+        return response.success(ResponseCode.COCKTAIL_DETAIL_FETCHED, cocktailService.getTodayCocktail(getTodayCocktailRequest, memberId));
+    }
 
 
 
