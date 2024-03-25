@@ -34,7 +34,7 @@ public class DiaryRepositoryImpl implements DiaryRepositoryCustom{
     @Override
     public Optional<DiaryGetResponseDto> getDiaryDetail(Long diaryId) {
         return Optional.ofNullable(query.select(
-                Projections.constructor(DiaryGetResponseDto.class, diary.id, member.id,diary.mood,
+                Projections.constructor(DiaryGetResponseDto.class, diary.id,diary.member.id,diary.mood,
                         diary.comment, diary.reason, diary.emotion1, diary.emotion2, diary.emotion3,
                         diary.createdAt, cocktail.id, cocktail.image, cocktail.name, cocktail.alc,
                         cocktail.sweet, cocktail.sour, cocktail.bitter, cocktail.sparking, cocktail.color1,

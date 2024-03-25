@@ -37,7 +37,8 @@ DiaryController {
 
     @Operation(summary = "다이어리 상세 조회", description = "날짜별 다이어리 상세 페이지 조회")
     @GetMapping("/{diaryId}")
-    public ResponseEntity<?> getDiary(@Parameter(hidden = true) Authentication authentication,
+    public ResponseEntity<?> getDiary(
+            @Parameter(hidden = true) Authentication authentication,
                                       @PathVariable Long diaryId){
         DiaryGetResponseDto diary = diaryService.getDiaryDetail(diaryId);
         return response.success(ResponseCode.DIARY_INFO_FETCHED,diary);
@@ -45,7 +46,8 @@ DiaryController {
 
     @Operation(summary = "다이어리 저장", description = "데일리 칵테일 추천 후 다이어리에 저장")
     @PostMapping
-    public ResponseEntity<?> postDiary(@Parameter(hidden = true) Authentication authentication,
+    public ResponseEntity<?> postDiary(
+            @Parameter(hidden = true) Authentication authentication,
                                        @Valid @RequestBody DiaryGetRequestDto dto){
         Member me = memberService.findMember(authentication.getName());
         Long memberId = me.getId();
@@ -64,7 +66,8 @@ DiaryController {
 
     @Operation(summary = "월별 다이어리 조회", description = "월별 다이어리 리스트 조회")
     @GetMapping
-    public ResponseEntity<?> getDiaryMonth(@Parameter(hidden = true) Authentication authentication,
+    public ResponseEntity<?> getDiaryMonth(
+            @Parameter(hidden = true) Authentication authentication,
                                            @RequestParam int year, @RequestParam int month){
 
         Member me = memberService.findMember(authentication.getName());

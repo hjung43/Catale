@@ -13,9 +13,9 @@ public class DiaryMonthResponseDto {
     private Long cocktailId;
     private int mood;
 
-    private int color1;
-    private int color2;
-    private int color3;
+    private String color1;
+    private String color2;
+    private String color3;
     private int glass;
 
     private LocalDateTime createdAt;
