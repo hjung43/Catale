@@ -32,7 +32,7 @@ public class Diary extends BaseEntity {
     @Column(name = "mood", nullable = false)
     private int mood;
 
-    @Column(name = "comment", nullable = false, columnDefinition = "TEXT")
+    @Column(name = "comment", columnDefinition = "TEXT")
     private String comment;
 
     @Column(name = "reason",nullable = false, length = 500)

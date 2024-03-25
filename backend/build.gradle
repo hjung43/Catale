@@ -76,7 +76,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-mail'
     // Configuration-Processor
     implementation 'org.springframework.boot:spring-boot-configuration-processor'
-//    implementation 'org.springframework.cloud:spring-cloud-starter-aws:2.2.1.RELEASE'
+//    implementation 'org.springframework.cloud:spring-cloud-starter-aws:2.2.1.RELEASE'//s3 관련 의존성 추가
 
 }
 
