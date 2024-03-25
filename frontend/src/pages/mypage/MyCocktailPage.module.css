@@ -45,6 +45,7 @@
 .order {
   display: flex;
   gap: 1rem;
+  margin-bottom: 1rem;
 }
 .order_item {
   display: flex;
@@ -52,11 +53,17 @@
 }
 .order_img {
   width: 1rem;
-  transition: 0.5s;
+  transition: 0.3s;
 }
 .active_order {
   color: var(--main7);
 }
 .none_order {
   color: var(--main5);
+}
+.item {
+  background-color: var(--main2);
+  padding: 1rem;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
 }
