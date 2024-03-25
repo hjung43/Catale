@@ -1,7 +1,9 @@
 import Container from "../components/common/Container";
 import styles from "./WelcomePage.module.css";
 import 웰컴 from "../assets/common/웰컴.png";
+import { useNavigate } from "react-router-dom";
 export default function WelcomePage() {
+  const navigate = useNavigate();
   return (
     <Container>
       <div className={styles.container}>
@@ -9,7 +11,9 @@ export default function WelcomePage() {
           <img className={styles.웰컴} src={웰컴} alt="" />
         </div>
         <div className={styles.웰컴하단}>
-          <div className={styles.로그인}>로그인</div>
+          <div className={styles.로그인} onClick={() => navigate(`bar`)}>
+            로그인
+          </div>
           <div className={styles.회원가입}>회원가입</div>
           <div className={styles.또는}>또는</div>
           <div>
