@@ -37,8 +37,6 @@ public class CocktailGetResponseDto {
     private int emotion3;
     private int likeCount;
     private int fruit;
-
-    private List<ReviewGetResponseDto> reviewList;
     private boolean isLike;
 
 
