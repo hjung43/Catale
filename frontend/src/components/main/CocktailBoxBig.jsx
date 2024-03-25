@@ -39,6 +39,7 @@ export default function CocktailBoxBig({ cocktail, setList }) {
   };
   return (
     <div className={styles.item}>
+      {/* <div className={styles.cover}></div> */}
       <img
         src={glasses[cocktail.glass]}
         alt="glass"
