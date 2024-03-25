@@ -43,6 +43,15 @@ export default function LikedCocktailPage() {
       color2: "#829422",
       color3: "#397597",
     },
+    {
+      like: true,
+      id: 5,
+      name: "칵테일5",
+      glass: 5,
+      color1: "#983472",
+      color2: "#829422",
+      color3: "#397597",
+    },
   ];
   useEffect(() => {
     setList(cocktails);
