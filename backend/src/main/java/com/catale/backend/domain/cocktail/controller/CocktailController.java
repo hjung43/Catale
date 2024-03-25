@@ -38,14 +38,14 @@ public class CocktailController {
 
     @Operation(summary = "칵테일 전체 조회", description = "칵테일 리스트 전체 조회")
     @GetMapping
-    public ResponseEntity<?> getAllCocktailList(
-            @Parameter(hidden = true) Authentication authentication,
-            @PageableDefault(page = 0, size = 10) SpringDataWebProperties.Pageable page) {
+    public ResponseEntity<?> getAllCocktailList(){
+//            @Parameter(hidden = true) Authentication authentication,
+//            @PageableDefault(page = 0, size = 10) SpringDataWebProperties.Pageable page) {
 
-        Member me = memberService.findMember(authentication.getName());
-        Long memberId = me.getId();
+//        Member me = memberService.findMember(authentication.getName());
+//        Long memberId = me.getId();
 
-        List<CocktailListResponseDto> list = cocktailService.getAllCocktails(memberId);
+        List<CocktailListResponseDto> list = cocktailService.getAllCocktails(1L);
         return new ResponseEntity<List<CocktailListResponseDto>>(list,HttpStatus.OK);
 //        return response.success(ResponseCode.MEMBER_SIGNUP_SUCCESS, cocktailService.getAll
     }
@@ -61,12 +61,14 @@ public class CocktailController {
     }
     @Operation(summary = "칵테일 상세 조회", description = "칵테일 상세 조회")
     @GetMapping("/{cocktailId}")
-    public ResponseEntity<?> getCocktailDetail( @Parameter(hidden = true) Authentication authentication, @PathVariable Long cocktailId){
+    public ResponseEntity<?> getCocktailDetail(
+//            @Parameter(hidden = true) Authentication authentication,
+            @PathVariable Long cocktailId){
 
-        Member me = memberService.findMember(authentication.getName());
-        Long memberId = me.getId();
+//        Member me = memberService.findMember(authentication.getName());
+//        Long memberId = me.getId();
 
-        CocktailGetResponseDto cocktail = cocktailService.getCocktailDetail(memberId, cocktailId);
+        CocktailGetResponseDto cocktail = cocktailService.getCocktailDetail(1L, cocktailId);
         return new ResponseEntity<CocktailGetResponseDto>(cocktail, HttpStatus.OK);
     }
 
