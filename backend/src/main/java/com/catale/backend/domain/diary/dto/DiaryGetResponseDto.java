@@ -30,9 +30,9 @@ public class DiaryGetResponseDto {
     private int sour;
     private int bitter;
     private int sparking;
-    private int color1;
-    private int color2;
-    private int color3;
+    private String color1;
+    private String color2;
+    private String color3;
     private int glass;
     private String content;//칵테일 설명
     private String ingredient;
