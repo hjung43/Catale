@@ -45,13 +45,14 @@
   flex-direction: column;
 }
 .로고 {
-  margin-top: 45%;
+  position: absolute;
+  top: 25%;
   display: flex;
   justify-content: center;
 }
 .웰컴하단 {
-  position: fixed;
-  bottom: 20%;
+  position: absolute;
+  bottom: 10%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -63,6 +64,7 @@
   background: var(--point);
   border-radius: 10px;
   width: 100%;
+  max-width: 380px;
   font-size: 1.1rem;
   display: flex;
   justify-content: center;
@@ -72,6 +74,7 @@
   text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.54);
 }
 .회원가입 {
+  max-width: 380px;
   background-color: #caccf5;
   color: #1f2544;
   border-radius: 10px;

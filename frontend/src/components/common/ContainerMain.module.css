@@ -39,9 +39,7 @@
 
 .container {
   max-width: 450px;
-  min-height: calc(100vh - 3.1rem);
-  max-height: calc(100vh - 3.1rem);
-  overflow: hidden;
+  height: calc(var(--vh, 1vh) * 100);
   margin: 0 auto;
   background-color: #1f2544;
 }
