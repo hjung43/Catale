@@ -1,5 +1,6 @@
 import styles from "./Usercomment.module.css";
 import React, { useState } from "react";
+import 연필 from "../../assets/bartender/연필.png";
 
 export default function Usercomment({ todaycomment, setTodaycomment }) {
   // const [writecomment , setWritecomment] = useState("");
@@ -22,6 +23,7 @@ export default function Usercomment({ todaycomment, setTodaycomment }) {
           className={styles.인풋창}
           style={{ color: "black" }}
         />
+        <img src={연필} alt="" className={styles.연필} />
         {/* <button onClick={checkcomment}>확인</button> */}
       </div>
     </>
