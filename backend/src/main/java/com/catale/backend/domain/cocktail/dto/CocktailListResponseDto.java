@@ -7,6 +7,7 @@ import lombok.*;
 //@AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class CocktailListResponseDto {
+
     private Long id;
     private String name;
     private String color1;

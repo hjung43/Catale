@@ -60,7 +60,7 @@ public class SecurityConfig {
                     "/api/v1/member/nickname/**",
                     "/api/v1/member/email/**",
                     "/api/v1/member/password-reset",
-                    "/api/v1/cocktail/**",
+//                    "/api/v1/cocktail/**",
                     "/api/v1/diary/**",
                     "/api/v1/image/**",
                     "/api/v1/menu/**",

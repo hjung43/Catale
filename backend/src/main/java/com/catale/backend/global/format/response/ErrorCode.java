@@ -57,67 +57,11 @@ public enum ErrorCode {
     REVIEW_DELETE_FAILED(HttpStatus.NOT_FOUND, "리뷰를 삭제할 수 없습니다."),
     REVIEW_NOT_FOUND(HttpStatus.NOT_FOUND, "리뷰를 찾을 수 없습니다."),
 
+    //칵테일 예외 처리
+    COCKTAIL_NOT_FOUND(HttpStatus.NOT_FOUND, "해당 칵테일을 찾을 수 없습니다."),
 
-
-    // 팔로우 관련 예외 처리
-    FOLLOWING_NOT_FOUND(HttpStatus.NOT_FOUND, "팔로잉 리스트를 찾을 수 없습니다."),
-    FOLLOWER_NOT_FOUND(HttpStatus.NOT_FOUND, "팔로워 리스트를 찾을 수 없습니다."),
-    FOLLOW_NOT_FOUND(HttpStatus.NOT_FOUND, "팔로우 데이터를 찾을 수 없습니다."),
-
-    // 마이브러리 예외 처리
-    catale_NOT_FOUND(HttpStatus.NOT_FOUND, "마이브러리를 찾을 수 없습니다."),
-    catale_MISMATCH(HttpStatus.BAD_REQUEST, "마이브러리 수정을 할 수 없습니다."),
-    catale_ACCESS_DENIED(HttpStatus.BAD_REQUEST, "마이브러리에 접근할 수 없습니다."),
-
-    // 책 예외 처리
-    BOOK_CREATE_FAILED(HttpStatus.BAD_REQUEST, "책을 생성할 수 없습니다."),
-    BOOK_UPDATE_FAILED(HttpStatus.BAD_REQUEST, "책을 수정할 수 없습니다."),
-    BOOK_NOT_FOUND(HttpStatus.NOT_FOUND, "책을 찾을 수 없습니다."),
-    BOOK_DELETE_FAILED(HttpStatus.BAD_REQUEST, "책을 삭제할 수 없습니다."),
-    BOOK_SUBSCRIBE_FAILED(HttpStatus.BAD_REQUEST, "책을 구독할 수 없습니다."),
-    BOOK_ALREADY_SUBSCRIBE(HttpStatus.BAD_REQUEST, "책이 현재 카테고리에 이미 꽂혀있습니다."),
-    PAPER_DELETE_FAILED(HttpStatus.BAD_REQUEST, "본인이 만든 책이 아닙니다."),
-    BOOK_ACCESS_DENIED(HttpStatus.BAD_REQUEST, "책에 접근할 수 없습니다."),
-
-    // 책장 예외 처리
-    BOOK_SHELF_NOT_FOUND(HttpStatus.NOT_FOUND, "책장을 찾을 수 없습니다."),
-
-    // 픽북 예외 처리
-    PICKBOOK_NOT_FOUND(HttpStatus.NOT_FOUND, "픽북을 찾을 수 없습니다."),
-
-    // 카테고리 예외 처리
-    CATEGORY_NOT_FOUND(HttpStatus.NOT_FOUND, "카테고리를 찾을 수 없습니다."),
-    CATEGORY_OWNER_NOT_FOUND(HttpStatus.NOT_FOUND, "카테고리의 주인을 찾을 수 없습니다."),
-    CATEGORY_ACCESS_DENIED(HttpStatus.BAD_REQUEST, "카테고리에 접근할 수 없습니다."),
-
-    // 스레드 예외 처리
-    THREADID_NOT_FOUND(HttpStatus.NOT_FOUND, "스레드 아이디를 찾을 수 없습니다."),
-    MAIN_THREAD_LIST_NOT_FOUND(HttpStatus.NOT_FOUND, "메인피드에서 스레드 리스트 찾을 수 없습니다."),
-    THREAD_ACCESS_DENIED(HttpStatus.BAD_REQUEST, "스레드에 접근할 수 없습니다."),
-
-    // 페이퍼 예외 처리
-    PAPERLIST_NOT_FOUND(HttpStatus.NOT_FOUND, "페이퍼리스트를 찾을 수 없습니다."),
-    PAPER_ACCESS_DENIED(HttpStatus.BAD_REQUEST, "페이퍼에 접근할 수 없습니다."),
-    PAPER_UPDATE_TYPE_MISMATCH(HttpStatus.BAD_REQUEST, "잘못된 입력값으로 페이퍼를 업데이트 할 수 없습니다."),
-
-    // 스크랩 예외 처리
-    SCRAP_NOT_FOUND(HttpStatus.NOT_FOUND, "스크랩을 찾을 수 없습니다."),
-
-    // 태그 예외 처리
-    TAG_NOT_FOUND(HttpStatus.NOT_FOUND, "태그리스트를 찾을 수 없습니다."),
-
-    // 좋아요 예외 처리
-    // 이미지 예외 처리
-    IMAGE_NOT_FOUND(HttpStatus.NOT_FOUND, "이미지를 찾을 수 없습니다."),
-
-    // 채팅 예외 처리
-    CHAT_ROOM_NOT_FOUND(HttpStatus.NOT_FOUND, "채팅방을 찾을 수 없습니다."),
-    CHAT_JOIN_MEMBER_NOT_FOUND(HttpStatus.NOT_FOUND, "상대방을 찾을 수 없습니다."),
-    INVALID_CHATROOM_ACCESS(HttpStatus.UNAUTHORIZED, "해당 사용자는 지정된 채팅방의 참여자가 아닙니다."),
-    INVALID_MESSAGE(HttpStatus.BAD_REQUEST, "잘못된 메시지 형식입니다."),
-    INVALID_TOKEN(HttpStatus.UNAUTHORIZED, "토큰 검증 실패하였습니다."),
-
-    ROLLING_PAPER_NOT_FOUND (HttpStatus.NOT_FOUND, "롤링페이퍼를 찾을 수 없습니다.");
+    //이미지 예외 처리
+    IMAGE_NOT_FOUND(HttpStatus.NOT_FOUND, "해당 이미지를 찾을 수 없습니다.");
 
     private final HttpStatus status;
     private final String message;

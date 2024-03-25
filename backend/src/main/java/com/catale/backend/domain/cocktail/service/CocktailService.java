@@ -3,12 +3,20 @@ package com.catale.backend.domain.cocktail.service;
 
 import com.catale.backend.domain.cocktail.dto.CocktailGetLikeResponseDto;
 import com.catale.backend.domain.cocktail.dto.CocktailGetResponseDto;
+import com.catale.backend.domain.cocktail.dto.CocktailLikeResponseDto;
 import com.catale.backend.domain.cocktail.entity.Cocktail;
 import com.catale.backend.domain.cocktail.repository.CocktailRepository;
 import com.catale.backend.domain.like.dto.LikeResponseDto;
+import com.catale.backend.domain.like.entity.Like;
 import com.catale.backend.domain.like.repository.LikeRepository;
+import com.catale.backend.domain.member.entity.Member;
+import com.catale.backend.domain.member.service.MemberService;
 import com.catale.backend.domain.review.repository.ReviewRepository;
+import com.catale.backend.global.exception.cocktail.CocktailNotFoundException;
+import com.catale.backend.global.exception.member.MemberNotFoundException;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 import com.catale.backend.domain.cocktail.dto.CocktailListResponseDto;
 import com.catale.backend.domain.member.repository.MemberRepository;
@@ -19,12 +27,14 @@ import java.util.List;
 import java.util.Optional;
 
 
+@Log4j2
 @Service
 @RequiredArgsConstructor
 public class CocktailService {
 
     private final CocktailRepository cocktailRepository;
     private final MemberRepository memberRepository;
+    private final MemberService memberService;
     private final LikeRepository likeRepository;
     private final ReviewRepository reviewRepository;
 
@@ -63,6 +73,31 @@ public class CocktailService {
         }
         return cocktailDto;
 
+    }
+
+    @Transactional
+    public CocktailLikeResponseDto getCocktailLikeResult(Long memberId, Long cocktailId){
+//        Member member = memberService.findMember(auth.getName());
+//        Long memberId = member.getId();
+        Member member = memberRepository.findById(memberId).orElseThrow(MemberNotFoundException::new);
+
+        Cocktail cocktail = cocktailRepository.findById(cocktailId).orElseThrow(CocktailNotFoundException::new);
+        Like isLike = likeRepository.getLike(memberId, cocktailId).orElse(null);
+        CocktailLikeResponseDto responseDto = new CocktailLikeResponseDto();
+        responseDto.setCocktailId(cocktailId);
+
+        if(isLike == null){
+            Like like = Like.builder()
+                            .cocktail(cocktail)
+                            .member(member)
+                            .build();
+            likeRepository.save(like);
+            responseDto.setLiked(true);
+        }else{
+            likeRepository.delete(isLike);
+            responseDto.setLiked(false);
+        }
+        return responseDto;
     }
 
 }
