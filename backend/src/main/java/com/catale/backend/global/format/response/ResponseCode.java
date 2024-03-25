@@ -36,6 +36,7 @@ public enum ResponseCode {
     /* 칵테일 */
     COCKTAIL_LIST_FETCHED(HttpStatus.OK, "전체 칵테일 리스트가 성공적으로 조회되었습니다."),
     COCKTAIL_DETAIL_FETCHED(HttpStatus.OK, "칵테일 상세정보가 성공적으로 조회되었습니다."),
+    LIKED_COCKTAIL_LIST_FETCHED(HttpStatus.OK, "좋아요 한 칵테일 리스트가 성공적으로 조회되었습니다."),
 
     /* 다이어리(Diary) */
     MONTHLY_DIARY_LIST_FETCHED(HttpStatus.OK, "월 별 다이어리 리스트가 성공적으로 조회되었습니다."),

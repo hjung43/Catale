@@ -43,37 +43,36 @@ public class CocktailController {
     @GetMapping
     public ResponseEntity<?> getAllCocktailList(
             @Parameter(hidden = true) Authentication authentication,
-            @PageableDefault(page = 0, size = 10) SpringDataWebProperties.Pageable page) {
+            @PageableDefault(page = 0, size = 10) Pageable page) {
         log.info("getname" + authentication.getName());
         Member me = memberService.findMember(authentication.getName());
         Long memberId = me.getId();
 
-//        List<CocktailListResponseDto> list = cocktailService.getAllCocktails(1L);
-//        return new ResponseEntity<List<CocktailListResponseDto>>(list,HttpStatus.OK);
-        return response.success(ResponseCode.MEMBER_SIGNUP_SUCCESS, cocktailService.getAllCocktails(memberId));
+        return response.success(ResponseCode.COCKTAIL_LIST_FETCHED, cocktailService.getAllCocktails(memberId, page));
     }
+
     @Operation(summary = "내가 좋아요한 칵테일 조회", description = "내가 좋아요한 칵테일 리스트 조회")
     @GetMapping("/like")
-    public ResponseEntity<?> getLikeCocktailList(@Parameter(hidden = true) Authentication authentication,
-                                                 @PageableDefault(page = 0, size = 10) SpringDataWebProperties.Pageable page){
-
+    public ResponseEntity<?> getLikcCocktailList(
+            @Parameter(hidden = true) Authentication authentication,
+                                                 @PageableDefault(page = 0, size = 10) Pageable page){
         Member me = memberService.findMember(authentication.getName());
         Long memberId = me.getId();
 
-        List<CocktailGetLikeResponseDto> list = cocktailService.getLikeCocktails(memberId);
-        return new ResponseEntity<List<CocktailGetLikeResponseDto>>(list,HttpStatus.OK);
+        List<CocktailGetLikeResponseDto> list = cocktailService.getLikeCocktails(memberId, page);
+        return response.success(ResponseCode.LIKED_COCKTAIL_LIST_FETCHED, list);
     }
     @Operation(summary = "칵테일 상세 조회", description = "칵테일 상세 조회")
     @GetMapping("/{cocktailId}")
     public ResponseEntity<?> getCocktailDetail(
-//            @Parameter(hidden = true) Authentication authentication,
+            @Parameter(hidden = true) Authentication authentication,
             @PathVariable Long cocktailId){
 
-//        Member me = memberService.findMember(authentication.getName());
-//        Long memberId = me.getId();
+        Member me = memberService.findMember(authentication.getName());
+        Long memberId = me.getId();
 
-        CocktailGetResponseDto cocktail = cocktailService.getCocktailDetail(1L, cocktailId);
-        return new ResponseEntity<CocktailGetResponseDto>(cocktail, HttpStatus.OK);
+        CocktailGetResponseDto cocktail = cocktailService.getCocktailDetail(memberId, cocktailId);
+        return response.success(ResponseCode.COCKTAIL_DETAIL_FETCHED, cocktail);
     }
 
     @Operation(summary = "칵테일 좋아요", description = "칵테일 좋아요, 좋아요 취소")
