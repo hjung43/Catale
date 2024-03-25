@@ -53,6 +53,13 @@ public class MemberController {
         return response.success(ResponseCode.LOGIN_SUCCESS, memberService.login(requestDto, httpServletResponse));
     }
 
+    @Operation(summary = "로그아웃", description = "로그아웃")
+    @PostMapping("/logout")
+    public ResponseEntity<?> logout(@Parameter(hidden = true) Authentication authentication,
+                                    HttpServletResponse servletResponse) {
+        return response.success(ResponseCode.LOGOUT_SUCCESS, memberService.logout(authentication.getName(), servletResponse));
+    }
+
 //    @Operation(summary = "소셜 회원가입", description = "소셜 회원가입")
 //    @PostMapping("/social")
 //    public ResponseEntity<?> signupBySocial(@Valid @RequestBody SignupRequestDto requestDto,
@@ -102,12 +109,7 @@ public class MemberController {
 //        return new ResponseEntity<>(HttpStatus.OK);
 //    }
 //
-//    @Operation(summary = "로그아웃", description = "로그아웃")
-//    @PostMapping("/logout")
-//    public ResponseEntity<?> logout(@Parameter(hidden = true) Authentication authentication,
-//                                    HttpServletResponse servletResponse) {
-//        return response.success(ResponseCode.LOGOUT_SUCCESS, memberService.logout(authentication.getName(), servletResponse));
-//    }
+
 
 
 }
