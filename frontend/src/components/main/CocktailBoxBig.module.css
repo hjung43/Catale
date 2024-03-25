@@ -1,0 +1,28 @@
+.item {
+  position: relative;
+  border-radius: 1rem;
+  margin: 1rem 2rem 2rem;
+  background: var(--main3);
+  box-shadow: 0 0 10px 0 var(--main3);
+  overflow: hidden;
+  border: solid 3px var(--main5);
+}
+.glass {
+  width: 100%;
+  border-radius: 1rem;
+}
+.text {
+  text-align: center;
+  font-size: large;
+}
+.subtext {
+  text-align: center;
+  font-size: small;
+  padding: 1rem;
+}
+.like {
+  position: absolute;
+  right: 0.5rem;
+  top: 0.5rem;
+  width: 1.5rem;
+}
