@@ -68,7 +68,7 @@ public class CocktailService {
         Cocktail cocktail = cocktailRepository.findById(cocktailId).orElseThrow(CocktailNotFoundException::new);
         CocktailGetResponseDto cocktailDto = new CocktailGetResponseDto(cocktail);
         //해당 칵테일의 리뷰 조회 및 dto 저장
-        cocktailDto.setReviewList(reviewRepository.findByCocktailId(cocktailId).orElse(new ArrayList<>()));
+//        cocktailDto.setReviewList(reviewRepository.findByCocktailId(cocktailId,page).orElse(new ArrayList<>()));
         //해당 칵테일의 좋아요 여부 dto 등록
         Optional<LikeResponseDto> likeDto = likeRepository.getIsLike(memberId, cocktailId);
         if(!likeDto.isEmpty()){

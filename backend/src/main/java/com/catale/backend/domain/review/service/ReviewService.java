@@ -11,6 +11,7 @@ import com.catale.backend.global.exception.member.MemberNotFoundException;
 import com.catale.backend.global.exception.review.ReviewListNotFoundException;
 import com.catale.backend.global.exception.review.ReviewNotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -28,9 +29,9 @@ public class ReviewService {
     private final MemberRepository memberRepository;
 
     @Transactional
-    public List<ReviewGetResponseDto> getReviews(Long cocktailId){
+    public List<ReviewGetResponseDto> getReviews(Long cocktailId, Pageable page){
         //아이디로 리뷰 리스트 찾기
-        List<ReviewGetResponseDto> list = reviewRepository.findByCocktailId(cocktailId).orElseThrow(ReviewListNotFoundException::new);
+        List<ReviewGetResponseDto> list = reviewRepository.findByCocktailId(cocktailId, page).orElse(new ArrayList<>());
         return list;
     }
 

@@ -5,6 +5,7 @@ import com.catale.backend.domain.review.dto.ReviewGetResponseDto;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 import java.util.Optional;
@@ -17,11 +18,13 @@ public class ReviewRepositoryImpl implements ReviewRepositoryCustom{
     private final JPAQueryFactory query;
 
     @Override
-    public Optional<List<ReviewGetResponseDto>> findByCocktailId(Long cocktailId) {
+    public Optional<List<ReviewGetResponseDto>> findByCocktailId(Long cocktailId, Pageable page) {
         return Optional.ofNullable(query.select(Projections.constructor(ReviewGetResponseDto.class, review.id,review.cocktail.id,review.member.id, review.content, review.rate, review.sweet, review.bitter, review.sour, review.sparking, review.createdAt))
                 .from(review)
                 .where(review.cocktail.id.eq(cocktailId)
                         .and(review.isDeleted.eq(false)))
+                .offset(page.getOffset())
+                .limit(page.getPageSize())
                 .fetch());
     }
 

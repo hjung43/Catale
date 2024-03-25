@@ -29,15 +29,15 @@ import java.util.List;
 public class ReviewController {
 
     private final ApiResponse response;
-    private ReviewService reviewService;
-    private MemberService memberService;
+    private final ReviewService reviewService;
+    private final MemberService memberService;
 
     @Operation(summary = "칵테일별 리뷰 전체 조회", description = "각 칵테일 별 전체 리뷰 조회")
     @GetMapping("/{cocktailId}")
     public ResponseEntity<?> getReviews(@PathVariable Long cocktailId,
                                         @PageableDefault(page = 0, size = 10) Pageable page){
 
-        List<ReviewGetResponseDto> reviewList = reviewService.getReviews(cocktailId);
+        List<ReviewGetResponseDto> reviewList = reviewService.getReviews(cocktailId, page);
         return response.success(ResponseCode.REVIEW_LIST_FETCHED,reviewList);
     }
     @Operation(summary = "칵테일 리뷰 작성", description = "칵테일에 대한 리뷰 작성")
