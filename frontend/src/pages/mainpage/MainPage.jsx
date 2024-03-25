@@ -17,6 +17,8 @@ import { reasonone } from "./Emodata/Reasonone";
 import Cattalk11 from "../../components/main/Cattalk11";
 import Userreasonbox from "../../components/main/Userreasonbox";
 import Usercomment from "../../components/main/Usercomment";
+import { selectcolor } from "./Emodata/Emocolor";
+import cocktail from "../../assets/bartender/오늘의칵테일.png";
 export default function MainPage() {
   const [talknum, setTalknum] = useState(1);
   const [selectnum, setSeletnum] = useState(0);
@@ -41,11 +43,33 @@ export default function MainPage() {
               <div className={styles.재료}>
                 <div className={styles.재료글자}>오늘의 재료</div>
                 <div className={styles.감정선택요소}>
-                  <div>{nowemonum}</div>
+                  <div className={styles.이모지하나하나}>
+                    <img
+                      className={styles.이모지하나하나}
+                      src={require(`../../assets/bartender/emo${
+                        nowemonum + 1
+                      }.png`)}
+                      alt=""
+                    />
+                  </div>
                   {todayemo.map((emo) => (
-                    <div>{emo}</div>
+                    <div
+                      className={styles.이모지하나하나}
+                      style={{
+                        backgroundColor: selectcolor[Math.floor(emo / 10)],
+                        // boxShadow: `0px 0px 10px 0px rgba(255, 255, 255, 0.54)`,
+                      }}
+                    ></div>
                   ))}
-                  {talknum >= 17 && <div>10</div>}
+                  {talknum >= 17 && (
+                    <div
+                      className={styles.이모지하나하나}
+                      style={{
+                        backgroundImage: `url(${require("../../assets/bartender/종이비행기.png")})`,
+                        backgroundSize: "cover",
+                      }}
+                    ></div>
+                  )}
                 </div>
               </div>
             </div>
@@ -54,7 +78,14 @@ export default function MainPage() {
         {/* 이거로 지금 배경바 크기를 지정해놨음 */}
         <div className={styles.aspectcontainer}>
           <div className={styles.aspectcontent}>
-            <img src={배경바} alt="" />
+            <img className={styles.배경바} src={배경바} alt="" />
+            {talknum === 24 && (
+              <div className={styles.오늘의칵테일}>
+                <img className={styles.칵테일} src={cocktail} alt="" />
+                <div className={styles.칵테일글자}>오늘의 칵테일</div>
+                <div className={styles.클릭글자}>click !</div>
+              </div>
+            )}
           </div>
         </div>
         {/*  */}

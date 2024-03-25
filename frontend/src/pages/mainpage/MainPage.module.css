@@ -49,6 +49,11 @@
 
 */
 /* 이거로 일단 임시바의 크기를 지정해줬어 */
+.이모지하나하나 {
+  width: 0.9rem;
+  height: 0.9rem;
+  border-radius: 100px;
+}
 .aspectcontainer {
   position: relative;
   width: 100%;
@@ -99,9 +104,51 @@
   padding: 0.3rem 3rem;
 }
 
-.배경바 {
-  width: 50%;
+/* .배경바 {
+  width: 80%;
+} */
+.오늘의칵테일 {
+  position: absolute;
+  right: 10%;
+  top: 59%;
+  width: 7rem;
+  /* background-color: red; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.3rem;
 }
+.칵테일 {
+  width: 2.2rem;
+}
+.칵테일글자 {
+  font-family: "TTHakgyoansimJiugaeR";
+  font-size: 0.9rem;
+  -webkit-text-stroke: 1px rgb(0, 0, 0);
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+.클릭글자 {
+  position: absolute;
+  right: -1.2rem;
+  font-family: "TTHakgyoansimJiugaeR";
+  animation: changeColor 2s infinite alternate;
+  font-size: smaller;
+  -webkit-text-stroke: 1px rgb(0, 0, 0);
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+@keyframes changeColor {
+  0% {
+    color: #c4f394;
+  } /* 초기 색상 */
+  50% {
+    color: #53c729;
+  } /* 중간 색상 */
+  100% {
+    color: #ebeb19;
+  } /* 최종 색상 */
+}
+
 .main {
   display: flex;
   flex-direction: column;
