@@ -90,6 +90,7 @@ export default function Userreasonbox({
               placeholder="직접 입력"
               value={customReason}
               onChange={handleCustomReasonChange}
+              className={styles.인풋창}
               style={{ color: "black" }}
             />
             {/* 직접 입력한 기분 추가 버튼 */}

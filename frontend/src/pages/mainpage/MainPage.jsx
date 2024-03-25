@@ -16,6 +16,7 @@ import { mood1, mood2 } from "../mainpage/Emodata/Emotionthree";
 import { reasonone } from "./Emodata/Reasonone";
 import Cattalk11 from "../../components/main/Cattalk11";
 import Userreasonbox from "../../components/main/Userreasonbox";
+import Usercomment from "../../components/main/Usercomment";
 export default function MainPage() {
   const [talknum, setTalknum] = useState(1);
   const [selectnum, setSeletnum] = useState(0);
@@ -27,6 +28,8 @@ export default function MainPage() {
   const [todayreason, setTodayreason] = useState("");
   //선택했는지확인
   const [selectcheck, setSelectcheck] = useState(false);
+  //오늘하루의 코멘트를 담아봐요
+  const [todaycomment, setTodaycomment] = useState("");
   // cattalk에서 0은 없는거 1은 다음버튼있는거 2는 다음버튼없는거 3은 고르시오
   // usertakl에서 0은 없는거 1은 대화 2,3,4,5,6,7은 특정고르기
   return (
@@ -145,6 +148,15 @@ export default function MainPage() {
             setSelectcheck={setSelectcheck}
             todayreason={todayreason}
             setTodayreason={setTodayreason}
+          />
+        )}
+        {talknum === 16 && (
+          //여기서는 오늘 하루 코멘트를 저장할 수 있는 곳이야 이것도 스트링 넘겨
+          //건너뛰기 버튼이있어서 작성했는지의 check는 안념겨도돼
+          //오늘 하루의 코멘트만 가져가면될듯하오
+          <Usercomment
+            todaycomment={todaycomment}
+            setTodaycomment={setTodaycomment}
           />
         )}
       </div>

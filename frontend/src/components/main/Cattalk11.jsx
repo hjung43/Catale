@@ -57,30 +57,19 @@ export default function Cattalk11({ talkarr, 말풍선, todayemo }) {
   return (
     <>
       <div className={styles.고양이말풍선}>
-        {talkarr.cat !== 3 ? (
-          <img className={styles.말풍선} src={말풍선} alt="" />
-        ) : (
+        <img className={styles.말풍선} src={말풍선} alt="" />
+        <div className={styles.고양이이름}>고먐미</div>
+        <div className={styles.고양이내용11}>
           <>
-            <div className={styles.만들자말풍선} />
-          </>
-        )}
-
-        {talkarr.cat !== 3 && (
-          <>
-            <div className={styles.고양이이름}>고먐미</div>
-            <div className={styles.고양이내용11}>
-              <>
-                <div>{currentText}</div>
-                <div className={styles.감정대화}>
-                  {talkObjects.map((talkObj) => (
-                    <div style={{ color: talkObj.color }}>{talkObj.talk}</div>
-                  ))}
-                </div>
-                <div>{currentText2}!</div>
-              </>
+            <div>{currentText}</div>
+            <div className={styles.감정대화}>
+              {talkObjects.map((talkObj) => (
+                <div style={{ color: talkObj.color }}>{talkObj.talk}</div>
+              ))}
             </div>
+            <div>{currentText2}!</div>
           </>
-        )}
+        </div>
       </div>
     </>
   );

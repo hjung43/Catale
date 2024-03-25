@@ -1,22 +1,33 @@
-import s from "classnames";
-import styles from "./Usertalkbox.module.css";
-import 유저말풍선 from "../../assets/bartender/유저말풍선.png";
-import { Usertalk } from "../../pages/mainpage/Talkdata/Usertalk";
-import React from "react";
+import styles from "./Usercomment.module.css";
+import React, { useState } from "react";
 
-export default function Usercomment({ talknum, setTalknum }) {
+export default function Usercomment({ todaycomment, setTodaycomment }) {
+  // const [writecomment , setWritecomment] = useState("");
+  const [check, setCheck] = useState(false);
+
+  const handleCustomReasonChange = (e) => {
+    setTodaycomment(e.target.value);
+  };
+
+  const checkcomment = () => {
+    console.log(todaycomment);
+  };
   return (
     <>
       <div className={styles.유저말풍선}>
-        <img className={styles.말풍선} src={유저말풍선} alt="" />
-        <div className={styles.유저이름}>고먐미</div>
-        <div className={styles.유저내용}>{Usertalk[talknum].talk}</div>
-        <div
-          className={styles.고양이다음}
-          onClick={() => setTalknum(talknum + 1)}
-        >
-          click !
+        <div>{todaycomment}</div>
+        <div>
+          <input
+            type="text"
+            placeholder="직접 입력"
+            value={todaycomment}
+            onChange={handleCustomReasonChange}
+            className={styles.인풋창}
+            style={{ color: "black" }}
+          />
+          {/* 직접 입력한 기분 추가 버튼 */}
         </div>
+        <button onClick={checkcomment}>확인</button>
       </div>
     </>
   );
