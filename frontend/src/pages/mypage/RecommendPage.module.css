@@ -36,3 +36,15 @@
   --feel4: #ffd4ca;
   --feel5: #ffb0b0;
 }
+.title {
+  margin: 1rem 2rem 0;
+  padding: 4rem 0 0;
+}
+.main_title {
+  font-size: large;
+}
+.sub_title {
+  font-size: small;
+  color: var(--main4);
+  margin: 0.3rem 0;
+}
