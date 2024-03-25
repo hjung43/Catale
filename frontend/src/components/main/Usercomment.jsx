@@ -1,18 +1,30 @@
 import styles from "./Usercomment.module.css";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import 연필 from "../../assets/bartender/연필.png";
 
-export default function Usercomment({ todaycomment, setTodaycomment }) {
+export default function Usercomment({
+  todaycomment,
+  setTodaycomment,
+  setSelectcheck,
+}) {
   // const [writecomment , setWritecomment] = useState("");
-  const [check, setCheck] = useState(false);
 
   const handleCustomReasonChange = (e) => {
     setTodaycomment(e.target.value);
   };
 
-  const checkcomment = () => {
-    console.log(todaycomment);
-  };
+  // const checkcomment = () => {
+  //   console.log(todaycomment);
+  // };
+
+  useEffect(() => {
+    if (todaycomment != "") {
+      setSelectcheck(true);
+    } else {
+      setSelectcheck(false);
+    }
+  }, [todaycomment]); // 사용자가 직접 입력한 기분도 감시
+
   return (
     <>
       <div className={styles.유저말풍선}>
