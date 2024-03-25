@@ -68,7 +68,8 @@ public class SecurityConfig {
                     "/api/v1/store/**",
                     "/ws/**",
                     "/pub/**",
-                    "/sub/**"
+                    "/sub/**",
+                        "/actuator/**"
                 ).permitAll();
                 authorize.anyRequest().authenticated();
             }))
