@@ -19,6 +19,7 @@ import Userreasonbox from "../../components/main/Userreasonbox";
 import Usercomment from "../../components/main/Usercomment";
 import { selectcolor } from "./Emodata/Emocolor";
 import cocktail from "../../assets/bartender/오늘의칵테일.png";
+
 export default function MainPage() {
   const [talknum, setTalknum] = useState(1);
   const [selectnum, setSeletnum] = useState(0);
