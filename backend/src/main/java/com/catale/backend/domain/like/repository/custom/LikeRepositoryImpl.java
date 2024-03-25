@@ -14,7 +14,7 @@ public class LikeRepositoryImpl implements LikeRepositoryCustom{
     private final JPAQueryFactory query;
     @Override
     public Optional<LikeResponseDto> getIsLike(Long memberId, Long cocktailId) {
-        return Optional.ofNullable(query.select(Projections.constructor(LikeResponseDto.class, like.id, like.cocktail.id, like.member.id))
+        return Optional.ofNullable(query.select(Projections.constructor(LikeResponseDto.class, like.id, like.member.id, like.cocktail.id))
                 .from(like)
                 .where(like.cocktail.id.eq(cocktailId)
                         .and(like.member.id.eq(memberId))

@@ -10,9 +10,10 @@ public class LikeResponseDto {
     private Long memberId;
     private Long cocktailId;
 
-    public LikeResponseDto (Like like){
-        this.id = like.getId();
-        this.memberId = like.getMember().getId();
-        this.cocktailId = like.getCocktail().getId();
+    public LikeResponseDto(Long id, Long memberId, Long cocktailId) {
+        this.id = id;
+        this.memberId = memberId;
+        this.cocktailId = cocktailId;
     }
 }
+
