@@ -13,6 +13,8 @@ import org.springframework.stereotype.Service;
 import com.catale.backend.domain.cocktail.dto.CocktailListResponseDto;
 import com.catale.backend.domain.member.repository.MemberRepository;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,20 +32,20 @@ public class CocktailService {
     @Transactional
     public List<CocktailListResponseDto> getAllCocktails(Long memberId){
         //좋아요 수 많은 순서대로 리스트 가져오기
-        List<CocktailListResponseDto> list = cocktailRepository.getCocktails().orElseThrow(NullPointerException::new);
+        List<CocktailListResponseDto> list = cocktailRepository.getCocktails().orElse(new ArrayList<>());
         //칵테일 마다 유저가 좋아요 했는지 유무 저장
-        for(CocktailListResponseDto c : list){
+        for(CocktailListResponseDto c : list) {
             Optional<LikeResponseDto> likeDto = likeRepository.getIsLike(memberId, c.getId());
             if(!likeDto.isEmpty()){
                 c.setLike(true);
-            }
+        }
         }
         return list;
     }
     //내가 좋아요 한 칵테일 리스트
     @Transactional
     public List<CocktailGetLikeResponseDto> getLikeCocktails(Long memberId){
-        List<CocktailGetLikeResponseDto> list = cocktailRepository.getLikeCoctails(memberId).orElseThrow(NullPointerException::new);
+        List<CocktailGetLikeResponseDto> list = cocktailRepository.getLikeCoctails(memberId).orElse(new ArrayList<>());
         return list;
     }
 
