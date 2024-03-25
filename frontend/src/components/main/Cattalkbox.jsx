@@ -21,8 +21,20 @@ export default function Cattalkbox({
     setShowNextButton(false);
     if (selectnum === -1 && talkarr.cat !== 0 && talkarr.cat !== 3) {
       showText(cattalk[talkarr.cattalk].talk);
-    } else if (selectnum !== -1 && talkarr[selectnum].cat !== 0) {
+    } else if (
+      selectnum !== -1 &&
+      talkarr[selectnum].cat !== 0 &&
+      talkarr[selectnum].cattalk !== 3
+    ) {
       showText(cattalk[talkarr[selectnum].cattalk].talk);
+    } else if (
+      selectnum !== -1 &&
+      talkarr[selectnum].cat !== 0 &&
+      talkarr[selectnum].cattalk === 3
+    ) {
+      showText(
+        cattalk[talkarr[selectnum].cattalk].talk[Math.floor(Math.random() * 4)]
+      );
     }
   }, [talknum, talkarr, selectnum]);
 
