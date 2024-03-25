@@ -45,6 +45,7 @@ export default function MainPage() {
                   {todayemo.map((emo) => (
                     <div>{emo}</div>
                   ))}
+                  {talknum >= 17 && <div>10</div>}
                 </div>
               </div>
             </div>
@@ -157,6 +158,7 @@ export default function MainPage() {
           <Usercomment
             todaycomment={todaycomment}
             setTodaycomment={setTodaycomment}
+            setSelectcheck={setSelectcheck}
           />
         )}
       </div>

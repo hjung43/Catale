@@ -67,14 +67,21 @@ export default function Cattalkbox({
             <>
               <div className={styles.고양이이름}>고먐미</div>
 
-              {talknum !== 8 && (
+              {talknum !== 8 && talknum !== 21 && (
                 <div className={styles.고양이내용}>
                   {renderTextWithLineBreaks(currentText)}
                 </div>
               )}
-              {talknum === 8 && (
+              {(talknum === 8 || talknum === 21) && (
                 <div className={styles.고양이내용}>
-                  {cattalk[talkarr.cattalk].talk}
+                  {cattalk[talkarr.cattalk].talk
+                    .split("\n")
+                    .map((line, index) => (
+                      <React.Fragment key={index}>
+                        {line}
+                        <br />
+                      </React.Fragment>
+                    ))}
                 </div>
               )}
             </>
@@ -118,6 +125,22 @@ export default function Cattalkbox({
                       onClick={() => setTalknum(talknum + 1)}
                     >
                       <span className={styles.다음으로}>선택완료</span>
+                    </div>
+                  )}
+                  {talknum === 16 && selectcheck && (
+                    <div
+                      className={styles.네모박스}
+                      onClick={() => setTalknum(talknum + 1)}
+                    >
+                      <span className={styles.다음으로}>입력완료</span>
+                    </div>
+                  )}
+                  {talknum === 16 && !selectcheck && (
+                    <div
+                      className={styles.네모박스2}
+                      onClick={() => setTalknum(talknum + 1)}
+                    >
+                      <span className={styles.다음으로}>건너뛰기</span>
                     </div>
                   )}
                 </>
