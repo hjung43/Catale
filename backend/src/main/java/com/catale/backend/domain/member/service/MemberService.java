@@ -53,10 +53,6 @@ public class MemberService {
         return member.getId();
     }
 
-    public Member findMember(String email) {
-        return memberRepository.searchByEmail(email).orElseThrow(MemberNotFoundException::new);
-    }
-
 
     @Transactional
     public LoginResponseDto login(LoginRequestDto requestDto, HttpServletResponse response) {
@@ -93,6 +89,17 @@ public class MemberService {
                                 .build();
     }
 
+    @Transactional
+    public String logout(String email, HttpServletResponse servletResponse) {
+        cookieUtil.removeCookie("RefreshToken", servletResponse);
+        refreshTokenRepository.findByEmail(email)
+                .ifPresent(refreshTokenRepository::delete);
+        return email;
+    }
+
+    public Member findMember(String email) {
+        return memberRepository.searchByEmail(email).orElseThrow(MemberNotFoundException::new);
+    }
 
     private Member searchMemberByEmail(String email) {
         Member member = memberRepository.searchByEmail(email)
