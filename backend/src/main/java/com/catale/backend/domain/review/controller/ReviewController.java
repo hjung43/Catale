@@ -53,6 +53,6 @@ public class ReviewController {
     @DeleteMapping("/{reviewId}")
     public ResponseEntity<?> deletReview(@PathVariable Long reviewId){
         Long id = reviewService.deleteReview(reviewId);
-        return response.success(ResponseCode.DIARY_DELETED);
+        return response.success(ResponseCode.REVIEW_DELETED);
     }
 }
