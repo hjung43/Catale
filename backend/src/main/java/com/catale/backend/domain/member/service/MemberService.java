@@ -11,6 +11,7 @@ import com.catale.backend.global.jwt.repository.RefreshTokenRepository;
 import com.catale.backend.global.jwt.service.TokenService;
 import com.catale.backend.global.util.CookieUtil;
 import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.security.core.Authentication;
 import org.springframework.transaction.annotation.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -80,9 +81,15 @@ public class MemberService {
                 .sparking(member.getSparking())
                 .build();
 
+
+        /* 취향설문 참여여부 확인 */
+        int surveyCheck = member.getAlc();
+        boolean check = surveyCheck != -1;
+
         return LoginResponseDto.builder()
                                 .token(tokenInfo.getAccessToken())
                                 .memberInfo(info)
+                                .check(check)
                                 .build();
     }
 
@@ -114,6 +121,18 @@ public class MemberService {
             return new EmailValidationResponseDto(false);
         }
     }
+
+    @Transactional
+    public Long postPreference(Authentication authentication, PostPreferenceRequestDto requestDto){
+        Member member = findMember(authentication.getName());
+        member.updatePreference(requestDto.getAlc(), requestDto.getSweet(), requestDto.getSour(), requestDto.getBitter(), requestDto.getSparking());
+        return member.getId();
+    }
+
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 
     private void removeOldRefreshToken(LoginRequestDto requestDto, Member member) {
 //        log.info("email:" + member.getEmail());

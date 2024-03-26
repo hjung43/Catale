@@ -85,6 +85,14 @@ public class Member extends BaseEntity {
         this.nickname = nickname;
     }
 
+    /* 유저 취향정보 반영*/
+    public void updatePreference(int alc, int sweet, int sour, int bitter, int sparking){
+        this.alc = alc;
+        this.sweet = sweet;
+        this.sour = sour;
+        this.bitter = bitter;
+        this.sparking = sparking;
+    }
 
     /**
      * 양방향 관계 - 팔로잉/팔로워, 알림 발신자/수신자, 채팅참여, 메시지, 좋아요
