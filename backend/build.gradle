@@ -81,6 +81,9 @@ dependencies {
 
     // health check
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
+
+    // fastapi request
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
 }
 
 def generated = 'src/main/generated'

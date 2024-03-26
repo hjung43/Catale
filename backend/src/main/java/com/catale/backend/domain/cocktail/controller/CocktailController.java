@@ -2,11 +2,8 @@ package com.catale.backend.domain.cocktail.controller;
 
 import com.catale.backend.domain.cocktail.dto.CocktailGetLikeResponseDto;
 import com.catale.backend.domain.cocktail.dto.CocktailGetResponseDto;
-import com.catale.backend.domain.cocktail.dto.CocktailLikeResponseDto;
-import com.catale.backend.domain.cocktail.dto.CocktailListResponseDto;
-import com.catale.backend.domain.cocktail.entity.Cocktail;
+import com.catale.backend.domain.cocktail.dto.TodayCocktailRequestDto;
 import com.catale.backend.domain.cocktail.service.CocktailService;
-import com.catale.backend.domain.member.dto.SignupRequestDto;
 import com.catale.backend.domain.member.entity.Member;
 import com.catale.backend.domain.member.service.MemberService;
 import com.catale.backend.global.format.code.ApiResponse;
@@ -14,16 +11,12 @@ import com.catale.backend.global.format.response.ResponseCode;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -83,6 +76,16 @@ public class CocktailController {
         Member me = memberService.findMember(authentication.getName());
         Long memberId = me.getId();
         return response.success(ResponseCode.COCKTAIL_DETAIL_FETCHED, cocktailService.getCocktailLikeResult(memberId, cocktailId));
+    }
+
+    @Operation(summary = "오늘의 칵테일", description = "오늘의 칵테일, 연관 칵테일 목록 조회(아직 테스트중..)")
+    @GetMapping("/today")
+    public ResponseEntity<?> getTodayCocktail(
+        @Parameter(hidden = true) Authentication authentication,
+        @RequestBody TodayCocktailRequestDto todayCocktailRequestDto) {
+
+        return response.success(ResponseCode.COCKTAIL_DETAIL_FETCHED,
+            cocktailService.getTodayCocktail(authentication, todayCocktailRequestDto));
     }
 
 
