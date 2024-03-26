@@ -9,7 +9,7 @@
   border: solid 2px rgb(131, 131, 131);
   border-radius: 20px;
   display: flex;
-  max-width: 450px;
+  max-width: 380px;
   flex-wrap: wrap;
   gap: 0.6rem;
   justify-content: center;
