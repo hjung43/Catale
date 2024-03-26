@@ -4,11 +4,11 @@ import com.catale.backend.global.format.response.ErrorCode;
 import lombok.Getter;
 
 @Getter
-public class ImageNotFoundException extends RuntimeException {
+public class ImageRegisterException extends RuntimeException {
 
     private final ErrorCode errorCode;
 
-    public ImageNotFoundException(ErrorCode imageNotFound) {
-        this.errorCode = ErrorCode.IMAGE_NOT_FOUND;
+    public ImageRegisterException(ErrorCode imageNotFound) {
+        this.errorCode = ErrorCode.IMAGE_REGISTRATION_FAILED;
     }
 }
