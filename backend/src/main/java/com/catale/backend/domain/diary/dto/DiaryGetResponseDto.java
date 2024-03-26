@@ -1,16 +1,19 @@
 package com.catale.backend.domain.diary.dto;
 
+import com.catale.backend.domain.cocktail.entity.Cocktail;
 import com.catale.backend.domain.diary.entity.Diary;
 import com.catale.backend.domain.image.entity.Image;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class DiaryGetResponseDto {
+public class
+DiaryGetResponseDto {
     private Long id;
     private Long memberId;
 
@@ -23,7 +26,8 @@ public class DiaryGetResponseDto {
     private LocalDateTime createdAt;
 
     private Long cocktailId;
-    private Image cocktailImage;
+//    private Image cocktailImage;
+    private String cocktailImage;
     private String name;
     private int alc;
     private int sweet;
@@ -39,5 +43,6 @@ public class DiaryGetResponseDto {
     private int base;
     private int likeCount;
     private int fruit;
+//      private Cocktail cocktail;
 
 }
