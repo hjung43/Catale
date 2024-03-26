@@ -36,3 +36,14 @@
   --feel4: #ffd4ca;
   --feel5: #ffb0b0;
 }
+
+.background {
+  width: 100%;
+  height: 100%;
+  background-color: bisque;
+}
+.cover {
+  width: 100%;
+  height: 100%;
+  background: #10214349;
+}
