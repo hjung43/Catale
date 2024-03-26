@@ -34,7 +34,7 @@
 .review {
   overflow: hidden;
   height: 0;
-  transition: min-height 0.3s ease;
+  transition: min-height 0.5s ease;
 }
 .review_flex {
   display: flex;

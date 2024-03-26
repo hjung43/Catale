@@ -38,7 +38,8 @@
 }
 
 .header {
-  background-color: #464a6d;
+  background-color: #464a6d57;
+  backdrop-filter: blur(10px);
   display: flex;
   align-items: flex-end;
   position: fixed;
