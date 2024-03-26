@@ -36,3 +36,7 @@
   --feel4: #ffd4ca;
   --feel5: #ffb0b0;
 }
+
+input {
+  color: black;
+}

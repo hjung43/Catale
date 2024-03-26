@@ -14,7 +14,9 @@ export default function WelcomePage() {
           <div className={styles.로그인} onClick={() => navigate(`bar`)}>
             로그인
           </div>
-          <div className={styles.회원가입}>회원가입</div>
+          <div className={styles.회원가입} onClick={() => navigate(`signup`)}>
+            회원가입
+          </div>
           <div className={styles.또는}>또는</div>
           <div>
             <span className={styles.카카오톡}>카카오톡</span>
