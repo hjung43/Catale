@@ -103,4 +103,39 @@ public class CocktailService {
         return responseDto;
     }
 
+
+//    @Transactional
+//    public void getTodayCocktail(GetTodayCocktailRequest request, Long memberId) {
+//        //먼저 오늘의 기분과 연관된 색의 칵테일을 하나 선정
+//        List<Cocktail> cocktailList = cocktailRepository.findAll();
+//        Cocktail matchedList = findBestMatchingItems(cocktailList, request.getEmotion1(), request.getEmotion2(), request.getEmotion3());
+//
+//        // FastAPI 호출
+//
+//    }
+
+
+    /* 감정 1, 2, 3과의 차이가 적은 칵테일 목록을 뽑는 메서드 */
+//    private Cocktail findBestMatchingItems(List<Cocktail> cocktailList, int emotion1, int emotion2, int emotion3) {
+//        List<Cocktail> bestMatches = new ArrayList<>();
+//        int minDifference = Integer.MAX_VALUE;
+//
+//        for (Cocktail cocktail : cocktailList) {
+//            int cocktailAttr1 = cocktail.getEmotion1();
+//            int cocktailAttr2 = cocktail.getEmotion2();
+//            int cocktailAttr3 = cocktail.getEmotion3();
+//
+//            int diff = Math.abs(cocktailAttr1 - emotion1) + Math.abs(cocktailAttr2 - emotion2) + Math.abs(cocktailAttr3 - emotion3);
+//            ;
+//
+//            if (diff < minDifference) {
+//                bestMatches.clear();
+//                bestMatches.add(cocktail);
+//                minDifference = diff;
+//            }
+//            Collections.shuffle(bestMatches);
+//            return bestMatches.get(0);
+//        }
+//    }
+
 }
