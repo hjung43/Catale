@@ -30,3 +30,15 @@ export async function checkNickName(nickname) {
     throw error;
   }
 }
+
+//로그인도 여기있다잉
+export async function login(user) {
+  try {
+    localStorage.clear();
+
+    const response = await axios.post(BASE_URL + "login", user);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+}

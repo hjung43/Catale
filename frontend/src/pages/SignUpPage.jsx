@@ -26,19 +26,25 @@ export default function SignUpPage() {
     handleChange(e);
   };
   const handleSubmit = async (e) => {
+    console.log(formData);
     try {
-      const data = await signup({
-        ...formData,
-      });
+      const data = await signup(formData);
       console.log(data);
 
       if (data.status === "SUCCESS") {
         console.log("회원가입이 완료되었습니다.");
-        setFormData("");
+        setFormData({
+          email: "",
+          password: "",
+          passwordConfirm: "",
+          nickname: "",
+        });
       } else {
         console.log("에러임");
       }
-    } catch (e) {}
+    } catch (error) {
+      console.error("회원가입 에러:", error);
+    }
   };
 
   return (
