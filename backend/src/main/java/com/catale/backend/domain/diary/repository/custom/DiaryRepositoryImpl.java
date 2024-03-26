@@ -36,15 +36,19 @@ public class DiaryRepositoryImpl implements DiaryRepositoryCustom{
         return Optional.ofNullable(query.select(
                 Projections.constructor(DiaryGetResponseDto.class, diary.id,diary.member.id,diary.mood,
                         diary.comment, diary.reason, diary.emotion1, diary.emotion2, diary.emotion3,
-                        diary.createdAt, cocktail.id, cocktail.image, cocktail.name, cocktail.alc,
+                        diary.createdAt,
+                        cocktail.id , cocktail.image.url ,cocktail.name, cocktail.alc,
                         cocktail.sweet, cocktail.sour, cocktail.bitter, cocktail.sparking, cocktail.color1,
                         cocktail.color2, cocktail.color3, cocktail.glass, cocktail.content,
-                        cocktail.ingredient, cocktail.base, cocktail.likeCount, cocktail.fruit))
+                        cocktail.ingredient, cocktail.base, cocktail.likeCount, cocktail.fruit
+//
+//                        diary.cocktail
+                ))
                 .from(diary)
-                .leftJoin(cocktail).on(diary.cocktail.id.eq(cocktail.id))
-                .where(diary.id.eq(diaryId)
-                .and(diary.isDeleted.eq(false))
-                        .and(cocktail.isDeleted.eq(false)))
+                .leftJoin(diary.cocktail, cocktail)
+                .where(diary.id.eq(diaryId))
+//                .and(diary.isDeleted.eq(false)))
+//                .and(cocktail.isDeleted.eq(false)))
                 .fetchOne()
         );
 
