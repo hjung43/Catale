@@ -1,10 +1,7 @@
 package com.catale.backend.domain.member.service;
 
 import com.catale.backend.domain.image.entity.Image;
-import com.catale.backend.domain.member.dto.LoginRequestDto;
-import com.catale.backend.domain.member.dto.LoginResponseDto;
-import com.catale.backend.domain.member.dto.MemberInfo;
-import com.catale.backend.domain.member.dto.SignupRequestDto;
+import com.catale.backend.domain.member.dto.*;
 import com.catale.backend.domain.member.entity.Member;
 import com.catale.backend.domain.member.repository.MemberRepository;
 import com.catale.backend.global.exception.member.*;
@@ -106,6 +103,16 @@ public class MemberService {
                 .orElseThrow(EmailNotFoundException::new);
         log.info("event=MemberSearchByEmail, email={}", email);
         return member;
+    }
+
+    @Transactional
+    public EmailValidationResponseDto checkEmailDuplication(EmailValidationRequestDto requestDto){
+        Optional<Member> member = memberRepository.searchByEmail(requestDto.getEmail());
+        if(member.isEmpty()){
+            return new EmailValidationResponseDto(true);
+        }else{
+            return new EmailValidationResponseDto(false);
+        }
     }
 
     private void removeOldRefreshToken(LoginRequestDto requestDto, Member member) {

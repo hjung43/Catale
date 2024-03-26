@@ -1,5 +1,6 @@
 package com.catale.backend.domain.member.controller;
 
+import com.catale.backend.domain.member.dto.EmailValidationRequestDto;
 import com.catale.backend.domain.member.dto.LoginRequestDto;
 import com.catale.backend.domain.member.dto.SignupRequestDto;
 import com.catale.backend.domain.member.service.MemberService;
@@ -60,6 +61,13 @@ public class MemberController {
         return response.success(ResponseCode.LOGOUT_SUCCESS, memberService.logout(authentication.getName(), servletResponse));
     }
 
+    @Operation(summary = "이메일 확인 요청", description = "해당 이메일로 가입 가능한지 여부 체크")
+    @PostMapping("/email/verification")
+    public ResponseEntity<?> emailVerification(@Valid @RequestBody EmailValidationRequestDto requestDto) {
+
+        return response.success(ResponseCode.EMAIL_VERIFIED_SUCCESS, memberService.checkEmailDuplication(requestDto));
+    }
+
 //    @Operation(summary = "소셜 회원가입", description = "소셜 회원가입")
 //    @PostMapping("/social")
 //    public ResponseEntity<?> signupBySocial(@Valid @RequestBody SignupRequestDto requestDto,
@@ -67,18 +75,6 @@ public class MemberController {
 //        return response.success(ResponseCode.MEMBER_SIGNUP_SUCCESS.getMessage());
 //    }
 //
-//    @Operation(summary = "이메일 인증 요청", description = "이메일 주소 보내고 인증코드를 메일로 보내는 요청")
-//    @PostMapping("/email/verification")
-//    public ResponseEntity<?> emailVerification(@Valid @RequestBody EmailValidationRequestDto requestDto,
-//                                               BindingResult bindingResult) {
-//
-//        if (bindingResult.hasErrors()) {
-//            return response.fail(bindingResult);
-//        }
-//
-//        mailService.sendEmailVerification(requestDto.getEmail());
-//        return response.success(ResponseCode.EMAIL_VERIFICATION_SENT.getMessage());
-//    }
 //
 //    @Operation(summary = "인증코드 인증 요청", description = "메일로 받은 인증코드를 입력해서 인증 요청")
 //    @PostMapping("/email/verify")
