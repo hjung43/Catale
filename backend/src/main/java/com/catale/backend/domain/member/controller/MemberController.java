@@ -69,12 +69,12 @@ public class MemberController {
         return response.success(ResponseCode.EMAIL_VERIFIED_SUCCESS, memberService.checkEmailDuplication(requestDto));
     }
 
-    @Operation(summary = "취향정보 등록 요청", description = "회원 취향정보 등록 요청")
+    @Operation(summary = "취향정보 등록/수정 요청", description = "회원 취향정보 등록/수정 요청")
     @PostMapping("/preference")
     public ResponseEntity<?> postPreference(@Parameter(hidden = true) Authentication authentication,
                                             @RequestBody PostPreferenceRequestDto requestDto) {
 
-        return response.success(ResponseCode.EMAIL_VERIFIED_SUCCESS, memberService.postPreference(authentication, requestDto));
+        return response.success(ResponseCode.PREFERENCE_UPDATED, memberService.postPreference(authentication, requestDto));
     }
 
 

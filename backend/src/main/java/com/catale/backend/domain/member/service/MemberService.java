@@ -27,7 +27,6 @@ import java.util.Optional;
 public class MemberService {
 
     private final MemberRepository memberRepository;
-    private final MemberService memberService;
     private final PasswordEncoder passwordEncoder;
     private final RefreshTokenRepository refreshTokenRepository;
     private final TokenProvider tokenProvider;
@@ -125,14 +124,15 @@ public class MemberService {
 
     @Transactional
     public Long postPreference(Authentication authentication, PostPreferenceRequestDto requestDto){
-        Member member = memberService.findMember(authentication.getName());
+        Member member = findMember(authentication.getName());
         member.updatePreference(requestDto.getAlc(), requestDto.getSweet(), requestDto.getSour(), requestDto.getBitter(), requestDto.getSparking());
-        memberRepository.
-
+        return member.getId();
     }
 
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 
     private void removeOldRefreshToken(LoginRequestDto requestDto, Member member) {
 //        log.info("email:" + member.getEmail());

@@ -2,6 +2,7 @@ package com.catale.backend.global.format.response;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import org.springframework.boot.actuate.autoconfigure.observation.ObservationProperties.Http;
 import org.springframework.http.HttpStatus;
 
 @Getter
@@ -32,6 +33,8 @@ public enum ResponseCode {
     EMAIL_VERIFICATION_REQUEST_SUCCESS(HttpStatus.OK, "이메일 인증요청이 성공적으로 처리되었습니다."),
     NICKNAME_AVAILABLE(HttpStatus.OK, "사용 가능한 닉네임입니다"),
     DUPLICATE_NICKNAME(HttpStatus.OK, "중복된 닉네임입니다"),
+
+    PREFERENCE_UPDATED(HttpStatus.OK, "칵테일 취향 정보 반영이 성공적으로 처리되었습니다."),
 
     /* 칵테일 */
     COCKTAIL_LIST_FETCHED(HttpStatus.OK, "전체 칵테일 리스트가 성공적으로 조회되었습니다."),
