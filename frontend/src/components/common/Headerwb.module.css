@@ -10,7 +10,8 @@
   left: 0;
   right: 0;
   z-index: 2;
-  background-color: var(--main1);
+  background-color: #00000018;
+  backdrop-filter: blur(10px);
 }
 .left {
   width: 10%;

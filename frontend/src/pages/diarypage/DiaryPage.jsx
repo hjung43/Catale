@@ -13,8 +13,10 @@ import glass5 from "../../assets/glass/glass5.png";
 import glass6 from "../../assets/glass/glass6.png";
 import glass7 from "../../assets/glass/glass7.png";
 import { useState } from "react";
+import { useNavigate } from "react-router";
 
 export default function DiaryPage() {
+  const navigate = useNavigate();
   // 현재 날짜 가져오기 및 상태 설정
   const today = new Date();
   const [year, setYear] = useState(today.getFullYear());
@@ -203,6 +205,7 @@ export default function DiaryPage() {
                       border: `solid 2px var(--feel${specialDateInfo.mood})`,
                       boxShadow: `0 0 10px 0 var(--feel${specialDateInfo.mood})`,
                     }}
+                    onClick={() => navigate(`${specialDateInfo.diaryId}`)}
                   >
                     <div className={styles.number}>{d.date.getDate()}</div>
                     {dateStyles[dateString] && (
