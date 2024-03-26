@@ -2,6 +2,7 @@ package com.catale.backend.domain.member.controller;
 
 import com.catale.backend.domain.member.dto.EmailValidationRequestDto;
 import com.catale.backend.domain.member.dto.LoginRequestDto;
+import com.catale.backend.domain.member.dto.PostPreferenceRequestDto;
 import com.catale.backend.domain.member.dto.SignupRequestDto;
 import com.catale.backend.domain.member.service.MemberService;
 import com.catale.backend.global.format.code.ApiResponse;
@@ -67,6 +68,15 @@ public class MemberController {
 
         return response.success(ResponseCode.EMAIL_VERIFIED_SUCCESS, memberService.checkEmailDuplication(requestDto));
     }
+
+    @Operation(summary = "취향정보 등록 요청", description = "회원 취향정보 등록 요청")
+    @PostMapping("/preference")
+    public ResponseEntity<?> postPreference(@Parameter(hidden = true) Authentication authentication,
+                                            @RequestBody PostPreferenceRequestDto requestDto) {
+
+        return response.success(ResponseCode.EMAIL_VERIFIED_SUCCESS, memberService.postPreference(authentication, requestDto));
+    }
+
 
 //    @Operation(summary = "소셜 회원가입", description = "소셜 회원가입")
 //    @PostMapping("/social")
