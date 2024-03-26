@@ -1,7 +1,7 @@
 .고양이말풍선 {
   position: absolute;
-  /* top: 10rem; */
-  top: 10.6%;
+  top: 6rem;
+  /* top: 10.6%; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,7 +13,7 @@
 }
 .고양이말풍선2 {
   position: absolute;
-  top: 14.2%;
+  top: 14%;
   display: flex;
   justify-content: center;
   align-items: center;
