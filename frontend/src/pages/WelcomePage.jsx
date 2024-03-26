@@ -11,7 +11,7 @@ export default function WelcomePage() {
           <img className={styles.웰컴} src={웰컴} alt="" />
         </div>
         <div className={styles.웰컴하단}>
-          <div className={styles.로그인} onClick={() => navigate(`bar`)}>
+          <div className={styles.로그인} onClick={() => navigate(`login`)}>
             로그인
           </div>
           <div className={styles.회원가입} onClick={() => navigate(`signup`)}>
