@@ -39,23 +39,38 @@
 
 .background {
   width: 100%;
+  min-height: 100vh;
+  /* padding: 5rem 2rem; */
 }
 .cover {
   background: #10214365;
-  padding: 5rem 2rem;
+  min-height: 100vh;
+  padding: 5rem 2rem 2rem;
 }
+.detail,
 .cocktail {
   border: solid 2px var(--main6);
   box-shadow: 0 0 20px 0 var(--main3);
   padding: 1rem;
   border-radius: 1rem;
-  background: linear-gradient(180deg, #9c9ec6 0%, #707398 50%, #464a6d 100%);
 }
 .glass_cover {
   width: 70%;
   margin: 1rem auto;
-  border: solid 2px var(--main3);
+  border-radius: 1rem;
   box-shadow: 0 20px 50px -5px var(--main1);
+  animation: eff 1.5s infinite;
+}
+@keyframes eff {
+  0% {
+    transform: rotate(1deg);
+  }
+  50% {
+    transform: rotate(-1deg);
+  }
+  100% {
+    transform: rotate(1deg);
+  }
 }
 .glass {
   width: 100%;
@@ -95,6 +110,8 @@
   padding: 0.3rem 0.5rem;
   background: linear-gradient(0deg, #464a6d 0%, #707398 100%);
   border-radius: 0.3rem;
+  font-size: x-small;
+  font-weight: 100;
 }
 .title {
   font-size: x-large;
@@ -117,4 +134,38 @@
 }
 .mood5 {
   color: var(--feel5);
+}
+
+.flip {
+  height: 28rem;
+}
+
+.card {
+  transition: 0.4s;
+  position: relative;
+}
+.detail,
+.cocktail {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  transition: 0.7s;
+}
+.cocktail {
+  z-index: 1;
+  background: linear-gradient(180deg, #707398 0%, #464a6d 50%, #1f2544 100%);
+}
+.detail {
+  z-index: 0;
+  padding: 1rem;
+  transform: translateX(-37rem) translateY(-14rem) rotate(-30deg);
+  background-color: var(--main1);
+}
+.show_cocktail {
+  transform: translateX(0) translateY(0) rotate(0);
+}
+.show_detail {
+  transform: translateX(37rem) translateY(-14rem) rotate(30deg);
+  background-color: #00000000;
 }

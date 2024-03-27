@@ -8,13 +8,16 @@ import glass4 from "../../assets/glass/glass4.png";
 import glass5 from "../../assets/glass/glass5.png";
 import glass6 from "../../assets/glass/glass6.png";
 import glass7 from "../../assets/glass/glass7.png";
-import card from "../../assets/common/card.png";
 import pentagon from "../../assets/common/pentagon.png";
 import styles from "./DatePage.module.css";
+import { mood1, mood2 } from "../mainpage/Emodata/Emotionthree";
 import s from "classnames";
+import { useState } from "react";
+import CocktailDetail from "../../components/diary/CocktailDetail";
 
 export default function DatePage() {
   const { diaryId } = useParams();
+  const [detail, setDetail] = useState(false);
   const glasses = [
     glass1,
     glass1,
@@ -42,9 +45,9 @@ export default function DatePage() {
     mood: 1,
     comment: "string",
     reason: "string",
-    emotion1: 1,
-    emotion2: 2,
-    emotion3: 3,
+    emotion1: 10,
+    emotion2: 22,
+    emotion3: 34,
     createdAt: "2024-03-26T13:47:06.352887",
     cocktailId: 1,
     cocktailImage:
@@ -55,9 +58,9 @@ export default function DatePage() {
     sour: 0,
     bitter: 4,
     sparking: 0,
-    color1: "#c25a00",
-    color2: "#954705",
-    color3: "#6d3d29",
+    color1: "#f7ffec",
+    color2: "#f7ffec",
+    color3: "#f7ffec",
     glass: 7,
     content:
       "강렬한 위스키의 첫맛에 달달하고 향긋한 아마레또의 향으로 마무리되는, 만드는 방법은 굉장히 간단하지만 매력적인 맛과 향을 나타내는 칵테일입니다.",
@@ -68,18 +71,24 @@ export default function DatePage() {
   };
   const mood = [
     "",
-    "많이 속상했던 하루",
-    "조금 속상했던 하루",
-    "그럭저럭인 하루",
-    "기분 좋은 하루",
-    "정말 행복했던하루",
+    "많이 속상했던 날..",
+    "조금 속상했던 날..",
+    "그럭저럭인 날",
+    "기분 좋은 날!",
+    "정말 행복했던 날!!!",
   ];
 
   const createdAt = new Date(response.createdAt);
   const month = String(createdAt.getMonth() + 1);
   const day = String(createdAt.getDate());
-
   const formattedDate = `${month}월 ${day}일`;
+
+  const emotions = [
+    response.emotion1,
+    response.emotion2,
+    response.emotion3,
+  ].filter((e) => e !== 0);
+
   return (
     <Container>
       <Headerwb title={formattedDate} />
@@ -91,34 +100,53 @@ export default function DatePage() {
         }}
       >
         <div className={styles.cover}>
-          <div className={styles.cocktail}>
-            <div
-              className={styles.glass_cover}
-              style={{
-                background: `linear-gradient(0deg, ${response.color1} ${
-                  num[response.glass][0]
-                }%, ${response.color2} ${num[response.glass][1]}%, ${
-                  response.color3
-                } ${num[response.glass][2]}%, ${response.color3} 100%)`,
-              }}
-            >
-              <img
-                src={glasses[response.glass]}
-                alt="glass"
-                className={styles.glass}
-              />
-            </div>
-            <div className={styles.name}>{response.name}</div>
-            <div className={styles.content}>{response.content}</div>
-            <div className={styles.cocktail_bottom}>
-              <div className={styles.cocktail_left}>
-                <div>기분좋은</div>
-                <div>행복한</div>
-                <div>짜릿한</div>
+          <div className={styles.flip}>
+            <div className={styles.card}>
+              <div className={s(styles.cocktail, detail && styles.show_detail)}>
+                <div
+                  className={styles.glass_cover}
+                  style={{
+                    background: `linear-gradient(0deg, ${response.color3} ${
+                      num[response.glass][0]
+                    }%, ${response.color2} ${num[response.glass][1]}%, ${
+                      response.color1
+                    } ${num[response.glass][2]}%, ${response.color1} 100%)`,
+                  }}
+                >
+                  <img
+                    src={glasses[response.glass]}
+                    alt="glass"
+                    className={styles.glass}
+                  />
+                </div>
+                <div className={styles.name}>{response.name}</div>
+                <div className={styles.content}>{response.content}</div>
+                <div className={styles.cocktail_bottom}>
+                  <div className={styles.cocktail_left}>
+                    {emotions.map((emo, i) => {
+                      const index = (emo - (emo % 10)) / 10;
+                      const j = emo % 10;
+                      return <div>{mood1[index][j]}</div>;
+                    })}
+                  </div>
+                  <div
+                    className={styles.cocktail_right}
+                    onClick={() => setDetail(true)}
+                  >
+                    <div>상세정보</div>
+                    <img
+                      src={pentagon}
+                      alt="pentagon"
+                      className={styles.icon}
+                    />
+                  </div>
+                </div>
               </div>
-              <div className={styles.cocktail_right}>
-                <div>상세정보</div>
-                <img src={pentagon} alt="pentagon" className={styles.icon} />
+              <div
+                className={s(styles.detail, detail && styles.show_cocktail)}
+                onClick={() => setDetail(false)}
+              >
+                <CocktailDetail cocktail={response} />
               </div>
             </div>
           </div>
@@ -126,6 +154,23 @@ export default function DatePage() {
           <div className={s(styles[`mood${response.mood}`], styles.mood)}>
             {mood[response.mood]}
           </div>
+          <div>
+            <span>{response.reason}</span> 때문에
+          </div>
+          <div>
+            {emotions.map((emo, i) => {
+              const index = (emo - (emo % 10)) / 10;
+              const j = emo % 10;
+              if (emotions.length - 1 > i) {
+                return <span>{mood2[index][j]}, </span>;
+              } else {
+                return <span>{mood1[index][j]}</span>;
+              }
+            })}
+          </div>
+          <div>감정을 느낀 하루였어</div>
+          <br />
+          <div>{response.comment}</div>
         </div>
       </div>
     </Container>
