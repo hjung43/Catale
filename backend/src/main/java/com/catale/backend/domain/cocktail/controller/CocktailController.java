@@ -105,7 +105,7 @@ public class CocktailController {
             @PageableDefault(page = 0, size = 10) Pageable page
             ) {
 
-        return response.success(ResponseCode.COCKTAIL_DETAIL_FETCHED,
+        return response.success(ResponseCode.SEARCHED_COCKTAIL_LIST_FETCHED,
                 cocktailService.getCocktailSearchByKeyword(authentication, keyword, page));
     }
 
@@ -122,7 +122,7 @@ public class CocktailController {
             @PageableDefault(page = 0, size = 10) Pageable page
     ) {
 
-        return response.success(ResponseCode.COCKTAIL_DETAIL_FETCHED,
+        return response.success(ResponseCode.SEARCHED_COCKTAIL_LIST_FETCHED,
                 cocktailService.getCocktailSearchByOption(authentication, base, alc, sweet, sour, bitter, sparkling, page));
     }
 
