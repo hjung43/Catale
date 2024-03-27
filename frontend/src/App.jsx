@@ -1,8 +1,34 @@
-// App.jsx
 import { useEffect } from "react";
 import { Outlet } from "react-router-dom";
+import axios from "axios";
+import { isTokenExpired, renewToken } from "./api/common/Token";
 import "./App.css";
 
+axios.defaults.withCredentials = true;
+
+axios.interceptors.request.use(
+  async (config) => {
+    let accessToken = localStorage.getItem("accessToken");
+
+    if (!accessToken) {
+      return config;
+    }
+
+    // if (isTokenExpired) {
+    //   const res = await renewToken(accessToken);
+    //   localStorage.setItem("accessToken", res);
+    //   localStorage.setItem("tokenTimestamp", Date.now());
+    // }
+
+    config.headers["Authorization"] = `Bearer ${accessToken}`;
+    return config;
+  },
+  (error) => {
+    localStorage.clear();
+    window.location.href = "/login";
+    //return Promise.reject(error);
+  }
+);
 export default function App() {
   useEffect(() => {
     function setScreenHeight() {
