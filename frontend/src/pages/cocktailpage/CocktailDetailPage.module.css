@@ -43,6 +43,7 @@
 .img {
   height: 27rem;
   background-color: var(--main3);
+  transform: scale(1.1);
 }
 .paint {
   height: 23rem;
@@ -77,10 +78,19 @@
   font-size: x-large;
 }
 .like {
-  position: absolute;
+  position: fixed;
   width: 1.6rem;
   z-index: 10;
   top: 0;
   right: 0;
   padding: 0.9rem;
+}
+.glass_cover {
+  width: 100%;
+  overflow: hidden;
+}
+
+.glass {
+  width: 100%;
+  transform: scale(1.1);
 }
