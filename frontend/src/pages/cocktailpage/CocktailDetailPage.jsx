@@ -71,6 +71,7 @@ export default function CocktailDetailPage() {
   return (
     <Container>
       <Headerwb title={response.name} />
+      <div className={styles.popup}>어쩌고 저쩌고</div>
       <img
         src={response.like ? like : noneLike}
         alt="like"
@@ -126,7 +127,9 @@ export default function CocktailDetailPage() {
       >
         <div className={styles.cover}>
           <div className={styles.content}>{response.content}</div>
-          <CocktailDetail cocktail={response} btn={false} />
+          <div className={styles.chart}>
+            <CocktailDetail cocktail={response} btn={false} />
+          </div>
           <div className={styles.ingredient}>{response.ingredient}</div>
           <div className={styles.review}>{response.name} 리뷰</div>
         </div>

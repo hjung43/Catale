@@ -1,5 +1,7 @@
 .chartC {
   transform: translateX(-24%);
+  /* overflow: hidden; */
+  /* width: 120%; */
 }
 .data {
   display: flex;

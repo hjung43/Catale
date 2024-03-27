@@ -55,7 +55,6 @@
 .background {
   width: 100%;
   min-height: 1vh;
-  /* padding: 5rem 2rem; */
 }
 .cover {
   background: #10214399;
@@ -93,4 +92,7 @@
 .glass {
   width: 100%;
   transform: scale(1.1);
+}
+.chart {
+  overflow: hidden;
 }
