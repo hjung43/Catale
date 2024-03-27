@@ -6,6 +6,7 @@ spring:
       - filter
 #      - db
       - dev
+      - aws
 
   security:
     user:
