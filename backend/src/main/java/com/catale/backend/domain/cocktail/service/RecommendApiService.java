@@ -16,10 +16,17 @@ public class RecommendApiService {
                                                    .baseUrl("https://api.silvstone.xyz:8000/api/v1/recommend")
                                                    .build();
 
-      public Mono<List<Long>> getApiResponse(Long cocktailId) {
+      public Mono<List<Long>> getTodayCocktailResponse(Long cocktailId) {
             return this.webClient.get()
                                  .uri("/{cocktailId}", cocktailId)
                                  .retrieve()
                                  .bodyToMono(new ParameterizedTypeReference<List<Long>>() {});
+      }
+
+      public Mono<List<Long>> getMemberRecommendResponse(Long memberId) {
+            return this.webClient.get()
+                    .uri("/{memberId}", memberId)
+                    .retrieve()
+                    .bodyToMono(new ParameterizedTypeReference<List<Long>>() {});
       }
 }
