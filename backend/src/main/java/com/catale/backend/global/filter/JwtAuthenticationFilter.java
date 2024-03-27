@@ -15,6 +15,7 @@ import java.util.Collections;
 import java.util.Map;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -55,6 +56,21 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             filterChain.doFilter(request, response);
             return;
         }
+
+        // preflight request -> 토큰 검사 건너뜀
+//        if(HttpMethod.OPTIONS.matches(request.getMethod())){
+//            response.setHeader("Access-Control-Allow-Origin", request.getHeader("Origin"));
+//            response.setHeader("Access-Control-Allow-Credentials", "true");
+//            response.setHeader("Access-Control-Allow-Headers", "Content-Type");
+//            response.addHeader("Access-Control-Allow-Headers", "Authorization");
+//            response.setHeader("Access-Control-Allow-Methods", "GET");
+//            response.addHeader("Access-Control-Allow-Methods", "POST");
+//            response.addHeader("Access-Control-Allow-Methods", "PUT");
+//            response.addHeader("Access-Control-Allow-Methods", "DELETE");
+//            response.addHeader("Access-Control-Allow-Methods", "OPTIONS");
+//            response.setHeader("content-type", "application/json");
+//            return;
+//        }
 
         String accessToken = tokenService.extractAccessToken(request);
         String refreshToken = cookieUtil.getRefreshTokenValue(request);

@@ -78,7 +78,7 @@ public class CocktailController {
         return response.success(ResponseCode.COCKTAIL_DETAIL_FETCHED, cocktailService.getCocktailLikeResult(memberId, cocktailId));
     }
 
-    @Operation(summary = "오늘의 칵테일", description = "오늘의 칵테일, 연관 칵테일 목록 조회(아직 테스트중..)")
+    @Operation(summary = "오늘의 칵테일, 연관 칵테일", description = "오늘의 칵테일(상세정보포함), 연관 칵테일 목록 조회(상세정보 미포함)")
     @GetMapping("/today")
     public ResponseEntity<?> getTodayCocktail(
         @Parameter(hidden = true) Authentication authentication,
@@ -88,8 +88,43 @@ public class CocktailController {
             cocktailService.getTodayCocktail(authentication, todayCocktailRequestDto));
     }
 
+    @Operation(summary = "사용자 맞춤 칵테일 추천", description = "사용자 맞춤 추천 칵테일 리스트 조회(상세정보 포함)")
+    @GetMapping("/recommend")
+    public ResponseEntity<?> getMemberRecommendCocktail(
+            @Parameter(hidden = true) Authentication authentication) {
 
+        return response.success(ResponseCode.COCKTAIL_DETAIL_FETCHED,
+                cocktailService.getMemberRecommendCocktail(authentication));
+    }
 
+    @Operation(summary = "키워드 검색으로 칵테일 조회", description = "칵테일 제목 키워드를 통한 리스트 조회")
+    @GetMapping("/search")
+    public ResponseEntity<?> getCocktailSearchByKeyword(
+            @Parameter(hidden = true) Authentication authentication,
+            @RequestParam(name = "keyword") String keyword,
+            @PageableDefault(page = 0, size = 10) Pageable page
+            ) {
+
+        return response.success(ResponseCode.SEARCHED_COCKTAIL_LIST_FETCHED,
+                cocktailService.getCocktailSearchByKeyword(authentication, keyword, page));
+    }
+
+    @Operation(summary = "옵션 선택을 통한 칵테일 조회", description = "옵션 선택을 통한 통한 리스트 조회, 선택하지 않은 옵션은 -1을 주시오")
+    @GetMapping("/option")
+    public ResponseEntity<?> getCocktailSearchByCategory(
+            @Parameter(hidden = true) Authentication authentication,
+            @RequestParam(name = "base") int base,
+            @RequestParam(name = "alc") int alc,
+            @RequestParam(name = "sweet") int sweet,
+            @RequestParam(name = "sour") int sour,
+            @RequestParam(name = "bitter") int bitter,
+            @RequestParam(name = "sparkling") int sparkling,
+            @PageableDefault(page = 0, size = 10) Pageable page
+    ) {
+
+        return response.success(ResponseCode.SEARCHED_COCKTAIL_LIST_FETCHED,
+                cocktailService.getCocktailSearchByOption(authentication, base, alc, sweet, sour, bitter, sparkling, page));
+    }
 
 
 }

@@ -18,6 +18,7 @@ public enum ResponseCode {
     LOGOUT_SUCCESS(HttpStatus.OK, "로그아웃이 성공적으로 이루어졌습니다."),
     PASSWORD_RESET_SUCCESS(HttpStatus.OK, "비밀번호 재설정이 성공적으로 이루어졌습니다."),
     PASSWORD_UPDATE_SUCCESS(HttpStatus.OK, "비밀번호 업데이트가 성공적으로 이루어졌습니다."),
+    PASSWORD_CHECK_SUCCESS(HttpStatus.OK, "비밀번호 확인이 성공적으로 이루어졌습니다."),
     MEMBER_INFO_UPDATE_SUCCESS(HttpStatus.OK, "회원 정보가 성공적으로 업데이트되었습니다."),
     FOLLOWINGS_FETCH_SUCCESS(HttpStatus.OK, "팔로잉 리스트를 성공적으로 불러왔습니다."),
     FOLLOWERS_FETCH_SUCCESS(HttpStatus.OK, "팔로워 리스트를 성공적으로 불러왔습니다."),
@@ -41,6 +42,7 @@ public enum ResponseCode {
     COCKTAIL_LIST_FETCHED(HttpStatus.OK, "전체 칵테일 리스트가 성공적으로 조회되었습니다."),
     COCKTAIL_DETAIL_FETCHED(HttpStatus.OK, "칵테일 상세정보가 성공적으로 조회되었습니다."),
     LIKED_COCKTAIL_LIST_FETCHED(HttpStatus.OK, "좋아요 한 칵테일 리스트가 성공적으로 조회되었습니다."),
+    SEARCHED_COCKTAIL_LIST_FETCHED(HttpStatus.OK, "검색한 칵테일 리스트가 성공적으로 조회되었습니다."),
 
     /* 다이어리(Diary) */
     MONTHLY_DIARY_LIST_FETCHED(HttpStatus.OK, "월 별 다이어리 리스트가 성공적으로 조회되었습니다."),

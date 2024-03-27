@@ -12,7 +12,7 @@ import lombok.Setter;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class CocktailSimpleInfoDto {
 
-      private Long id;
+      private Long cocktailId;
       private String name;
       private String color1;
       private String color2;
@@ -22,7 +22,7 @@ public class CocktailSimpleInfoDto {
       private boolean isLike;
 
       public CocktailSimpleInfoDto(Cocktail cocktail){
-            this.id = cocktail.getId();
+            this.cocktailId = cocktail.getId();
             this.name = cocktail.getName();
             this.color1 = cocktail.getColor1();
             this.color2 = cocktail.getColor2();

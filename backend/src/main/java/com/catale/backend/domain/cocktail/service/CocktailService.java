@@ -127,7 +127,7 @@ public class CocktailService {
         responseDto.setLike(likeService.checkisLiked(memberId, matchedCocktail.getId()));
 
         // FastAPI 호출, 연관 칵테일 Id list 반환
-        List<Long> recommendedIdList = apiService.getApiResponse(matchedCocktail.getId()).block();
+        List<Long> recommendedIdList = apiService.getTodayCocktailResponse(matchedCocktail.getId()).block();
         // id -> dto로 변환
         List<CocktailSimpleInfoDto> simpleInfoDtos = recommendedIdList.stream()
                               .map(id -> {
@@ -144,7 +144,57 @@ public class CocktailService {
         return responseDto;
     }
 
+    @Transactional
+    public List<CocktailGetResponseDto> getMemberRecommendCocktail(Authentication authentication){
+        Member member = memberService.findMember(authentication.getName());
+        Long memberId = member.getId();
 
+        // FastAPI 호출, 이용자 맞춤 추천 칵테일 Id list 반환
+        List<Long> recommendedIdList = apiService.getMemberRecommendResponse(memberId).block();
+        // id -> dto로 변환
+        List<CocktailGetResponseDto> responseDtoList = recommendedIdList.stream()
+                .map(id -> {
+                    Cocktail cocktail = cocktailRepository.findById(id)
+                            .orElseThrow(CocktailNotFoundException::new);
+                    return cocktail;
+                }).map(cocktail -> {
+                    CocktailGetResponseDto cocktailDto = new CocktailGetResponseDto(cocktail);
+                    cocktailDto.setLike(likeService.checkisLiked(memberId, cocktail.getId()));
+                    return cocktailDto;
+                }).toList();
+
+        return responseDtoList;
+    }
+
+    @Transactional
+    public List<CocktailSimpleInfoDto> getCocktailSearchByKeyword(Authentication authentication, String keyword, Pageable page){
+        Member member = memberService.findMember(authentication.getName());
+        Long memberId = member.getId();
+
+        List<CocktailSimpleInfoDto> searchedList = cocktailRepository.searchByKeyword(keyword, page).orElse(new ArrayList<>());
+        for(CocktailSimpleInfoDto infoDto : searchedList){
+            infoDto.setLike(likeService.checkisLiked(memberId, infoDto.getCocktailId()));
+        }
+        return searchedList;
+    }
+
+//    getCocktailSearchByOption(authentication, base, alc, sweet, sour, bitter, sparkling));
+
+    @Transactional
+    public List<CocktailSimpleInfoDto> getCocktailSearchByOption(Authentication authentication,
+                                                                 int base, int alc, int sweet, int sour, int bitter, int sparkling,
+                                                                 Pageable page){
+        Member member = memberService.findMember(authentication.getName());
+        Long memberId = member.getId();
+
+        List<CocktailSimpleInfoDto> searchedList = cocktailRepository
+                                                    .searchByOption(base, alc, sweet, sour, bitter, sparkling, page)
+                                                    .orElse(new ArrayList<>());
+        for(CocktailSimpleInfoDto infoDto : searchedList){
+            infoDto.setLike(likeService.checkisLiked(memberId, infoDto.getCocktailId()));
+        }
+        return searchedList;
+    }
 
 
 
