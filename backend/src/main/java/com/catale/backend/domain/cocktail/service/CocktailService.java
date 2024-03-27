@@ -178,6 +178,23 @@ public class CocktailService {
         return searchedList;
     }
 
+//    getCocktailSearchByOption(authentication, base, alc, sweet, sour, bitter, sparkling));
+
+    @Transactional
+    public List<CocktailSimpleInfoDto> getCocktailSearchByOption(Authentication authentication,
+                                                                 int base, int alc, int sweet, int sour, int bitter, int sparkling,
+                                                                 Pageable page){
+        Member member = memberService.findMember(authentication.getName());
+        Long memberId = member.getId();
+
+        List<CocktailSimpleInfoDto> searchedList = cocktailRepository
+                                                    .searchByOption(base, alc, sweet, sour, bitter, sparkling, page)
+                                                    .orElse(new ArrayList<>());
+        for(CocktailSimpleInfoDto infoDto : searchedList){
+            infoDto.setLike(likeService.checkisLiked(memberId, infoDto.getCocktailId()));
+        }
+        return searchedList;
+    }
 
 
 
