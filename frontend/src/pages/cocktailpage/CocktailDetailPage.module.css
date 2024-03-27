@@ -36,3 +36,51 @@
   --feel4: #ffd4ca;
   --feel5: #ffb0b0;
 }
+
+.swiper {
+  width: 100%;
+}
+.img {
+  height: 27rem;
+  background-color: var(--main3);
+}
+.paint {
+  height: 23rem;
+  background-color: var(--main3);
+}
+.paint {
+  padding: 4rem 0rem 0;
+}
+.background {
+  width: 100%;
+  min-height: 1vh;
+  /* padding: 5rem 2rem; */
+}
+.cover {
+  background: #10214399;
+  min-height: 1vh;
+  padding: 2rem;
+}
+.content {
+  margin: 1rem;
+  letter-spacing: 0.03rem;
+  line-height: 1.2em;
+}
+
+.ingredient {
+  color: var(--main5);
+  margin: 1rem 0;
+  text-align: center;
+}
+.review {
+  margin: 2rem 0;
+  font-size: x-large;
+}
+.like {
+  position: absolute;
+  width: 1.6rem;
+  z-index: 10;
+  top: 0;
+  right: 0;
+  padding: 0.9rem;
+}
