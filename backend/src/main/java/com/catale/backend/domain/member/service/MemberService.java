@@ -67,7 +67,6 @@ public class MemberService {
         cookieUtil.addCookie("RefreshToken", tokenInfo.getRefreshToken(), tokenProvider.getREFRESH_TOKEN_TIME(), response);
 
 
-
         MemberInfo info = MemberInfo.builder()
                 .memberId(member.getId())
                 .profileImageId(Optional.ofNullable(member.getProfileImage()).map(Image::getId).orElse(null))
@@ -87,10 +86,10 @@ public class MemberService {
         boolean check = surveyCheck != -1;
 
         return LoginResponseDto.builder()
-                                .token(tokenInfo.getAccessToken())
-                                .memberInfo(info)
-                                .check(check)
-                                .build();
+                .token(tokenInfo.getAccessToken())
+                .memberInfo(info)
+                .check(check)
+                .build();
     }
 
     @Transactional
@@ -113,17 +112,17 @@ public class MemberService {
     }
 
     @Transactional
-    public EmailValidationResponseDto checkEmailDuplication(EmailValidationRequestDto requestDto){
+    public EmailValidationResponseDto checkEmailDuplication(EmailValidationRequestDto requestDto) {
         Optional<Member> member = memberRepository.searchByEmail(requestDto.getEmail());
-        if(member.isEmpty()){
+        if (member.isEmpty()) {
             return new EmailValidationResponseDto(true);
-        }else{
+        } else {
             return new EmailValidationResponseDto(false);
         }
     }
 
     @Transactional
-    public Long postPreference(Authentication authentication, PostPreferenceRequestDto requestDto){
+    public Long postPreference(Authentication authentication, PostPreferenceRequestDto requestDto) {
         Member member = findMember(authentication.getName());
         member.updatePreference(requestDto.getAlc(), requestDto.getSweet(), requestDto.getSour(), requestDto.getBitter(), requestDto.getSparking());
         return member.getId();
@@ -144,7 +143,6 @@ public class MemberService {
 
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 
 
     private void removeOldRefreshToken(LoginRequestDto requestDto, Member member) {
@@ -169,4 +167,30 @@ public class MemberService {
             throw new PasswordMismatchException();
         }
     }
+    @Transactional
+    public Long updateNickname(Long memberId, NicknameRequestDto requestDto) {
+
+//        if(!memberId.equals(requestDto.getMemberId())){
+//            throw new ProfileUpdateException();
+//        }
+//       Long nicknameUpdate = memberRepository.updateMemberNickname(memberId, requestDto.getNickname());
+        return memberRepository.updateMemberNickname(memberId, requestDto.getName());
+
+
+    }
+
+    @Transactional
+    public Long updatePassword(Long memberId, PasswordRequestDto requestDto){
+
+        Member member = memberRepository.findById(memberId).orElseThrow(MemberNotFoundException::new);
+
+        if (passwordEncoder.matches(requestDto.getOriginPassword(), member.getPassword())) {
+            return memberRepository.updateMemberPassword(memberId, passwordEncoder.encode(requestDto.getNewPassword()));
+        }
+
+//        System.out.println("패스워드 : "+member.getPassword());
+//        System.out.println("new : "+passwordEncoder.encode(requestDto.getOriginPassword()));
+        throw new PasswordMismatchException();
+    }
+
 }
