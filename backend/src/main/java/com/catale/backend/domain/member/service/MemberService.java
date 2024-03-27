@@ -57,7 +57,7 @@ public class MemberService {
         log.info("event=LoginAttempt, email={}", requestDto.getEmail());
 
         Member member = searchMemberByEmail(requestDto.getEmail());
-        log.info("searchMemberByEmail");
+
         isPasswordMatchingWithEncoded(requestDto.getPassword(), member.getPassword());
         log.info("passwordMatched");
         removeOldRefreshToken(requestDto, member);
@@ -128,6 +128,19 @@ public class MemberService {
         member.updatePreference(requestDto.getAlc(), requestDto.getSweet(), requestDto.getSour(), requestDto.getBitter(), requestDto.getSparking());
         return member.getId();
     }
+
+    @Transactional
+    public Long checkPassword(Authentication authentication, PasswordValidationRequestDto requestDto){
+        Member member = findMember(authentication.getName());
+
+        String password = requestDto.getPassword();
+        isPasswordMatchingWithEncoded(password, member.getPassword());
+
+        return member.getId();
+    }
+
+
+
 
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

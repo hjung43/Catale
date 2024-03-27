@@ -1,9 +1,6 @@
 package com.catale.backend.domain.member.controller;
 
-import com.catale.backend.domain.member.dto.EmailValidationRequestDto;
-import com.catale.backend.domain.member.dto.LoginRequestDto;
-import com.catale.backend.domain.member.dto.PostPreferenceRequestDto;
-import com.catale.backend.domain.member.dto.SignupRequestDto;
+import com.catale.backend.domain.member.dto.*;
 import com.catale.backend.domain.member.service.MemberService;
 import com.catale.backend.global.format.code.ApiResponse;
 import com.catale.backend.global.format.response.ResponseCode;
@@ -75,6 +72,14 @@ public class MemberController {
                                             @RequestBody PostPreferenceRequestDto requestDto) {
 
         return response.success(ResponseCode.PREFERENCE_UPDATED, memberService.postPreference(authentication, requestDto));
+    }
+
+    @Operation(summary = "비밀번호 확인(회원정보 수정)", description = "회원 비밀번호 확인 요청")
+    @PostMapping("/password/verification")
+    public ResponseEntity<?> checkPassword(@Parameter(hidden = true) Authentication authentication,
+                                           @RequestBody PasswordValidationRequestDto requestDto) {
+
+        return response.success(ResponseCode.PASSWORD_CHECK_SUCCESS, memberService.checkPassword(authentication, requestDto));
     }
 
 
