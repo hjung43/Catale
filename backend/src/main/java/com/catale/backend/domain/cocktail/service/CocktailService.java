@@ -166,6 +166,17 @@ public class CocktailService {
         return responseDtoList;
     }
 
+    @Transactional
+    public List<CocktailSimpleInfoDto> getCocktailSearchByKeyword(Authentication authentication, String keyword, Pageable page){
+        Member member = memberService.findMember(authentication.getName());
+        Long memberId = member.getId();
+
+        List<CocktailSimpleInfoDto> searchedList = cocktailRepository.searchByKeyword(keyword, page).orElse(new ArrayList<>());
+        for(CocktailSimpleInfoDto infoDto : searchedList){
+            infoDto.setLike(likeService.checkisLiked(memberId, infoDto.getCocktailId()));
+        }
+        return searchedList;
+    }
 
 
 
