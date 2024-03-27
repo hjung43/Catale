@@ -59,6 +59,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
         // preflight request -> 토큰 검사 건너뜀
         if(HttpMethod.OPTIONS.matches(request.getMethod())){
+            response.setHeader("Access-Control-Allow-Origin", request.getHeader("Origin"));
             return;
         }
 
