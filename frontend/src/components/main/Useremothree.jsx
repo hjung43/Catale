@@ -1,49 +1,16 @@
 import styles from "./Useremothree.module.css";
 import React, { useState, useEffect } from "react";
-
+import {
+  selectcolor,
+  backcolor,
+  fontcolor,
+} from "../../pages/mainpage/Emodata/Emocolor";
 export default function Useremothree({
   todayemo,
   setTodayemo,
   setSelectcheck,
   mood1,
 }) {
-  const backcolor = [
-    "",
-    "#FFD2FB",
-    "#FF9F9F",
-    "#FFBD8E",
-    "#FFF385",
-    "#FFE5D2",
-    "#EDE5FF",
-    "#BEEEB2",
-    "#EAEAEA",
-    "#ECF5FF",
-  ];
-  const fontcolor = [
-    "",
-    "#814E7A",
-    "#652828",
-    "#654228",
-    "#66620F",
-    "#654228",
-    "#4C326E",
-    "#28652A",
-    "#545B60",
-    "#303867",
-  ];
-  const selectcolor = [
-    "",
-    "#FF6BF0",
-    "#FF5757",
-    "#FF7D1F",
-    "#FFD600",
-    "#C78D62",
-    "#8F6CDE",
-    "#6AE54B",
-    "#BBF7FF",
-    "#67ADFF",
-  ];
-
   const [clickedIndexes, setClickedIndexes] = useState([]);
   const [toastVisible, setToastVisible] = useState(false);
 

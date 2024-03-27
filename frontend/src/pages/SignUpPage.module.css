@@ -40,3 +40,36 @@
 .input {
   color: #1f2544;
 }
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* background-color: #e6e7ff; */
+  height: calc(var(--vh, 1vh) * 100);
+}
+.inputContainer {
+  /* background-color: #9c9ec6; */
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.inputContainer input {
+  width: 56%;
+}
+.button {
+  /* background-color: rgb(227, 199, 255); */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid rgb(255, 255, 255);
+  padding: 0.4rem;
+  border-radius: 12px;
+}
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 2rem;
+}
