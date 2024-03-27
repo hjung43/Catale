@@ -1,8 +1,10 @@
 package com.catale.backend.domain.review.dto;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
 public class ReviewGetRequestDto {
 
     private Long cocktailId;
