@@ -4,6 +4,7 @@ import static com.catale.backend.domain.image.entity.QImage.image;
 import static com.catale.backend.domain.member.entity.QMember.member;
 
 import com.catale.backend.domain.member.dto.MemberInfoDto;
+import com.catale.backend.domain.member.dto.NicknameRequestDto;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
@@ -27,6 +28,18 @@ public class MemberRepositoryImpl implements MemberRepositoryCustom {
 
     }
 
+    public Long updateMemberNickname(Long memberId, String nickname){
+        return query.update(member)
+                .set(member.nickname, nickname)
+                .where(member.id.eq(memberId))
+                .execute();
+    }
 
+    public Long updateMemberPassword(Long memberId, String newpassword){
+        return query.update(member)
+                .set(member.password, newpassword)
+                .where(member.id.eq(memberId))
+                .execute();
+    }
 
 }

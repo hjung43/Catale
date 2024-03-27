@@ -1,9 +1,7 @@
 package com.catale.backend.domain.member.controller;
 
-import com.catale.backend.domain.member.dto.EmailValidationRequestDto;
-import com.catale.backend.domain.member.dto.LoginRequestDto;
-import com.catale.backend.domain.member.dto.PostPreferenceRequestDto;
-import com.catale.backend.domain.member.dto.SignupRequestDto;
+import com.catale.backend.domain.member.dto.*;
+import com.catale.backend.domain.member.entity.Member;
 import com.catale.backend.domain.member.service.MemberService;
 import com.catale.backend.global.format.code.ApiResponse;
 import com.catale.backend.global.format.response.ResponseCode;
@@ -78,6 +76,31 @@ public class MemberController {
     }
 
 
+    @Operation(summary = "닉네임 수정 요청", description = "닉네임 수정")
+    @PutMapping("/name")
+    public ResponseEntity<?> updateNickname(@Parameter(hidden = true) Authentication authentication,
+                                            @RequestBody NicknameRequestDto requestDto){
+
+        System.out.println("check : "+authentication);
+        Member me = memberService.findMember(authentication.getName());
+        Long memberId = me.getId();
+
+        Long nicknameUpdate = memberService.updateNickname(memberId, requestDto);
+        return response.success(ResponseCode.NICKNAME_UPDATED, nicknameUpdate);
+
+    }
+
+    @Operation(summary = "비밀번호 수정 요청", description = "비밀번호 수정")
+    @PutMapping("/password")
+    public ResponseEntity<?> updatePassword(@Parameter(hidden = true) Authentication authentication,
+                                            @RequestBody PasswordRequestDto requestDto){
+
+        Member me = memberService.findMember(authentication.getName());
+        Long memberId = me.getId();
+
+        Long passwordUpdate = memberService.updatePassword(memberId, requestDto);
+        return response.success(ResponseCode.PASSWORD_UPDATE_SUCCESS, passwordUpdate);
+    }
 //    @Operation(summary = "소셜 회원가입", description = "소셜 회원가입")
 //    @PostMapping("/social")
 //    public ResponseEntity<?> signupBySocial(@Valid @RequestBody SignupRequestDto requestDto,

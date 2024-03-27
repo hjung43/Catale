@@ -15,12 +15,12 @@ import org.hibernate.annotations.Where;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 /* soft delete 관련 */
 @Where(clause = "is_deleted = false")
-@SQLDelete(sql = "UPDATE review SET is_deleted = TRUE WHERE comment_id = ?")
+@SQLDelete(sql = "UPDATE review SET is_deleted = TRUE WHERE review_id = ?")
 public class Review extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "comment_id")
+    @Column(name = "review_id")
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)

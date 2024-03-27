@@ -5,6 +5,7 @@ import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 
 import static com.catale.backend.domain.image.entity.QImage.image;
+import static com.catale.backend.domain.member.entity.QMember.member;
 
 @RequiredArgsConstructor
 public class ImageRepositoryImpl implements ImageRepositoryCustom{
@@ -17,4 +18,6 @@ public class ImageRepositoryImpl implements ImageRepositoryCustom{
                 .where(image.member.id.eq(memberId))
                 .execute();
     }
+
+
 }
