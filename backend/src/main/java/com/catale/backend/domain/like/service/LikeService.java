@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 @Service
 public class LikeService {
-      LikeRepository likeRepository;
+      private final LikeRepository likeRepository;
 
       @Transactional
       public boolean checkisLiked(Long memberid, Long cocktailId){

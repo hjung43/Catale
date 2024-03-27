@@ -97,13 +97,16 @@ public class CocktailController {
                 cocktailService.getMemberRecommendCocktail(authentication));
     }
 
-    @Operation(summary = "키워드 검색으로 칵테일 조회", description = "사용자 맞춤 추천 칵테일 리스트 조회(상세정보 포함)")
+    @Operation(summary = "키워드 검색으로 칵테일 조회", description = "칵테일 제목 키워드를 통한 리스트 조회")
     @GetMapping("/search")
     public ResponseEntity<?> getCocktailSearchByKeyword(
-            @Parameter(hidden = true) Authentication authentication) {
+            @Parameter(hidden = true) Authentication authentication,
+            @RequestParam(name = "keyword") String keyword,
+            @PageableDefault(page = 0, size = 10) Pageable page
+            ) {
 
         return response.success(ResponseCode.COCKTAIL_DETAIL_FETCHED,
-                cocktailService.getMemberRecommendCocktail(authentication));
+                cocktailService.getCocktailSearchByKeyword(authentication, keyword, page));
     }
 
 
