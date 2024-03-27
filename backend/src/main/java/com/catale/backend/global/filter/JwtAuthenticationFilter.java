@@ -15,6 +15,7 @@ import java.util.Collections;
 import java.util.Map;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -53,6 +54,11 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         /* 토큰 필터 패스: 정의된 URL 패턴에 맞는 경우 토큰 검사를 건너뜁니다. */
         if (shouldFilter(request.getRequestURI())) {
             filterChain.doFilter(request, response);
+            return;
+        }
+
+        // preflight request -> 토큰 검사 건너뜀
+        if(HttpMethod.OPTIONS.matches(request.getMethod())){
             return;
         }
 
