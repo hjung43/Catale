@@ -1,9 +1,10 @@
 import Container from "../components/common/Container";
 import styles from "./SignUpPage.module.css";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import s from "classnames";
 import { signup, checkEmail, checkNickName } from "../api/member/Singup";
-
+import toast from "react-hot-toast";
 export default function SignUpPage() {
   const [formErrors, setFormErrors] = useState({});
   const [formData, setFormData] = useState({
@@ -12,6 +13,7 @@ export default function SignUpPage() {
     passwordConfirm: "",
     nickname: "",
   });
+  const navigate = useNavigate();
 
   /* 값을 입력함과 동시에 form 데이터 동시에 갱신 */
   function handleChange(e) {
@@ -32,6 +34,7 @@ export default function SignUpPage() {
       console.log(data);
 
       if (data.status === "SUCCESS") {
+        showToast("회원가입 성공!");
         console.log("회원가입이 완료되었습니다.");
         setFormData({
           email: "",
@@ -39,6 +42,7 @@ export default function SignUpPage() {
           passwordConfirm: "",
           nickname: "",
         });
+        navigate(`../`);
       } else {
         console.log("에러임");
       }
@@ -46,7 +50,22 @@ export default function SignUpPage() {
       console.error("회원가입 에러:", error);
     }
   };
-
+  /* 알림 함수 */
+  const showToast = (string) => {
+    toast.error(`${string}`, {
+      style: {
+        border: "1px solid #713200",
+        padding: "16px",
+        color: "#713200",
+        zIndex: "100",
+      },
+      iconTheme: {
+        primary: "#713200",
+        secondary: "#FFFAEE",
+      },
+      position: "top-center",
+    });
+  };
   return (
     <Container>
       <div className={styles.main}>

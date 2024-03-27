@@ -55,12 +55,13 @@ export default function SignInPage() {
           social: res.data.memberInfo.social,
           check: res.data.check,
         });
-        console.log(user);
+
+        showToast("로그인성공!");
         navigate(`../bar`);
       } else {
         // 이메일, 비밀번호 불일치
         console.log("에러남");
-        // showToast("아이디와 비밀번호를 확인해주세요.");
+        showToast("아이디와 비밀번호를 확인해주세요.");
       }
     } catch (e) {
       // 전송 오류 발생 시
@@ -70,21 +71,21 @@ export default function SignInPage() {
   };
 
   /* 알림 함수 */
-  //   const showToast = (string) => {
-  //     toast.error(`${string}`, {
-  //       style: {
-  //         border: "1px solid #713200",
-  //         padding: "16px",
-  //         color: "#713200",
-  //         zIndex: "100",
-  //       },
-  //       iconTheme: {
-  //         primary: "#713200",
-  //         secondary: "#FFFAEE",
-  //       },
-  //       position: "top-center",
-  //     });
-  //   };
+  const showToast = (string) => {
+    toast.error(`${string}`, {
+      style: {
+        border: "1px solid #713200",
+        padding: "16px",
+        color: "#713200",
+        zIndex: "100",
+      },
+      iconTheme: {
+        primary: "#713200",
+        secondary: "#FFFAEE",
+      },
+      position: "top-center",
+    });
+  };
 
   return (
     <Container>
