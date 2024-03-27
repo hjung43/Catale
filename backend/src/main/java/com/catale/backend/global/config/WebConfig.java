@@ -28,7 +28,7 @@ public class WebConfig implements WebMvcConfigurer {
                 .allowedOriginPatterns(corsAllowedOrigins)
 //                .allowedOrigins(corsAllowedOrigins)
                 .allowedMethods("HEAD", "OPTIONS", "GET", "POST", "PUT", "PATCH", "DELETE")
-                // .allowedHeaders("Authorization", "Content-Type")
+                .allowedHeaders("Authorization", "Content-Type")
                 .allowCredentials(true);
     }
 
