@@ -84,3 +84,6 @@ button {
   padding: 0;
   color: #fafaff;
 }
+.swiper-pagination > span {
+  background-color: var(--main2);
+}

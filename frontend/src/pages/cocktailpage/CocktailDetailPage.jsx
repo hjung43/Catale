@@ -1,7 +1,94 @@
+import { useParams } from "react-router";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
 import Container from "../../components/common/Container";
 import Headerwb from "../../components/common/Headerwb";
 import styles from "./CocktailDetailPage.module.css";
+import { Pagination } from "swiper/modules";
+import CocktailDetail from "../../components/diary/CocktailDetail";
+import { base } from "../../components/data/base";
+import like from "../../assets/common/like.png";
+import noneLike from "../../assets/common/noneLike.png";
 
 export default function CocktailDetailPage() {
-  return <Container>CocktailDetailPage</Container>;
+  const { cocktailId } = useParams();
+  const response = {
+    id: 39,
+    imageUrl:
+      "https://api.vip.foodnetwork.ca/wp-content/uploads/2022/06/over-the-rainbow-cocktail-beauty.jpg",
+    name: "레인보우 파라다이스",
+    alc: 6,
+    sweet: 5,
+    sour: 2,
+    bitter: 0,
+    sparking: 0,
+    color1: "#FD5B51",
+    color2: "#FAC848",
+    color3: "#53BAF4",
+    glass: 4,
+    content:
+      "럼 베이스 칵테일로, 유래는 아일랜드라고 합니다. 무지개 색으로 플로팅되어 무척 아름다운 색깔을 자랑하며, 덕분에 해외에서 무척 유명한 칵테일이기도 합니다. 유명한 만큼 변형도 무척 많은데, 리큐르 하나를 더 추가하거나, 슬러시 형태로 만들기도 하는 등 다양합니다.",
+    ingredient: "말리부, 그레나딘 시럽, 파인애플 주스, 물, 블루 큐라소",
+    base: 2,
+    emotion1: 2,
+    emotion2: 4,
+    emotion3: 9,
+    likeCount: 0,
+    fruit: 4,
+    like: false,
+  };
+  // const handleLikeClick = () => {
+
+  // }
+  return (
+    <Container>
+      <Headerwb title={response.name} />
+      <img
+        src={response.like ? like : noneLike}
+        alt="like"
+        className={styles.like}
+        // onClick={() => handleLikeClick()}
+      />
+      <div className={styles.top}>
+        <Swiper
+          className={styles.swiper}
+          spaceBetween={30}
+          slidesPerView={1}
+          loop={true}
+          modules={[Pagination]}
+          pagination={{
+            clickable: true,
+          }}
+        >
+          <SwiperSlide>
+            <div className={styles.paint}>f</div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div
+              className={styles.img}
+              style={{
+                background: `url("${response.imageUrl}") no-repeat center/cover`,
+              }}
+            >
+              d
+            </div>
+          </SwiperSlide>
+        </Swiper>
+      </div>
+      <div
+        className={styles.background}
+        style={{
+          background: `linear-gradient(135deg, ${response.color1} 0%,  ${response.color2} 50%, ${response.color3} 100%)`,
+        }}
+      >
+        <div className={styles.cover}>
+          <div className={styles.content}>{response.content}</div>
+          <CocktailDetail cocktail={response} btn={false} />
+          <div className={styles.ingredient}>{response.ingredient}</div>
+          <div className={styles.review}>{response.name} 리뷰</div>
+        </div>
+      </div>
+    </Container>
+  );
 }

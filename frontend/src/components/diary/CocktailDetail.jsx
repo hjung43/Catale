@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import Chart from "react-apexcharts";
 import card from "../../assets/common/card.png";
 
-export default function CocktailDetail({ cocktail }) {
+export default function CocktailDetail({ cocktail, btn = true }) {
   const chartOptions = {
     options: {
       tooltip: {
@@ -132,10 +132,12 @@ export default function CocktailDetail({ cocktail }) {
           탄산<p>{cocktail.sparking * 20}%</p>
         </div>
       </div>
-      <div className={styles.bottom}>
-        <div>칵테일</div>
-        <img src={card} alt="card" className={styles.icon} />
-      </div>
+      {btn && (
+        <div className={styles.bottom}>
+          <div>칵테일</div>
+          <img src={card} alt="card" className={styles.icon} />
+        </div>
+      )}
     </div>
   );
 }

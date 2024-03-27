@@ -37,7 +37,7 @@ function Main() {
             <Route path="deleteaccount" element={<DeleteAccountPage />} />
           </Route>
           <Route path="preference" element={<PreferencePage />} />
-          <Route path="cocktail/cocktailId">
+          <Route path="cocktail/:cocktailId">
             <Route index element={<CocktailDetailPage />} />
             <Route path="review" element={<CocktailReviewPage />} />
           </Route>
