@@ -3,7 +3,7 @@ import styles from "./SignUpPage.module.css";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import s from "classnames";
-import { signup, checkEmail, checkNickName } from "../api/member/Singup";
+import { signup, checkEmail, checkNickName } from "../api/Member";
 import toast from "react-hot-toast";
 export default function SignUpPage() {
   const [formErrors, setFormErrors] = useState({});

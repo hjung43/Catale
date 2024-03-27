@@ -3,7 +3,7 @@ import styles from "./MainPage.module.css";
 import Nav from "../../components/common/Nav";
 import 배경바 from "../../assets/bartender/임시바배경.png";
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Cattalkbox from "../../components/main/Cattalkbox";
 import { talkarr } from "./Talkdata/Talkarr";
 import Userselctbox from "../../components/main/Userselctbox";
@@ -19,8 +19,12 @@ import Userreasonbox from "../../components/main/Userreasonbox";
 import Usercomment from "../../components/main/Usercomment";
 import { selectcolor } from "./Emodata/Emocolor";
 import cocktail from "../../assets/bartender/오늘의칵테일.png";
+import useUserStore from "../../store/useUserStore";
+import Cattalk20 from "../../components/main/Cattalk20";
 
 export default function MainPage() {
+  //유저를 일단 담아놓고~
+  const user = useUserStore((state) => state.user);
   const [talknum, setTalknum] = useState(1);
   const [selectnum, setSeletnum] = useState(0);
   //이건 오늘의 기분 하나를 담은거야
@@ -35,6 +39,22 @@ export default function MainPage() {
   const [todaycomment, setTodaycomment] = useState("");
   // cattalk에서 0은 없는거 1은 다음버튼있는거 2는 다음버튼없는거 3은 고르시오
   // usertakl에서 0은 없는거 1은 대화 2,3,4,5,6,7은 특정고르기
+
+  useEffect(() => {
+    async function fetchMyData() {
+      try {
+        if (user.check) {
+          //여기서 오늘대화의 결고를 가져오는걸 써야해
+          setTalknum(24);
+        }
+      } catch (error) {
+        console.error("데이터를 가져오는 데 실패했습니다:", error);
+      }
+    }
+
+    fetchMyData();
+  }, []);
+
   return (
     <ContainerMain>
       <div className={styles.main}>
@@ -96,6 +116,8 @@ export default function MainPage() {
           talknum !== 11 &&
           talknum !== 14 &&
           talknum !== 16 &&
+          talknum !== 20 &&
+          talknum !== 21 &&
           talknum !== 22 && (
             <Cattalkbox
               talknum={talknum}
@@ -104,6 +126,16 @@ export default function MainPage() {
               말풍선={고양이말풍선}
             />
           )}
+        {(talknum === 20 || talknum === 21) && (
+          <Cattalk20
+            talknum={talknum}
+            setTalknum={setTalknum}
+            talkarr={talkarr[talknum]}
+            말풍선={고양이말풍선}
+            nickname={user.nickname}
+            alc={user.alc}
+          />
+        )}
         {(talknum === 3 || talknum === 4 || talknum === 22) && (
           <Cattalkbox
             talknum={talknum}

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { login } from "../api/member/Singup";
+import { login } from "../api/Member";
 import useUserStore from "../store/useUserStore";
 import styles from "./SignInPage.module.css";
 import toast from "react-hot-toast";
@@ -39,6 +39,7 @@ export default function SignInPage() {
       if (res.status === "SUCCESS") {
         // useStore에 data안에 들어있는 기본 정보들을 저장해라
         localStorage.setItem("accessToken", res.data.token);
+        localStorage.setItem("tokenTimestamp", Date.now());
         console.log(res.data);
         //  localStorage.setItem("tokenTimestamp", Date.now());
         await setUser({
@@ -55,9 +56,11 @@ export default function SignInPage() {
           social: res.data.memberInfo.social,
           check: res.data.check,
         });
-
-        showToast("로그인성공!");
-        navigate(`../bar`);
+        if (res.data.memberInfo.alc == -1) navigate(`../preference`);
+        else {
+          showToast("로그인성공!");
+          navigate(`../bar`);
+        }
       } else {
         // 이메일, 비밀번호 불일치
         console.log("에러남");
