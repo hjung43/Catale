@@ -58,10 +58,10 @@ export default function DatePage() {
     sour: 0,
     bitter: 4,
     sparking: 0,
-    color1: "#FD5B51",
-    color2: "#FAC848",
-    color3: "#53BAF4",
-    glass: 5,
+    color1: "#FDDB00",
+    color2: "#FFA902",
+    color3: "#FD5A24",
+    glass: 1,
     content:
       "브랜디 베이스의 칵테일로, 마가리타의 기원으로 추정되는 칵테일 중 하나입니다.",
     ingredient: "스카치 위스키, 아마레또",
@@ -106,7 +106,7 @@ export default function DatePage() {
                 <div
                   className={styles.glass_cover}
                   style={{
-                    background: `linear-gradient(0deg, ${response.color3} ${
+                    background: `linear-gradient(180deg, ${response.color3} ${
                       num[response.glass][0]
                     }%, ${response.color2} ${num[response.glass][1]}%, ${
                       response.color1
