@@ -109,5 +109,22 @@ public class CocktailController {
                 cocktailService.getCocktailSearchByKeyword(authentication, keyword, page));
     }
 
+    @Operation(summary = "옵션 선택을 통한 칵테일 조회", description = "옵션 선택을 통한 통한 리스트 조회, 선택하지 않은 옵션은 -1을 주시오")
+    @GetMapping("/option")
+    public ResponseEntity<?> getCocktailSearchByCategory(
+            @Parameter(hidden = true) Authentication authentication,
+            @RequestParam(name = "base") int base,
+            @RequestParam(name = "alc") int alc,
+            @RequestParam(name = "sweet") int sweet,
+            @RequestParam(name = "sour") int sour,
+            @RequestParam(name = "bitter") int bitter,
+            @RequestParam(name = "sparkling") int sparkling,
+            @PageableDefault(page = 0, size = 10) Pageable page
+    ) {
+
+        return response.success(ResponseCode.COCKTAIL_DETAIL_FETCHED,
+                cocktailService.getCocktailSearchByOption(authentication, base, alc, sweet, sour, bitter, sparkling, page));
+    }
+
 
 }
