@@ -2,6 +2,7 @@ package com.catale.backend.domain.cocktail.controller;
 
 import com.catale.backend.domain.cocktail.dto.CocktailGetLikeResponseDto;
 import com.catale.backend.domain.cocktail.dto.CocktailGetResponseDto;
+import com.catale.backend.domain.cocktail.dto.CoctailMyreviewResponseDto;
 import com.catale.backend.domain.cocktail.dto.TodayCocktailRequestDto;
 import com.catale.backend.domain.cocktail.service.CocktailService;
 import com.catale.backend.domain.member.entity.Member;
@@ -124,6 +125,19 @@ public class CocktailController {
 
         return response.success(ResponseCode.SEARCHED_COCKTAIL_LIST_FETCHED,
                 cocktailService.getCocktailSearchByOption(authentication, base, alc, sweet, sour, bitter, sparkling, page));
+    }
+
+    @Operation(summary = "내가 리뷰단 칵테일 조회", description = "내가 먹어본(리뷰님긴) 칵테일 리스트 조회")
+    @GetMapping("/reviewed")
+    public ResponseEntity<?> getCocktailMyReviewList(
+            @Parameter(hidden = true) Authentication authentication,
+            @PageableDefault(sort ="createdAt,desc" , page = 0, size = 10) Pageable page
+    ){
+        Member me = memberService.findMember(authentication.getName());
+        Long memberId = me.getId();
+
+        List<CoctailMyreviewResponseDto> list = cocktailService.getCocktailMyReviewList(memberId, page);
+        return response.success(ResponseCode.LIKED_COCKTAIL_LIST_FETCHED, list);
     }
 
 
