@@ -1,6 +1,7 @@
 package com.catale.backend.domain.member.service;
 
 import com.catale.backend.domain.image.entity.Image;
+import com.catale.backend.domain.image.repository.ImageRepository;
 import com.catale.backend.domain.member.dto.*;
 import com.catale.backend.domain.member.entity.Member;
 import com.catale.backend.domain.member.repository.MemberRepository;
@@ -27,6 +28,7 @@ import java.util.Optional;
 public class MemberService {
 
     private final MemberRepository memberRepository;
+    private final ImageRepository imageRepository;
     private final PasswordEncoder passwordEncoder;
     private final RefreshTokenRepository refreshTokenRepository;
     private final TokenProvider tokenProvider;
@@ -47,6 +49,14 @@ public class MemberService {
 
         Member member = Member.of(requestDto, passwordEncoder.encode(requestDto.getPassword()), false);
         memberRepository.save(member);
+
+        Image image = Image.builder()
+                .url("https://cattale-bucket.s3.ap-northeast-2.amazonaws.com/images/profileImage.png")
+                .store(null)
+                .member(member)
+                .cocktail(null)
+                .build();
+        imageRepository.save(image);
 
         return member.getId();
     }
