@@ -11,6 +11,7 @@ import s from "classnames";
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import toast, { Toaster } from "react-hot-toast";
+import { writereview } from "../../api/Review";
 
 export default function CocktailReviewPage() {
   const navigate = useNavigate();
@@ -66,12 +67,16 @@ export default function CocktailReviewPage() {
   const handleSubmit = (e) => {
     if (percent.content !== "" && percent.rate !== 0) {
       console.log(percent);
+      const response = writereview(percent);
+      console.log(response);
+      navigate(-1);
     } else {
       toast.success(`다채워라`, {
         position: "top-center",
       });
     }
   };
+
   return (
     <Container>
       <Toaster position="top-center" reverseOrder={false} />

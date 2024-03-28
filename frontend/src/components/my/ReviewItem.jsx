@@ -124,7 +124,9 @@ export default function ReviewItem({ item, setList }) {
                       />
                     ))}
                   </div>
-                  <div className={styles.review_date}>{rev.createAt}</div>
+                  <div className={styles.review_date}>
+                    {rev.createAt.split("T")[0]}
+                  </div>
                 </div>
                 <div className={styles.review_content}>{rev.content}</div>
                 <div className={styles.review_sweet}>{`단맛:${
