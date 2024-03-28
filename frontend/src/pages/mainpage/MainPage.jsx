@@ -74,8 +74,9 @@ export default function MainPage() {
                       alt=""
                     />
                   </div>
-                  {todayemo.map((emo) => (
+                  {todayemo.map((emo, index) => (
                     <div
+                      key={index} // 각 요소에 인덱스를 사용하여 고유한 "key" prop을 제공합니다.
                       className={styles.이모지하나하나}
                       style={{
                         backgroundColor: selectcolor[Math.floor(emo / 10)],

@@ -5,6 +5,7 @@ import {
   backcolor,
   fontcolor,
 } from "../../pages/mainpage/Emodata/Emocolor";
+
 export default function Useremothree({
   todayemo,
   setTodayemo,
@@ -52,7 +53,7 @@ export default function Useremothree({
     <>
       <div className={styles.감정선택칸}>
         {mood1.map((mood, index1) => (
-          <>
+          <React.Fragment key={index1}>
             {mood.map((mod, index2) => (
               <div
                 key={index2}
@@ -74,7 +75,7 @@ export default function Useremothree({
                 {mod}
               </div>
             ))}
-          </>
+          </React.Fragment>
         ))}
       </div>
       {toastVisible && (

@@ -91,13 +91,13 @@ export default function CocktailDetailPage() {
           <SwiperSlide>
             <div
               className={styles.glass_cover}
-              style={{
-                background: `linear-gradient(180deg, ${cocktail.color3} ${
-                  num[cocktail.glass][0]
-                }%, ${cocktail.color2} ${num[cocktail.glass][1]}%, ${
-                  cocktail.color1
-                } ${num[cocktail.glass][2]}%, ${cocktail.color1} 100%)`,
-              }}
+              // style={{
+              //   background: `linear-gradient(180deg, ${cocktail.color3} ${
+              //     num[cocktail.glass][0]
+              //   }%, ${cocktail.color2} ${num[cocktail.glass][1]}%, ${
+              //     cocktail.color1
+              //   } ${num[cocktail.glass][2]}%, ${cocktail.color1} 100%)`,
+              // }}
             >
               <img
                 src={glasses[cocktail.glass]}
