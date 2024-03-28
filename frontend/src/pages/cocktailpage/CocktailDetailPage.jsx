@@ -20,6 +20,7 @@ import glass6 from "../../assets/glass/glass6.png";
 import glass7 from "../../assets/glass/glass7.png";
 import Popup from "../../components/common/Popup";
 import useCocktailStore from "../../store/useCocktailStore";
+import { useEffect } from "react";
 
 export default function CocktailDetailPage() {
   const { cocktailId } = useParams();
@@ -44,6 +45,7 @@ export default function CocktailDetailPage() {
     [35, 45, 55],
     [25, 40, 55],
   ];
+  useEffect(() => {}, [cocktailId]);
   const response = {
     id: 39,
     imageUrl:
