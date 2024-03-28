@@ -36,3 +36,29 @@
   --feel4: #ffd4ca;
   --feel5: #ffb0b0;
 }
+.box {
+  display: flex;
+  align-items: center;
+}
+.minus,
+.plus {
+  cursor: pointer;
+  width: 2rem;
+}
+
+.minus:active,
+.plus:active {
+  animation: scaleAnimation 0.3s ease-in-out;
+}
+
+@keyframes scaleAnimation {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.8);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
