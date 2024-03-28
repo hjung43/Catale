@@ -1,6 +1,7 @@
 package com.catale.backend.domain.member.service;
 
 import com.catale.backend.domain.image.entity.Image;
+import com.catale.backend.domain.image.repository.ImageRepository;
 import com.catale.backend.domain.member.dto.*;
 import com.catale.backend.domain.member.entity.Member;
 import com.catale.backend.domain.member.repository.MemberRepository;
@@ -32,11 +33,14 @@ public class MemberService {
     private final TokenProvider tokenProvider;
     private final TokenService tokenService;
     private final CookieUtil cookieUtil;
+    private final ImageRepository imageRepository;
 
 
     /* 일반 회원가입 로직*/
     @Transactional
     public Long create(SignupRequestDto requestDto) {
+
+        memberRepository.searchByNickname(requestDto.getNickname()).ifPresent(this::throwDuplicateNicknameException);
 
         /* 비밀번호 불일치 */
         checkPasswordConfirmation(requestDto.getPassword(), requestDto.getPasswordConfirm());
@@ -47,6 +51,14 @@ public class MemberService {
 
         Member member = Member.of(requestDto, passwordEncoder.encode(requestDto.getPassword()), false);
         memberRepository.save(member);
+
+        Image image = Image.builder()
+                .url("https://cattale-bucket.s3.ap-northeast-2.amazonaws.com/images/profileImage.png")
+                .store(null)
+                .member(member)
+                .cocktail(null)
+                .build();
+        imageRepository.save(image);
 
         return member.getId();
     }
@@ -156,6 +168,8 @@ public class MemberService {
         throw new DuplicateEmailException();
     }
 
+    private void throwDuplicateNicknameException(Member member){throw new InvalidNicknameException();}
+
     private void isPasswordMatchingWithEncoded(String input, String encoded) {
         if (!passwordEncoder.matches(input, encoded)) {
             throw new InvalidLoginAttemptException();
@@ -193,4 +207,12 @@ public class MemberService {
         throw new PasswordMismatchException();
     }
 
+//    @Transactional
+//    public String checkNicknameDuplication(NicknameDoubleCheckRequestDto responseDto) {
+//
+//        if(memberRepository.searchByNickname(responseDto.getNickname()).isPresent()){
+//            throw new DuplicateNicknameException();
+//        }
+//        return responseDto.getNickname();
+//    }
 }

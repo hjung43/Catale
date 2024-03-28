@@ -69,12 +69,19 @@ public class MemberController {
         return response.success(ResponseCode.LOGOUT_SUCCESS, memberService.logout(authentication.getName(), servletResponse));
     }
 
-    @Operation(summary = "이메일 확인 요청", description = "해당 이메일로 가입 가능한지 여부 체크")
+    @Operation(summary = "이메일 중복 검사", description = "해당 이메일로 가입 가능한지 여부 체크")
     @PostMapping("/email/verification")
     public ResponseEntity<?> emailVerification(@Valid @RequestBody EmailValidationRequestDto requestDto) {
 
         return response.success(ResponseCode.EMAIL_VERIFIED_SUCCESS, memberService.checkEmailDuplication(requestDto));
     }
+
+//    @Operation(summary = "닉네임 중복 확인", description = "회원가입 시 닉네임 중복 확인")
+//    @PostMapping("/nickname/verification")
+//    public ResponseEntity<?> nicknameVerification(@Valid @RequestBody NicknameDoubleCheckRequestDto responseDto){
+//
+//        return response.success(ResponseCode.NICKNAME_AVAILABLE, memberService.checkNicknameDuplication(responseDto));
+//    }
 
     @Operation(summary = "취향정보 등록/수정 요청", description = "회원 취향정보 등록/수정 요청")
     @PostMapping("/preference")

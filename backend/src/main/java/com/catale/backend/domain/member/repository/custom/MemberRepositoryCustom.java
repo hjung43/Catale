@@ -14,4 +14,6 @@ public interface MemberRepositoryCustom {
 
     Long updateMemberPassword(Long memberId, String newpassword);
 
+//    Optional<String> findByNickname(String nickname);
+
 }
