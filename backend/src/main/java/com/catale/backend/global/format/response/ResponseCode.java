@@ -51,6 +51,8 @@ public enum ResponseCode {
     DIARY_CREATED(HttpStatus.OK, "다이어리가 성공적으로 생성되었습니다."),
     DIARY_INFO_FETCHED(HttpStatus.OK, "다이어리 정보가 성공적으로 조회되었습니다."),
     DIARY_DELETED(HttpStatus.OK, "다이어리가 성공적으로 삭제되었습니다."),
+    TODAY_DIARY_NOT_FOUND(HttpStatus.OK, "오늘의 다이어리가 없습니다."),
+    TODAY_DIARY_FETCHED(HttpStatus.OK, "오늘의 다이어리가 성공적으로 조회되었습니다."),
 
     /* 리뷰(Review) */
     REVIEW_LIST_FETCHED(HttpStatus.OK, "리뷰 리스트가 성공적으로 조회되었습니다."),
