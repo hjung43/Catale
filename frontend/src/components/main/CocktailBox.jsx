@@ -8,6 +8,7 @@ import glass6 from "../../assets/glass/glass6.png";
 import glass7 from "../../assets/glass/glass7.png";
 import like from "../../assets/common/like.png";
 import noneLike from "../../assets/common/noneLike.png";
+import { cocktaillike } from "../../api/Cocktail";
 
 export default function CocktailBox({ cocktail, setList }) {
   const glasses = [
@@ -33,9 +34,13 @@ export default function CocktailBox({ cocktail, setList }) {
   const toggleLike = () => {
     setList((prevList) =>
       prevList.map((item) =>
-        item.id === cocktail.id ? { ...item, like: !item.like } : item
+        item.id === cocktail.id
+          ? { ...item, like: !item.like } // 토글 된 경우 like 상태를 반전
+          : item
       )
     );
+    // 토글된 이후에 cocktaillike 호출
+    cocktaillike(cocktail.id);
   };
   return (
     <div className={styles.item}>
