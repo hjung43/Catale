@@ -1,12 +1,7 @@
 package com.catale.backend.domain.cocktail.service;
 
 
-import com.catale.backend.domain.cocktail.dto.CocktailGetLikeResponseDto;
-import com.catale.backend.domain.cocktail.dto.CocktailGetResponseDto;
-import com.catale.backend.domain.cocktail.dto.CocktailLikeResponseDto;
-import com.catale.backend.domain.cocktail.dto.CocktailSimpleInfoDto;
-import com.catale.backend.domain.cocktail.dto.TodayCocktailRequestDto;
-import com.catale.backend.domain.cocktail.dto.TodayCocktailResponseDto;
+import com.catale.backend.domain.cocktail.dto.*;
 import com.catale.backend.domain.cocktail.entity.Cocktail;
 import com.catale.backend.domain.cocktail.repository.CocktailRepository;
 import com.catale.backend.domain.like.dto.LikeResponseDto;
@@ -28,7 +23,6 @@ import org.springframework.data.domain.Pageable;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
-import com.catale.backend.domain.cocktail.dto.CocktailListResponseDto;
 import com.catale.backend.domain.member.repository.MemberRepository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -88,6 +82,23 @@ public class CocktailService {
         return cocktailDto;
 
     }
+
+    //내가 먹은 칵테일 조회
+    @Transactional
+    public List <CoctailMyreviewResponseDto>getCocktailMyReviewList(Long memberId, Pageable page){
+        //원하는 정렬 방법으로 정렬된 리스트 가져오기
+        List<CoctailMyreviewResponseDto> myList = cocktailRepository.getCocktailMyReviewList(memberId, page).orElse(new ArrayList<>());
+        for(CoctailMyreviewResponseDto c : myList){
+            c.setReviewList(reviewRepository.findByMemberId(c.getId(),memberId).orElse(new ArrayList<>()));
+            //해당 칵테일의 좋아요 여부 dto 등록
+            Optional<LikeResponseDto> likeDto = likeRepository.getIsLike(memberId, c.getId());
+            if(!likeDto.isEmpty()){
+                c.setLike(true);
+            }
+        }
+        return myList;
+    }
+
 
     @Transactional
     public CocktailLikeResponseDto getCocktailLikeResult(Long memberId, Long cocktailId){

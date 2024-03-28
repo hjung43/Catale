@@ -8,4 +8,5 @@ import java.util.Optional;
 
 public interface ReviewRepositoryCustom {
     Optional<List<ReviewGetResponseDto>> findByCocktailId(Long CocktailId, Pageable page);
+    Optional<List<ReviewGetResponseDto>> findByMemberId(Long cocktailId, Long memberId);
 }

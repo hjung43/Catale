@@ -1,9 +1,6 @@
 package com.catale.backend.domain.cocktail.repository.custom;
 
-import com.catale.backend.domain.cocktail.dto.CocktailGetResponseDto;
-import com.catale.backend.domain.cocktail.dto.CocktailListResponseDto;
-import com.catale.backend.domain.cocktail.dto.CocktailGetLikeResponseDto;
-import com.catale.backend.domain.cocktail.dto.CocktailSimpleInfoDto;
+import com.catale.backend.domain.cocktail.dto.*;
 import org.springframework.data.domain.Pageable;
 
 import java.util.List;
@@ -15,4 +12,5 @@ public interface CocktailRepositoryCustom {
 
     Optional<List<CocktailSimpleInfoDto>> searchByKeyword(String keyword, Pageable page);
     Optional<List<CocktailSimpleInfoDto>> searchByOption(int base, int alc, int sweet, int sour, int bitter, int sparkling, Pageable page);
+    Optional<List<CoctailMyreviewResponseDto>> getCocktailMyReviewList(Long memberId, Pageable page);
 }
