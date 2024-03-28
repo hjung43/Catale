@@ -42,7 +42,7 @@ public class CocktailGetResponseDto {
 
     public CocktailGetResponseDto(Cocktail cocktail) {
         this.id = cocktail.getId();
-//        this.imageUrl = cocktail.getImage().getUrl();
+        this.imageUrl = cocktail.getImage().getUrl();
         this.name = cocktail.getName();
         this.alc = cocktail.getAlc();
         this.sweet = cocktail.getSweet();

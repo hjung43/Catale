@@ -44,4 +44,9 @@ public class ImageController {
         String imageUrl = imageService.updateMemberImage(memberId, multipartFile);
         return response.success(ResponseCode.IMAGE_UPDATED,imageUrl);
     }
+    @PostMapping(value = "cocktail/image/{cocktailId}", consumes = "multipart/form-data")
+    public ResponseEntity<?> postCocktailImage (@PathVariable Long cocktailId, @RequestPart(value = "file") MultipartFile multipartFile)throws IOException{
+        String imageUrl = imageService.saveCocktailImage(cocktailId,multipartFile);
+        return response.success(ResponseCode.IMAGE_UPDATED,imageUrl);
+    }
 }
