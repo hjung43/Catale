@@ -43,7 +43,7 @@ export default function MainPage() {
   useEffect(() => {
     async function fetchMyData() {
       try {
-        if (user.check) {
+        if (!user.check) {
           //여기서 오늘대화의 결고를 가져오는걸 써야해
           setTalknum(24);
         }

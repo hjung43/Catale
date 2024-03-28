@@ -56,7 +56,7 @@ export async function logout(setUser) {
 export async function check() {
   try {
     const response = await axios.get(
-      "https://api.silvstone.xyz/api/v1/cocktail?page=0&size=1&sort=string"
+      "https://api.silvstone.xyz/api/v1/cocktail?page=0&size=10&sort=string"
     );
     return response.data;
   } catch (error) {
