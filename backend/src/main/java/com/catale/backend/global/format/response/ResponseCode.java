@@ -30,6 +30,7 @@ public enum ResponseCode {
     PRIVACY_SETTING_UPDATED(HttpStatus.OK, "계정 공개여부가 성공적으로 설정되었습니다."),
     NOTIFICATION_SETTING_UPDATED(HttpStatus.OK, "알림 설정이 성공적으로 업데이트되었습니다."),
     MONTHLY_DIARY_MOOD_CNT_FETCHED(HttpStatus.OK, "월 별 기분 개수 조회가 성공적으로 조회되었습니다."),
+    SIGNUP_LIKED_COCKTAIL_LIST_FETCHED(HttpStatus.OK, "회원가입시 선택한 내 취향 칵테일 리스트가 성공적으로 처리되었습니다."),
 
     EMAIL_VERIFICATION_SENT(HttpStatus.OK, "이메일 인증코드가 성공적으로 발송되었습니다."),
     EMAIL_VERIFIED_SUCCESS(HttpStatus.OK, "이메일 사용가능 여부가 조회되었습니다."),
@@ -44,7 +45,7 @@ public enum ResponseCode {
     COCKTAIL_DETAIL_FETCHED(HttpStatus.OK, "칵테일 상세정보가 성공적으로 조회되었습니다."),
     LIKED_COCKTAIL_LIST_FETCHED(HttpStatus.OK, "좋아요 한 칵테일 리스트가 성공적으로 조회되었습니다."),
     SEARCHED_COCKTAIL_LIST_FETCHED(HttpStatus.OK, "검색한 칵테일 리스트가 성공적으로 조회되었습니다."),
-
+    REVIEW_COCKTAIL_LIST_FETCHED(HttpStatus.OK, "내가 마신 칵테일 리스트가 성공적으로 조회되었습니다."),
     /* 다이어리(Diary) */
     MONTHLY_DIARY_LIST_FETCHED(HttpStatus.OK, "월 별 다이어리 리스트가 성공적으로 조회되었습니다."),
     DIARY_CREATED(HttpStatus.OK, "다이어리가 성공적으로 생성되었습니다."),

@@ -99,6 +99,16 @@ public class CocktailService {
         return myList;
     }
 
+    @Transactional
+    public Long postCocktailLikeList(Long memberId, CocktailLikeListRequestDto requestDto){
+
+        List<Long> list = requestDto.getCocktailIds();
+        for(Long cocktailId : list){
+            getCocktailLikeResult(memberId, cocktailId);
+        }
+        return  null;
+    }
+
 
     @Transactional
     public CocktailLikeResponseDto getCocktailLikeResult(Long memberId, Long cocktailId){
@@ -126,7 +136,6 @@ public class CocktailService {
         }
         return responseDto;
     }
-
 
     @Transactional
     public TodayCocktailResponseDto getTodayCocktail(Authentication authentication, TodayCocktailRequestDto request) {
@@ -211,6 +220,8 @@ public class CocktailService {
 
 
 
+
+
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -239,6 +250,7 @@ public class CocktailService {
         Collections.shuffle(bestMatches);
         return bestMatches.get(0);
     }
+
 
 
 }
