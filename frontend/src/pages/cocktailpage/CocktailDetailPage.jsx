@@ -47,6 +47,14 @@ export default function CocktailDetailPage() {
     [35, 45, 55],
     [25, 40, 55],
   ];
+
+  // cocktail.glass 값과 num 배열의 인덱스를 검증합니다.
+  const validGlassIndex = cocktail.glass >= 0 && cocktail.glass < num.length;
+  const numIndex = validGlassIndex ? cocktail.glass : 0;
+
+  // linear-gradient를 위한 스타일 문자열을 생성합니다.
+  const glassCoverStyle = `linear-gradient(180deg, ${cocktail.color3} ${num[numIndex][0]}%, ${cocktail.color2} ${num[numIndex][1]}%, ${cocktail.color1} ${num[numIndex][2]}%, ${cocktail.color1} 100%)`;
+
   useEffect(() => {
     const fetchData = async () => {
       const cocktails = await cocktaildetail(cocktailId);
@@ -56,16 +64,10 @@ export default function CocktailDetailPage() {
 
     fetchData();
 
-    // 컴포넌트가 언마운트될 때 Swiper를 파괴합니다.
     return () => {
-      if (mySwiper) {
-        mySwiper.destroy();
-      }
+      // cleanup logic
     };
   }, []);
-
-  // Swiper 객체를 상태로 유지합니다.
-  const [mySwiper, setMySwiper] = useState(null);
 
   return (
     <Container>
@@ -86,17 +88,12 @@ export default function CocktailDetailPage() {
           pagination={{
             clickable: true,
           }}
-          onSwiper={setMySwiper} // Swiper 객체를 설정합니다.
         >
           <SwiperSlide>
             <div
               className={styles.glass_cover}
               style={{
-                background: `linear-gradient(180deg, ${cocktail.color3} ${
-                  num[cocktail.glass][0]
-                }%, ${cocktail.color2} ${num[cocktail.glass][1]}%, ${
-                  cocktail.color1
-                } ${num[cocktail.glass][2]}%, ${cocktail.color1} 100%)`,
+                background: glassCoverStyle,
               }}
             >
               <img
