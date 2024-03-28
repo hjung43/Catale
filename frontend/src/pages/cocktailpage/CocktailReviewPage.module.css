@@ -39,26 +39,86 @@
 .box {
   display: flex;
   align-items: center;
+  margin: 1rem;
+  padding: 1rem;
+  background-color: var(--main2);
+  border-radius: 1rem;
+}
+.text_box {
+  flex-grow: 1;
+}
+.text {
+  font-size: large;
+}
+.sub_text p {
+  font-size: smaller;
+  color: var(--main4);
 }
 .minus,
 .plus {
   cursor: pointer;
   width: 2rem;
+  margin-left: 0.3rem;
 }
 
 .minus:active,
 .plus:active {
-  animation: scaleAnimation 0.3s ease-in-out;
+  transition: 0.3s;
+  transform: scale(0.8);
+}
+.percent {
+  width: 3rem;
+  text-align: end;
 }
 
-@keyframes scaleAnimation {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(0.8);
-  }
-  100% {
-    transform: scale(1);
-  }
+/* --- */
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+}
+.exp {
+  margin: 4.5rem 1rem 1rem;
+  color: var(--main4);
+}
+.exp2 {
+  margin: 2rem 1rem 1rem;
+  color: var(--main4);
+}
+.none {
+  opacity: 0.2;
+}
+.textareaCover {
+  margin: 1rem;
+  background-color: var(--main2);
+  padding: 1rem;
+  border-radius: 1rem;
+}
+.title {
+  font-size: larger;
+}
+.textarea {
+  margin: 1rem 0;
+  background: none;
+  border: none;
+  outline: none;
+  resize: none;
+  height: 5rem;
+  font-size: large;
+  width: 100%;
+}
+textarea::placeholder {
+  color: var(--main4);
+}
+.star {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem;
+}
+.star img {
+  width: 3rem;
 }
