@@ -1,6 +1,5 @@
 import s from "classnames";
 import styles from "./Usertodayemo.module.css";
-
 import React from "react";
 import emo1 from "../../assets/bartender/emo1.png";
 import emo2 from "../../assets/bartender/emo2.png";
@@ -15,16 +14,21 @@ export default function Usertodayemo({ talknum, setTalknum, setNowemonum }) {
     setNowemonum(index);
     setTalknum(talknum + 1);
   };
+
   return (
     <>
       <div className={styles.기분박스}>
         <div>오늘 나의 기분은 ?</div>
         <div className={styles.유저말풍선}>
           <div className={styles.유저내용}>
+            {/* 각 요소에 고유한 key prop을 추가 */}
             {emotion.map((emo, index) => (
-              <>
-                <img onClick={() => clickevent(index)} src={emo} alt="" />
-              </>
+              <img
+                key={index}
+                onClick={() => clickevent(index)}
+                src={emo}
+                alt=""
+              />
             ))}
           </div>
         </div>

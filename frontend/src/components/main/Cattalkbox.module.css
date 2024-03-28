@@ -134,9 +134,11 @@
 }
 
 .고양이다음 {
+  /* background-color: red; */
+  padding: 5rem 2rem 5rem 2rem;
   position: absolute;
-  bottom: 22%;
-  right: 6%;
+  bottom: -2.5rem;
+  right: -0.3rem;
   display: flex;
   justify-content: center;
   align-items: center;

@@ -13,8 +13,12 @@ import trash from "../../assets/common/trash.png";
 import like from "../../assets/common/like.png";
 import noneLike from "../../assets/common/noneLike.png";
 import { useState } from "react";
+import { cocktaillike } from "../../api/Cocktail";
+import { deletereview } from "../../api/Review";
+import { useNavigate } from "react-router-dom";
 
 export default function ReviewItem({ item, setList }) {
+  const navigate = useNavigate();
   const [toggle, setToggle] = useState([false, 0]);
   const glasses = [
     glass1,
@@ -42,14 +46,25 @@ export default function ReviewItem({ item, setList }) {
         items.id === item.id ? { ...items, like: !items.like } : items
       )
     );
+    cocktaillike(item.id);
   };
-  const toggleReview = () => {
-    // setList((prevList) =>
-    //   prevList.map((items) =>
-    //     items.id === item.id ? { ...items, like: !items.like } : items
-    //   )
-    // );
+
+  const toggleDelete = (id) => {
+    deletereview(id);
+    setList((prevList) =>
+      prevList.map((items) => {
+        if (items.id === item.id) {
+          return {
+            ...items,
+            reviewList: items.reviewList.filter((rev) => rev.id !== id),
+          };
+        }
+        return items;
+      })
+    );
+    cocktaillike(item.id);
   };
+
   return (
     <>
       <div className={styles.item}>
@@ -64,12 +79,13 @@ export default function ReviewItem({ item, setList }) {
               num[item.glass][2]
             }%, ${item.color3} 100%)`,
           }}
+          onClick={() => navigate(`/cocktail/${item.id}`)}
         />
         <div className={styles.review_text}>
           <div className={styles.flex}>
             <div className={styles.text}>{item.name}</div>
           </div>
-          <div className={styles.subtext}>{item.text}</div>
+          <div className={styles.subtext}>{item.content}</div>
         </div>
         <div className={styles.icon}>
           <img
@@ -89,11 +105,11 @@ export default function ReviewItem({ item, setList }) {
       </div>
       <div
         style={{
-          minHeight: toggle[0] ? `${item.review.length * 110 + 10}px` : "0",
+          minHeight: toggle[0] ? `${item.reviewList.length * 110 + 10}px` : "0",
         }}
         className={styles.review}
       >
-        {item.review.map((rev) => (
+        {item.reviewList.map((rev) => (
           <>
             <hr className={styles.hr} />
             <div className={styles.review_flex}>
@@ -108,16 +124,21 @@ export default function ReviewItem({ item, setList }) {
                       />
                     ))}
                   </div>
-                  <div className={styles.review_date}>{rev.create_at}</div>
+                  <div className={styles.review_date}>{rev.createAt}</div>
                 </div>
                 <div className={styles.review_content}>{rev.content}</div>
                 <div className={styles.review_sweet}>{`단맛:${
                   rev.sweet * 20
                 }% | 쓴맛:${rev.bitter * 20}% | 신맛:${rev.sour * 20}% | 탄산:${
-                  rev.sparkling * 20
+                  rev.sparking * 20
                 }%`}</div>
               </div>
-              <img src={trash} alt="trash" className={styles.trash} />
+              <img
+                src={trash}
+                alt="trash"
+                className={styles.trash}
+                onClick={() => toggleDelete(rev.id)}
+              />
             </div>
           </>
         ))}

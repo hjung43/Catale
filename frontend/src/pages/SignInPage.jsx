@@ -40,7 +40,7 @@ export default function SignInPage() {
         // useStore에 data안에 들어있는 기본 정보들을 저장해라
         localStorage.setItem("accessToken", res.data.token);
         localStorage.setItem("tokenTimestamp", Date.now());
-        console.log(res.data);
+        // console.log(res.data);
         //  localStorage.setItem("tokenTimestamp", Date.now());
         await setUser({
           memberId: res.data.memberInfo.memberId,

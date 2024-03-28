@@ -4,13 +4,7 @@ import { mood1, mood2 } from "../../pages/mainpage/Emodata/Emotionthree";
 import { selectcolor } from "../../pages/mainpage/Emodata/Emocolor";
 
 export default function Cattalk11({ talkarr, 말풍선, todayemo }) {
-  //그리고 새로운 객체를 만들어야해 갯수만큼있고 배열로 되어있고 [{글자,글자색}] 이거를 만들어
-  //11번은 들어오자마자 mood에서 글자뽑아내고 글자에 색입혀서 보여줘야해
-  //emo의 갯수만큼 일단 숫자를 만들어야하는데 1개만 선택, 2개선택, 3개선택을 유동적으로
-  //생각하고 해야해 일단 길이를 확인해 ㅇㅋ
-  //이게 이제 1일때 2일때 3일때를 나눠야해
   const [talkObjects, setTalkObjects] = useState([]);
-
   const [currentText, setCurrentText] = useState("");
   const [currentText2, setCurrentText2] = useState("");
   const [intervalId, setIntervalId] = useState(null);
@@ -23,7 +17,7 @@ export default function Cattalk11({ talkarr, 말풍선, todayemo }) {
           ? mood1[moodIndex][emo % 10]
           : mood2[moodIndex][emo % 10];
       const color = selectcolor[moodIndex];
-      return { talk, color };
+      return { id: index, talk, color }; // 각 요소에 고유한 id 추가
     });
     setTalkObjects(newTalkObjects);
     showText(" 오늘은");
@@ -63,8 +57,11 @@ export default function Cattalk11({ talkarr, 말풍선, todayemo }) {
           <>
             <div>{currentText}</div>
             <div className={styles.감정대화}>
+              {/* 각 요소에 고유한 key prop을 추가 */}
               {talkObjects.map((talkObj) => (
-                <div style={{ color: talkObj.color }}>{talkObj.talk}</div>
+                <div key={talkObj.id} style={{ color: talkObj.color }}>
+                  {talkObj.talk}
+                </div>
               ))}
             </div>
             <div>{currentText2}!</div>
