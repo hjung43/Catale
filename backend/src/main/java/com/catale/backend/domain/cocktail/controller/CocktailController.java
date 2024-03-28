@@ -137,7 +137,7 @@ public class CocktailController {
         Long memberId = me.getId();
 
         List<CoctailMyreviewResponseDto> list = cocktailService.getCocktailMyReviewList(memberId, page);
-        return response.success(ResponseCode.LIKED_COCKTAIL_LIST_FETCHED, list);
+        return response.success(ResponseCode.REVIEW_COCKTAIL_LIST_FETCHED, list);
     }
 
 

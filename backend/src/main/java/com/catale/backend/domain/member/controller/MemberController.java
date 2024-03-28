@@ -1,5 +1,7 @@
 package com.catale.backend.domain.member.controller;
 
+import com.catale.backend.domain.cocktail.dto.CocktailLikeListRequestDto;
+import com.catale.backend.domain.cocktail.service.CocktailService;
 import com.catale.backend.domain.diary.dto.MoodCntResponseDto;
 import com.catale.backend.domain.diary.service.DiaryService;
 import com.catale.backend.domain.member.dto.*;
@@ -20,6 +22,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Tag(name = "Member 컨트롤러", description = "Member Controller API")
 @RestController
 @RequiredArgsConstructor
@@ -29,6 +33,7 @@ public class MemberController {
     private final ApiResponse response;
     private final MemberService memberService;
     private final DiaryService diaryService;
+    private final CocktailService cocktailService;
 
     @Operation(summary = "일반 회원가입", description = "일반 회원가입")
     @PostMapping("/signup")
@@ -127,6 +132,18 @@ public class MemberController {
         return response.success(ResponseCode.MONTHLY_DIARY_MOOD_CNT_FETCHED, moodCnt);
 
     }
+
+    @Operation(summary = "회원가입 시 유저가 좋아하는 칵테일들 선택", description = "회원가입 시 유저가 좋아하는 칵테일들 선택. 마이페이지 좋아하는 칵테일에 추가됨")
+    @PostMapping("/choose")
+    public ResponseEntity<?> chooseCocktail(@Parameter(hidden = true) Authentication authentication,
+                                            @RequestBody CocktailLikeListRequestDto requestDto){ //CocktailLikeListRequestDto는 칵테일 DTO에 있음
+
+        Member me = memberService.findMember(authentication.getName());
+        Long memberId = me.getId();
+
+        return response.success(ResponseCode.SIGNUP_LIKED_COCKTAIL_LIST_FETCHED, cocktailService.postCocktailLikeList(memberId, requestDto));
+    }
+
 
 
 //    @Operation(summary = "소셜 회원가입", description = "소셜 회원가입")
