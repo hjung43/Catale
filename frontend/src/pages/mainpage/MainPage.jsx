@@ -74,8 +74,9 @@ export default function MainPage() {
                       alt=""
                     />
                   </div>
-                  {todayemo.map((emo) => (
+                  {todayemo.map((emo, index) => (
                     <div
+                      key={index} // 각 요소에 인덱스를 사용하여 고유한 "key" prop을 제공합니다.
                       className={styles.이모지하나하나}
                       style={{
                         backgroundColor: selectcolor[Math.floor(emo / 10)],
@@ -180,6 +181,7 @@ export default function MainPage() {
             talkarr={talkarr[talknum]}
             selectnum={selectnum}
             말풍선={유저말풍선}
+            usernickname={user.nickname}
           />
         )}
         {(talknum === 6 || talknum === 12) && (
@@ -188,6 +190,7 @@ export default function MainPage() {
             setTalknum={setTalknum}
             talkarr={talkarr[talknum]}
             말풍선={유저말풍선}
+            usernickname={user.nickname}
           />
         )}
         {talknum === 5 && (

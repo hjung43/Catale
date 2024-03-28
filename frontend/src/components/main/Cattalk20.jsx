@@ -13,6 +13,7 @@ export default function Cattalk20({
 }) {
   //이런조건이여야 고양이가 말을함
   const [currentText, setCurrentText] = useState("");
+  const [currentText2, setCurrentText2] = useState("");
   const [showNextButton, setShowNextButton] = useState(false);
   const [intervalId, setIntervalId] = useState(null);
   const [alctext, setAlctext] = useState("");
@@ -35,6 +36,9 @@ export default function Cattalk20({
     setCurrentText("");
     setShowNextButton(false);
     showText(
+      ` ${nickname}의 취향 도수는 ${alctext}다냥!\n취향대로 섞어줄까냥 ? `
+    );
+    setCurrentText2(
       ` ${nickname}의 취향 도수는 ${alctext}다냥!\n취향대로 섞어줄까냥 ? `
     );
   }, [talknum, talkarr]);
@@ -80,21 +84,19 @@ export default function Cattalk20({
             <>
               <div className={styles.고양이이름}>고먐미</div>
 
-              {talknum !== 8 && talknum !== 21 && (
+              {talknum !== 21 && (
                 <div className={styles.고양이내용}>
                   {renderTextWithLineBreaks(currentText)}
                 </div>
               )}
-              {(talknum === 8 || talknum === 21) && (
+              {talknum === 21 && (
                 <div className={styles.고양이내용}>
-                  {cattalk[talkarr.cattalk].talk
-                    .split("\n")
-                    .map((line, index) => (
-                      <React.Fragment key={index}>
-                        {line}
-                        <br />
-                      </React.Fragment>
-                    ))}
+                  {currentText2.split("\n").map((line, index) => (
+                    <React.Fragment key={index}>
+                      {line}
+                      <br />
+                    </React.Fragment>
+                  ))}
                 </div>
               )}
             </>

@@ -81,3 +81,17 @@ export async function cocktailmelike(option) {
     throw error;
   }
 }
+
+//내가 리뷰남긴 칵테일 조회
+export async function cocktailmereview(option) {
+  const params = {
+    page: option.page,
+    size: option.size,
+  };
+  try {
+    const response = await axios.get(BASE_URL + "/reviewed", { params });
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+}
