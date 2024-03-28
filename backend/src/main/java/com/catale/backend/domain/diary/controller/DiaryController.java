@@ -76,5 +76,32 @@ DiaryController {
         List<DiaryMonthResponseDto> list = diaryService.getDiarys(year,month,memberId);
         return response.success(ResponseCode.MONTHLY_DIARY_LIST_FETCHED,list);
     }
+    @Operation(summary = "날짜로 다이어리 상세 조회", description = "날짜로 다이어리 상세 조회")
+    @GetMapping("/date")
+    public ResponseEntity<?> getDiaryDetailByDate(
+            @Parameter(hidden = true) Authentication authentication,
+            @RequestParam int year, @RequestParam int month, @RequestParam int day){
+
+        Member me = memberService.findMember(authentication.getName());
+        Long memberId = me.getId();
+
+        DiaryGetResponseDto dto = diaryService.getDiaryDetailByDate(memberId, year,month,day);
+        return response.success(ResponseCode.DIARY_INFO_FETCHED,dto);
+    }
+
+    @Operation(summary = "오늘의 다이어리 유무조회", description = "오늘의 다이어리 유무 조회")
+    @GetMapping("/today")
+    public ResponseEntity<?> getIsExistTodayDiary(
+            @Parameter(hidden = true) Authentication authentication){
+
+        Member me = memberService.findMember(authentication.getName());
+        Long memberId = me.getId();
+
+        boolean isExsitTodayDiary = diaryService.isExsitTodayDiary(memberId);
+        if(!isExsitTodayDiary){
+            return response.success(ResponseCode.TODAY_DIARY_NOT_FOUND,isExsitTodayDiary);
+        }
+        return response.success(ResponseCode.TODAY_DIARY_FETCHED,isExsitTodayDiary);
+    }
 
 }
