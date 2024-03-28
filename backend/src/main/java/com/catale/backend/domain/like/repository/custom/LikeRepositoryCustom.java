@@ -9,4 +9,5 @@ public interface LikeRepositoryCustom {
     Optional<LikeResponseDto> getIsLike(Long memberId, Long cocktailId);
 
     Optional<Like> getLike(Long memberId, Long cocktailId);
+    Long updateLikeCount(Long cocktailId, int newLikeCount);
 }

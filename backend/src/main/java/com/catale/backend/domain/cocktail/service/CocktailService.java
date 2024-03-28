@@ -106,9 +106,11 @@ public class CocktailService {
                             .member(member)
                             .build();
             likeRepository.save(like);
+            likeRepository.updateLikeCount(cocktailId, cocktail.getLikeCount()+1);
             responseDto.setLiked(true);
         }else{
             likeRepository.delete(isLike);
+            likeRepository.updateLikeCount(cocktailId, cocktail.getLikeCount()-1);
             responseDto.setLiked(false);
         }
         return responseDto;

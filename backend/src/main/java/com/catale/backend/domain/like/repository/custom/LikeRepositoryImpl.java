@@ -8,7 +8,9 @@ import lombok.RequiredArgsConstructor;
 
 import java.util.Optional;
 
+import static com.catale.backend.domain.cocktail.entity.QCocktail.cocktail;
 import static com.catale.backend.domain.like.entity.QLike.like;
+import static com.catale.backend.domain.member.entity.QMember.member;
 
 @RequiredArgsConstructor
 public class LikeRepositoryImpl implements LikeRepositoryCustom{
@@ -32,6 +34,13 @@ public class LikeRepositoryImpl implements LikeRepositoryCustom{
                         .fetchOne());
     }
 
+    @Override
+    public Long updateLikeCount(Long cocktailId, int newLikeCount) {
+        return query.update(cocktail)
+                .set(cocktail.likeCount, newLikeCount)
+                .where(cocktail.id.eq(cocktailId))
+                .execute();
+    }
 
 
 }
