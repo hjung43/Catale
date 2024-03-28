@@ -25,6 +25,7 @@ import Cattalk20 from "../../components/main/Cattalk20";
 export default function MainPage() {
   //유저를 일단 담아놓고~
   const user = useUserStore((state) => state.user);
+  //대화의 순서
   const [talknum, setTalknum] = useState(1);
   const [selectnum, setSeletnum] = useState(0);
   //이건 오늘의 기분 하나를 담은거야

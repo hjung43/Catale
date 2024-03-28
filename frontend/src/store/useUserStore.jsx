@@ -10,11 +10,11 @@ const useUserStore = create(
         nickname: "",
         profileImageUrl: "",
         profileImageId: "",
-        alc: "",
-        sweet: "",
-        sour: "",
-        bitter: "",
-        sparking: "",
+        alc: 0, // 숫자로 초기화
+        sweet: 0, // 숫자로 초기화
+        sour: 0, // 숫자로 초기화
+        bitter: 0, // 숫자로 초기화
+        sparking: 0, // 숫자로 초기화
         social: "",
         check: "",
       },

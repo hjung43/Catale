@@ -16,7 +16,10 @@ import logout from "../../assets/common/logout.png";
 import edit from "../../assets/common/edit.png";
 import { useNavigate } from "react-router-dom";
 
+import useUserStore from "../../store/useUserStore";
+
 export default function MyPage() {
+  const user = useUserStore((state) => state.user);
   const [chartOptions, setChartOptions] = useState({
     options: {
       tooltip: {
@@ -38,11 +41,12 @@ export default function MyPage() {
       },
       yaxis: {
         max: 120,
-        min: 0,
+        min: -20,
         stepSize: 20,
         labels: {
           style: {
             colors: [
+              "#00000000",
               "#00000000",
               "#00000000",
               "#00000000",
@@ -95,7 +99,13 @@ export default function MyPage() {
     series: [
       {
         name: "",
-        data: [80, 20, 60, 40, 100],
+        data: [
+          user.sweet * 20,
+          user.bitter * 20,
+          user.sour * 20,
+          user.alc * 15,
+          user.sparking * 20,
+        ],
       },
     ],
   });
@@ -109,8 +119,8 @@ export default function MyPage() {
           <div className={styles.profile_left}>
             <img src={profile} alt="profile" className={styles.profile_img} />
             <div>
-              <div>서또카늘</div>
-              <div className={styles.profile_email}>seo_m98@naver.com</div>
+              <div>{user.nickname}</div>
+              <div className={styles.profile_email}>{user.email}</div>
             </div>
           </div>
           <div className={styles.profile_right}>
@@ -124,17 +134,16 @@ export default function MyPage() {
           </div>
         </div>
         <Box>
-          <div
-            className={styles.recommendTitle}
-            onClick={() => navigate("recommend")}
-          >
+          <div className={styles.recommendTitle}>
             <div>나의 취향</div>
-            <div className={styles.button}>취향 칵테일 보러가기</div>
+            <div
+              className={styles.button}
+              onClick={() => navigate("recommend")}
+            >
+              취향 칵테일 보러가기
+            </div>
           </div>
-          <div
-            className={styles.recommend}
-            onClick={() => navigate("recommend")}
-          >
+          <div className={styles.recommend}>
             <div className={styles.chart}>
               <Chart
                 className={styles.chartC}
@@ -146,16 +155,16 @@ export default function MyPage() {
               />
             </div>
             <div className={styles.data}>
-              <div>단맛 : 80%</div>
-              <div>쓴맛 : 20%</div>
-              <div>신맛 : 60%</div>
-              <div>도수 : 40%</div>
-              <div>탄산 : 100%</div>
+              <div>단맛 : {chartOptions.series[0].data[0]}%</div>
+              <div>쓴맛 : {chartOptions.series[0].data[1]}%</div>
+              <div>신맛 : {chartOptions.series[0].data[2]}%</div>
+              <div>도수 : {chartOptions.series[0].data[3]} 도</div>
+              <div>탄산 : {chartOptions.series[0].data[4]}%</div>
             </div>
           </div>
           <div
             className={styles.changePreference}
-            onClick={() => navigate("changepreference")}
+            onClick={() => navigate("../preference")}
           >
             <img src={edit} alt="edit" className={styles.edit_icon} />
             <div>취향변경</div>
