@@ -88,6 +88,23 @@ export default function SearchPage() {
             </div>
           </>
         )}
+        {!searchcheck && (
+          <>
+            <div className={styles.검색했을때}>
+              <div className={styles.검색결과폰트}>검색결과</div>
+              <div className={styles.검색결과}>
+                {list.map((data, index) => (
+                  <>
+                    <>
+                      {/* 검색결과는 이거로 뜨게하면될거같긴한대 */}
+                      <CocktailBox cocktail={data} setList={setList} />
+                    </>
+                  </>
+                ))}
+              </div>
+            </div>
+          </>
+        )}
       </div>
       <Nav num={1} />
     </Container>

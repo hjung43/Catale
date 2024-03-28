@@ -42,7 +42,7 @@ export default function CocktailBox({ cocktail, setList }) {
       )
     );
     // 토글된 이후에 cocktaillike 호출
-    cocktaillike(cocktail.id);
+    cocktaillike(cocktail.id ? cocktail.id : cocktail.cocktailId);
   };
   return (
     <div className={styles.item}>
