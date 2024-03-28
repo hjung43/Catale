@@ -9,8 +9,11 @@ import star from "../../assets/common/star.png";
 import noneStar from "../../assets/common/noneStar.png";
 import s from "classnames";
 import { useState } from "react";
+import { useNavigate } from "react-router";
+import toast, { Toaster } from "react-hot-toast";
 
 export default function CocktailReviewPage() {
+  const navigate = useNavigate();
   const cocktail = useCocktailStore((state) => state.cocktail);
   const taste = [
     ["단맛", "sweet"],
@@ -19,12 +22,13 @@ export default function CocktailReviewPage() {
     ["탄산", "sparking"],
   ];
   const [percent, setPercent] = useState({
+    cocktailId: cocktail.id,
     sweet: cocktail.sweet,
     bitter: cocktail.bitter,
     sour: cocktail.sour,
     sparking: cocktail.sparking,
-    text: "",
-    star: 0,
+    content: "",
+    rate: 0,
   });
 
   const handleIncrement = (key) => {
@@ -48,16 +52,37 @@ export default function CocktailReviewPage() {
   const handleRate = (num) => {
     setPercent((prevPercent) => ({
       ...prevPercent,
-      ["star"]: num,
+      ["rate"]: num,
+    }));
+  };
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setPercent((prevPercent) => ({
+      ...prevPercent,
+      ["content"]: value,
     }));
   };
 
+  const handleSubmit = (e) => {
+    if (percent.content !== "" && percent.rate !== 0) {
+      console.log(percent);
+    } else {
+      toast.success(`다채워라`, {
+        position: "top-center",
+      });
+    }
+  };
   return (
     <Container>
+      <Toaster position="top-center" reverseOrder={false} />
       <div className={styles.header}>
-        <div>취소</div>
-        <div>리뷰작성</div>
-        <div>완료</div>
+        <div className={styles.header1} onClick={() => navigate(-1)}>
+          취소
+        </div>
+        <div className={styles.header2}>리뷰작성</div>
+        <div className={styles.header3} onClick={() => handleSubmit()}>
+          완료
+        </div>
       </div>
       <div className={styles.exp}>
         내가 생각하는 {cocktail.name}의 맛을 알려주세요.
@@ -68,7 +93,7 @@ export default function CocktailReviewPage() {
             <div className={styles.text}>{ele[0]}</div>
             <div className={styles.sub_text}>
               <p>{ele[0]}의 정도를</p>
-              <p> 0%에서 100%로 골라주세요</p>
+              <p> 0%에서 100%로 골라주세요.</p>
             </div>
           </div>
           <img
@@ -92,38 +117,41 @@ export default function CocktailReviewPage() {
         <textarea
           placeholder="리뷰를 작성해 주세요."
           className={styles.textarea}
+          value={percent.content}
+          onChange={handleChange}
         />
       </div>
-      <div className={styles.textareaCover}>
+      <div className={styles.rateCover}>
         <div className={styles.title}>별점</div>
         <div className={styles.star}>
           <img
-            src={percent.star >= 1 ? star : noneStar}
+            src={percent.rate >= 1 ? star : noneStar}
             alt="star"
             onClick={() => handleRate(1)}
           />
           <img
-            src={percent.star >= 2 ? star : noneStar}
+            src={percent.rate >= 2 ? star : noneStar}
             alt="star"
             onClick={() => handleRate(2)}
           />
           <img
-            src={percent.star >= 3 ? star : noneStar}
+            src={percent.rate >= 3 ? star : noneStar}
             alt="star"
             onClick={() => handleRate(3)}
           />
           <img
-            src={percent.star >= 4 ? star : noneStar}
+            src={percent.rate >= 4 ? star : noneStar}
             alt="star"
             onClick={() => handleRate(4)}
           />
           <img
-            src={percent.star >= 5 ? star : noneStar}
+            src={percent.rate >= 5 ? star : noneStar}
             alt="star"
             onClick={() => handleRate(5)}
           />
         </div>
       </div>
+      <div className={styles.ddd}></div>
     </Container>
   );
 }

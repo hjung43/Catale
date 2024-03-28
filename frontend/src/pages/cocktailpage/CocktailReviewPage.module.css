@@ -49,6 +49,7 @@
 }
 .text {
   font-size: large;
+  margin-bottom: 0.2rem;
 }
 .sub_text p {
   font-size: smaller;
@@ -56,8 +57,7 @@
 }
 .minus,
 .plus {
-  cursor: pointer;
-  width: 2rem;
+  width: 1.5rem;
   margin-left: 0.3rem;
 }
 
@@ -77,9 +77,21 @@
   justify-content: space-between;
   padding: 1rem;
   position: fixed;
+  align-items: center;
   top: 0;
   right: 0;
   left: 0;
+  background-color: rgba(70, 74, 109, 0.442);
+  backdrop-filter: blur(10px);
+}
+.header1 {
+  color: var(--no);
+}
+.header3 {
+  color: var(--yes);
+}
+.header2 {
+  font-size: large;
 }
 .exp {
   margin: 4.5rem 1rem 1rem;
@@ -114,6 +126,12 @@
 textarea::placeholder {
   color: var(--main4);
 }
+.rateCover {
+  margin: 1rem;
+  background-color: var(--main2);
+  padding: 1rem;
+  border-radius: 1rem;
+}
 .star {
   display: flex;
   justify-content: space-between;
@@ -121,4 +139,7 @@ textarea::placeholder {
 }
 .star img {
   width: 3rem;
+}
+.ddd {
+  padding: 2rem;
 }
