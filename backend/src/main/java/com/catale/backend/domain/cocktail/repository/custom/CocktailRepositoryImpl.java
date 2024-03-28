@@ -127,10 +127,26 @@ public class CocktailRepositoryImpl implements CocktailRepositoryCustom {
     }
 
     private BooleanExpression eqAlc(int alc) {
+        /*
+        * 1 = 1 ~ 10
+        * 2 = 11 ~ 15
+        * 3 = 16 ~ 20
+        * 4 = 21 ~ 29
+        * 5 = 30 이상*/
         if(alc == -1) {
             return null;
+        } else if(alc == 1){
+            return cocktail.alc.between(1, 10);
+        }else if(alc == 2){
+            return cocktail.alc.between(11, 15);
+        }else if(alc == 3){
+            return cocktail.alc.between(16, 20);
+        }else if(alc == 4){
+            return cocktail.alc.between(21, 29);
+        }else if(alc == 5){
+            return cocktail.alc.between(30, 99);
         }
-        return cocktail.alc.eq(alc);
+        return cocktail.alc.eq(0);
     }
 
     private BooleanExpression eqSweet(int sweet) {
