@@ -5,6 +5,7 @@ import Header from "../components/common/Header";
 import Box from "../components/common/Box";
 import { getcocktaillist, cocktailsearchname } from "../api/Cocktail";
 import { useEffect, useState } from "react";
+import CocktailBox2 from "../components/main/CocktailBox2";
 import CocktailBox from "../components/main/CocktailBox";
 import 이퀄 from "../assets/icon/이퀄라이저.png";
 import 돋보기 from "../assets/icon/검색돋보기.png";
@@ -80,7 +81,7 @@ export default function SearchPage() {
                   <>
                     <>
                       {/* 검색결과는 이거로 뜨게하면될거같긴한대 */}
-                      <CocktailBox cocktail={data} setList={setSearchlist} />
+                      <CocktailBox2 cocktail={data} setList={setSearchlist} />
                     </>
                   </>
                 ))}
