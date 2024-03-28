@@ -23,7 +23,7 @@ public class CocktailRepositoryImpl implements CocktailRepositoryCustom {
     @Override
     public Optional<List<CocktailListResponseDto>> getCocktails(Pageable page) {
         return Optional.ofNullable(query.select(Projections.constructor(CocktailListResponseDto.class,
-                        cocktail.id, cocktail.name, cocktail.color1, cocktail.color2, cocktail.color3, cocktail.glass))
+                        cocktail.id, cocktail.name, cocktail.color1, cocktail.color2, cocktail.color3, cocktail.glass, cocktail.content))
                 .from(cocktail)
                         .where(cocktail.isDeleted.eq(false))
                         .orderBy(cocktail.likeCount.desc())
