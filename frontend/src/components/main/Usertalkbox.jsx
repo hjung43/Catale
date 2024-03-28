@@ -8,6 +8,7 @@ export default function Usertalkbox({
   talkarr,
   selectnum = -1,
   말풍선,
+  usernickname,
 }) {
   return (
     <>
@@ -15,7 +16,7 @@ export default function Usertalkbox({
         <div className={styles.유저말풍선}>
           {/* <img className={styles.말풍선} src={말풍선} alt="" /> */}
 
-          <div className={styles.유저이름}>심규리</div>
+          <div className={styles.유저이름}>{usernickname}</div>
           <div className={styles.유저내용}>
             {selectnum === -1 ? (
               <div>{usertalk[talkarr.usertalk].talk}</div>

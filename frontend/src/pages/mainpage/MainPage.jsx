@@ -181,6 +181,7 @@ export default function MainPage() {
             talkarr={talkarr[talknum]}
             selectnum={selectnum}
             말풍선={유저말풍선}
+            usernickname={user.nickname}
           />
         )}
         {(talknum === 6 || talknum === 12) && (
@@ -189,6 +190,7 @@ export default function MainPage() {
             setTalknum={setTalknum}
             talkarr={talkarr[talknum]}
             말풍선={유저말풍선}
+            usernickname={user.nickname}
           />
         )}
         {talknum === 5 && (
