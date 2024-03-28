@@ -15,4 +15,8 @@ public interface DiaryRepositoryCustom {
 
     Optional<MoodCntResponseDto> getMoodList(int year, int month, Long memberId);
 
+    Optional<DiaryGetResponseDto> getDiaryDetailByDate(Long member, int year, int month, int day);
+
+    Optional<DiaryMonthResponseDto> getTodayDiary(Long member);
+
 }

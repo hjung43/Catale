@@ -9,12 +9,14 @@ import com.catale.backend.domain.diary.dto.MoodCntResponseDto;
 import com.catale.backend.domain.diary.entity.Diary;
 import com.catale.backend.domain.diary.repository.DiaryRepository;
 import com.catale.backend.domain.member.repository.MemberRepository;
+import com.catale.backend.global.exception.diary.DiaryNotFoundException;
 import com.catale.backend.global.exception.member.MemberNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -69,6 +71,22 @@ public class DiaryService {
     @Transactional
     public void deleteDiary(Long diaryId){
         diaryRepository.deleteById(diaryId);
+    }
+
+    //날짜로 다이어리 상세정보 조회
+    @Transactional
+    public DiaryGetResponseDto getDiaryDetailByDate(Long memberId, int year, int month, int day){
+        return  diaryRepository.getDiaryDetailByDate(memberId,year,month,day).orElseThrow(DiaryNotFoundException::new);
+    }
+
+    //오늘의 다이어리 유뮤 조회
+    @Transactional
+    public boolean isExsitTodayDiary(Long memberId){
+        Optional<DiaryMonthResponseDto> dto = diaryRepository.getTodayDiary(memberId);
+        if(dto.isEmpty()){
+            return false;
+        }
+        return true;
     }
 
 

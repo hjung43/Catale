@@ -8,7 +8,6 @@ public class DiaryGetRequestDto {
     private int mood;
     private String comment;
     private String reason;
-    private int month;
     private int emotion1;
     private int emotion2;
     private int emotion3;
@@ -18,7 +17,6 @@ public class DiaryGetRequestDto {
         this.mood = mood;
         this.comment = comment;
         this.reason = reason;
-        this.month = month;
         this.emotion1 = emotion1;
         this.emotion2 = emotion2;
         this.emotion3 = emotion3;
