@@ -5,18 +5,16 @@ import com.catale.backend.domain.cocktail.repository.CocktailRepository;
 import com.catale.backend.domain.diary.dto.DiaryGetRequestDto;
 import com.catale.backend.domain.diary.dto.DiaryGetResponseDto;
 import com.catale.backend.domain.diary.dto.DiaryMonthResponseDto;
+import com.catale.backend.domain.diary.dto.MoodCntResponseDto;
 import com.catale.backend.domain.diary.entity.Diary;
 import com.catale.backend.domain.diary.repository.DiaryRepository;
-import com.catale.backend.domain.member.entity.Member;
 import com.catale.backend.domain.member.repository.MemberRepository;
 import com.catale.backend.global.exception.member.MemberNotFoundException;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -37,6 +35,15 @@ public class DiaryService {
         List<DiaryMonthResponseDto> diaryList = diaryRepository.getDiraryMonth(year,month,memberId).orElseThrow(NullPointerException::new);
         return diaryList;
     }
+    //월 별 기분 개수 조회
+    @Transactional
+    public MoodCntResponseDto getMoodCntList(int year, int month, Long memberId){
+        MoodCntResponseDto moodCnt = diaryRepository.getMoodList(year, month, memberId).orElseThrow(NullPointerException::new);
+        return moodCnt;
+
+
+    }
+
     // 다이어리 등록
     @Transactional
     public Long postDiary(Long memberId,DiaryGetRequestDto dto){
@@ -63,6 +70,7 @@ public class DiaryService {
     public void deleteDiary(Long diaryId){
         diaryRepository.deleteById(diaryId);
     }
+
 
 
 }

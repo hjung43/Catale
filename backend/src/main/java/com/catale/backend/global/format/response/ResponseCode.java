@@ -29,6 +29,7 @@ public enum ResponseCode {
     ACCOUNT_SECESSION_SUCCESS(HttpStatus.OK, "계정 탈퇴가 성공적으로 이루어졌습니다."),
     PRIVACY_SETTING_UPDATED(HttpStatus.OK, "계정 공개여부가 성공적으로 설정되었습니다."),
     NOTIFICATION_SETTING_UPDATED(HttpStatus.OK, "알림 설정이 성공적으로 업데이트되었습니다."),
+    MONTHLY_DIARY_MOOD_CNT_FETCHED(HttpStatus.OK, "월 별 기분 개수 조회가 성공적으로 조회되었습니다."),
 
     EMAIL_VERIFICATION_SENT(HttpStatus.OK, "이메일 인증코드가 성공적으로 발송되었습니다."),
     EMAIL_VERIFIED_SUCCESS(HttpStatus.OK, "이메일 사용가능 여부가 조회되었습니다."),

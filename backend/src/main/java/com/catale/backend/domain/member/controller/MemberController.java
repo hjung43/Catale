@@ -1,5 +1,7 @@
 package com.catale.backend.domain.member.controller;
 
+import com.catale.backend.domain.diary.dto.MoodCntResponseDto;
+import com.catale.backend.domain.diary.service.DiaryService;
 import com.catale.backend.domain.member.dto.*;
 
 import com.catale.backend.domain.member.entity.Member;
@@ -13,7 +15,6 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.validation.BindingResult;
@@ -27,6 +28,7 @@ public class MemberController {
 
     private final ApiResponse response;
     private final MemberService memberService;
+    private final DiaryService diaryService;
 
     @Operation(summary = "일반 회원가입", description = "일반 회원가입")
     @PostMapping("/signup")
@@ -111,6 +113,22 @@ public class MemberController {
         Long passwordUpdate = memberService.updatePassword(memberId, requestDto);
         return response.success(ResponseCode.PASSWORD_UPDATE_SUCCESS, passwordUpdate);
     }
+
+    @Operation(summary = "월 별 기분 개수 조회", description = "마이페이지 월별 나의 기분 그래프에서 사용")
+    @GetMapping("/mood")
+    public ResponseEntity<?> getMonthlyMood(@Parameter(hidden = true) Authentication authentication,
+                                            @RequestParam int year, @RequestParam int month){
+
+        Member me = memberService.findMember(authentication.getName());
+        Long memberId = me.getId();
+
+        MoodCntResponseDto moodCnt = diaryService.getMoodCntList(year, month, memberId);
+
+        return response.success(ResponseCode.MONTHLY_DIARY_MOOD_CNT_FETCHED, moodCnt);
+
+    }
+
+
 //    @Operation(summary = "소셜 회원가입", description = "소셜 회원가입")
 //    @PostMapping("/social")
 //    public ResponseEntity<?> signupBySocial(@Valid @RequestBody SignupRequestDto requestDto,
