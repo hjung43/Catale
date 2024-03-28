@@ -1,4 +1,4 @@
-import styles from "./CocktailBox.module.css";
+import styles from "./CocktailBoxBig.module.css";
 import glass1 from "../../assets/glass/glass1.png";
 import glass2 from "../../assets/glass/glass2.png";
 import glass3 from "../../assets/glass/glass3.png";
@@ -8,11 +8,8 @@ import glass6 from "../../assets/glass/glass6.png";
 import glass7 from "../../assets/glass/glass7.png";
 import like from "../../assets/common/like.png";
 import noneLike from "../../assets/common/noneLike.png";
-import { cocktaillike } from "../../api/Cocktail";
-import { useNavigate } from "react-router-dom";
 
-export default function CocktailBox({ cocktail, setList }) {
-  const navigate = useNavigate();
+export default function Cocktailsearchbox({ cocktail, setList }) {
   const glasses = [
     glass1,
     glass1,
@@ -36,16 +33,13 @@ export default function CocktailBox({ cocktail, setList }) {
   const toggleLike = () => {
     setList((prevList) =>
       prevList.map((item) =>
-        item.id === cocktail.id
-          ? { ...item, like: !item.like } // 토글 된 경우 like 상태를 반전
-          : item
+        item.id === cocktail.id ? { ...item, like: !item.like } : item
       )
     );
-    // 토글된 이후에 cocktaillike 호출
-    cocktaillike(cocktail.id);
   };
   return (
     <div className={styles.item}>
+      {/* <div className={styles.cover}></div> */}
       <img
         src={glasses[cocktail.glass]}
         alt="glass"
@@ -57,9 +51,9 @@ export default function CocktailBox({ cocktail, setList }) {
             cocktail.color3
           } ${num[cocktail.glass][2]}%, ${cocktail.color3} 100%)`,
         }}
-        onClick={() => navigate(`/cocktail/${cocktail.id}`)}
       />
       <div className={styles.text}>{cocktail.name}</div>
+      <div className={styles.subtext}>{cocktail.name}</div>
       <img
         src={cocktail.like ? like : noneLike}
         alt="like"

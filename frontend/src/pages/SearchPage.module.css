@@ -36,3 +36,70 @@
   --feel4: #ffd4ca;
   --feel5: #ffb0b0;
 }
+.button {
+  color: #1f2544;
+}
+.main {
+  margin: 1rem;
+  padding: 4rem 0 7rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+.검색창 {
+  width: 68%;
+  font-size: larger;
+  border: solid 2.3px #e6e7ff;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 2.3rem;
+  background-color: #464a6d;
+  padding: 0.1rem 0;
+}
+.top {
+  width: 100%;
+  max-width: 450px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.검색인풋창 {
+  border: 1.6px solid #464a6d; /* 테두리 설정 */
+  padding: 0.3rem;
+  outline: none;
+  width: 70%;
+  background-color: #464a6d;
+  border-radius: 5px; /* 둥근 테두리 설정 */
+  opacity: 0.8; /* 투명도 설정 */
+}
+.검색인풋창:focus {
+  background-color: #e6e7ff;
+  color: #1f2544;
+}
+.검색결과 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+.검색했을때 {
+  display: flex;
+  flex-direction: column;
+}
+.검색결과폰트 {
+  padding: 1rem 0rem 1rem 1rem;
+  font-size: larger;
+}
+.이퀄박스 {
+  height: 2.3rem;
+}
+.이퀄 {
+  height: 95%;
+}
+.돋보기 {
+  padding-left: 0.4rem;
+  height: 75%;
+}

@@ -22,11 +22,14 @@ import Popup from "../../components/common/Popup";
 import useCocktailStore from "../../store/useCocktailStore";
 import { useEffect, useState } from "react";
 import { cocktaildetail } from "../../api/Cocktail";
+import { cocktaillike } from "../../api/Cocktail";
 
 export default function CocktailDetailPage() {
   const { cocktailId } = useParams();
   const setCocktail = useCocktailStore((state) => state.setCocktail);
   const cocktail = useCocktailStore((state) => state.cocktail);
+  const [nowlike, setNowlike] = useState(true);
+
   const glasses = [
     glass1,
     glass1,
@@ -48,6 +51,11 @@ export default function CocktailDetailPage() {
     [25, 40, 55],
   ];
 
+  const toggleLike = () => {
+    setNowlike(!nowlike);
+    cocktaillike(cocktail.id);
+  };
+
   // cocktail.glass 값과 num 배열의 인덱스를 검증합니다.
   const validGlassIndex = cocktail.glass >= 0 && cocktail.glass < num.length;
   const numIndex = validGlassIndex ? cocktail.glass : 0;
@@ -60,6 +68,7 @@ export default function CocktailDetailPage() {
       const cocktails = await cocktaildetail(cocktailId);
       console.log(cocktails.data);
       setCocktail(cocktails.data);
+      setNowlike(cocktails.data.like);
     };
 
     fetchData();
@@ -73,10 +82,10 @@ export default function CocktailDetailPage() {
     <Container>
       <Headerwb title={cocktail.name} />
       <img
-        src={cocktail.like ? like : noneLike}
+        src={nowlike ? like : noneLike}
         alt="like"
         className={styles.like}
-        // onClick={() => handleLikeClick()}
+        onClick={() => toggleLike()}
       />
       <div className={styles.top}>
         <Swiper
