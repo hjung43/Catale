@@ -2,21 +2,22 @@ package com.catale.backend.domain.diary.repository.custom;
 
 import com.catale.backend.domain.diary.dto.DiaryGetResponseDto;
 import com.catale.backend.domain.diary.dto.DiaryMonthResponseDto;
+import com.catale.backend.domain.diary.dto.MoodCntResponseDto;
 import com.querydsl.core.types.Projections;
+import com.querydsl.core.types.dsl.CaseBuilder;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 import java.util.Optional;
 
 import static com.catale.backend.domain.cocktail.entity.QCocktail.cocktail;
 import static com.catale.backend.domain.diary.entity.QDiary.diary;
-import static com.catale.backend.domain.member.entity.QMember.member;
 
 @RequiredArgsConstructor
 public class DiaryRepositoryImpl implements DiaryRepositoryCustom{
     private final JPAQueryFactory query;
+    private final int VERYBAD = 1;
     //월 별 다이어리 조회
     @Override
     public Optional<List<DiaryMonthResponseDto>> getDiraryMonth(int year, int month, Long memberId) {
@@ -30,6 +31,26 @@ public class DiaryRepositoryImpl implements DiaryRepositoryCustom{
                         .and(diary.isDeleted.eq(false)))
                 .fetch());
     }
+
+    //월 별 기분 개수 조회
+    public Optional<MoodCntResponseDto> getMoodList(int year, int month, Long memberId) {
+        return Optional.ofNullable(query.select(Projections.constructor(MoodCntResponseDto.class,
+                        new CaseBuilder().when(diary.mood.eq(1)).then(1L).otherwise(0L).sum().as("veryBad"),
+                        new CaseBuilder().when(diary.mood.eq(2)).then(1L).otherwise(0L).sum().as("bad"),
+                        new CaseBuilder().when(diary.mood.eq(3)).then(1L).otherwise(0L).sum().as("soso"),
+                        new CaseBuilder().when(diary.mood.eq(4)).then(1L).otherwise(0L).sum().as("good"),
+                        new CaseBuilder().when(diary.mood.eq(5)).then(1L).otherwise(0L).sum().as("veryGood")
+
+                ))
+                .from(diary)
+                .where(diary.member.id.eq(memberId)
+                        .and(diary.createdAt.year().eq(year))
+                        .and(diary.createdAt.month().eq(month)))
+                .fetchOne()
+        );
+    }
+
+
     //다이어리 상세 조회
     @Override
     public Optional<DiaryGetResponseDto> getDiaryDetail(Long diaryId) {
@@ -49,8 +70,10 @@ public class DiaryRepositoryImpl implements DiaryRepositoryCustom{
                 .where(diary.id.eq(diaryId))
 //                .and(diary.isDeleted.eq(false)))
 //                .and(cocktail.isDeleted.eq(false)))
-                .fetchOne()
+                        .fetchOne()
         );
 
     }
+
+
 }
