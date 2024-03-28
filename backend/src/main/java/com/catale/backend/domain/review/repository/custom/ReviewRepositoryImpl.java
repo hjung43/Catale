@@ -27,5 +27,15 @@ public class ReviewRepositoryImpl implements ReviewRepositoryCustom{
                 .limit(page.getPageSize())
                 .fetch());
     }
+    @Override
+    public Optional<List<ReviewGetResponseDto>> findByMemberId(Long cocktailId, Long memberId) {
+        return Optional.ofNullable(query.select(Projections.constructor(ReviewGetResponseDto.class, review.id,review.cocktail.id,review.member.id, review.content, review.rate, review.sweet, review.bitter, review.sour, review.sparking, review.createdAt))
+                .from(review)
+                .where(review.cocktail.id.eq(cocktailId)
+                        .and(review.member.id.eq(memberId))
+                        .and(review.isDeleted.eq(false)))
+                .orderBy(review.createdAt.desc())
+                .fetch());
+    }
 
 }
