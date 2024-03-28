@@ -9,12 +9,15 @@ import CocktailBox2 from "../components/main/CocktailBox2";
 import CocktailBox from "../components/main/CocktailBox";
 import 이퀄 from "../assets/icon/이퀄라이저.png";
 import 돋보기 from "../assets/icon/검색돋보기.png";
+import arrow from "../assets/common/arrow1.png";
+import s from "classnames";
 
 export default function SearchPage() {
   const [searchcheck, setSearchcheck] = useState(false);
   const [list, setList] = useState([]);
   const [searchlist, setSearchlist] = useState([]);
   const [searchname, setSearchname] = useState("");
+  const [modal, setModal] = useState(false);
 
   const handlesearch = async () => {
     try {
@@ -67,7 +70,7 @@ export default function SearchPage() {
               onChange={handleChange}
             />
           </div>
-          <div className={styles.이퀄박스}>
+          <div className={styles.이퀄박스} onClick={() => setModal(true)}>
             <img className={styles.이퀄} src={이퀄} alt="" />
           </div>
         </div>
@@ -106,6 +109,59 @@ export default function SearchPage() {
             </div>
           </>
         )}
+      </div>
+      <div
+        className={s(styles.blur, modal ? styles.active : styles.no)}
+        onClick={() => setModal(false)}
+      ></div>
+      <div className={s(styles.modal, !modal && styles.none)}>
+        <div onClick={() => setModal(false)}>
+          <div className={styles.option_top}>
+            <img src={arrow} alt="arrow" className={styles.arrow} />
+            <div className={styles.option_title}>옵션</div>
+            <div className={styles.arrow}></div>
+          </div>
+          <div className={styles.option}>내용</div>
+          <div className={styles.option}>내용</div>
+          <div className={styles.option}>내용</div>
+          <div className={styles.option}>내용</div>
+          <div className={styles.option}>내용</div>
+          <div className={styles.option}>내용</div>
+          <div className={styles.option}>내용</div>
+          <div className={styles.option}>내용</div>
+          <div className={styles.option}>내용</div>
+          <div className={styles.option}>내용</div>
+          <div className={styles.option}>내용</div>
+          <div className={styles.option}>내용</div>
+          <div className={styles.option}>내용</div>
+          <div className={styles.option}>내용</div>
+          <div className={styles.option}>내용</div>
+          <div className={styles.option}>내용</div>
+          <div className={styles.option}>내용</div>
+          <div className={styles.option}>내용</div>
+          <div className={styles.option}>내용</div>
+          <div className={styles.option}>내용</div>
+          <div className={styles.option}>내용</div>
+          <div className={styles.option}>내용</div>
+          <div className={styles.option}>내용</div>
+          <div className={styles.option}>내용</div>
+          <div className={styles.option}>내용</div>
+          <div className={styles.option}>내용</div>
+          <div className={styles.option}>내용</div>
+          <div className={styles.option}>내용</div>
+          <div className={styles.option}>내용</div>
+          <div className={styles.option}>내용</div>
+          <div className={styles.option}>내용</div>
+          <div className={styles.option}>내용</div>
+          <div className={styles.option}>내용</div>
+          <div className={styles.option}>내용</div>
+          <div className={styles.option}>내용</div>
+          <div className={styles.option}>내용</div>
+          <div className={styles.option}>내용</div>
+          <div className={styles.option}>내용</div>
+          <div className={styles.option}>내용</div>
+          <div className={styles.option}>내용</div>
+        </div>
       </div>
       <Nav num={1} />
     </Container>
