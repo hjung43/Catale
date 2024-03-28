@@ -10,6 +10,7 @@ import CocktailDetail from "../../components/diary/CocktailDetail";
 import { base } from "../../components/data/base";
 import like from "../../assets/common/like.png";
 import noneLike from "../../assets/common/noneLike.png";
+import review from "../../assets/common/review.png";
 import glass1 from "../../assets/glass/glass1.png";
 import glass2 from "../../assets/glass/glass2.png";
 import glass3 from "../../assets/glass/glass3.png";
@@ -17,9 +18,12 @@ import glass4 from "../../assets/glass/glass4.png";
 import glass5 from "../../assets/glass/glass5.png";
 import glass6 from "../../assets/glass/glass6.png";
 import glass7 from "../../assets/glass/glass7.png";
+import Popup from "../../components/common/Popup";
+import useCocktailStore from "../../store/useCocktailStore";
 
 export default function CocktailDetailPage() {
   const { cocktailId } = useParams();
+  const setCocktail = useCocktailStore((state) => state.setCocktail);
   const glasses = [
     glass1,
     glass1,
@@ -65,13 +69,13 @@ export default function CocktailDetailPage() {
     fruit: 4,
     like: false,
   };
+  setCocktail(response);
   // const handleLikeClick = () => {
 
   // }
   return (
     <Container>
       <Headerwb title={response.name} />
-      <div className={styles.popup}>어쩌고 저쩌고</div>
       <img
         src={response.like ? like : noneLike}
         alt="like"
@@ -113,9 +117,7 @@ export default function CocktailDetailPage() {
               style={{
                 background: `url("${response.imageUrl}") no-repeat center/cover`,
               }}
-            >
-              d
-            </div>
+            ></div>
           </SwiperSlide>
         </Swiper>
       </div>
@@ -133,6 +135,14 @@ export default function CocktailDetailPage() {
           <div className={styles.ingredient}>{response.ingredient}</div>
           <div className={styles.review}>{response.name} 리뷰</div>
         </div>
+      </div>
+      <div className={styles.popup}>
+        <Popup
+          img={review}
+          subText={`${response.name}를 드신적이 있나요?`}
+          text={"리뷰 작성하러 가기"}
+          src={"review"}
+        />
       </div>
     </Container>
   );
