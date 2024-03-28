@@ -34,7 +34,7 @@ public class MemberService {
     private final TokenProvider tokenProvider;
     private final TokenService tokenService;
     private final CookieUtil cookieUtil;
-    private final ImageRepository imageRepository;
+
 
 
     /* 일반 회원가입 로직*/
