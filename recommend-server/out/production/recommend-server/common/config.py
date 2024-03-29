@@ -17,7 +17,7 @@ class Settings(BaseSettings):
     # MODEL_NAME: str
     # DATASET_PATH: str
     # DATASET_NAME: str
-    ITEM_FEATURES_FILE: str
+    # ITEM_FEATURES_FILE: str
     # USER_FEATURES_FILE: str
     # RATING_FILE: str
     # TEST_DATA_FILE: str

@@ -22,7 +22,7 @@ from util.modelutil import (
 )
 
 
-# 사용자의 선호도(preferences)와 아이템 특성(item_features)을 바탕으로 개인화된 칵테일 추천 생성
+# 사용자의 선호도(preferences)와 아이템 특성(item_features)을 바탕으로 개인화된 위스키 추천 생성
 def predict_personal_cocktail(preferences: List[Preference], item_features):
     # 추천 모델과 데이터셋을 로드
     model = load_rec_model()
