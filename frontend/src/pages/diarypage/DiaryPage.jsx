@@ -5,6 +5,7 @@ import Nav from "../../components/common/Nav";
 import Header from "../../components/common/Header";
 import prev from "../../assets/common/arrow1.png";
 import next from "../../assets/common/arrow2.png";
+import card from "../../assets/common/card.png";
 import glass1 from "../../assets/glass/glass1.png";
 import glass2 from "../../assets/glass/glass2.png";
 import glass3 from "../../assets/glass/glass3.png";
@@ -14,6 +15,8 @@ import glass6 from "../../assets/glass/glass6.png";
 import glass7 from "../../assets/glass/glass7.png";
 import { useState } from "react";
 import { useNavigate } from "react-router";
+import useTodayStore from "../../store/useTodayStore";
+import Popup from "../../components/common/Popup";
 
 export default function DiaryPage() {
   const navigate = useNavigate();
@@ -21,6 +24,7 @@ export default function DiaryPage() {
   const today = new Date();
   const [year, setYear] = useState(today.getFullYear());
   const [month, setMonth] = useState(today.getMonth());
+  const istoday = useTodayStore((state) => state.today.today);
 
   // 달의 첫째 날과 마지막 날 구하기
   const firstDayOfMonth = new Date(year, month, 1); // 해당 월의 첫째 날을 구함
@@ -59,6 +63,7 @@ export default function DiaryPage() {
       }
     }
   };
+
   const response = [
     {
       diaryId: 1,
@@ -133,6 +138,16 @@ export default function DiaryPage() {
       </Header>
       <div className={styles.main}>
         <div>
+          {!istoday && (
+            <div className={styles.popup}>
+              <Popup
+                img={card}
+                subText={`아직 오늘의 기록을 하지 않았어요!`}
+                text={"바텐더와 대화하러가기"}
+                src={"/bar"}
+              />
+            </div>
+          )}
           <div className={styles.navigation}>
             <div className={styles.icon_container}>
               <img

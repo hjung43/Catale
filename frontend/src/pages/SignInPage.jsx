@@ -1,7 +1,9 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Await, useNavigate } from "react-router-dom";
 import { login } from "../api/Member";
+import { todaydiary } from "../api/Diary";
 import useUserStore from "../store/useUserStore";
+import useTodayStore from "../store/useTodayStore";
 import styles from "./SignInPage.module.css";
 import toast from "react-hot-toast";
 import Container from "../components/common/Container";
@@ -11,6 +13,7 @@ export default function SignInPage() {
 
   // 유저상태 전역 관리를 위한 코드
   const { user, setUser } = useUserStore();
+  const setToday = useTodayStore((state) => state.setToday);
 
   /* 상태 */
   const [formData, setFormData] = useState({
@@ -37,11 +40,8 @@ export default function SignInPage() {
     try {
       const res = await login(formData);
       if (res.status === "SUCCESS") {
-        // useStore에 data안에 들어있는 기본 정보들을 저장해라
         localStorage.setItem("accessToken", res.data.token);
         localStorage.setItem("tokenTimestamp", Date.now());
-        // console.log(res.data);
-        //  localStorage.setItem("tokenTimestamp", Date.now());
         await setUser({
           memberId: res.data.memberInfo.memberId,
           email: res.data.memberInfo.email,
@@ -58,6 +58,8 @@ export default function SignInPage() {
         });
         if (res.data.memberInfo.alc == -1) navigate(`../preference`);
         else {
+          const isToday = await todaydiary();
+          await setToday({ today: isToday.data });
           showToast("로그인성공!");
           navigate(`../bar`);
         }
