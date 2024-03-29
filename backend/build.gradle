@@ -84,6 +84,17 @@ dependencies {
 
     // fastapi request
     implementation 'org.springframework.boot:spring-boot-starter-webflux'
+
+    //oauth
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+
+    //spring-boot
+    implementation platform('org.springframework.boot:spring-boot-dependencies:3.2.3')
+
+    //Spring WebFlux - 반응형 웹 애플리케이션 개발 시 사용
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
+
+
 }
 
 def generated = 'src/main/generated'
