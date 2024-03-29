@@ -165,6 +165,15 @@ public class MemberService {
         log.info("event=DeleteExistingRefreshToken, email={}", requestDto.getEmail());
     }
 
+    @Transactional
+    public Long updateNickname(Long memberId, NicknameRequestDto requestDto) {
+
+
+        memberRepository.searchByNickname(requestDto.getName()).ifPresent(this::throwDuplicateNicknameException);
+        return memberRepository.updateMemberNickname(memberId, requestDto.getName());
+
+    }
+
     private void throwDuplicateEmailException(Member member) {
         throw new DuplicateEmailException();
     }
@@ -182,15 +191,7 @@ public class MemberService {
             throw new PasswordMismatchException();
         }
     }
-    @Transactional
-    public Long updateNickname(Long memberId, NicknameRequestDto requestDto) {
 
-
-        memberRepository.searchByNickname(requestDto.getName()).ifPresent(this::throwDuplicateNicknameException);
-        return memberRepository.updateMemberNickname(memberId, requestDto.getName());
-
-
-    }
 
     @Transactional
     public Long updatePassword(Long memberId, PasswordRequestDto requestDto){
