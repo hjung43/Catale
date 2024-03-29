@@ -43,7 +43,7 @@ async def rec_personal_cocktail(
 
 
 # 오늘의 칵테일과 유사한 칵테일 추천결과 반환
-@rec.get("/today/{cocktail_id}", status_code=200)
+@rec.get("/today/{cocktailId}", status_code=200)
 async def rec_similar_cocktail(
         # cocktail_id 값이 1 이상이어야 한다는 조건 ge
         cocktail_id: int = Path(..., ge=1),

@@ -139,12 +139,15 @@ public class CocktailService {
 
     @Transactional
     public TodayCocktailResponseDto getTodayCocktail(Authentication authentication, TodayCocktailRequestDto request) {
+        log.info("???");
         Member member = memberService.findMember(authentication.getName());
         Long memberId = member.getId();
 
         //먼저 오늘의 기분과 연관된 색의 칵테일을 하나 선정
+        log.info("여기까지");
         List<Cocktail> cocktailList = cocktailRepository.findAll();
         Cocktail matchedCocktail = findBestMatchingItems(cocktailList, request.getEmotion1(), request.getEmotion2(), request.getEmotion3());
+        log.info("matched:" + matchedCocktail.getName());
         TodayCocktailResponseDto responseDto = new TodayCocktailResponseDto(matchedCocktail);
         responseDto.setLike(likeService.checkisLiked(memberId, matchedCocktail.getId()));
 
@@ -161,7 +164,7 @@ public class CocktailService {
                                     simpleInfoDto.setLike(likeService.checkisLiked(memberId, cocktail.getId()));
                                     return simpleInfoDto;
                               }).toList();
-
+        log.info("dto:" + responseDto);
         responseDto.setRecommendedCocktailList(simpleInfoDtos);
         return responseDto;
     }

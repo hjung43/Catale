@@ -80,11 +80,11 @@ public class CocktailController {
     }
 
     @Operation(summary = "오늘의 칵테일, 연관 칵테일", description = "오늘의 칵테일(상세정보포함), 연관 칵테일 목록 조회(상세정보 미포함)")
-    @GetMapping("/today")
+    @PostMapping("/today")
     public ResponseEntity<?> getTodayCocktail(
         @Parameter(hidden = true) Authentication authentication,
         @RequestBody TodayCocktailRequestDto todayCocktailRequestDto) {
-
+        log.info("controller");
         return response.success(ResponseCode.COCKTAIL_DETAIL_FETCHED,
             cocktailService.getTodayCocktail(authentication, todayCocktailRequestDto));
     }
