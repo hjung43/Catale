@@ -10,7 +10,6 @@ import Lottie from "lottie-react";
 import Cocktail1 from "../../assets/lottie/Cocktail1.json";
 import Cocktail2 from "../../assets/lottie/Cocktail2.json";
 import MyFeel from "../../components/my/MyFeel";
-import profile from "../../assets/common/profile.png";
 import setting from "../../assets/common/setting.png";
 import logout from "../../assets/common/logout.png";
 import edit from "../../assets/common/edit.png";
@@ -117,7 +116,11 @@ export default function MyPage() {
       <div className={styles.main}>
         <div className={styles.profile}>
           <div className={styles.profile_left}>
-            <img src={profile} alt="profile" className={styles.profile_img} />
+            <img
+              src={user.profileImageUrl}
+              alt="profile"
+              className={styles.profile_img}
+            />
             <div>
               <div>{user.nickname}</div>
               <div className={styles.profile_email}>{user.email}</div>

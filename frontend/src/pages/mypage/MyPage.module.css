@@ -150,6 +150,10 @@
 }
 .profile_img {
   width: 3rem;
+  object-position: center;
+  object-fit: cover;
+  height: 3rem;
+  border-radius: 1.5rem;
 }
 .setting,
 .logout {
