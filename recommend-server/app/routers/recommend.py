@@ -42,13 +42,26 @@ async def rec_personal_cocktail(
     )
 
 
-@rec.get("/similar-cocktail/{cocktail_id}", status_code=200)
+# 오늘의 칵테일과 유사한 칵테일 추천결과 반환
+@rec.get("/today/{cocktailId}", status_code=200)
 async def rec_similar_cocktail(
+        # cocktail_id 값이 1 이상이어야 한다는 조건 ge
         cocktail_id: int = Path(..., ge=1),
+        # ItemFeatures 클래스의 인스턴스를 생성하고, 이를 item_features 인자로 제공
         item_features: ItemFeatures = Depends(ItemFeatures),
 ):
     logging.info("cocktail id : {}".format(cocktail_id))
     return predict_similar_cocktail(cocktail_id, item_features.data)
+
+
+# 유저별 맞춤 추천 칵테일 추천결과 반환
+# @rec.get("/api/v1/recommend/personal/{memberId}", status_code=200)
+# async def rec_similar_cocktail(
+#         member_id: int = Path(..., ge=1),
+#         item_features: ItemFeatures = Depends(ItemFeatures),
+# ):
+#     logging.info("cocktail id : {}".format(member_id))
+#     return predict_similar_cocktail(member_id, item_features.data)
 
 
 @rec.get("/async/", status_code=202)
