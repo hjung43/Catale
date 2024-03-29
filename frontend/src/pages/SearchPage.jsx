@@ -1,14 +1,13 @@
-import Container from "../components/common/Container";
-import styles from "./SearchPage.module.css";
-import Nav from "../components/common/Nav";
-import Header from "../components/common/Header";
-import Box from "../components/common/Box";
+import { useEffect, useState } from "react";
 import {
   getcocktaillist,
   cocktailsearchname,
   cocktailsearchoption,
 } from "../api/Cocktail";
-import { useEffect, useState } from "react";
+import Container from "../components/common/Container";
+import styles from "./SearchPage.module.css";
+import Nav from "../components/common/Nav";
+import Header from "../components/common/Header";
 import CocktailBox2 from "../components/main/CocktailBox2";
 import CocktailBox from "../components/main/CocktailBox";
 import 이퀄 from "../assets/icon/이퀄라이저.png";
@@ -18,7 +17,17 @@ import s from "classnames";
 import Searchbase from "../components/search/Searchbase";
 import Searchoption from "../components/search/Searchoption";
 import { alctalk, opttalk } from "../components/data/searchtalk";
+import useSearchStore from "../store/useSearchStore";
+import Medallist from "../components/search/Medallist";
+import Nonmedallist from "../components/search/Nonmedallist";
+
 export default function SearchPage() {
+  const setSearchTrue = useSearchStore((state) => state.setSearchTrue);
+  const setCocktailList = useSearchStore((state) => state.setCocktailList);
+
+  const check = useSearchStore((state) => state.searchtrue);
+  const cocktail = useSearchStore((state) => state.cocktail);
+
   const [searchcheck, setSearchcheck] = useState(false);
   const [list, setList] = useState([]);
   const [searchlist, setSearchlist] = useState([]);
@@ -41,26 +50,13 @@ export default function SearchPage() {
     sparkling: false,
   });
 
-  console.log(options);
-
-  /*
-1데킬라
-2럼
-3리큐르
-4맥주
-5보드카
-6브랜디
-7위스키
-8진
-9전통주
-10논알콜
-*/
   const handlesearch = async () => {
     try {
       const response = await cocktailsearchname(searchname);
       if (response.status === "SUCCESS") {
-        console.log(response.data);
         setSearchlist(response.data);
+        setCocktailList(response.data);
+        setSearchTrue(true);
         setSearchcheck(true);
       } else {
         console.log("에러난듯");
@@ -69,27 +65,20 @@ export default function SearchPage() {
       console.log("에러남222");
     }
   };
-  const handleChange = (e) => {
-    setSearchname(e.target.value);
-  };
 
   const handleeq = async () => {
     try {
-      // 변경할 새로운 options 객체 생성
       const newOptions = { ...options };
-      // optionstrue 객체의 각 키에 대해 반복하여 처리합니다.
       for (const key in optionstrue) {
         if (optionstrue[key]) {
-          // optionstrue의 key가 true인 경우, 해당하는 options의 값을 -1로 설정합니다.
           newOptions[key] = -1;
         }
       }
-      // 변경된 options 값으로 검색을 수행합니다.
       const response = await cocktailsearchoption(newOptions);
-      console.log(newOptions);
       if (response.status === "SUCCESS") {
-        console.log(response.data);
         setSearchlist(response.data);
+        setCocktailList(response.data);
+        setSearchTrue(true);
         setSearchcheck(true);
         setModal(false);
       } else {
@@ -101,11 +90,12 @@ export default function SearchPage() {
   };
 
   useEffect(() => {
+    setSearchlist(cocktail);
     async function fetchlistData() {
       const formData = { page: 0, size: 30 };
       try {
         const response = await getcocktaillist(formData);
-        console.log(response);
+        console.log(response.data);
         setList([...list, ...response.data]);
       } catch (error) {
         console.error("데이터불러오기실패");
@@ -113,6 +103,10 @@ export default function SearchPage() {
     }
     fetchlistData();
   }, []);
+
+  const handleChange = (e) => {
+    setSearchname(e.target.value);
+  };
 
   return (
     <Container>
@@ -138,34 +132,47 @@ export default function SearchPage() {
           </div>
         </div>
 
-        {searchcheck && (
+        {check && (
           <>
             <div className={styles.검색했을때}>
               <div className={styles.검색결과폰트}>검색결과</div>
               <div className={styles.검색결과}>
                 {searchlist.map((data, index) => (
-                  <>
-                    <>
-                      {/* 검색결과는 이거로 뜨게하면될거같긴한대 */}
-                      <CocktailBox2 cocktail={data} setList={setSearchlist} />
-                    </>
-                  </>
+                  <CocktailBox2
+                    key={index}
+                    cocktail={data}
+                    setList={setSearchlist}
+                    searchlist={searchlist}
+                    setCocktailList={setCocktailList}
+                  />
                 ))}
               </div>
             </div>
           </>
         )}
-        {!searchcheck && (
+        {!check && (
           <>
             <div className={styles.검색했을때}>
               <div className={styles.검색결과폰트}>검색결과</div>
               <div className={styles.검색결과}>
                 {list.map((data, index) => (
                   <>
-                    <>
-                      {/* 검색결과는 이거로 뜨게하면될거같긴한대 */}
-                      <CocktailBox cocktail={data} setList={setList} />
-                    </>
+                    {index === 0 && (
+                      <Medallist
+                        key={index}
+                        index={index}
+                        response={data}
+                        setList={setList}
+                      />
+                    )}
+                    {index !== 0 && (
+                      <Nonmedallist
+                        key={index}
+                        index={index}
+                        response={data}
+                        setList={setList}
+                      />
+                    )}
                   </>
                 ))}
               </div>
@@ -243,7 +250,10 @@ export default function SearchPage() {
           검색하기
         </div>
       </div>
-      <Nav num={1} />
+
+      <div onClick={() => setSearchTrue(false)}>
+        <Nav num={1} />
+      </div>
     </Container>
   );
 }

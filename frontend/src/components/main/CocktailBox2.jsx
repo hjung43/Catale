@@ -11,8 +11,14 @@ import noneLike from "../../assets/common/noneLike.png";
 import { cocktaillike } from "../../api/Cocktail";
 import { useNavigate } from "react-router-dom";
 
-export default function CocktailBox({ cocktail, setList }) {
+export default function CocktailBox({
+  cocktail,
+  setList,
+  searchlist,
+  setCocktailList,
+}) {
   const navigate = useNavigate();
+
   const glasses = [
     glass1,
     glass1,
@@ -33,7 +39,7 @@ export default function CocktailBox({ cocktail, setList }) {
     [35, 45, 55],
     [25, 40, 55],
   ];
-  const toggleLike = () => {
+  const Like = () => {
     setList((prevList) =>
       prevList.map((item) =>
         item.cocktailId === cocktail.cocktailId
@@ -41,8 +47,9 @@ export default function CocktailBox({ cocktail, setList }) {
           : item
       )
     );
-    // 토글된 이후에 cocktaillike 호출
     cocktaillike(cocktail.cocktailId);
+    // console.log(searchlist);
+    setCocktailList(searchlist);
   };
   return (
     <div className={styles.item}>
@@ -64,7 +71,7 @@ export default function CocktailBox({ cocktail, setList }) {
         src={cocktail.like ? like : noneLike}
         alt="like"
         className={styles.like}
-        onClick={toggleLike} // 클릭하면 toggleLike 함수를 호출
+        onClick={Like} // 클릭하면 toggleLike 함수를 호출
       />
     </div>
   );

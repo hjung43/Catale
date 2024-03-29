@@ -1,0 +1,150 @@
+:root {
+  /* 배경색 */
+  --main1: #1f2544;
+  /* 대부분의 틀, 흰색배경의 텍스트색 */
+  --main2: #464a6d;
+  /* 칵테일이미지의 배경색 */
+  --main3: #707398;
+  /* 모든 배경의 서브텍스트색 */
+  --main4: #9c9ec6;
+  /* 이미지색 */
+  --main5: #caccf5;
+  /* stroke색, 흰색배경색 */
+  --main6: #e6e7ff;
+  /* 텍스트색 */
+  --main7: #fafaff;
+
+  /* 포인트색 */
+  --point: linear-gradient(
+    135deg,
+    #6deefc 0%,
+    #7ab0fd 33%,
+    #bb7ef8 66%,
+    #eb75f5 100%
+  );
+
+  /* 취소버튼, 일요일 등등 */
+  --no: #ff9c9c;
+
+  /* 토요일, 완료 등등 */
+  --yes: #a4b8ff;
+
+  /* 기분색 */
+  --feel1: #9a5cff;
+  --feel2: #e59cff;
+  --feel3: #fbdfff;
+  --feel4: #ffd4ca;
+  --feel5: #ffb0b0;
+}
+
+.glass_cover {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin: 1rem auto;
+  border-radius: 1rem;
+  box-shadow: 0 10px 20px -5px #181b4ce6;
+  animation: eff 1.5s infinite;
+}
+@keyframes eff {
+  0% {
+    transform: rotate(1deg);
+  }
+  50% {
+    transform: rotate(-1deg);
+  }
+  100% {
+    transform: rotate(1deg);
+  }
+}
+.등수 {
+  display: flex;
+  justify-content: center;
+  width: 20%;
+  /* background-color: red; */
+}
+.glass {
+  width: 100%;
+  transform: scale(1.1);
+  border-radius: 1rem;
+}
+.name {
+  font-size: larger;
+  text-shadow: 0 0 5px #cdf5ff;
+  text-align: center;
+  margin: 1rem;
+  color: #ffffff;
+}
+.content {
+  width: 80%;
+  height: 55px;
+  overflow: auto;
+  margin: 0 auto;
+  letter-spacing: 0.05rem;
+  line-height: 1.3em;
+  font-size: 0.75rem;
+  color: #1b3250;
+}
+
+.cocktail {
+  display: flex;
+  align-items: center;
+  border: solid 2px var(--main6);
+  box-shadow: 0 0 20px 0 var(--main3);
+  border-radius: 1rem;
+  width: 90%;
+  overflow: auto;
+  padding: 0.5rem 0.5rem;
+  transition: 0.7s;
+  z-index: 1;
+  background: linear-gradient(180deg, #b5c7ec 0%, #7d9dd8 50%, #d6c3f4 100%);
+}
+.묶음 {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.메인박스 {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.일등 {
+  position: absolute;
+  top: 2.5rem;
+  left: 2.2rem;
+  font-size: larger;
+  animation: changeColor2 2s infinite alternate;
+}
+@keyframes changeColor2 {
+  0% {
+    color: #f3d4a8;
+  } /* 초기 색상 */
+  50% {
+    color: #fbbfaa;
+  } /* 중간 색상 */
+  100% {
+    color: #eddfa1;
+  } /* 최종 색상 */
+}
+.왕관 {
+  position: absolute;
+  top: 0.85rem;
+  left: 2rem;
+  /* transform: rotate(-20deg); */
+  width: 2rem;
+}
+.like {
+  width: 1.6rem;
+}
+.왼쪽 {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
