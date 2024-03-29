@@ -53,12 +53,14 @@ export async function cocktailsearchname(name) {
 //칵테일 이퀄라이저로 검색하기 (상관없음은 -1 이다)
 export async function cocktailsearchoption(option) {
   const params = {
-    base: option.name,
+    base: option.base,
     alc: option.alc,
     sweet: option.sweet,
     sour: option.sour,
     bitter: option.bitter,
     sparkling: option.sparkling,
+    page: 0,
+    size: 159,
   };
   try {
     const response = await axios.get(BASE_URL + "/option", { params });
