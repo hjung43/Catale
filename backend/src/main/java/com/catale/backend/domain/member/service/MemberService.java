@@ -192,7 +192,6 @@ public class MemberService {
         }
     }
 
-
     @Transactional
     public Long updatePassword(Long memberId, PasswordRequestDto requestDto){
 
