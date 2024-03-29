@@ -185,10 +185,8 @@ public class MemberService {
     @Transactional
     public Long updateNickname(Long memberId, NicknameRequestDto requestDto) {
 
-//        if(!memberId.equals(requestDto.getMemberId())){
-//            throw new ProfileUpdateException();
-//        }
-//       Long nicknameUpdate = memberRepository.updateMemberNickname(memberId, requestDto.getNickname());
+
+        memberRepository.searchByNickname(requestDto.getName()).ifPresent(this::throwDuplicateNicknameException);
         return memberRepository.updateMemberNickname(memberId, requestDto.getName());
 
 
