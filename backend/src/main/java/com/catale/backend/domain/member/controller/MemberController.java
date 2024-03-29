@@ -103,11 +103,15 @@ public class MemberController {
     @Operation(summary = "닉네임 수정 요청", description = "닉네임 수정")
     @PutMapping("/name")
     public ResponseEntity<?> updateNickname(@Parameter(hidden = true) Authentication authentication,
-                                            @RequestBody NicknameRequestDto requestDto){
+                                            @Valid @RequestBody NicknameRequestDto requestDto, BindingResult bindingResult){
 
         System.out.println("check : "+authentication);
         Member me = memberService.findMember(authentication.getName());
         Long memberId = me.getId();
+
+        if (bindingResult.hasErrors()) {
+            return response.fail(bindingResult);
+        }
 
         Long nicknameUpdate = memberService.updateNickname(memberId, requestDto);
         return response.success(ResponseCode.NICKNAME_UPDATED, nicknameUpdate);
