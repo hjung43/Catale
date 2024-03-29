@@ -20,11 +20,13 @@ import Usercomment from "../../components/main/Usercomment";
 import { selectcolor } from "./Emodata/Emocolor";
 import cocktail from "../../assets/bartender/오늘의칵테일.png";
 import useUserStore from "../../store/useUserStore";
+import useTodayStore from "../../store/useTodayStore";
 import Cattalk20 from "../../components/main/Cattalk20";
 
 export default function MainPage() {
   //유저를 일단 담아놓고~
   const user = useUserStore((state) => state.user);
+  const today = useTodayStore((state) => state.today.today);
   //대화의 순서
   const [talknum, setTalknum] = useState(1);
   const [selectnum, setSeletnum] = useState(0);
@@ -44,7 +46,7 @@ export default function MainPage() {
   useEffect(() => {
     async function fetchMyData() {
       try {
-        if (!user.check) {
+        if (today) {
           //여기서 오늘대화의 결고를 가져오는걸 써야해
           setTalknum(24);
         }

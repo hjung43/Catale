@@ -7,22 +7,68 @@ import close from "../../assets/common/close.png";
 import styles from "./SettingsPage.module.css";
 import s from "classnames";
 import { useState } from "react";
+import FileInput from "../../components/common/FileInput";
 
 export default function SettingsPage() {
   const user = useUserStore((state) => state.user);
   const setUser = useUserStore((state) => state.setUser);
   const [modal, setModal] = useState([false, false]);
+  const [frameimgurl, setFrameimgurl] = useState(profile);
+  const [value, setValue] = useState({});
+  const [password, setPassword] = useState({
+    pw: "",
+    check: "",
+  });
+  const [errorMessage, setErrorMessage] = useState(
+    "소문자,숫자 필수 / 대문자,특수문자 선택 / 5~20글자"
+  );
+  const handleChangePw = (e) => {
+    const { name, value } = e.target;
+    setPassword((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+    if (password.pw !== value) {
+      setErrorMessage("비밀번호가 일치하지 않습니다.");
+    } else if (password.pw === "") {
+      setErrorMessage("소문자,숫자 필수 / 대문자,특수문자 선택 / 최소 5글자");
+    } else {
+      setErrorMessage("일치! 구웃");
+    }
+  };
+  const handleChangeValue = (name, value) => {
+    setValue((prevValue) => ({
+      ...prevValue,
+      [name]: value,
+    }));
+  };
+  const handleImg = () => {
+    const nextPreview = URL.createObjectURL(value.frameImage);
+    setFrameimgurl(nextPreview);
+  };
   return (
     <Container>
       <Headerwb title={"계정 설정"} />
       <div className={styles.box}>메롱</div>
       <div className={styles.box2}>
         <div className={styles.profile_box}>
-          <img src={profile} alt="profile" className={styles.profile} />
+          <FileInput
+            className={styles.profile}
+            name="frameImage"
+            value={value.frameImage}
+            onChange={handleChangeValue}
+            initialPreview={frameimgurl}
+          />
         </div>
         <div className={styles.img_set}>
-          <div>프로필 사진 변경</div>
-          <div className={styles.img_delete}>프로필 사진 제거</div>
+          {value.frameImage && (
+            <div
+              className={styles.inputButton}
+              onClick={() => value.frameImage && handleImg()}
+            >
+              프로필 사진 변경
+            </div>
+          )}
         </div>
         <div className={styles.item} onClick={() => setModal([true, false])}>
           <div>
@@ -68,14 +114,43 @@ export default function SettingsPage() {
         </div>
         <div className={styles.subtitle}>새로운 닉네임 입력</div>
         <div className={styles.input_box}>
-          <input
-            type="text"
-            placeholder={user.nickname}
-            className={styles.input}
-          />
+          <input placeholder={user.nickname} className={styles.input} />
           <div className={styles.input_check}>중복확인</div>
         </div>
         <div className={styles.error}>이미 존재하는 닉네임입니다</div>
+        <div className={styles.btn2}>확인</div>
+      </div>
+      <div className={s(styles.modal, !modal[1] && styles.none)}>
+        <div className={styles.flex}>
+          <img
+            src={close}
+            alt="close"
+            className={styles.icon}
+            onClick={() => setModal([false, false])}
+          />
+          <div className={styles.title}>비밀번호변경</div>
+          <div className={styles.icon}></div>
+        </div>
+        <div className={styles.subtitle}>새로운 비밀번호입력</div>
+
+        <input
+          type="password"
+          placeholder="새 비밀번호 입력"
+          className={styles.pw}
+          name="pw"
+          value={password.pw}
+          onChange={handleChangePw}
+        />
+        <input
+          type="password"
+          placeholder="비밀번호 확인"
+          className={styles.pw}
+          name="check"
+          value={password.check}
+          onChange={handleChangePw}
+        />
+
+        <div className={styles.error}>{errorMessage}</div>
         <div className={styles.btn2}>확인</div>
       </div>
     </Container>

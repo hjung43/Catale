@@ -44,3 +44,13 @@ export async function deletediary(id) {
     throw error;
   }
 }
+
+// 오늘의 다이러리 유무 조회
+export async function todaydiary() {
+  try {
+    const response = await axios.get(BASE_URL + `/today`);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+}
