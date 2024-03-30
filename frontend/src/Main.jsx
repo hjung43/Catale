@@ -33,7 +33,8 @@ function Main() {
           <Route index element={<WelcomePage />} />
           <Route path="login" element={<SignInPage />} />
           <Route path="signup" element={<SignUpPage />} />
-          <Route path="settings" element={<SettingsPage />}>
+          <Route path="settings">
+            <Route index element={<SettingsPage />} />
             <Route path="deleteaccount" element={<DeleteAccountPage />} />
           </Route>
           <Route path="preference" element={<PreferencePage />} />

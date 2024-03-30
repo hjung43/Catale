@@ -63,3 +63,34 @@ export async function check() {
     throw error;
   }
 }
+
+//비밀번호 변경
+export async function changePassword(password) {
+  try {
+    const response = await axios.put(BASE_URL + `/password`, password);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+}
+//닉네임 변경
+export async function changeNickname(name) {
+  try {
+    const response = await axios.put(BASE_URL + `/name`, name);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+}
+//프시 변경
+export async function changeImg(img) {
+  try {
+    const response = await axios.put(
+      `https://api.silvstone.xyz/api/v1/image/member/profileimage`,
+      img
+    );
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+}
