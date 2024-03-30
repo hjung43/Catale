@@ -100,6 +100,14 @@ export default function CocktailDetailPage() {
         >
           <SwiperSlide>
             <div
+              className={styles.img}
+              style={{
+                background: `url("${cocktail.imageUrl}") no-repeat center/cover`,
+              }}
+            ></div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div
               className={styles.glass_cover}
               style={{
                 background: glassCoverStyle,
@@ -111,14 +119,6 @@ export default function CocktailDetailPage() {
                 className={styles.glass}
               />
             </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div
-              className={styles.img}
-              style={{
-                background: `url("${cocktail.imageUrl}") no-repeat center/cover`,
-              }}
-            ></div>
           </SwiperSlide>
         </Swiper>
       </div>
