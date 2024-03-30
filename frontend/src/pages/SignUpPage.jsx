@@ -49,6 +49,11 @@ export default function SignUpPage() {
           position: "top-center",
         });
         console.log("에러임");
+      } else if (data.status === "FAILED") {
+        toast.error(`${data.errors[0].message}`, {
+          position: "top-center",
+        });
+        console.log("에러임");
       }
     } catch (error) {
       // 오류 메시지 토스트로 표시

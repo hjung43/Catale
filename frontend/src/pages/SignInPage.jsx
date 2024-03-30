@@ -67,7 +67,7 @@ export default function SignInPage() {
         }
       } else {
         // 이메일, 비밀번호 불일치
-        toast.error(`이메일 혹은 비밀번호가 틀렸습니다`, {
+        toast.error(`${res.message}`, {
           position: "top-center",
         });
       }
