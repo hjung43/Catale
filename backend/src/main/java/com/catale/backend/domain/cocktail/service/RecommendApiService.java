@@ -15,16 +15,16 @@ import org.springframework.web.reactive.function.client.WebClient;
 public class RecommendApiService {
 
       private final WebClient webClient = WebClient.builder()
-                                                   .baseUrl("https://api.silvstone.xyz:8000/recommend")
+                                                   .baseUrl("https://fastapi.silvstone.xyz/rec")
                                                    .build();
 
       /* 오늘의 칵테일과 유사한 칵테일 추천결과 반환 */
       public Mono<List<Long>> getTodayCocktailResponse(Long cocktailId) {
             log.info("apiService 진입");
             return this.webClient.get()
-                                 .uri("/today/{cocktailId}", cocktailId)
-                                 .retrieve()
-                                 .bodyToMono(new ParameterizedTypeReference<List<Long>>() {});
+                                .uri("/today/{cocktail_id}", cocktailId)
+                                .retrieve()
+                                .bodyToMono(new ParameterizedTypeReference<List<Long>>() {});
       }
 
       /* 유저별 개인 맞춤 칵테일 추천결과 반환 */
