@@ -101,3 +101,10 @@
 .시작하기 {
   color: #d6d6d6;
 }
+.버전 {
+  position: fixed;
+  top: 0.5rem;
+  right: 0.5rem;
+  font-size: small;
+  color: #565867;
+}
