@@ -208,3 +208,6 @@ input::placeholder {
   color: var(--main4);
   font-size: small;
 }
+.icon {
+  width: 1rem;
+}
