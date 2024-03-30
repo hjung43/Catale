@@ -23,6 +23,7 @@ export default function WelcomePage() {
             <span className={styles.시작하기}> 으로 시작하기</span>
           </div>
         </div>
+        <div className={styles.버전}>version-0.87</div>
       </div>
     </Container>
   );
