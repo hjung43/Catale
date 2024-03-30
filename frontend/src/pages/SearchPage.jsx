@@ -215,7 +215,13 @@ export default function SearchPage() {
         </div>
         <div className={styles.option}>
           <div className={styles.option_text}>
-            <div className={styles.베이스술}>베이스술</div>
+            <div
+              className={
+                optionstrue.base ? styles.베이스술상관노 : styles.베이스술
+              }
+            >
+              베이스술
+            </div>
             <div className={styles.option_not}>
               <img src={checkimg} alt="check" className={styles.icon} />
               <div

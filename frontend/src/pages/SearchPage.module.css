@@ -175,7 +175,12 @@
   align-items: center;
 }
 .베이스술 {
-  color: var(--main5);
+  font-size: large;
+  color: #e3edff;
+}
+.베이스술상관노 {
+  font-size: large;
+  color: #a8a8a8;
 }
 .base_box {
   margin: 1rem;
@@ -188,7 +193,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-  /* filter: blur(1.3px); 흐려지는 효과 */
+  /* filter: blur(1px); */
 }
 .base {
   background-color: var(--main3);
