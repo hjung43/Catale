@@ -69,24 +69,24 @@
       type="text/javascript"
       src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ba830eb498a33385a6e512dd9adef5c0"
     ></script>
-    <title>Catale</title>
     <script>
       if ("serviceWorker" in navigator) {
-        window.addEventListener("load", () => {
-          navigator.serviceWorker
-            .register("/service-worker.js")
-            .then((registration) => {
+        window.addEventListener("load", function () {
+          navigator.serviceWorker.register("/sw.js").then(
+            function (registration) {
               console.log(
-                "Service Worker registered with scope:",
+                "ServiceWorker registration successful with scope: ",
                 registration.scope
               );
-            })
-            .catch((error) => {
-              console.error("Service Worker registration failed:", error);
-            });
+            },
+            function (err) {
+              console.log("ServiceWorker registration failed: ", err);
+            }
+          );
         });
       }
     </script>
+    <title>Catale</title>
   </head>
 
   <body>
