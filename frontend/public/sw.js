@@ -33,9 +33,9 @@ self.addEventListener("fetch", function (event) {
           cacheName = "default-cache";
         }
 
-        // caches.open(cacheName).then(function (cache) {
-        //   cache.put(event.request, responseToCache);
-        // });
+        caches.open(cacheName).then(function (cache) {
+          cache.put(event.request, responseToCache);
+        });
 
         return networkResponse; // 네트워크 응답 반환
       });
