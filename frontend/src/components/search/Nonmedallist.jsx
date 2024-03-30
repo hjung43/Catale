@@ -49,10 +49,7 @@ export default function Nonmedallist({ index, response, setList }) {
   return (
     <>
       <>
-        <div
-          className={styles.메인박스}
-          onClick={() => navigate(`/cocktail/${response.id}`)}
-        >
+        <div className={styles.메인박스}>
           <div className={styles.cocktail}>
             {index === 1 && (
               <div className={styles.등수}>
@@ -68,7 +65,12 @@ export default function Nonmedallist({ index, response, setList }) {
               <div className={styles.등수}>{index + 1}등</div>
             )}
             <div className={styles.묶음}>
-              <div className={styles.name}>{response.name}</div>
+              <div
+                className={styles.name}
+                onClick={() => navigate(`/cocktail/${response.id}`)}
+              >
+                {response.name}
+              </div>
               <div className={styles.content}>{response.content}</div>
             </div>
             <div className={styles.왼쪽}>
@@ -87,6 +89,7 @@ export default function Nonmedallist({ index, response, setList }) {
                     response.color1
                   } ${num[response.glass][2]}%, ${response.color1} 100%)`,
                 }}
+                onClick={() => navigate(`/cocktail/${response.id}`)}
               >
                 <img
                   src={glasses[response.glass]}
