@@ -13,7 +13,7 @@ import CocktailBox from "../components/main/CocktailBox";
 import 이퀄 from "../assets/icon/이퀄라이저.png";
 import 돋보기 from "../assets/icon/검색돋보기.png";
 import arrow from "../assets/common/arrow1.png";
-import check from "../assets/common/check.png";
+import checkimg from "../assets/common/check.png";
 import { base } from "../components/data/base";
 import s from "classnames";
 import Searchbase from "../components/search/Searchbase";
@@ -201,7 +201,7 @@ export default function SearchPage() {
           <div className={styles.option_text}>
             <div>베이스술</div>
             <div className={styles.option_not}>
-              <img src={check} alt="check" className={styles.icon} />
+              <img src={checkimg} alt="check" className={styles.icon} />
               <div>상관없음</div>
             </div>
           </div>
