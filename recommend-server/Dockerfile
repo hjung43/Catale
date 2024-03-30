@@ -3,10 +3,10 @@ FROM python:3.9
 WORKDIR /rec
 
 COPY ./requirements.txt /rec/requirements.txt
-COPY ./env.dev /rec/.env.dev
-COPY ./env.prod /rec/.env.prod
-COPY ./env /rec/.env
-# COPY ./env* /rec
+# COPY ./env.dev /rec/.env.dev
+# COPY ./env.prod /rec/.env.prod
+# COPY ./env /rec/.env
+COPY ./.env* /rec
 
 RUN pip install -r requirements.txt
 
