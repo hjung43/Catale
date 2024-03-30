@@ -1,6 +1,7 @@
 import styles from "./Cattalkbox.module.css";
 import { cattalk } from "../../pages/mainpage/Talkdata/Cattalk";
 import React, { useState, useEffect } from "react";
+import useUserStore from "../../store/useUserStore";
 
 export default function Cattalk20({
   talknum,
@@ -12,6 +13,7 @@ export default function Cattalk20({
   alc,
 }) {
   //이런조건이여야 고양이가 말을함
+  const user = useUserStore((state) => state.user);
   const [currentText, setCurrentText] = useState("");
   const [currentText2, setCurrentText2] = useState("");
   const [showNextButton, setShowNextButton] = useState(false);
@@ -19,17 +21,17 @@ export default function Cattalk20({
   const [alctext, setAlctext] = useState("");
 
   useEffect(() => {
-    if (alc === 0) {
+    if (user.alc === 0) {
       setAlctext("무알콜 이");
-    } else if (alc === 1) {
+    } else if (user.alc === 1) {
       setAlctext("0~10도");
-    } else if (alc === 2) {
+    } else if (user.alc === 2) {
       setAlctext("10~15도");
-    } else if (alc === 3) {
+    } else if (user.alc === 3) {
       setAlctext("15~20도");
-    } else if (alc === 4) {
+    } else if (user.alc === 4) {
       setAlctext("20~30도");
-    } else if (alc === 5) {
+    } else if (user.alc === 5) {
       setAlctext("30도 이상이");
     }
     clearInterval(intervalId);
