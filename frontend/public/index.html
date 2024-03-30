@@ -70,6 +70,23 @@
       src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ba830eb498a33385a6e512dd9adef5c0"
     ></script>
     <title>Catale</title>
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker
+            .register("/service-worker.js")
+            .then((registration) => {
+              console.log(
+                "Service Worker registered with scope:",
+                registration.scope
+              );
+            })
+            .catch((error) => {
+              console.error("Service Worker registration failed:", error);
+            });
+        });
+      }
+    </script>
   </head>
 
   <body>
