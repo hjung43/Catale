@@ -13,14 +13,14 @@ import org.springframework.web.reactive.function.client.WebClient;
 public class RecommendApiService {
 
       private final WebClient webClient = WebClient.builder()
-                                                   .baseUrl("https://api.silvstone.xyz:8000/api/v1/recommend")
+                                                   .baseUrl("https://fastapi.silvstone.xyz/rec")
                                                    .build();
 
       public Mono<List<Long>> getTodayCocktailResponse(Long cocktailId) {
             return this.webClient.get()
-                                 .uri("/{cocktailId}", cocktailId)
-                                 .retrieve()
-                                 .bodyToMono(new ParameterizedTypeReference<List<Long>>() {});
+                                .uri("/today/{cocktail_id}", cocktailId)
+                                .retrieve()
+                                .bodyToMono(new ParameterizedTypeReference<List<Long>>() {});
       }
 
       public Mono<List<Long>> getMemberRecommendResponse(Long memberId) {
