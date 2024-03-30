@@ -14,7 +14,7 @@ import { useNavigate } from "react-router-dom";
 import 왕관 from "../../assets/icon/왕관.png";
 
 export default function Medallist({ index, response, setList }) {
-  console.log(index);
+  // console.log(index);
   const navigate = useNavigate();
   const glasses = [
     glass1,

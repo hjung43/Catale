@@ -15,7 +15,7 @@ import 은색 from "../../assets/icon/은색.png";
 import 동색 from "../../assets/icon/동색.png";
 
 export default function Nonmedallist({ index, response, setList }) {
-  console.log(index);
+  // console.log(index);
   const navigate = useNavigate();
   const glasses = [
     glass1,

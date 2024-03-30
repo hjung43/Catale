@@ -44,13 +44,26 @@ export default function SearchPage() {
     sparkling: 0,
   });
   const [optionstrue, setOptionstrue] = useState({
-    base: false,
+    base: true,
     alc: false,
     sweet: false,
     sour: false,
     bitter: false,
     sparkling: false,
   });
+
+  const clicknonbase = () => {
+    setOptions({ ...options, base: -1 });
+    setOptionstrue({ ...optionstrue, base: true });
+    // console.log(options.base);
+    // console.log(optionstrue.base);
+  };
+  const clickbase = (index) => {
+    setOptions({ ...options, base: index });
+    setOptionstrue({ ...optionstrue, base: false });
+    // console.log(options.base);
+    // console.log(optionstrue.base);
+  };
 
   const handlesearch = async () => {
     try {
@@ -97,7 +110,7 @@ export default function SearchPage() {
       const formData = { page: 0, size: 30 };
       try {
         const response = await getcocktaillist(formData);
-        console.log(response.data);
+        // console.log(response.data);
         setList([...list, ...response.data]);
       } catch (error) {
         console.error("데이터불러오기실패");
@@ -199,16 +212,37 @@ export default function SearchPage() {
         </div>
         <div className={styles.option}>
           <div className={styles.option_text}>
-            <div>베이스술</div>
+            <div className={styles.베이스술}>베이스술</div>
             <div className={styles.option_not}>
               <img src={checkimg} alt="check" className={styles.icon} />
-              <div>상관없음</div>
+              <div
+                className={
+                  optionstrue.base ? styles.redcolor : styles.whitecolor
+                }
+                onClick={() => clicknonbase()}
+              >
+                상관없음
+              </div>
             </div>
           </div>
-          <div className={styles.base_box}>
-            {base.map((ele) => {
+          <div
+            className={optionstrue.base ? styles.nonbase_box : styles.base_box}
+          >
+            {base.map((ele, index) => {
               if (ele !== "") {
-                return <div className={styles.base}>{ele}</div>;
+                return (
+                  <div
+                    className={s(
+                      options.base === -1 ? styles.nonbase : styles.base,
+                      {
+                        [styles.selected]: options.base === index,
+                      }
+                    )}
+                    onClick={() => clickbase(index)}
+                  >
+                    {ele}
+                  </div>
+                );
               }
             })}
           </div>
