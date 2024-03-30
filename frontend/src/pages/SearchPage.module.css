@@ -123,7 +123,6 @@
 }
 .option {
   margin: 1rem 0;
-  background-color: #6deefc;
 }
 .arrow {
   width: 1.5rem;
@@ -152,4 +151,31 @@
 }
 .no {
   z-index: -1;
+}
+.icon {
+  width: 1rem;
+}
+.option_text {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+}
+.option_not {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+.option_text div {
+  color: var(--main5);
+}
+.base_box {
+  margin: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.base {
+  background-color: var(--main3);
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
 }

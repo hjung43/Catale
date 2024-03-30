@@ -10,6 +10,8 @@ import CocktailBox from "../components/main/CocktailBox";
 import 이퀄 from "../assets/icon/이퀄라이저.png";
 import 돋보기 from "../assets/icon/검색돋보기.png";
 import arrow from "../assets/common/arrow1.png";
+import check from "../assets/common/check.png";
+import { base } from "../components/data/base";
 import s from "classnames";
 
 export default function SearchPage() {
@@ -115,52 +117,33 @@ export default function SearchPage() {
         onClick={() => setModal(false)}
       ></div>
       <div className={s(styles.modal, !modal && styles.none)}>
-        <div onClick={() => setModal(false)}>
+        <div>
           <div className={styles.option_top}>
-            <img src={arrow} alt="arrow" className={styles.arrow} />
+            <img
+              src={arrow}
+              alt="arrow"
+              className={styles.arrow}
+              onClick={() => setModal(false)}
+            />
             <div className={styles.option_title}>옵션</div>
             <div className={styles.arrow}></div>
           </div>
-          <div className={styles.option}>내용</div>
-          <div className={styles.option}>내용</div>
-          <div className={styles.option}>내용</div>
-          <div className={styles.option}>내용</div>
-          <div className={styles.option}>내용</div>
-          <div className={styles.option}>내용</div>
-          <div className={styles.option}>내용</div>
-          <div className={styles.option}>내용</div>
-          <div className={styles.option}>내용</div>
-          <div className={styles.option}>내용</div>
-          <div className={styles.option}>내용</div>
-          <div className={styles.option}>내용</div>
-          <div className={styles.option}>내용</div>
-          <div className={styles.option}>내용</div>
-          <div className={styles.option}>내용</div>
-          <div className={styles.option}>내용</div>
-          <div className={styles.option}>내용</div>
-          <div className={styles.option}>내용</div>
-          <div className={styles.option}>내용</div>
-          <div className={styles.option}>내용</div>
-          <div className={styles.option}>내용</div>
-          <div className={styles.option}>내용</div>
-          <div className={styles.option}>내용</div>
-          <div className={styles.option}>내용</div>
-          <div className={styles.option}>내용</div>
-          <div className={styles.option}>내용</div>
-          <div className={styles.option}>내용</div>
-          <div className={styles.option}>내용</div>
-          <div className={styles.option}>내용</div>
-          <div className={styles.option}>내용</div>
-          <div className={styles.option}>내용</div>
-          <div className={styles.option}>내용</div>
-          <div className={styles.option}>내용</div>
-          <div className={styles.option}>내용</div>
-          <div className={styles.option}>내용</div>
-          <div className={styles.option}>내용</div>
-          <div className={styles.option}>내용</div>
-          <div className={styles.option}>내용</div>
-          <div className={styles.option}>내용</div>
-          <div className={styles.option}>내용</div>
+          <div className={styles.option}>
+            <div className={styles.option_text}>
+              <div>베이스술</div>
+              <div className={styles.option_not}>
+                <img src={check} alt="check" className={styles.icon} />
+                <div>상관없음</div>
+              </div>
+            </div>
+            <div className={styles.base_box}>
+              {base.map((ele) => {
+                if (ele !== "") {
+                  return <div className={styles.base}>{ele}</div>;
+                }
+              })}
+            </div>
+          </div>
         </div>
       </div>
       <Nav num={1} />
