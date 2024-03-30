@@ -14,8 +14,12 @@ import com.catale.backend.domain.review.repository.ReviewRepository;
 import com.catale.backend.global.exception.cocktail.CocktailNotFoundException;
 
 import com.catale.backend.global.exception.member.MemberNotFoundException;
-import java.util.Collections;
+
+import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 
@@ -26,9 +30,6 @@ import org.springframework.stereotype.Service;
 import com.catale.backend.domain.member.repository.MemberRepository;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
 import reactor.core.publisher.Mono;
 
 
@@ -149,6 +150,7 @@ public class CocktailService {
         Cocktail matchedCocktail = findBestMatchingItems(cocktailList, request.getEmotion1(), request.getEmotion2(), request.getEmotion3());
         log.info("matched:" + matchedCocktail.getName());
         TodayCocktailResponseDto responseDto = new TodayCocktailResponseDto(matchedCocktail);
+        log.info("matched:" + responseDto.getCocktailId());
         responseDto.setLike(likeService.checkisLiked(memberId, matchedCocktail.getId()));
 
         // FastAPI 호출, 연관 칵테일 Id list 반환
@@ -203,7 +205,6 @@ public class CocktailService {
         return searchedList;
     }
 
-//    getCocktailSearchByOption(authentication, base, alc, sweet, sour, bitter, sparkling));
 
     @Transactional
     public List<CocktailSimpleInfoDto> getCocktailSearchByOption(Authentication authentication,
@@ -231,29 +232,62 @@ public class CocktailService {
 
     /* 감정 1, 2, 3과의 차이가 적은 칵테일 목록을 뽑는 메서드 */
     private Cocktail findBestMatchingItems(List<Cocktail> cocktailList, int emotion1, int emotion2, int emotion3) {
-        List<Cocktail> bestMatches = new ArrayList<>();
-        int minDifference = Integer.MAX_VALUE;
+        class CocktailDiff {
+            private Long cocktailId;
+            private int diff;
+
+            public CocktailDiff(Long cocktailId, int diff) {
+                this.cocktailId = cocktailId;
+                this.diff = diff;
+            }
+            public int getDiff(){
+                return diff;
+            }
+            public Long getCocktailId(){
+                return cocktailId;
+            }
+        }
+
+        List<Integer> cocktailEmoList;
+        List<CocktailDiff> cocktailResults = new ArrayList<>();
+
+        // 회원 emotion 정렬부터, 값이 없는경우(0인경우), 자리수 고려
+        List<Integer> emoList = Stream.of(emotion1, emotion2, emotion3)
+                .filter(emotion -> emotion != 0)
+                .map(emotion -> emotion > 9 ? emotion / 10 : emotion)
+                .sorted()
+                .toList();
 
         for (Cocktail cocktail : cocktailList) {
-            int cocktailAttr1 = cocktail.getEmotion1();
-            int cocktailAttr2 = cocktail.getEmotion2();
-            int cocktailAttr3 = cocktail.getEmotion3();
+            // 칵테일의 emotion 오름차순 정렬부터
+            cocktailEmoList = new ArrayList<>();
+            cocktailEmoList.add(cocktail.getEmotion1());
+            cocktailEmoList.add(cocktail.getEmotion2());
+            cocktailEmoList.add(cocktail.getEmotion3());
+            cocktailEmoList.sort(Comparator.naturalOrder());
 
-            int diff =
-                Math.abs(cocktailAttr1 - emotion1) + Math.abs(cocktailAttr2 - emotion2) + Math.abs(
-                    cocktailAttr3 - emotion3);
+            int tmp = 0;
+            int diff = 1000;
+            int diffSum = 0;
 
-            if (diff < minDifference) {
-                bestMatches.clear();
-                bestMatches.add(cocktail);
-                minDifference = diff;
+            //각각의 최소 차이값 구하기
+            for(int i=0; i<emoList.size(); i++){
+                diff = 1000;
+                for(int j=0; j<3; j++){
+                    tmp = Math.abs(emoList.get(i) - cocktailEmoList.get(j));
+                    if(tmp < diff) diff = tmp;
+                }
+                diffSum += diff;
             }
-
+            cocktailResults.add(new CocktailDiff(cocktail.getId(), diffSum));
         }
-        Collections.shuffle(bestMatches);
-        return bestMatches.get(0);
+
+        cocktailResults.sort(Comparator.comparingInt(CocktailDiff::getDiff));
+        List<CocktailDiff> top5 = new ArrayList<>(cocktailResults.subList(0, 5));
+        Collections.shuffle(top5);
+        Cocktail matchedCocktail = cocktailRepository.findById(top5.get(0).getCocktailId()).orElseThrow(CocktailNotFoundException::new);
+        log.info("matched:" + matchedCocktail.getId());
+        return matchedCocktail;
     }
-
-
 
 }
