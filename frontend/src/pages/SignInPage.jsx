@@ -5,7 +5,7 @@ import { todaydiary } from "../api/Diary";
 import useUserStore from "../store/useUserStore";
 import useTodayStore from "../store/useTodayStore";
 import styles from "./SignInPage.module.css";
-import toast from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 import Container from "../components/common/Container";
 export default function SignInPage() {
   /* 오류페이지 이동 */
@@ -60,40 +60,44 @@ export default function SignInPage() {
         else {
           const isToday = await todaydiary();
           await setToday({ today: isToday.data });
-          showToast("로그인성공!");
+          toast.success(`로그인 성공 !`, {
+            position: "top-center",
+          });
           navigate(`../bar`);
         }
       } else {
         // 이메일, 비밀번호 불일치
-        console.log("에러남");
-        showToast("아이디와 비밀번호를 확인해주세요.");
+        toast.error(`이메일 혹은 비밀번호가 틀렸습니다`, {
+          position: "top-center",
+        });
       }
-    } catch (e) {
+    } catch (error) {
       // 전송 오류 발생 시
       // 서버에러. 에러페이지로 이동
-      console.log("에러남222");
+      console.error("로그인 에러:", error);
     }
   };
 
-  /* 알림 함수 */
-  const showToast = (string) => {
-    toast.error(`${string}`, {
-      style: {
-        border: "1px solid #713200",
-        padding: "16px",
-        color: "#713200",
-        zIndex: "100",
-      },
-      iconTheme: {
-        primary: "#713200",
-        secondary: "#FFFAEE",
-      },
-      position: "top-center",
-    });
-  };
+  // /* 알림 함수 */
+  // const showToast = (string) => {
+  //   toast.error(`${string}`, {
+  //     style: {
+  //       border: "1px solid #713200",
+  //       padding: "16px",
+  //       color: "#713200",
+  //       zIndex: "100",
+  //     },
+  //     iconTheme: {
+  //       primary: "#713200",
+  //       secondary: "#FFFAEE",
+  //     },
+  //     position: "top-center",
+  //   });
+  // };
 
   return (
     <Container>
+      <Toaster position="top-center" />
       <div className={styles.main}>
         <div className={styles.폰트}>
           <div>이야기와 칵테일이 공존하는 공간</div>
@@ -124,6 +128,12 @@ export default function SignInPage() {
           </div>
           <div className={styles.button} onClick={() => handleSubmit()}>
             로그인
+          </div>
+          <div
+            className={styles.회원가입하러가기}
+            onClick={() => navigate(`/signup`)}
+          >
+            아직 회원이 아니신가요?
           </div>
         </form>
       </div>

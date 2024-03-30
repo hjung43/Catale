@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import s from "classnames";
 import { signup, checkEmail, checkNickName } from "../api/Member";
-import toast from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 export default function SignUpPage() {
   const [formErrors, setFormErrors] = useState({});
   const [formData, setFormData] = useState({
@@ -34,8 +34,9 @@ export default function SignUpPage() {
       console.log(data);
 
       if (data.status === "SUCCESS") {
-        showToast("회원가입 성공!");
-        console.log("회원가입이 완료되었습니다.");
+        toast.success(`회원가입 성공 !`, {
+          position: "top-center",
+        });
         setFormData({
           email: "",
           password: "",
@@ -43,31 +44,22 @@ export default function SignUpPage() {
           nickname: "",
         });
         navigate(`../`);
-      } else {
+      } else if (data.status === "ERROR") {
+        toast.error(`${data.message}`, {
+          position: "top-center",
+        });
         console.log("에러임");
       }
     } catch (error) {
+      // 오류 메시지 토스트로 표시
       console.error("회원가입 에러:", error);
     }
   };
   /* 알림 함수 */
-  const showToast = (string) => {
-    toast.error(`${string}`, {
-      style: {
-        border: "1px solid #713200",
-        padding: "16px",
-        color: "#713200",
-        zIndex: "100",
-      },
-      iconTheme: {
-        primary: "#713200",
-        secondary: "#FFFAEE",
-      },
-      position: "top-center",
-    });
-  };
+
   return (
     <Container>
+      <Toaster position="top-center" />
       <div className={styles.main}>
         <div className={styles.폰트}>
           <div>이야기와 칵테일이 공존하는 공간</div>
@@ -148,6 +140,9 @@ export default function SignUpPage() {
           </div>
           <div className={styles.button} onClick={() => handleSubmit()}>
             회원가입
+          </div>
+          <div className={styles.이미회원임} onClick={() => navigate(`/login`)}>
+            이미 회원이신가요 ?
           </div>
         </form>
       </div>
