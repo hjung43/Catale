@@ -24,7 +24,7 @@ async def retrain_model():
         return "one"
 
 
-@rec.post("/personal-cocktail", status_code=200)
+@rec.post("/personal", status_code=200)
 async def rec_personal_cocktail(
         personal_cocktail_request: PersonalcocktailRequest = Body(...),
         item_features: ItemFeatures = Depends(ItemFeatures),

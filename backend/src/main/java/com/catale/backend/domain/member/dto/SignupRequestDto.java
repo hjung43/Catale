@@ -27,9 +27,9 @@ public class SignupRequestDto {
     @Schema(description = "비밀번호 확인", example = "Ssafy123!@")
     private String passwordConfirm;
 
-    @Pattern(regexp = "^[a-zA-Z0-9_]{3,10}$",
+    @Pattern(regexp = "^[a-zA-Z0-9_가-힣]{3,10}$",
             message = "닉네임은 영문자, 숫자 및 언더바(_)를 포함할 수 있으며 3~10자 이내여야 합니다.")
-    @Schema(description = "닉네임", example = "Catale_2024")
+    @Schema(description = "닉네임", example = "Catale_1")
     private String nickname;
 
 }
