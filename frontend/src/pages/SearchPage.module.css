@@ -165,7 +165,7 @@
   gap: 0.5rem;
   align-items: center;
 }
-.option_text div {
+.베이스술 {
   color: var(--main5);
 }
 .base_box {
@@ -174,10 +174,30 @@
   flex-wrap: wrap;
   gap: 0.5rem;
 }
+.nonbase_box {
+  margin: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  /* filter: blur(1.3px); 흐려지는 효과 */
+}
 .base {
   background-color: var(--main3);
   border-radius: 0.5rem;
   padding: 0.5rem 1rem;
+  border: 2px solid var(--main3);
+}
+.nonbase {
+  background-color: rgb(61, 70, 196);
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: 2px solid white;
+}
+.redcolor {
+  color: #ff8888;
+}
+.whitecolor {
+  color: #e6e8ff;
 }
 .검색하기 {
   position: absolute;
@@ -192,4 +212,10 @@
   border: 1.5px solid var(--point, #6deefc);
   background: var(--point);
   box-shadow: 0px 0px 20px 0px rgba(172, 162, 191, 0.5);
+}
+.selected {
+  background-color: rgb(61, 70, 196);
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: 2px solid white;
 }
