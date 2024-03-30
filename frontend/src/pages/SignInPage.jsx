@@ -95,6 +95,10 @@ export default function SignInPage() {
   return (
     <Container>
       <div className={styles.main}>
+        <div className={styles.폰트}>
+          <div>이야기와 칵테일이 공존하는 공간</div>
+          <div>CATale 에 오신것을 환영합니다</div>
+        </div>
         <form>
           <div className={styles.inputContainer}>
             <label className={styles.label}>email</label>
