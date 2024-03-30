@@ -14,6 +14,7 @@ import setting from "../../assets/common/setting.png";
 import logout from "../../assets/common/logout.png";
 import edit from "../../assets/common/edit.png";
 import { useNavigate } from "react-router-dom";
+import { alctalk, opttalk } from "../../components/data/searchtalk";
 
 import useUserStore from "../../store/useUserStore";
 
@@ -161,7 +162,7 @@ export default function MyPage() {
               <div>단맛 : {chartOptions.series[0].data[0]}%</div>
               <div>쓴맛 : {chartOptions.series[0].data[1]}%</div>
               <div>신맛 : {chartOptions.series[0].data[2]}%</div>
-              <div>도수 : {chartOptions.series[0].data[3]} 도</div>
+              <div>도수강도 : {[user.alc]}</div>
               <div>탄산 : {chartOptions.series[0].data[4]}%</div>
             </div>
           </div>
