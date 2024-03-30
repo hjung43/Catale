@@ -41,7 +41,7 @@
   display: flex;
   align-items: center;
   width: 100%;
-  margin: 1rem auto;
+  margin: 0.6rem;
   border-radius: 1rem;
   box-shadow: 0 10px 20px -5px #181b4ce6;
   animation: eff 1.5s infinite;
@@ -60,7 +60,7 @@
 .등수 {
   display: flex;
   justify-content: center;
-  width: 20%;
+  width: 13%;
   /* background-color: red; */
 }
 .glass {
@@ -72,11 +72,11 @@
   font-size: larger;
   text-shadow: 0 0 5px #cdf5ff;
   text-align: center;
-  margin: 1rem;
+  margin: 0rem 0rem 0.5rem;
   color: #ffffff;
 }
 .content {
-  width: 80%;
+  width: 90%;
   height: 55px;
   overflow: auto;
   margin: 0 auto;
@@ -89,6 +89,7 @@
 .cocktail {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   border: solid 2px var(--main6);
   box-shadow: 0 0 20px 0 var(--main3);
   border-radius: 1rem;
@@ -100,11 +101,13 @@
   background: linear-gradient(180deg, #b5c7ec 0%, #7d9dd8 50%, #d6c3f4 100%);
 }
 .묶음 {
-  width: 70%;
+  /* background-color: red; */
+  width: 59%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 1rem;
 }
 .메인박스 {
   position: relative;
@@ -131,11 +134,7 @@
     color: #eddfa1;
   } /* 최종 색상 */
 }
-.왕관 {
-  position: absolute;
-  top: 0.85rem;
-  left: 2rem;
-  /* transform: rotate(-20deg); */
+.왕관2 {
   width: 2rem;
 }
 .like {

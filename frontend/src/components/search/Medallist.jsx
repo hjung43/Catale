@@ -49,7 +49,10 @@ export default function Medallist({ index, response, setList }) {
     <>
       {index === 0 && (
         <>
-          <div className={styles.메인박스}>
+          <div
+            className={styles.메인박스}
+            onClick={() => navigate(`/cocktail/${response.id}`)}
+          >
             <div className={styles.cocktail}>
               <div
                 className={styles.glass_cover}
