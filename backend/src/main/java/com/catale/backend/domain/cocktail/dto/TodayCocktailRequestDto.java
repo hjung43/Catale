@@ -17,6 +17,8 @@ public class TodayCocktailRequestDto {
 
       private String reason;
 
+      private int alc;
+
       private int emotion1;
 
       private int emotion2;
