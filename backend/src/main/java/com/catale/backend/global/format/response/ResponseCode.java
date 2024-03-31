@@ -68,7 +68,8 @@ public enum ResponseCode {
     REALTIME_RECOMMENDED_KEYWORDS_FETCHED(HttpStatus.OK, "실시간 추천 검색어가 성공적으로 조회되었습니다."),
 
     /* 이미지 */
-    IMAGE_UPDATED(HttpStatus.OK, "프로필 이미지가 성공적으로 수정되었습니다.");
+    IMAGE_UPDATED(HttpStatus.OK, "프로필 이미지가 성공적으로 수정되었습니다."),
+    STORE_IMAGE_POST(HttpStatus.OK, "가게 사진들이 성공적으로 들어갔습니다.");
 
     private final HttpStatus status;
     private final String message;
