@@ -22,8 +22,10 @@ import cocktail from "../../assets/bartender/오늘의칵테일.png";
 import useUserStore from "../../store/useUserStore";
 import useTodayStore from "../../store/useTodayStore";
 import Cattalk20 from "../../components/main/Cattalk20";
+import { useNavigate } from "react-router-dom";
 
 export default function MainPage() {
+  const navigate = useNavigate();
   //유저를 일단 담아놓고~
   const user = useUserStore((state) => state.user);
   const today = useTodayStore((state) => state.today.today);
@@ -105,7 +107,10 @@ export default function MainPage() {
           <div className={styles.aspectcontent}>
             <img className={styles.배경바} src={배경바} alt="" />
             {talknum === 24 && (
-              <div className={styles.오늘의칵테일}>
+              <div
+                className={styles.오늘의칵테일}
+                onClick={() => navigate("result")}
+              >
                 <img className={styles.칵테일} src={cocktail} alt="" />
                 <div className={styles.칵테일글자}>오늘의 칵테일</div>
                 <div className={styles.클릭글자}>click !</div>
