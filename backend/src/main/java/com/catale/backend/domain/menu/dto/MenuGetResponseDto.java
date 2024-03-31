@@ -16,6 +16,7 @@ public class MenuGetResponseDto {
     private boolean isSignature;
     private int price;
     private int alc;
+    private String imgUrl;
 
     public MenuGetResponseDto(Menu menu){
         this.id = menu.getId();
