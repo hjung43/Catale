@@ -51,14 +51,13 @@ export default function StoreDetailPage() {
         />
         {storedata && menus && images && (
           <>
-            <StoreInfo
-              selectedStore={selectedStore}
-              storedata={storedata}
-              menus={menus}
-              images={images}
-            />
+            <StoreInfo selectedStore={selectedStore} storedata={storedata} />
             <Storepicture images={images} storenumber={storenumber} />
-            <Storemenu menus={menus} storenumber={storenumber} />
+            <Storemenu
+              menus={menus}
+              storenumber={storenumber}
+              storename={selectedStore.title}
+            />
           </>
         )}
       </Container>
