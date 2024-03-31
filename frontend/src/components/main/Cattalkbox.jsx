@@ -99,12 +99,15 @@ export default function Cattalkbox({
               )}
             </>
           )}
-          {talknum !== 24 && talkarr.cat === 1 && (
-            <div className={styles.고양이다음} onClick={() => handleNext()}>
-              <div className={styles.click}>click !</div>
-              <div className={styles.역삼각형}></div>
-            </div>
-          )}
+          {talknum !== 24 &&
+            talkarr.cat === 1 &&
+            talknum !== 23 &&
+            talknum !== 25 && (
+              <div className={styles.고양이다음} onClick={() => handleNext()}>
+                <div className={styles.click}>click !</div>
+                <div className={styles.역삼각형}></div>
+              </div>
+            )}
         </div>
       )}
       {selectnum === -1 && talkarr.cat !== 0 && talkarr.cat === 3 && (
