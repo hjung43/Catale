@@ -1,5 +1,7 @@
 package com.catale.backend.domain.store.service;
 
+import com.catale.backend.domain.menu.dto.MenuGetResponseDto;
+import com.catale.backend.domain.menu.repository.MenuRepository;
 import com.catale.backend.domain.store.dto.StoreGetResponseDto;
 import com.catale.backend.domain.store.entity.Store;
 import com.catale.backend.domain.store.repository.StoreRepository;
@@ -17,6 +19,7 @@ public class StoreService {
 
     @Autowired
     private final StoreRepository storeRepository;
+    private final MenuRepository menuRepository;
 
     //가게 전체 조회
     @Transactional(readOnly = true)
@@ -33,7 +36,12 @@ public class StoreService {
     @Transactional(readOnly = true)
     public StoreGetResponseDto findById(Long id) {
         Store store = storeRepository.findById(id).orElseThrow(NullPointerException::new);
-        return new StoreGetResponseDto(store);
+
+        StoreGetResponseDto dto = new StoreGetResponseDto(store);
+        List<MenuGetResponseDto> menuList = menuRepository.getMenuList(store.getId()).orElse(new ArrayList<>());
+        dto.setMenus(menuList);
+
+        return dto;
     }
 
 }
