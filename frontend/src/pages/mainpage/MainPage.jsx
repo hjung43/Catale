@@ -22,6 +22,8 @@ import cocktail from "../../assets/bartender/오늘의칵테일.png";
 import useUserStore from "../../store/useUserStore";
 import useTodayStore from "../../store/useTodayStore";
 import Cattalk20 from "../../components/main/Cattalk20";
+import { recommendtoday } from "../../api/Cocktail";
+import Todaycocktail from "../../components/main/Todaycocktail";
 
 export default function MainPage() {
   //유저를 일단 담아놓고~
@@ -230,6 +232,10 @@ export default function MainPage() {
             setTodaycomment={setTodaycomment}
             setSelectcheck={setSelectcheck}
           />
+        )}
+        {talknum === 23 && (
+          //블렌딩 시작버튼이 있으면 좋을거같아서 만든버튼
+          <Todaycocktail talknum={talknum} setTalknum={setTalknum} />
         )}
       </div>
       <Nav num={3} />
