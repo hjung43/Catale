@@ -2,7 +2,7 @@ import styles from "./Storemenu.module.css";
 import { useState } from "react";
 import Box from "../common/Box";
 
-export default function Storemenu({ storenumber }) {
+export default function Storemenu({ menus, storenumber }) {
   const [cocktailVisibility, setCocktailVisibility] = useState(
     new Array(4).fill(true)
   );
