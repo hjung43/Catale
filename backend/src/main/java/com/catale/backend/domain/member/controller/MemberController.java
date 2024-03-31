@@ -149,10 +149,7 @@ public class MemberController {
     public ResponseEntity<?> chooseCocktail(@Parameter(hidden = true) Authentication authentication,
                                             @RequestBody CocktailLikeListRequestDto requestDto){ //CocktailLikeListRequestDto는 칵테일 DTO에 있음
 
-        Member me = memberService.findMember(authentication.getName());
-        Long memberId = me.getId();
-
-        return response.success(ResponseCode.SIGNUP_LIKED_COCKTAIL_LIST_FETCHED, cocktailService.postCocktailLikeList(memberId, requestDto));
+        return response.success(ResponseCode.SIGNUP_LIKED_COCKTAIL_LIST_FETCHED, cocktailService.postCocktailLikeList(authentication, requestDto));
     }
 
 

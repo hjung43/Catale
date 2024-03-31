@@ -49,7 +49,10 @@ public class CocktailService {
 
     //칵테일 전체 리스트 조회
     @Transactional
-    public List<CocktailListResponseDto> getAllCocktails(Long memberId, Pageable page){
+    public List<CocktailListResponseDto> getAllCocktails(Authentication authentication, Pageable page){
+        Member me = memberService.findMember(authentication.getName());
+        Long memberId = me.getId();
+
         //좋아요 수 많은 순서대로 리스트 가져오기
         List<CocktailListResponseDto> list = cocktailRepository.getCocktails(page).orElse(new ArrayList<>());
         //칵테일 마다 유저가 좋아요 했는지 유무 저장
@@ -63,7 +66,10 @@ public class CocktailService {
     }
     //내가 좋아요 한 칵테일 리스트
     @Transactional
-    public List<CocktailGetLikeResponseDto> getLikeCocktails(Long memberId, Pageable page){
+    public List<CocktailGetLikeResponseDto> getLikeCocktails(Authentication authentication, Pageable page){
+        Member me = memberService.findMember(authentication.getName());
+        Long memberId = me.getId();
+
         List<CocktailGetLikeResponseDto> list = cocktailRepository.getLikeCoctails(memberId, page)
                                                                   .orElse(new ArrayList<>());
         return list;
@@ -71,7 +77,10 @@ public class CocktailService {
 
     //칵테일 상세정보 조회
     @Transactional
-    public CocktailGetResponseDto getCocktailDetail(Long memberId, Long cocktailId){
+    public CocktailGetResponseDto getCocktailDetail(Authentication authentication, Long cocktailId){
+        Member me = memberService.findMember(authentication.getName());
+        Long memberId = me.getId();
+
         Cocktail cocktail = cocktailRepository.findById(cocktailId).orElseThrow(CocktailNotFoundException::new);
         CocktailGetResponseDto cocktailDto = new CocktailGetResponseDto(cocktail);
         //해당 칵테일의 리뷰 조회 및 dto 저장
@@ -87,7 +96,10 @@ public class CocktailService {
 
     //내가 먹은 칵테일 조회
     @Transactional
-    public List <CoctailMyreviewResponseDto>getCocktailMyReviewList(Long memberId, Pageable page){
+    public List <CoctailMyreviewResponseDto>getCocktailMyReviewList(Authentication authentication, Pageable page){
+        Member me = memberService.findMember(authentication.getName());
+        Long memberId = me.getId();
+
         //원하는 정렬 방법으로 정렬된 리스트 가져오기
         List<CoctailMyreviewResponseDto> myList = cocktailRepository.getCocktailMyReviewList(memberId, page).orElse(new ArrayList<>());
         for(CoctailMyreviewResponseDto c : myList){
@@ -102,20 +114,21 @@ public class CocktailService {
     }
 
     @Transactional
-    public Long postCocktailLikeList(Long memberId, CocktailLikeListRequestDto requestDto){
+    public Long postCocktailLikeList(Authentication authentication, CocktailLikeListRequestDto requestDto){
 
         List<Long> list = requestDto.getCocktailIds();
         for(Long cocktailId : list){
-            getCocktailLikeResult(memberId, cocktailId);
+            getCocktailLikeResult(authentication, cocktailId);
         }
         return  null;
     }
 
 
     @Transactional
-    public CocktailLikeResponseDto getCocktailLikeResult(Long memberId, Long cocktailId){
-//        Member member = memberService.findMember(auth.getName());
-//        Long memberId = member.getId();
+    public CocktailLikeResponseDto getCocktailLikeResult(Authentication authentication, Long cocktailId){
+        Member me = memberService.findMember(authentication.getName());
+        Long memberId = me.getId();
+
         Member member = memberRepository.findById(memberId).orElseThrow(MemberNotFoundException::new);
 
         Cocktail cocktail = cocktailRepository.findById(cocktailId).orElseThrow(CocktailNotFoundException::new);
