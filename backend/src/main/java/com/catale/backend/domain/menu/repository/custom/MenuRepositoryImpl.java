@@ -19,7 +19,7 @@ public class MenuRepositoryImpl implements MenuRepositoryCustom{
     @Override
     public Optional<List<MenuGetResponseDto>> getMenuList(Long storeId) {
         return Optional.ofNullable(query.select(Projections.constructor(MenuGetResponseDto.class,
-                menu.id,menu.store.id, menu.cocktail.id, menu.isSignature, menu.price, cocktail.alc
+                menu.id,menu.store.id, menu.cocktail.id, menu.isSignature, menu.price, cocktail.alc, cocktail.image.url
                 ))
                 .from(menu).leftJoin(cocktail)
                 .on(menu.cocktail.id.eq(cocktail.id))
