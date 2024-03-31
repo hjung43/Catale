@@ -10,6 +10,7 @@ import com.catale.backend.domain.image.entity.Image;
 import com.catale.backend.domain.image.repository.ImageRepository;
 import com.catale.backend.domain.member.entity.Member;
 import com.catale.backend.domain.store.entity.Store;
+import com.catale.backend.domain.store.repository.StoreRepository;
 import com.catale.backend.global.exception.image.ImageNotFoundException;
 import com.catale.backend.global.exception.image.ImageRegisterException;
 import com.catale.backend.global.exception.image.ImageUpdateException;
@@ -26,6 +27,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 
@@ -37,6 +40,7 @@ public class ImageService {
     private final ImageRepository imageRepository;
     private final AmazonS3 amazonS3;
     private final CocktailRepository cocktailRepository;
+    private final StoreRepository storeRepository;
 
     @Value("${cloud.aws.s3.bucket}")
     private String bucket;
@@ -87,5 +91,37 @@ public class ImageService {
                 .build();
         Image saveImage = imageRepository.save(image);
         return saveImage.getUrl();
+    }
+
+    public List<String> saveStoreImage(Long storeId, List<MultipartFile> multipartFiles){
+
+        List<String> imageUrls = new ArrayList<>();
+
+        try {
+
+            for(MultipartFile m : multipartFiles){
+                String uuidFilename = "images/" + UUID.randomUUID();
+                ObjectMetadata objectMetadata = new ObjectMetadata(); // 이미지를 담을 메타데이터를 생성합니다.
+                objectMetadata.setContentType(m.getContentType()); // 이미지의 타입을 설정합니다.
+                objectMetadata.setContentLength(m.getSize()); // 이미지의 길이를 설정합니다.
+
+                amazonS3.putObject(bucket, uuidFilename, m.getInputStream(), objectMetadata); // 메타데이터를 Amazon S3에 객체를 업로드합니다.
+                String imageUrl = amazonS3.getUrl(bucket,uuidFilename).toString();
+                imageUrls.add(imageUrl );//업로드한 이미지 url가져오기
+                Store store = storeRepository.findById(storeId).orElseThrow(NullPointerException::new);
+                Image image = Image.builder()
+                        .url(imageUrl)
+                        .store(store)
+                        .member(null)
+                        .cocktail(null)
+                        .build();
+                Image saveImage = imageRepository.save(image);
+            }
+
+        } catch(IOException e) { // 입출력 예외가 발생한 경우 예외를 처리합니다.
+            throw new ImageRegisterException(ErrorCode.IMAGE_REGISTRATION_FAILED); //예외처리 (수정 필요할듯)
+        }
+
+        return imageUrls;
     }
 }
