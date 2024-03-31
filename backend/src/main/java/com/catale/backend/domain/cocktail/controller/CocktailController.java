@@ -76,7 +76,7 @@ public class CocktailController {
     public ResponseEntity<?> getTodayCocktail(
         @Parameter(hidden = true) Authentication authentication,
         @RequestBody TodayCocktailRequestDto todayCocktailRequestDto) {
-
+        log.info("controller");
         return response.success(ResponseCode.COCKTAIL_DETAIL_FETCHED,
             cocktailService.getTodayCocktail(authentication, todayCocktailRequestDto));
     }

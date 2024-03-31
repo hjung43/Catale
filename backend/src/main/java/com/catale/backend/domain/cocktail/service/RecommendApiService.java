@@ -13,14 +13,16 @@ import org.springframework.web.reactive.function.client.WebClient;
 public class RecommendApiService {
 
       private final WebClient webClient = WebClient.builder()
-                                                   .baseUrl("https://fastapi.silvstone.xyz/rec")
-                                                   .build();
+              .baseUrl("https://fastapi.silvstone.xyz/rec")
+              .build();
 
-      public Mono<List<Long>> getTodayCocktailResponse(Long cocktailId) {
-            return this.webClient.get()
-                                .uri("/today/{cocktail_id}", cocktailId)
-                                .retrieve()
-                                .bodyToMono(new ParameterizedTypeReference<List<Long>>() {});
+      public List<Long> getTodayCocktailResponse(Long cocktailId) {
+            return webClient.get()
+                    .uri("/today/{cocktail_id}", cocktailId)
+                    .retrieve()
+                    .bodyToMono(new ParameterizedTypeReference<List<Long>>() {})
+                    .block();
+
       }
 
       public Mono<List<Long>> getMemberRecommendResponse(Long memberId) {
@@ -30,3 +32,4 @@ public class RecommendApiService {
                     .bodyToMono(new ParameterizedTypeReference<List<Long>>() {});
       }
 }
+

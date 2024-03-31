@@ -31,6 +31,7 @@ import org.springframework.stereotype.Service;
 import com.catale.backend.domain.member.repository.MemberRepository;
 import org.springframework.transaction.annotation.Transactional;
 
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 
@@ -60,7 +61,7 @@ public class CocktailService {
             Optional<LikeResponseDto> likeDto = likeRepository.getIsLike(memberId, c.getId());
             if(!likeDto.isEmpty()){
                 c.setLike(true);
-        }
+            }
         }
         return list;
     }
@@ -71,7 +72,7 @@ public class CocktailService {
         Long memberId = me.getId();
 
         List<CocktailGetLikeResponseDto> list = cocktailRepository.getLikeCoctails(memberId, page)
-                                                                  .orElse(new ArrayList<>());
+                .orElse(new ArrayList<>());
         return list;
     }
 
@@ -138,9 +139,9 @@ public class CocktailService {
 
         if(isLike == null){
             Like like = Like.builder()
-                            .cocktail(cocktail)
-                            .member(member)
-                            .build();
+                    .cocktail(cocktail)
+                    .member(member)
+                    .build();
             likeRepository.save(like);
             likeRepository.updateLikeCount(cocktailId, cocktail.getLikeCount()+1);
             responseDto.setLiked(true);
@@ -164,35 +165,24 @@ public class CocktailService {
         log.info("matched:" + responseDto.getCocktailId());
         responseDto.setLike(likeService.checkisLiked(memberId, matchedCocktail.getId()));
 
-        // 오늘의 다이어리 생성
-        Diary todayDiary = Diary.builder()
-                                .member(member)
-                                .cocktail(matchedCocktail)
-                                .mood(request.getMood())
-                                .comment(request.getComment())
-                                .emotion1(request.getEmotion1())
-                                .emotion2(request.getEmotion2())
-                                .emotion3(request.getEmotion3())
-                                .reason(request.getReason())
-                                .build();
-
         // FastAPI 호출, 연관 칵테일 Id list 반환
-        List<Long> recommendedIdList = apiService.getTodayCocktailResponse(matchedCocktail.getId()).block();
+        List<Long> recommendedIdList = apiService.getTodayCocktailResponse(matchedCocktail.getId());
         // id -> dto로 변환
         List<CocktailSimpleInfoDto> simpleInfoDtos = recommendedIdList.stream()
-                              .map(id -> {
-                                  Cocktail cocktail = cocktailRepository.findById(id)
-                                                                        .orElseThrow(CocktailNotFoundException::new);
-                                                                        return cocktail;
-                              }).map(cocktail -> {
-                                    CocktailSimpleInfoDto simpleInfoDto = new CocktailSimpleInfoDto(cocktail);
-                                    simpleInfoDto.setLike(likeService.checkisLiked(memberId, cocktail.getId()));
-                                    return simpleInfoDto;
-                              }).toList();
+                .map(id -> {
+                    Cocktail cocktail = cocktailRepository.findById(id)
+                            .orElseThrow(CocktailNotFoundException::new);
+                    return cocktail;
+                }).map(cocktail -> {
+                    CocktailSimpleInfoDto simpleInfoDto = new CocktailSimpleInfoDto(cocktail);
+                    simpleInfoDto.setLike(likeService.checkisLiked(memberId, cocktail.getId()));
+                    return simpleInfoDto;
+                }).toList();
 
         responseDto.setRecommendedCocktailList(simpleInfoDtos);
         return responseDto;
     }
+
 
     @Transactional
     public List<CocktailGetResponseDto> getMemberRecommendCocktail(Authentication authentication){
@@ -237,8 +227,8 @@ public class CocktailService {
         Long memberId = member.getId();
 
         List<CocktailSimpleInfoDto> searchedList = cocktailRepository
-                                                    .searchByOption(base, alc, sweet, sour, bitter, sparkling, page)
-                                                    .orElse(new ArrayList<>());
+                .searchByOption(base, alc, sweet, sour, bitter, sparkling, page)
+                .orElse(new ArrayList<>());
         for(CocktailSimpleInfoDto infoDto : searchedList){
             infoDto.setLike(likeService.checkisLiked(memberId, infoDto.getCocktailId()));
         }
@@ -284,9 +274,9 @@ public class CocktailService {
         for (Cocktail cocktail : cocktailList) {
             // 칵테일의 emotion 오름차순 정렬부터
             cocktailEmoList = new ArrayList<>();
-            cocktailEmoList.add(cocktail.getEmotion1());
-            cocktailEmoList.add(cocktail.getEmotion2());
-            cocktailEmoList.add(cocktail.getEmotion3());
+            if(cocktail.getEmotion1() != 0) cocktailEmoList.add(cocktail.getEmotion1());
+            if(cocktail.getEmotion2() != 0) cocktailEmoList.add(cocktail.getEmotion2());
+            if(cocktail.getEmotion3() != 0) cocktailEmoList.add(cocktail.getEmotion3());
             cocktailEmoList.sort(Comparator.naturalOrder());
 
             int tmp = 0;
@@ -299,14 +289,16 @@ public class CocktailService {
             //각각의 최소 차이값 구하기
             for(int i=0; i<emoList.size(); i++){
                 diff = 1000;
-                for(int j=0; j<3; j++){
+                for(int j=0; j<cocktailEmoList.size(); j++){
                     tmp = Math.abs(emoList.get(i) - cocktailEmoList.get(j));
                     if(tmp < diff) diff = tmp;
                 }
                 diffSum += diff;
             }
-            // 칵테일과 선택한 도수의 차 구하기
-            diffSum += Math.abs(alc - alcRange);
+            // (사용자가 원하는 도수를 선택했다면) 칵테일과 선택한 도수의 차 구하기
+            if(alc != 0){
+                diffSum += Math.abs(alc - alcRange);
+            }
             cocktailResults.add(new CocktailDiff(cocktail.getId(), diffSum));
         }
 
