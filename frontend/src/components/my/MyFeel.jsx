@@ -50,7 +50,7 @@ export default function MyFeel() {
         },
       },
     },
-    series: [0, 0, 0, 0, 0],
+    series: [1, 1, 1, 1, 1],
   });
 
   useEffect(() => {
@@ -66,7 +66,13 @@ export default function MyFeel() {
         const { veryBad, bad, soso, good, veryGood } = feel.data;
         setChartOptions((prevOptions) => ({
           ...prevOptions,
-          series: [veryBad, bad, soso, good, veryGood],
+          series: [
+            veryBad ? veryBad : 1,
+            bad ? bad : 1,
+            soso ? soso : 1,
+            good ? good : 1,
+            veryGood ? veryGood : 1,
+          ],
         }));
       } catch (error) {
         console.error(error);
@@ -75,6 +81,10 @@ export default function MyFeel() {
 
     fetchdiary();
   }, []);
+
+  // if (chartOptions.series.every((value) => value === 0)) {
+  //   return null;
+  // }
 
   return (
     <>

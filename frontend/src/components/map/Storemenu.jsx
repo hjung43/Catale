@@ -1,12 +1,34 @@
 import styles from "./Storemenu.module.css";
 import { useState } from "react";
 import Box from "../common/Box";
+import { useNavigate } from "react-router-dom";
+export default function Storemenu({ menus, storenumber, storename }) {
+  // 도수에 따라 메뉴를 그룹화하는 함수
 
-export default function Storemenu({ menus, storenumber }) {
+  const navigate = useNavigate();
+  const groupMenusByAlcohol = () => {
+    const groupedMenus = [[], [], [], [], [], []]; // 도수별 그룹을 저장할 배열
+    menus.forEach((menu) => {
+      if (menu.alc === 0) {
+        groupedMenus[0].push(menu);
+      } else if (menu.alc <= 10) {
+        groupedMenus[1].push(menu);
+      } else if (menu.alc <= 15) {
+        groupedMenus[2].push(menu);
+      } else if (menu.alc <= 20) {
+        groupedMenus[3].push(menu);
+      } else if (menu.alc <= 30) {
+        groupedMenus[4].push(menu);
+      } else {
+        groupedMenus[5].push(menu);
+      }
+    });
+    return groupedMenus;
+  };
+
   const [cocktailVisibility, setCocktailVisibility] = useState(
-    new Array(4).fill(true)
+    new Array(6).fill(true) // 도수별 그룹 개수만큼 초기값 생성
   );
-  //여기서 숫자를 그거로 변경해 뭐냐 도수에 따라 나눌때 그 집합개수로 설정
 
   const toggleCocktailVisibility = (index) => {
     const newVisibility = [...cocktailVisibility];
@@ -17,29 +39,78 @@ export default function Storemenu({ menus, storenumber }) {
   return (
     <>
       <div className={styles.menumain}>
-        <div className={styles.메뉴폰트}>{storenumber}번가게 메뉴</div>
+        <div className={styles.메뉴폰트}>{storename}' cocktail</div>
         <div className={styles.칵테일박스}>
-          {cocktailVisibility.map((isVisible, index) => (
-            <div key={index}>
-              <div className={styles.boxtop}>
-                <div>여기는 도수에따라 달라지게할거야</div>
-                <div onClick={() => toggleCocktailVisibility(index)}>
-                  {isVisible ? "숨기기" : "보이기"}
-                </div>
-              </div>
-              {isVisible && (
-                <div className={styles.칵테일전부}>
-                  <Box>
-                    <div className={styles.칵테일하나}>
-                      <div>칵테일사진</div>
-                      <div>칵테일이름</div>
-                      <div>칵테일가격</div>
-                      <div>칵테일 상세정보로 가기</div>
+          {groupMenusByAlcohol().map((group, index) => (
+            <>
+              {group.length > 0 && (
+                <div key={index}>
+                  <div className={styles.boxtop}>
+                    <div>
+                      {/* 도수 구간 표시 */}
+                      {index === 0
+                        ? "무알콜"
+                        : index === 1
+                        ? "1도 - 10도"
+                        : index === 2
+                        ? "11도 - 15도"
+                        : index === 3
+                        ? "16도 - 20도"
+                        : index === 4
+                        ? "21도 - 30도"
+                        : "30도 이상"}{" "}
                     </div>
-                  </Box>
+                    <div onClick={() => toggleCocktailVisibility(index)}>
+                      {cocktailVisibility[index] ? "숨기기" : "보이기"}
+                    </div>
+                  </div>
+                  {cocktailVisibility[index] && (
+                    <div className={styles.칵테일전부}>
+                      <Box>
+                        <div className={styles.칵테일정보창}>
+                          <div>칵테일</div>
+                          <div>가격</div>
+                          <div>도수</div>
+                        </div>
+                        {group.map((menu) => (
+                          <div
+                            className={styles.칵테일박스박스}
+                            onClick={() =>
+                              navigate(`../../cocktail/${menu.cocktailId}`)
+                            }
+                          >
+                            <div key={menu.id} className={styles.칵테일하나}>
+                              {/* 칵테일 사진을 표시 */}
+                              <div className={styles.칵테일오른쪽}>
+                                <div
+                                  className={styles.칵테일사진}
+                                  style={{
+                                    backgroundImage: `url(${menu.imgUrl})`,
+                                    backgroundSize: "cover",
+                                    backgroundPosition: "center",
+                                  }}
+                                ></div>
+                                <div className={styles.칵테일이름}>
+                                  {menu.cocktailName}
+                                </div>
+                              </div>
+                              {/* 메뉴 이름 또는 필요한 정보 표시 */}
+                              <div className={styles.칵테일가격}>
+                                {menu.price}원
+                              </div>
+                              {/* 메뉴 가격 또는 필요한 정보 표시 */}
+                              <div className={styles.칵테일도수}>
+                                {menu.alc}%
+                              </div>
+                            </div>
+                          </div>
+                        ))}
+                      </Box>
+                    </div>
+                  )}
                 </div>
               )}
-            </div>
+            </>
           ))}
         </div>
       </div>
