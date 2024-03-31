@@ -39,10 +39,9 @@ public class ImageController {
     public ResponseEntity<?> putMemberImage(@Parameter(hidden = true) Authentication authentication,
                                             @RequestPart(value = "file") MultipartFile multipartFile)throws IOException {
 
-        Member me = memberService.findMember(authentication.getName());
-        Long memberId = me.getId();
 
-        String imageUrl = imageService.updateMemberImage(memberId, multipartFile);
+
+        String imageUrl = imageService.updateMemberImage(authentication, multipartFile);
         return response.success(ResponseCode.IMAGE_UPDATED,imageUrl);
     }
     @PostMapping(value = "cocktail/image/{cocktailId}", consumes = "multipart/form-data")
