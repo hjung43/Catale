@@ -59,7 +59,7 @@ export default function SignInPage() {
         if (res.data.memberInfo.alc == -1) navigate(`../preference`);
         else {
           const isToday = await todaydiary();
-          await setToday({ today: isToday.data });
+          await setToday(isToday.data);
           toast.success(`로그인 성공 !`, {
             position: "top-center",
           });

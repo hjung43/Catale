@@ -54,3 +54,13 @@ export async function todaydiary() {
     throw error;
   }
 }
+
+//오늘날짜의 칵테일 조회
+export async function cocktailtoday(today) {
+  try {
+    const response = await axios.get(BASE_URL + "/date", { params: today });
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+}
