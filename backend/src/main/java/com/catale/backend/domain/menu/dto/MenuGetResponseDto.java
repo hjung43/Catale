@@ -17,6 +17,7 @@ public class MenuGetResponseDto {
     private int price;
     private int alc;
     private String imgUrl;
+    private String cocktailName;
 
     public MenuGetResponseDto(Menu menu){
         this.id = menu.getId();
