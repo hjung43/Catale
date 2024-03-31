@@ -15,11 +15,11 @@ import logout from "../../assets/common/logout.png";
 import edit from "../../assets/common/edit.png";
 import { useNavigate } from "react-router-dom";
 import { alctalk, opttalk } from "../../components/data/searchtalk";
-
 import useUserStore from "../../store/useUserStore";
 
 export default function MyPage() {
   const user = useUserStore((state) => state.user);
+  const currentDate = new Date();
   const [chartOptions, setChartOptions] = useState({
     options: {
       tooltip: {
@@ -191,14 +191,10 @@ export default function MyPage() {
           </div>
         </div>
         <Box>
-          <div className={styles.feel} onClick={() => navigate("monthlymood")}>
-            <div>나의 기분</div>
-            <img src={arrow} alt="arrow" className={styles.arrow_icon} />
+          <div className={styles.feel}>
+            <div>{currentDate.getMonth() + 1}월의 기분</div>
           </div>
-          <div
-            className={styles.feelChart}
-            onClick={() => navigate("monthlymood")}
-          >
+          <div className={styles.feelChart}>
             <MyFeel />
           </div>
         </Box>

@@ -5,7 +5,7 @@ const BASE_URL = "https://api.silvstone.xyz/api/v1/diary";
 export async function monthdiary(year, month) {
   const params = {
     year: year,
-    month: month,
+    month: month + 1,
   };
   try {
     const response = await axios.get(BASE_URL, { params });

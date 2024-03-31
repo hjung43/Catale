@@ -41,6 +41,7 @@
   width: 100%;
   min-height: 100vh;
   /* padding: 5rem 2rem; */
+  overflow-x: hidden;
 }
 .cover {
   background: #10214399;
@@ -90,6 +91,8 @@
   line-height: 1.3em;
   font-size: smaller;
   color: var(--main4);
+  height: 6rem;
+  overflow-y: auto;
 }
 .cocktail_bottom {
   display: flex;
@@ -115,7 +118,7 @@
 }
 .title {
   font-size: x-large;
-  padding: 3rem 0 2rem;
+  padding: 4rem 0rem 1rem;
 }
 .mood {
   font-size: large;
@@ -168,4 +171,22 @@
 .show_detail {
   transform: translateX(37rem) translateY(-14rem) rotate(30deg);
   background-color: #00000000;
+}
+.로딩중 {
+  width: 100%;
+  height: 100vh;
+  background-color: rgb(253, 250, 216);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  font-size: larger;
+}
+.폰트들 {
+  padding: 0.3rem;
+}
+.감정들 {
+  display: flex;
+  gap: 0.3rem;
 }

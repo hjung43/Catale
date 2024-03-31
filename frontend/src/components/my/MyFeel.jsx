@@ -1,8 +1,9 @@
 import styles from "./MyFeel.module.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Chart from "react-apexcharts";
+import { mooddata } from "../../api/Member";
 
-export default function MyFeel({ feel }) {
+export default function MyFeel() {
   const [chartOptions, setChartOptions] = useState({
     options: {
       tooltip: {
@@ -29,7 +30,7 @@ export default function MyFeel({ feel }) {
           fontFamily: "GongGothicMedium",
         },
       },
-      labels: ["개빡침", "덜빡침", "그럭저럭", "좋음", "쌉행복"],
+      labels: ["very bad", "bad", "soso", "good", "very good"],
       legend: {
         formatter: function (val, opts) {
           return val + " - " + opts.w.globals.series[opts.seriesIndex];
@@ -49,8 +50,31 @@ export default function MyFeel({ feel }) {
         },
       },
     },
-    series: [3, 2, 6, 4, 103],
+    series: [0, 0, 0, 0, 0],
   });
+
+  useEffect(() => {
+    const fetchdiary = async () => {
+      const currentDate = new Date();
+      const today = {
+        year: currentDate.getFullYear(),
+        month: currentDate.getMonth() + 1,
+      };
+
+      try {
+        const feel = await mooddata(today);
+        const { veryBad, bad, soso, good, veryGood } = feel.data;
+        setChartOptions((prevOptions) => ({
+          ...prevOptions,
+          series: [veryBad, bad, soso, good, veryGood],
+        }));
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchdiary();
+  }, []);
 
   return (
     <>

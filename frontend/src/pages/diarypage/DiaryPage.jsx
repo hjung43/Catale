@@ -13,10 +13,11 @@ import glass4 from "../../assets/glass/glass4.png";
 import glass5 from "../../assets/glass/glass5.png";
 import glass6 from "../../assets/glass/glass6.png";
 import glass7 from "../../assets/glass/glass7.png";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import useTodayStore from "../../store/useTodayStore";
 import Popup from "../../components/common/Popup";
+import { monthdiary } from "../../api/Diary";
 
 export default function DiaryPage() {
   const navigate = useNavigate();
@@ -24,7 +25,8 @@ export default function DiaryPage() {
   const today = new Date();
   const [year, setYear] = useState(today.getFullYear());
   const [month, setMonth] = useState(today.getMonth());
-  const istoday = useTodayStore((state) => state.today.today);
+  const [response, setResponse] = useState([]);
+  const istoday = useTodayStore((state) => state.today);
 
   // 달의 첫째 날과 마지막 날 구하기
   const firstDayOfMonth = new Date(year, month, 1); // 해당 월의 첫째 날을 구함
@@ -64,53 +66,67 @@ export default function DiaryPage() {
     }
   };
 
-  const response = [
-    {
-      diaryId: 1,
-      createdAt: "2024-03-08T11:58:20.551705",
-      mood: 1,
-      color1: "#6deefc",
-      color2: "#7ab0fd",
-      color3: "#eb75f5",
-      glass: 1,
-    },
-    {
-      diaryId: 2,
-      createdAt: "2024-03-09T11:58:20.551705",
-      mood: 2,
-      color1: "#20595f",
-      color2: "#7afd94",
-      color3: "#f3f575",
-      glass: 2,
-    },
-    {
-      diaryId: 3,
-      createdAt: "2024-03-14T11:58:20.551705",
-      mood: 3,
-      color1: "#9cba57",
-      color2: "#7ad3fd",
-      color3: "#f57575",
-      glass: 3,
-    },
-    {
-      diaryId: 4,
-      createdAt: "2024-03-16T11:58:20.551705",
-      mood: 4,
-      color1: "#57ba6e",
-      color2: "#9f7afd",
-      color3: "#84f575",
-      glass: 4,
-    },
-    {
-      diaryId: 5,
-      createdAt: "2024-03-17T11:58:20.551705",
-      mood: 5,
-      color1: "#dbd65e",
-      color2: "#fdc27a",
-      color3: "#f59375",
-      glass: 5,
-    },
-  ];
+  useEffect(() => {
+    const fetchdiary = async () => {
+      try {
+        const response = await monthdiary(year, month);
+        setResponse(response.data); // 데이터를 상태에 저장
+        console.log(response.data); // 데이터 확인용
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchdiary();
+  }, [month]);
+
+  // const response = [
+  //   {
+  //     id: 1,
+  //     createdAt: "2024-03-08T11:58:20.551705",
+  //     mood: 1,
+  //     color1: "#6deefc",
+  //     color2: "#7ab0fd",
+  //     color3: "#eb75f5",
+  //     glass: 1,
+  //   },
+  //   {
+  //     id: 2,
+  //     createdAt: "2024-03-09T11:58:20.551705",
+  //     mood: 2,
+  //     color1: "#20595f",
+  //     color2: "#7afd94",
+  //     color3: "#f3f575",
+  //     glass: 2,
+  //   },
+  //   {
+  //     id: 3,
+  //     createdAt: "2024-03-14T11:58:20.551705",
+  //     mood: 3,
+  //     color1: "#9cba57",
+  //     color2: "#7ad3fd",
+  //     color3: "#f57575",
+  //     glass: 3,
+  //   },
+  //   {
+  //     id: 4,
+  //     createdAt: "2024-03-16T11:58:20.551705",
+  //     mood: 4,
+  //     color1: "#57ba6e",
+  //     color2: "#9f7afd",
+  //     color3: "#84f575",
+  //     glass: 4,
+  //   },
+  //   {
+  //     id: 5,
+  //     createdAt: "2024-03-17T11:58:20.551705",
+  //     mood: 5,
+  //     color1: "#dbd65e",
+  //     color2: "#fdc27a",
+  //     color3: "#f59375",
+  //     glass: 5,
+  //   },
+  // ];
 
   // response에서 createdAt 속성 추출하여 특별한 날짜 배열 생성
   const specialDates = response.map((item) => item.createdAt.split("T")[0]);
@@ -220,7 +236,7 @@ export default function DiaryPage() {
                       border: `solid 2px var(--feel${specialDateInfo.mood})`,
                       boxShadow: `0 0 10px 0 var(--feel${specialDateInfo.mood})`,
                     }}
-                    onClick={() => navigate(`${specialDateInfo.diaryId}`)}
+                    onClick={() => navigate(`${specialDateInfo.id}`)}
                   >
                     <div className={styles.number}>{d.date.getDate()}</div>
                     {dateStyles[dateString] && (
