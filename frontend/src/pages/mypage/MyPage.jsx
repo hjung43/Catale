@@ -11,11 +11,12 @@ import Cocktail1 from "../../assets/lottie/Cocktail1.json";
 import Cocktail2 from "../../assets/lottie/Cocktail2.json";
 import MyFeel from "../../components/my/MyFeel";
 import setting from "../../assets/common/setting.png";
-import logout from "../../assets/common/logout.png";
+import logouticon from "../../assets/common/logout.png";
 import edit from "../../assets/common/edit.png";
 import { useNavigate } from "react-router-dom";
 import { alctalk, opttalk } from "../../components/data/searchtalk";
 import useUserStore from "../../store/useUserStore";
+import { logout } from "../../api/Member";
 
 export default function MyPage() {
   const user = useUserStore((state) => state.user);
@@ -109,6 +110,17 @@ export default function MyPage() {
       },
     ],
   });
+
+  const handleLogout = async () => {
+    try {
+      await logout(); // 로그아웃 API 호출
+      localStorage.clear(); // 로컬 스토리지 초기화
+      navigate("/"); // "/"로 이동
+    } catch (error) {
+      console.error("로그아웃 에러:", error);
+    }
+  };
+
   const navigate = useNavigate();
 
   return (
@@ -134,7 +146,12 @@ export default function MyPage() {
               className={styles.setting}
               onClick={() => navigate("/settings")}
             />
-            <img src={logout} alt="logout" className={styles.logout} />
+            <img
+              src={logouticon}
+              alt="logout"
+              className={styles.logout}
+              onClick={() => handleLogout()}
+            />
           </div>
         </div>
         <Box>
