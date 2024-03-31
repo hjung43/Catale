@@ -23,14 +23,13 @@ import useUserStore from "../../store/useUserStore";
 import useTodayStore from "../../store/useTodayStore";
 import Cattalk20 from "../../components/main/Cattalk20";
 import { useNavigate } from "react-router-dom";
-import { recommendtoday } from "../../api/Cocktail";
 import Todaycocktail from "../../components/main/Todaycocktail";
 
 export default function MainPage() {
   const navigate = useNavigate();
   //유저를 일단 담아놓고~
   const user = useUserStore((state) => state.user);
-  const today = useTodayStore((state) => state.today.today);
+  const today = useTodayStore((state) => state.today);
   //대화의 순서
   const [talknum, setTalknum] = useState(1);
   const [selectnum, setSeletnum] = useState(0);
@@ -48,11 +47,12 @@ export default function MainPage() {
   // usertakl에서 0은 없는거 1은 대화 2,3,4,5,6,7은 특정고르기
 
   useEffect(() => {
+    console.log(today);
     async function fetchMyData() {
       try {
         if (today) {
           //여기서 오늘대화의 결고를 가져오는걸 써야해
-          setTalknum(24);
+          setTalknum(25);
         }
       } catch (error) {
         console.error("데이터를 가져오는 데 실패했습니다:", error);
@@ -61,6 +61,17 @@ export default function MainPage() {
 
     fetchMyData();
   }, []);
+
+  const resetclick = () => {
+    setTalknum(1);
+    setSelectcheck(false);
+    setNowemonum(-1);
+    setTodayreason("");
+    setTodaycomment("");
+    setTodayemo([]);
+    setSeletnum(0);
+    useTodayStore.getState().setToday(false); // today 상태 변경
+  };
 
   return (
     <ContainerMain>
@@ -108,7 +119,7 @@ export default function MainPage() {
         <div className={styles.aspectcontainer}>
           <div className={styles.aspectcontent}>
             <img className={styles.배경바} src={배경바} alt="" />
-            {talknum === 24 && (
+            {(talknum === 24 || talknum === 25) && (
               <div
                 className={styles.오늘의칵테일}
                 onClick={() => navigate("result")}
@@ -240,7 +251,20 @@ export default function MainPage() {
         )}
         {talknum === 23 && (
           //블렌딩 시작버튼이 있으면 좋을거같아서 만든버튼
-          <Todaycocktail talknum={talknum} setTalknum={setTalknum} />
+          <Todaycocktail
+            talknum={talknum}
+            setTalknum={setTalknum}
+            mood={nowemonum}
+            emotion={todayemo}
+            reason={todayreason}
+            comment={todaycomment}
+          />
+        )}
+        {talknum === 25 && (
+          //블렌딩 시작버튼이 있으면 좋을거같아서 만든버튼
+          <div className={styles.다시추천} onClick={() => resetclick()}>
+            다시 추천 받고싶어
+          </div>
         )}
       </div>
       <Nav num={3} />
