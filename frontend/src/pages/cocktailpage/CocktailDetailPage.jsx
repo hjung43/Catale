@@ -23,12 +23,15 @@ import useCocktailStore from "../../store/useCocktailStore";
 import { useEffect, useState } from "react";
 import { cocktaildetail } from "../../api/Cocktail";
 import { cocktaillike } from "../../api/Cocktail";
+import Review from "../../components/review/Review";
+import { getreview } from "../../api/Review";
 
 export default function CocktailDetailPage() {
   const { cocktailId } = useParams();
   const setCocktail = useCocktailStore((state) => state.setCocktail);
   const cocktail = useCocktailStore((state) => state.cocktail);
   const [nowlike, setNowlike] = useState(true);
+  const [reviewList, setReviewList] = useState([]);
 
   const glasses = [
     glass1,
@@ -67,6 +70,8 @@ export default function CocktailDetailPage() {
     const fetchData = async () => {
       const cocktails = await cocktaildetail(cocktailId);
       console.log(cocktails.data);
+      const review = await getreview(cocktails.data.id);
+      setReviewList(review.data);
       setCocktail(cocktails.data);
       setNowlike(cocktails.data.like);
     };
@@ -135,6 +140,9 @@ export default function CocktailDetailPage() {
           </div>
           <div className={styles.ingredient}>{cocktail.ingredient}</div>
           <div className={styles.review}>{cocktail.name} 리뷰</div>
+          <div>
+            <Review list={reviewList} />
+          </div>
         </div>
       </div>
       <div className={styles.popup}>
