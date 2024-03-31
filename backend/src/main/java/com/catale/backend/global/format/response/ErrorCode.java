@@ -62,7 +62,9 @@ public enum ErrorCode {
 
     //이미지 예외 처리
     IMAGE_NOT_FOUND(HttpStatus.NOT_FOUND, "해당 이미지를 찾을 수 없습니다."),
+    IMAGE_FILE_NOT_FOUND(HttpStatus.BAD_REQUEST, "수정할 이미지 파일을 찾을 수 없습니다."),
     IMAGE_REGISTRATION_FAILED(HttpStatus.BAD_REQUEST,"이미지를 등록할 수 없습니다."),
+    FILE_TYPE_INCORRECT(HttpStatus.BAD_REQUEST,"이미지 타입의 파일을 업로드 해주세요."),
     IMAGE_UPDATE_FAILED(HttpStatus.BAD_REQUEST,"이미지를 수정할 수 없습니다.");
 
 
