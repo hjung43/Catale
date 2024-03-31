@@ -105,15 +105,11 @@ public class MemberController {
     public ResponseEntity<?> updateNickname(@Parameter(hidden = true) Authentication authentication,
                                             @Valid @RequestBody NicknameRequestDto requestDto, BindingResult bindingResult){
 
-        System.out.println("check : "+authentication);
-        Member me = memberService.findMember(authentication.getName());
-        Long memberId = me.getId();
-
         if (bindingResult.hasErrors()) {
             return response.fail(bindingResult);
         }
 
-        Long nicknameUpdate = memberService.updateNickname(memberId, requestDto);
+        Long nicknameUpdate = memberService.updateNickname(authentication, requestDto);
         return response.success(ResponseCode.NICKNAME_UPDATED, nicknameUpdate);
 
     }
@@ -123,10 +119,8 @@ public class MemberController {
     public ResponseEntity<?> updatePassword(@Parameter(hidden = true) Authentication authentication,
                                             @RequestBody PasswordRequestDto requestDto){
 
-        Member me = memberService.findMember(authentication.getName());
-        Long memberId = me.getId();
 
-        Long passwordUpdate = memberService.updatePassword(memberId, requestDto);
+        Long passwordUpdate = memberService.updatePassword(authentication, requestDto);
         return response.success(ResponseCode.PASSWORD_UPDATE_SUCCESS, passwordUpdate);
     }
 
@@ -135,10 +129,7 @@ public class MemberController {
     public ResponseEntity<?> getMonthlyMood(@Parameter(hidden = true) Authentication authentication,
                                             @RequestParam int year, @RequestParam int month){
 
-        Member me = memberService.findMember(authentication.getName());
-        Long memberId = me.getId();
-
-        MoodCntResponseDto moodCnt = diaryService.getMoodCntList(year, month, memberId);
+        MoodCntResponseDto moodCnt = diaryService.getMoodCntList(year, month, authentication);
 
         return response.success(ResponseCode.MONTHLY_DIARY_MOOD_CNT_FETCHED, moodCnt);
 
