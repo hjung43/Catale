@@ -19,7 +19,7 @@ export async function getreview(id) {
   };
 
   try {
-    const response = await axios.get(BASE_URL + `${id}`, params);
+    const response = await axios.get(BASE_URL + `/${id}`, params);
     return response.data;
   } catch (error) {
     throw error;
