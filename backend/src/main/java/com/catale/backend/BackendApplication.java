@@ -17,7 +17,7 @@ public class BackendApplication {
 		TimeZone.setDefault(TimeZone.getTimeZone("Asia/Seoul"));
 		System.out.println("현재시각: "+ new Date());
 	}
-	
+
 	public static void main(String[] args) {
 		SpringApplication.run(BackendApplication.class, args);
 	}
