@@ -307,8 +307,10 @@ public class CocktailService {
                 }
                 diffSum += diff;
             }
-            // 칵테일과 선택한 도수의 차 구하기
-            diffSum += Math.abs(alc - alcRange);
+            // (사용자가 원하는 도수를 선택했다면) 칵테일과 선택한 도수의 차 구하기
+            if(alc != 0){
+                diffSum += Math.abs(alc - alcRange);
+            }
             cocktailResults.add(new CocktailDiff(cocktail.getId(), diffSum));
         }
 
