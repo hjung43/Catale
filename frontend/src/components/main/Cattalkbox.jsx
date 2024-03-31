@@ -78,7 +78,7 @@ export default function Cattalkbox({
 
           {talkarr.cat !== 3 && (
             <>
-              <div className={styles.고양이이름}>고먐미</div>
+              <div className={styles.고양이이름}>곰먐미</div>
 
               {talknum !== 8 && talknum !== 21 && (
                 <div className={styles.고양이내용}>
@@ -174,7 +174,7 @@ export default function Cattalkbox({
       {selectnum !== -1 && talkarr[selectnum].cat !== 0 && (
         <div className={styles.고양이말풍선}>
           <img className={styles.말풍선} src={말풍선} alt="" />
-          <div className={styles.고양이이름}>고먐미</div>
+          <div className={styles.고양이이름}>곰먐미</div>
           <div className={styles.고양이내용}>
             {renderTextWithLineBreaks(currentText)}
           </div>

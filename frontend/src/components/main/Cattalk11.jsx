@@ -52,7 +52,7 @@ export default function Cattalk11({ talkarr, 말풍선, todayemo }) {
     <>
       <div className={styles.고양이말풍선}>
         <img className={styles.말풍선} src={말풍선} alt="" />
-        <div className={styles.고양이이름}>고먐미</div>
+        <div className={styles.고양이이름}>곰먐미</div>
         <div className={styles.고양이내용11}>
           <>
             <div>{currentText}</div>

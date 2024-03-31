@@ -36,7 +36,14 @@ export async function cocktaillike(id) {
 }
 
 //오늘의칵테일 아직 미완성!
-
+export async function recommendtoday(today) {
+  try {
+    const response = await axios.post(BASE_URL + "/today", today);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+}
 //칵테일 이름으로 검색하기
 export async function cocktailsearchname(name) {
   const params = {
