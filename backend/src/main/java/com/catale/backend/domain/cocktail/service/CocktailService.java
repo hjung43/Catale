@@ -4,6 +4,7 @@ package com.catale.backend.domain.cocktail.service;
 import com.catale.backend.domain.cocktail.dto.*;
 import com.catale.backend.domain.cocktail.entity.Cocktail;
 import com.catale.backend.domain.cocktail.repository.CocktailRepository;
+import com.catale.backend.domain.diary.entity.Diary;
 import com.catale.backend.domain.like.dto.LikeResponseDto;
 import com.catale.backend.domain.like.entity.Like;
 import com.catale.backend.domain.like.repository.LikeRepository;
@@ -145,10 +146,22 @@ public class CocktailService {
 
         //먼저 오늘의 기분과 연관된 색의 칵테일을 하나 선정
         List<Cocktail> cocktailList = cocktailRepository.findAll();
-        Cocktail matchedCocktail = findBestMatchingItems(cocktailList, request.getEmotion1(), request.getEmotion2(), request.getEmotion3());
+        Cocktail matchedCocktail = findBestMatchingItems(cocktailList, request.getEmotion1(), request.getEmotion2(), request.getEmotion3(), request.getAlc());
         TodayCocktailResponseDto responseDto = new TodayCocktailResponseDto(matchedCocktail);
         log.info("matched:" + responseDto.getCocktailId());
         responseDto.setLike(likeService.checkisLiked(memberId, matchedCocktail.getId()));
+
+        // 오늘의 다이어리 생성
+        Diary todayDiary = Diary.builder()
+                                .member(member)
+                                .cocktail(matchedCocktail)
+                                .mood(request.getMood())
+                                .comment(request.getComment())
+                                .emotion1(request.getEmotion1())
+                                .emotion2(request.getEmotion2())
+                                .emotion3(request.getEmotion3())
+                                .reason(request.getReason())
+                                .build();
 
         // FastAPI 호출, 연관 칵테일 Id list 반환
         List<Long> recommendedIdList = apiService.getTodayCocktailResponse(matchedCocktail.getId()).block();
@@ -228,7 +241,7 @@ public class CocktailService {
 
 
     /* 감정 1, 2, 3과의 차이가 적은 칵테일 목록을 뽑는 메서드 */
-    private Cocktail findBestMatchingItems(List<Cocktail> cocktailList, int emotion1, int emotion2, int emotion3) {
+    private Cocktail findBestMatchingItems(List<Cocktail> cocktailList, int emotion1, int emotion2, int emotion3, int alc) {
         class CocktailDiff {
             private Long cocktailId;
             private int diff;
@@ -266,6 +279,9 @@ public class CocktailService {
             int tmp = 0;
             int diff = 1000;
             int diffSum = 0;
+            int cocktailAlc = cocktail.getAlc();
+            // 칵테일의 대략적인 도수 구하기
+            int alcRange = cocktailAlc > 9 ? cocktailAlc / 10 : 0;
 
             //각각의 최소 차이값 구하기
             for(int i=0; i<emoList.size(); i++){
@@ -276,6 +292,8 @@ public class CocktailService {
                 }
                 diffSum += diff;
             }
+            // 칵테일과 선택한 도수의 차 구하기
+            diffSum += Math.abs(alc - alcRange);
             cocktailResults.add(new CocktailDiff(cocktail.getId(), diffSum));
         }
 
