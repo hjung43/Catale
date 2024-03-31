@@ -44,9 +44,8 @@ public class ReviewController {
     @PostMapping
     public ResponseEntity<?> postReview(@Parameter(hidden = true) Authentication authentication,
                                         @Valid @RequestBody ReviewGetRequestDto dto){
-        Member me = memberService.findMember(authentication.getName());
-        Long memberId = me.getId();
-        Long reviewId = reviewService.postReview(memberId, dto);
+
+        Long reviewId = reviewService.postReview(authentication, dto);
         return response.success(ResponseCode.REVIEW_CREATED,reviewId);
     }
     @Operation(summary = "칵테일 리뷰 삭제", description = "칵테일 리뷰 삭제")
