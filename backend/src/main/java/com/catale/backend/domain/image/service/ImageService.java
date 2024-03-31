@@ -9,11 +9,10 @@ import com.catale.backend.domain.diary.entity.Diary;
 import com.catale.backend.domain.image.entity.Image;
 import com.catale.backend.domain.image.repository.ImageRepository;
 import com.catale.backend.domain.member.entity.Member;
+import com.catale.backend.domain.member.service.MemberService;
 import com.catale.backend.domain.store.entity.Store;
 import com.catale.backend.domain.store.repository.StoreRepository;
-import com.catale.backend.global.exception.image.ImageNotFoundException;
-import com.catale.backend.global.exception.image.ImageRegisterException;
-import com.catale.backend.global.exception.image.ImageUpdateException;
+import com.catale.backend.global.exception.image.*;
 import com.catale.backend.global.exception.member.MemberNotFoundException;
 import com.catale.backend.global.format.response.ErrorCode;
 import jakarta.persistence.*;
@@ -21,6 +20,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -41,14 +41,29 @@ public class ImageService {
     private final AmazonS3 amazonS3;
     private final CocktailRepository cocktailRepository;
     private final StoreRepository storeRepository;
+    private final MemberService memberService;
 
     @Value("${cloud.aws.s3.bucket}")
     private String bucket;
 
     @Transactional
-    public String  updateMemberImage(Long memberId, MultipartFile multipartFile){
+    public String  updateMemberImage(Authentication authentication, MultipartFile multipartFile){
+
+        Member me = memberService.findMember(authentication.getName());
+        Long memberId = me.getId();
+
+        if(multipartFile == null || multipartFile.isEmpty()){
+            throw new ImageFileNotFoundException(ErrorCode.IMAGE_FILE_NOT_FOUND);
+        }
+
+
         String uuidFilename = "images/" + UUID.randomUUID();
         String imageUrl = "";
+
+        System.out.println("타입 : " + multipartFile.getContentType());
+        if(!multipartFile.getContentType().startsWith("image/")){
+            throw new FileTypeIncorrectException(ErrorCode.FILE_TYPE_INCORRECT);
+        }
         try {
             ObjectMetadata objectMetadata = new ObjectMetadata(); // 이미지를 담을 메타데이터를 생성합니다.
             objectMetadata.setContentType(multipartFile.getContentType()); // 이미지의 타입을 설정합니다.
