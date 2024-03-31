@@ -44,10 +44,9 @@ export async function preference(taste) {
   }
 }
 //로그아웃
-export async function logout(setUser) {
+export async function logout() {
   try {
-    await axios.post(BASE_URL + "logout");
-    await setUser(null);
+    await axios.post(BASE_URL + "/logout");
   } catch (error) {
     throw error;
   }
