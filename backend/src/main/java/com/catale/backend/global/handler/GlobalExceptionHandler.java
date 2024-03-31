@@ -2,6 +2,8 @@ package com.catale.backend.global.handler;
 
 import com.catale.backend.global.exception.email.FailedMessageTransmissionException;
 import com.catale.backend.global.exception.email.InvalidAuthCodeException;
+import com.catale.backend.global.exception.image.FileTypeIncorrectException;
+import com.catale.backend.global.exception.image.ImageFileNotFoundException;
 import com.catale.backend.global.exception.image.ImageNotFoundException;
 import com.catale.backend.global.exception.jwt.AccessTokenNotFoundException;
 import com.catale.backend.global.exception.jwt.RefreshTokenNotFoundException;
@@ -95,6 +97,20 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         log.error("ProfileUpdateException = {}", e.getErrorCode().getMessage());
         return response.error(e.getErrorCode());
     }
+
+    @ExceptionHandler(ImageFileNotFoundException.class)
+    protected ResponseEntity<?> handle(ImageFileNotFoundException e) {
+        log.error("ImageFileNotFoundException = {}", e.getErrorCode().getMessage());
+        return response.error(e.getErrorCode());
+    }
+
+    @ExceptionHandler(FileTypeIncorrectException.class)
+    protected ResponseEntity<?> handle(FileTypeIncorrectException e) {
+        log.error("FileTypeIncorrectException = {}", e.getErrorCode().getMessage());
+        return response.error(e.getErrorCode());
+    }
+
+
 
 
 
