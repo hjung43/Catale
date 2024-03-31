@@ -68,10 +68,8 @@ DiaryController {
             @Parameter(hidden = true) Authentication authentication,
                                            @RequestParam int year, @RequestParam int month){
 
-        Member me = memberService.findMember(authentication.getName());
-        Long memberId = me.getId();
 
-        List<DiaryMonthResponseDto> list = diaryService.getDiarys(year,month,memberId);
+        List<DiaryMonthResponseDto> list = diaryService.getDiarys(year,month,authentication);
         return response.success(ResponseCode.MONTHLY_DIARY_LIST_FETCHED,list);
     }
     @Operation(summary = "날짜로 다이어리 상세 조회", description = "날짜로 다이어리 상세 조회")
@@ -92,10 +90,8 @@ DiaryController {
     public ResponseEntity<?> getIsExistTodayDiary(
             @Parameter(hidden = true) Authentication authentication){
 
-        Member me = memberService.findMember(authentication.getName());
-        Long memberId = me.getId();
 
-        boolean isExsitTodayDiary = diaryService.isExsitTodayDiary(memberId);
+        boolean isExsitTodayDiary = diaryService.isExsitTodayDiary(authentication);
         if(!isExsitTodayDiary){
             return response.success(ResponseCode.TODAY_DIARY_NOT_FOUND,isExsitTodayDiary);
         }
