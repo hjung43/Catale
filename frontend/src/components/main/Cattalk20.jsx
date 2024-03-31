@@ -84,7 +84,7 @@ export default function Cattalk20({
 
           {talkarr.cat !== 3 && (
             <>
-              <div className={styles.고양이이름}>고먐미</div>
+              <div className={styles.고양이이름}>곰먐미</div>
 
               {talknum !== 21 && (
                 <div className={styles.고양이내용}>
