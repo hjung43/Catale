@@ -5,6 +5,10 @@ import StoreInfo from "../../components/map/StoreInfo";
 import { useParams, useNavigate } from "react-router-dom";
 import { markerdataB, markerdataG } from "../../components/map/data/markerData";
 import Headerwb from "../../components/common/Headerwb";
+import { getstoredetail } from "../../api/Store";
+import { useState, useEffect } from "react";
+import Storepicture from "../../components/map/Storepicture";
+import Storemenu from "../../components/map/Storemenu";
 
 export default function StoreDetailPage() {
   const { storenumber } = useParams();
@@ -15,6 +19,20 @@ export default function StoreDetailPage() {
   const selectedStore = allData.find(
     (store) => store.number === parseInt(storenumber)
   );
+
+  const [storedata, setStoredata] = useState();
+  const [menus, setMenus] = useState();
+  const [images, setImages] = useState();
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await getstoredetail(storenumber);
+      console.log(response);
+      setStoredata(response);
+      setMenus(response.menus);
+      setImages(response.images);
+    };
+    fetchData();
+  }, [storenumber]);
 
   const nowlocatex = selectedStore.lat;
   const nowlocatey = selectedStore.lng;
@@ -31,7 +49,18 @@ export default function StoreDetailPage() {
           level="2"
           markerData={selectedStore.selectedStore}
         />
-        <StoreInfo selectedStore={selectedStore} />
+        {storedata && menus && images && (
+          <>
+            <StoreInfo
+              selectedStore={selectedStore}
+              storedata={storedata}
+              menus={menus}
+              images={images}
+            />
+            <Storepicture images={images} storenumber={storenumber} />
+            <Storemenu menus={menus} storenumber={storenumber} />
+          </>
+        )}
       </Container>
     </>
   );

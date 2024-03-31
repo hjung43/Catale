@@ -12,7 +12,7 @@ export async function getstorelist() {
 }
 
 // 가게 상세 조회
-export async function getstorelist(storeId) {
+export async function getstoredetail(storeId) {
   try {
     const response = await axios.get(BASE_URL + `/${storeId}`);
     return response.data;
