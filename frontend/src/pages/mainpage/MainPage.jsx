@@ -22,12 +22,9 @@ import cocktail from "../../assets/bartender/오늘의칵테일.png";
 import useUserStore from "../../store/useUserStore";
 import useTodayStore from "../../store/useTodayStore";
 import Cattalk20 from "../../components/main/Cattalk20";
-<<<<<<< HEAD
 import { useNavigate } from "react-router-dom";
-=======
 import { recommendtoday } from "../../api/Cocktail";
 import Todaycocktail from "../../components/main/Todaycocktail";
->>>>>>> 4034b8a64553f721f6514881b51588ceaa16e277
 
 export default function MainPage() {
   const navigate = useNavigate();
