@@ -22,6 +22,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -60,6 +61,13 @@ public class DiaryService {
     public Long postDiary(Authentication authentication, DiaryGetRequestDto dto){
         Member me = memberService.findMember(authentication.getName());
         Long memberId = me.getId();
+
+        LocalDate date = LocalDate.now();
+
+        Optional<DiaryGetResponseDto> opt = diaryRepository.getDiaryDetailByDate(memberId, date.getYear(), date.getMonthValue(), date.getDayOfMonth());
+        if(opt.isPresent()){
+            diaryRepository.deleteById(opt.get().getId());
+        }
 
         //칵테일 레포지토리에서 칵테일 아이디로 칵테일 찾아서 저장
         Cocktail cocktail = cocktailRepository.findById(dto.getCocktailId()).orElseThrow(NullPointerException::new);
