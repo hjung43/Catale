@@ -109,7 +109,7 @@ public class DiaryService {
         DiaryGetResponseDto dto = diaryRepository.getDiaryDetailByDate(memberId,year,month,day).orElseThrow(DiaryNotFoundException::new);
 
         // FastAPI 호출, 연관 칵테일 Id list 반환
-        List<Long> recommendedIdList = apiService.getTodayCocktailResponse(dto.getCocktailId()).block();
+        List<Long> recommendedIdList = apiService.getTodayCocktailResponse(dto.getCocktailId());
         // id -> dto로 변환
         List<CocktailSimpleInfoDto> simpleInfoDtos = recommendedIdList.stream()
                 .map(id -> {
