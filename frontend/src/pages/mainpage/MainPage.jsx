@@ -46,6 +46,9 @@ export default function MainPage() {
   // cattalk에서 0은 없는거 1은 다음버튼있는거 2는 다음버튼없는거 3은 고르시오
   // usertakl에서 0은 없는거 1은 대화 2,3,4,5,6,7은 특정고르기
 
+  const [todayalc, setTodayalc] = useState(user.alc);
+  console.log(todayalc);
+
   useEffect(() => {
     console.log(today);
     async function fetchMyData() {
@@ -70,6 +73,7 @@ export default function MainPage() {
     setTodaycomment("");
     setTodayemo([]);
     setSeletnum(0);
+    setTodayalc(user.alc);
     useTodayStore.getState().setToday(false); // today 상태 변경
   };
 
@@ -192,6 +196,8 @@ export default function MainPage() {
             setSeletnum={setSeletnum}
             setTodayemo={setTodayemo}
             setSelectcheck={setSelectcheck}
+            todayalc={todayalc}
+            setTodayalc={setTodayalc}
           />
         )}
         {(talknum === 3 || talknum === 22) && (
@@ -258,6 +264,7 @@ export default function MainPage() {
             emotion={todayemo}
             reason={todayreason}
             comment={todaycomment}
+            alc={todayalc}
           />
         )}
         {talknum === 25 && (

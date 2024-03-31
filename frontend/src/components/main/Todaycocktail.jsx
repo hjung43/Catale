@@ -13,6 +13,7 @@ export default function Todaycocktail({
   reason,
   comment,
   emotion,
+  alc,
 }) {
   const [today, setToday] = useState(null);
   const [isLoading, setIsLoading] = useState(false); // 로딩 상태 추가
@@ -26,6 +27,7 @@ export default function Todaycocktail({
         emotion1: +emotions[0] || 0, // 배열의 첫 번째 요소 또는 0
         emotion2: +emotions[1] || 0, // 배열의 두 번째 요소 또는 0
         emotion3: +emotions[2] || 0, // 배열의 세 번째 요소 또는 0
+        alc: +alc,
       };
       return newToday;
     };
