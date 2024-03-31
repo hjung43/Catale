@@ -43,7 +43,10 @@ public class DiaryService {
     }
     //월 별 다이어리 조회
     @Transactional
-    public List<DiaryMonthResponseDto> getDiarys(int year, int month, Long memberId){
+    public List<DiaryMonthResponseDto> getDiarys(int year, int month, Authentication authentication){
+        Member me = memberService.findMember(authentication.getName());
+        Long memberId = me.getId();
+
         List<DiaryMonthResponseDto> diaryList = diaryRepository.getDiraryMonth(year,month,memberId).orElseThrow(NullPointerException::new);
         return diaryList;
     }
@@ -123,7 +126,10 @@ public class DiaryService {
 
     //오늘의 다이어리 유뮤 조회
     @Transactional
-    public boolean isExsitTodayDiary(Long memberId){
+    public boolean isExsitTodayDiary(Authentication authentication){
+        Member me = memberService.findMember(authentication.getName());
+        Long memberId = me.getId();
+
         Optional<DiaryMonthResponseDto> dto = diaryRepository.getTodayDiary(memberId);
         if(dto.isEmpty()){
             return false;
