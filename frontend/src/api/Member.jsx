@@ -94,3 +94,13 @@ export async function changeImg(img) {
     throw error;
   }
 }
+
+//이번달 내 기분
+export async function mooddata(month) {
+  try {
+    const response = await axios.get(BASE_URL + `/mood`, { params: month });
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+}

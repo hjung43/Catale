@@ -12,12 +12,51 @@ import pentagon from "../../assets/common/pentagon.png";
 import styles from "./DatePage.module.css";
 import { mood1, mood2 } from "../mainpage/Emodata/Emotionthree";
 import s from "classnames";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import CocktailDetail from "../../components/diary/CocktailDetail";
+import { detaildiary } from "../../api/Diary";
+import Lottie from "lottie-react";
+import Cocktail1 from "../../assets/lottie/Cocktail1.json";
+import {
+  selectcolor,
+  fontcolor,
+  backcolor,
+} from "../mainpage/Emodata/Emocolor";
 
 export default function DatePage() {
   const { diaryId } = useParams();
   const [detail, setDetail] = useState(false);
+  const [emotions, setEmotions] = useState([]);
+  const [response, setResponse] = useState();
+  useEffect(() => {
+    const fetchCocktail = async () => {
+      try {
+        const res = await detaildiary(diaryId);
+        setResponse(res.data); // 데이터를 상태에 저장
+
+        // 감정 데이터 처리 및 필터링
+        const emotionData = res.data;
+        const filteredEmotions = [];
+        if (emotionData.emotion1 !== 0) {
+          filteredEmotions.push(emotionData.emotion1);
+        }
+        if (emotionData.emotion2 !== 0) {
+          filteredEmotions.push(emotionData.emotion2);
+        }
+        if (emotionData.emotion3 !== 0) {
+          filteredEmotions.push(emotionData.emotion3);
+        }
+        setEmotions(filteredEmotions);
+      } catch (error) {
+        console.error("Error fetching cocktail today:", error);
+      }
+    };
+    if (diaryId) {
+      // diaryId가 있을 때만 요청을 보냄
+      fetchCocktail();
+    }
+  }, [diaryId]);
+
   const glasses = [
     glass1,
     glass1,
@@ -39,36 +78,6 @@ export default function DatePage() {
     [25, 40, 55],
   ];
 
-  const response = {
-    id: 5,
-    memberId: 4,
-    mood: 1,
-    comment: "string",
-    reason: "string",
-    emotion1: 10,
-    emotion2: 22,
-    emotion3: 34,
-    createdAt: "2024-03-26T13:47:06.352887",
-    cocktailId: 1,
-    cocktailImage:
-      "https://i.namu.wiki/i/nOp6hC_Me72u23Y-HcDz71-E1-couTEJPQueDGAL_cSvzvi3ML8kiCrQM93yFXnwrcPDqpJ22l53bQIbvZY-eQ.webp",
-    name: "데이지",
-    alc: 37,
-    sweet: 2,
-    sour: 0,
-    bitter: 4,
-    sparking: 0,
-    color1: "#FDDB00",
-    color2: "#FFA902",
-    color3: "#FD5A24",
-    glass: 1,
-    content:
-      "브랜디 베이스의 칵테일로, 마가리타의 기원으로 추정되는 칵테일 중 하나입니다.",
-    ingredient: "스카치 위스키, 아마레또",
-    base: 7,
-    likeCount: 0,
-    fruit: 0,
-  };
   const mood = [
     "",
     "많이 속상했던 날..",
@@ -78,101 +87,142 @@ export default function DatePage() {
     "정말 행복했던 날!!!",
   ];
 
-  const createdAt = new Date(response.createdAt);
-  const month = String(createdAt.getMonth() + 1);
-  const day = String(createdAt.getDate());
-  const formattedDate = `${month}월 ${day}일`;
+  const createdAt = response?.createdAt ? new Date(response.createdAt) : null;
+  const formattedDate = createdAt
+    ? `${String(createdAt.getMonth() + 1)}월 ${String(createdAt.getDate())}일`
+    : "";
+  // const emotions =
+  //   response?.emotion1 && response?.emotion2 && response?.emotion3
+  //     ? [response.emotion1, response.emotion2, response.emotion3].filter(
+  //         (e) => e !== 0
+  //       )
+  //     : [];
 
-  const emotions = [
-    response.emotion1,
-    response.emotion2,
-    response.emotion3,
-  ].filter((e) => e !== 0);
+  console.log(emotions);
 
   return (
     <Container>
       <Headerwb title={formattedDate} />
-
-      <div
-        className={styles.background}
-        style={{
-          background: `linear-gradient(135deg, ${response.color1} 0%,  ${response.color2} 50%, ${response.color3} 100%)`,
-        }}
-      >
-        <div className={styles.cover}>
-          <div className={styles.flip}>
-            <div className={styles.card}>
-              <div className={s(styles.cocktail, detail && styles.show_detail)}>
+      {!response && (
+        <div className={styles.로딩중}>
+          <Lottie animationData={Cocktail1} className={styles.lottie} />
+          로딩중
+        </div>
+      )}
+      {response && (
+        <div
+          className={styles.background}
+          style={{
+            background: `linear-gradient(135deg, ${response.color1} 0%,  ${response.color2} 50%, ${response.color3} 100%)`,
+          }}
+        >
+          <div className={styles.cover}>
+            <div className={styles.flip}>
+              <div className={styles.card}>
                 <div
-                  className={styles.glass_cover}
-                  style={{
-                    background: `linear-gradient(180deg, ${response.color3} ${
-                      num[response.glass][0]
-                    }%, ${response.color2} ${num[response.glass][1]}%, ${
-                      response.color1
-                    } ${num[response.glass][2]}%, ${response.color1} 100%)`,
-                  }}
+                  className={s(styles.cocktail, detail && styles.show_detail)}
                 >
-                  <img
-                    src={glasses[response.glass]}
-                    alt="glass"
-                    className={styles.glass}
-                  />
-                </div>
-                <div className={styles.name}>{response.name}</div>
-                <div className={styles.content}>{response.content}</div>
-                <div className={styles.cocktail_bottom}>
-                  <div className={styles.cocktail_left}>
-                    {emotions.map((emo, i) => {
-                      const index = (emo - (emo % 10)) / 10;
-                      const j = emo % 10;
-                      return <div>{mood1[index][j]}</div>;
-                    })}
-                  </div>
                   <div
-                    className={styles.cocktail_right}
-                    onClick={() => setDetail(true)}
+                    className={styles.glass_cover}
+                    style={{
+                      background: `linear-gradient(180deg, ${response.color3} ${
+                        num[response.glass][0]
+                      }%, ${response.color2} ${num[response.glass][1]}%, ${
+                        response.color1
+                      } ${num[response.glass][2]}%, ${response.color1} 100%)`,
+                    }}
                   >
-                    <div>상세정보</div>
                     <img
-                      src={pentagon}
-                      alt="pentagon"
-                      className={styles.icon}
+                      src={glasses[response.glass]}
+                      alt="glass"
+                      className={styles.glass}
                     />
                   </div>
+                  <div className={styles.name}>{response.name}</div>
+                  <div className={styles.content}>{response.content}</div>
+                  <div className={styles.cocktail_bottom}>
+                    <div className={styles.cocktail_left}>
+                      {emotions.map((emo, i) => {
+                        const index = (emo - (emo % 10)) / 10;
+                        const j = emo % 10;
+                        return <div>{mood1[index][j]}</div>;
+                      })}
+                    </div>
+                    <div
+                      className={styles.cocktail_right}
+                      onClick={() => setDetail(true)}
+                    >
+                      <div>상세정보</div>
+                      <img
+                        src={pentagon}
+                        alt="pentagon"
+                        className={styles.icon}
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div
+                  className={s(styles.detail, detail && styles.show_cocktail)}
+                  onClick={() => setDetail(false)}
+                >
+                  <CocktailDetail cocktail={response} />
                 </div>
               </div>
-              <div
-                className={s(styles.detail, detail && styles.show_cocktail)}
-                onClick={() => setDetail(false)}
-              >
-                <CocktailDetail cocktail={response} />
-              </div>
             </div>
+            <div className={styles.title}>오늘의 이야기</div>
+            <div
+              className={s(
+                styles[`mood${response.mood}`],
+                styles.mood,
+                styles.폰트들
+              )}
+            >
+              {mood[response.mood]}
+            </div>
+            <div>
+              <div className={styles.폰트들}>{response.reason} 때문에</div>
+            </div>
+            <div className={styles.감정들}>
+              {emotions.map((emo, i) => {
+                const index = (emo - (emo % 10)) / 10;
+                const j = emo % 10;
+                if (emotions.length - 1 > i) {
+                  return (
+                    <div
+                      style={{
+                        color: fontcolor[index],
+                        backgroundColor: backcolor[index],
+                        borderRadius: 10,
+                        padding: 6,
+                      }}
+                      className={styles.폰트들}
+                    >
+                      {mood2[index][j]}
+                    </div>
+                  );
+                } else {
+                  return (
+                    <div
+                      style={{
+                        color: fontcolor[index],
+                        backgroundColor: backcolor[index],
+                        borderRadius: 10,
+                        padding: 6,
+                      }}
+                      className={styles.폰트들}
+                    >
+                      {mood1[index][j]}
+                    </div>
+                  );
+                }
+              })}
+            </div>
+            <div className={styles.폰트들}>감정을 느낀 하루였어</div>
+            <br />
+            <div className={styles.폰트들}>{response.comment}</div>
           </div>
-          <div className={styles.title}>오늘의 이야기</div>
-          <div className={s(styles[`mood${response.mood}`], styles.mood)}>
-            {mood[response.mood]}
-          </div>
-          <div>
-            <span>{response.reason}</span> 때문에
-          </div>
-          <div>
-            {emotions.map((emo, i) => {
-              const index = (emo - (emo % 10)) / 10;
-              const j = emo % 10;
-              if (emotions.length - 1 > i) {
-                return <span>{mood2[index][j]}, </span>;
-              } else {
-                return <span>{mood1[index][j]}</span>;
-              }
-            })}
-          </div>
-          <div>감정을 느낀 하루였어</div>
-          <br />
-          <div>{response.comment}</div>
         </div>
-      </div>
+      )}
     </Container>
   );
 }
