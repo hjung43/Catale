@@ -52,7 +52,10 @@ public class DiaryService {
     }
     //월 별 기분 개수 조회
     @Transactional
-    public MoodCntResponseDto getMoodCntList(int year, int month, Long memberId){
+    public MoodCntResponseDto getMoodCntList(int year, int month, Authentication authentication){
+        Member me = memberService.findMember(authentication.getName());
+        Long memberId = me.getId();
+
         MoodCntResponseDto moodCnt = diaryRepository.getMoodList(year, month, memberId).orElseThrow(NullPointerException::new);
         return moodCnt;
 
