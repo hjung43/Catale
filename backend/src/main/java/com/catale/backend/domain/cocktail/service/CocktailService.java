@@ -31,6 +31,7 @@ import org.springframework.stereotype.Service;
 import com.catale.backend.domain.member.repository.MemberRepository;
 import org.springframework.transaction.annotation.Transactional;
 
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 
@@ -166,20 +167,8 @@ public class CocktailService {
         log.info("matched:" + responseDto.getCocktailId());
         responseDto.setLike(likeService.checkisLiked(memberId, matchedCocktail.getId()));
 
-        // 오늘의 다이어리 생성
-        Diary todayDiary = Diary.builder()
-                                .member(member)
-                                .cocktail(matchedCocktail)
-                                .mood(request.getMood())
-                                .comment(request.getComment())
-                                .emotion1(request.getEmotion1())
-                                .emotion2(request.getEmotion2())
-                                .emotion3(request.getEmotion3())
-                                .reason(request.getReason())
-                                .build();
-
         // FastAPI 호출, 연관 칵테일 Id list 반환
-        List<Long> recommendedIdList = apiService.getTodayCocktailResponse(matchedCocktail.getId()).block();
+        List<Long> recommendedIdList = apiService.getTodayCocktailResponse(matchedCocktail.getId());
         // id -> dto로 변환
         List<CocktailSimpleInfoDto> simpleInfoDtos = recommendedIdList.stream()
                               .map(id -> {
@@ -195,6 +184,7 @@ public class CocktailService {
         responseDto.setRecommendedCocktailList(simpleInfoDtos);
         return responseDto;
     }
+
 
     @Transactional
     public List<CocktailGetResponseDto> getMemberRecommendCocktail(Authentication authentication){
@@ -286,9 +276,9 @@ public class CocktailService {
         for (Cocktail cocktail : cocktailList) {
             // 칵테일의 emotion 오름차순 정렬부터
             cocktailEmoList = new ArrayList<>();
-            cocktailEmoList.add(cocktail.getEmotion1());
-            cocktailEmoList.add(cocktail.getEmotion2());
-            cocktailEmoList.add(cocktail.getEmotion3());
+            if(cocktail.getEmotion1() != 0) cocktailEmoList.add(cocktail.getEmotion1());
+            if(cocktail.getEmotion2() != 0) cocktailEmoList.add(cocktail.getEmotion2());
+            if(cocktail.getEmotion3() != 0) cocktailEmoList.add(cocktail.getEmotion3());
             cocktailEmoList.sort(Comparator.naturalOrder());
 
             int tmp = 0;
@@ -301,7 +291,7 @@ public class CocktailService {
             //각각의 최소 차이값 구하기
             for(int i=0; i<emoList.size(); i++){
                 diff = 1000;
-                for(int j=0; j<3; j++){
+                for(int j=0; j<cocktailEmoList.size(); j++){
                     tmp = Math.abs(emoList.get(i) - cocktailEmoList.get(j));
                     if(tmp < diff) diff = tmp;
                 }

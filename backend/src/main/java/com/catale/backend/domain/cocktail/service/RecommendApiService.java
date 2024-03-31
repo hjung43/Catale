@@ -18,13 +18,16 @@ public class RecommendApiService {
                                                    .baseUrl("https://fastapi.silvstone.xyz/rec")
                                                    .build();
 
+
       /* 오늘의 칵테일과 유사한 칵테일 추천결과 반환 */
-      public Mono<List<Long>> getTodayCocktailResponse(Long cocktailId) {
+      public List<Long> getTodayCocktailResponse(Long cocktailId) {
             log.info("apiService 진입");
             return this.webClient.get()
                                 .uri("/today/{cocktail_id}", cocktailId)
                                 .retrieve()
-                                .bodyToMono(new ParameterizedTypeReference<List<Long>>() {});
+                                .bodyToMono(new ParameterizedTypeReference<List<Long>>() {})
+                                .block();
+
       }
 
       /* 유저별 개인 맞춤 칵테일 추천결과 반환 */
