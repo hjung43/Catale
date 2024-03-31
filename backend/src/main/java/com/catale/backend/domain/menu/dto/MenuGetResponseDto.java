@@ -1,11 +1,13 @@
 package com.catale.backend.domain.menu.dto;
 
 import com.catale.backend.domain.menu.entity.Menu;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class MenuGetResponseDto {
 
     private Long id;
@@ -13,6 +15,7 @@ public class MenuGetResponseDto {
     private Long cocktailId;
     private boolean isSignature;
     private int price;
+    private int alc;
 
     public MenuGetResponseDto(Menu menu){
         this.id = menu.getId();
