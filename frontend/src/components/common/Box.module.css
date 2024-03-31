@@ -45,7 +45,9 @@
 }
 .box2 {
   padding: 1rem;
-  background-color: #464aed;
+  background-color: rgb(7, 36, 73);
+  border: 2px solid white;
   border-radius: 1rem;
   margin: 1rem;
+  transform: scale(1.03);
 }
