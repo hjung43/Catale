@@ -24,6 +24,8 @@
   margin: 0.5rem 1rem 0;
   font-size: smaller;
   color: var(--main4);
+  height: 3.9rem;
+  overflow: auto;
 }
 .icon {
   display: flex;
@@ -61,6 +63,8 @@
 }
 .review_content {
   margin: 0.5rem 0;
+  height: 60px;
+  overflow: auto;
 }
 .review_sweet {
   font-size: smaller;

@@ -105,12 +105,12 @@ export default function ReviewItem({ item, setList }) {
       </div>
       <div
         style={{
-          minHeight: toggle[0] ? `${item.reviewList.length * 110 + 10}px` : "0",
+          minHeight: toggle[0] ? `${item.reviewList.length * 150 + 10}px` : "0",
         }}
         className={styles.review}
       >
         {item.reviewList.map((rev) => (
-          <>
+          <div>
             <hr className={styles.hr} />
             <div className={styles.review_flex}>
               <div className={styles.review_left}>
@@ -142,7 +142,7 @@ export default function ReviewItem({ item, setList }) {
                 onClick={() => toggleDelete(rev.id)}
               />
             </div>
-          </>
+          </div>
         ))}
       </div>
     </>
