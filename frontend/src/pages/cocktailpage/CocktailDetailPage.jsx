@@ -1,14 +1,17 @@
 import { useParams } from "react-router";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination } from "swiper/modules";
+import s from "classnames";
 import "swiper/css";
 import "swiper/css/pagination";
+import styles from "./CocktailDetailPage.module.css";
 import Container from "../../components/common/Container";
 import Headerwb from "../../components/common/Headerwb";
-import styles from "./CocktailDetailPage.module.css";
-import { Pagination } from "swiper/modules";
 import CocktailDetail from "../../components/diary/CocktailDetail";
-import { base } from "../../components/data/base";
+import Popup from "../../components/common/Popup";
+import Review from "../../components/review/Review";
 import like from "../../assets/common/like.png";
+import close from "../../assets/common/close.png";
 import noneLike from "../../assets/common/noneLike.png";
 import review from "../../assets/common/review.png";
 import glass1 from "../../assets/glass/glass1.png";
@@ -18,20 +21,20 @@ import glass4 from "../../assets/glass/glass4.png";
 import glass5 from "../../assets/glass/glass5.png";
 import glass6 from "../../assets/glass/glass6.png";
 import glass7 from "../../assets/glass/glass7.png";
-import Popup from "../../components/common/Popup";
 import useCocktailStore from "../../store/useCocktailStore";
 import { useEffect, useState } from "react";
 import { cocktaildetail } from "../../api/Cocktail";
 import { cocktaillike } from "../../api/Cocktail";
-import Review from "../../components/review/Review";
-import { getreview } from "../../api/Review";
+import { deletereview, getreview } from "../../api/Review";
 
 export default function CocktailDetailPage() {
   const { cocktailId } = useParams();
   const setCocktail = useCocktailStore((state) => state.setCocktail);
   const cocktail = useCocktailStore((state) => state.cocktail);
   const [nowlike, setNowlike] = useState(true);
+  const [modal, setModal] = useState(false);
   const [reviewList, setReviewList] = useState([]);
+  const [select, setSelect] = useState(-1);
 
   const glasses = [
     glass1,
@@ -82,6 +85,12 @@ export default function CocktailDetailPage() {
       // cleanup logic
     };
   }, []);
+
+  const toggleDelete = (id) => {
+    deletereview(id);
+    const updatedReviews = reviewList.filter((review) => review.id !== id); // 삭제한 리뷰를 제외한 새로운 리스트 생성
+    setReviewList(updatedReviews); // 상태 업데이트하여 화면 다시 렌더링
+  };
 
   return (
     <Container>
@@ -141,17 +150,52 @@ export default function CocktailDetailPage() {
           <div className={styles.ingredient}>{cocktail.ingredient}</div>
           <div className={styles.review}>{cocktail.name} 리뷰</div>
           <div>
-            <Review list={reviewList} />
+            <Review
+              list={reviewList}
+              setModal={setModal}
+              setSelect={setSelect}
+            />
           </div>
         </div>
       </div>
       <div className={styles.popup}>
         <Popup
           img={review}
-          subText={`${cocktail.name}를 드신적이 있나요?`}
+          subText={`${cocktail.name}를(을) 드신적이 있나요?`}
           text={"리뷰 작성하러 가기"}
           src={"review"}
         />
+      </div>
+      <div
+        className={s(styles.blur, modal ? styles.active : styles.no)}
+        onClick={() => setModal(false)}
+      ></div>
+      <div className={s(styles.modal, !modal && styles.none)}>
+        <div className={styles.delete_top}>
+          <img
+            src={close}
+            alt="close"
+            className={styles.icon}
+            onClick={() => setModal(false)}
+          />
+          <div className={styles.delete_title}>리뷰삭제</div>
+          <div className={styles.icon}></div>
+        </div>
+        <div className={styles.delete_text}>해당 리뷰를 삭제하시겠습니까?</div>
+        <div className={styles.delete_bottom}>
+          <div className={styles.delete_cancel} onClick={() => setModal(false)}>
+            취소
+          </div>
+          <div
+            className={styles.delete_delete}
+            onClick={() => {
+              toggleDelete(select);
+              setModal(false);
+            }}
+          >
+            삭제
+          </div>
+        </div>
       </div>
     </Container>
   );
