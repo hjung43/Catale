@@ -214,10 +214,6 @@
   color: #e6e8ff;
 }
 .검색하기 {
-  position: absolute;
-  bottom: 2.3rem;
-  right: 1rem;
-  left: 1rem;
   display: flex;
   justify-content: center;
   padding: 0.5rem;

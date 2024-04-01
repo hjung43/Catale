@@ -22,6 +22,8 @@ import MyCocktailPage from "./pages/mypage/MyCocktailPage";
 import LikedCocktailPage from "./pages/mypage/LikedCocktailPage";
 import DeleteAccountPage from "./pages/settingpage/DeleteAccountPage";
 import ErrorPage from "./pages/commonpage/ErrorPage";
+import Choosecocktail from "./pages/Choosecocktail";
+import GuidePage from "./pages/GuidePage";
 import App from "./App";
 
 function Main() {
@@ -33,6 +35,8 @@ function Main() {
           <Route index element={<WelcomePage />} />
           <Route path="login" element={<SignInPage />} />
           <Route path="signup" element={<SignUpPage />} />
+          <Route path="choosecocktail" element={<Choosecocktail />} />
+          <Route path="guidePage" element={<GuidePage />} />
           <Route path="settings">
             <Route index element={<SettingsPage />} />
             <Route path="deleteaccount" element={<DeleteAccountPage />} />
