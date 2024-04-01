@@ -84,6 +84,7 @@
   line-height: 1.3em;
   font-size: 0.75rem;
   color: #1b3250;
+  padding-right: 0.4rem;
 }
 
 .cocktail {
@@ -107,11 +108,11 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #30336d; /* 스크롤바 트랙 배경색 */
+  background: #30336d7a; /* 스크롤바 트랙 배경색 */
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #bce5fc; /* 스크롤바 색상 */
+  background: #bce4fc71; /* 스크롤바 색상 */
   border-radius: 5px; /* 스크롤바 모서리 반경 */
 }
 
