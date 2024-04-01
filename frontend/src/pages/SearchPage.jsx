@@ -142,9 +142,12 @@ export default function SearchPage() {
               onChange={handleChange}
             />
           </div>
-          <div className={styles.이퀄박스} onClick={() => setModal(true)}>
-            <img className={styles.이퀄} src={이퀄} alt="" />
-          </div>
+          <img
+            className={styles.이퀄}
+            src={이퀄}
+            alt=""
+            onClick={() => setModal(true)}
+          />
         </div>
 
         {check && (

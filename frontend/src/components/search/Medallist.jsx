@@ -75,7 +75,6 @@ export default function Medallist({ index, response, setList }) {
                 {response.name}
               </div>
               <div className={styles.content}>{response.content}</div>
-              {/* <div className={styles.일등}> 1 등 </div> */}
               <img
                 src={response.like ? like : noneLike}
                 alt="like"
