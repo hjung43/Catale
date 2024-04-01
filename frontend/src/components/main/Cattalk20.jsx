@@ -43,7 +43,7 @@ export default function Cattalk20({
     setCurrentText2(
       ` ${nickname}의 취향 도수는 ${alctext}다냥!\n취향대로 섞어줄까냥 ? `
     );
-  }, [talknum, talkarr]);
+  }, [talknum, talkarr, alctext]);
 
   const showText = (text) => {
     let charIndex = 0;

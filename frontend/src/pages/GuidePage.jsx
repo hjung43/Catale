@@ -35,5 +35,16 @@ export default function GuidePage() {
     setCurrentPage((prevPage) => prevPage - 1);
   };
 
-  return <Container>가이드페이지</Container>;
+  return (
+    <Container>
+      <div className={styles.flex}>
+        가이드페이지 대충 사진 6장 정도넣고 설명해주는거 화살표로 이동하게
+        한다음 마지막 화살표에 도착하면 고양이대화하러가기가 나와서 메인페이지로
+        이동하게함
+        <div className={styles.고양이대화} onClick={() => navigate(`/bar`)}>
+          고양이랑 대화하러가기
+        </div>
+      </div>
+    </Container>
+  );
 }
