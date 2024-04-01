@@ -21,7 +21,7 @@ export default function Todaycocktail({
   useEffect(() => {
     const setEmotions = (emotions) => {
       const newToday = {
-        mood: +mood,
+        mood: mood + 1,
         comment: comment,
         reason: reason,
         emotion1: +emotions[0] || 0, // 배열의 첫 번째 요소 또는 0

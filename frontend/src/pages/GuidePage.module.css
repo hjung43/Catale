@@ -1,0 +1,13 @@
+.고양이대화 {
+  padding: 1rem 2rem;
+  background-color: rgb(12, 38, 61);
+  width: 60%;
+  text-align: center;
+  border: 2px solid white;
+}
+.flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

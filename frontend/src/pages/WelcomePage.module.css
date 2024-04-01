@@ -109,7 +109,9 @@
   color: #565867;
 }
 .안내창 {
-  top: 27%;
+  position: fixed;
+  top: 20%;
+  bottom: 20%;
   display: flex;
   justify-content: center;
   align-items: center;
