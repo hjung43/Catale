@@ -21,9 +21,10 @@
   width: 1.5rem;
 }
 .store_box {
+  margin: 2rem 0 1rem;
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
   gap: 1rem;
 }
 .store_img {

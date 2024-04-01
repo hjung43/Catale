@@ -155,7 +155,7 @@
   left: 0;
   right: 0;
   z-index: 3;
-  background-color: var(--main4);
+  background-color: var(--main1);
   padding: 2rem;
   border-radius: 2rem 2rem 0 0;
   transition: 0.5s;

@@ -60,13 +60,13 @@
 .등수 {
   display: flex;
   justify-content: center;
-  width: 13%;
+  width: 4rem;
   /* background-color: red; */
 }
 .하트 {
   display: flex;
   justify-content: flex-end;
-  width: 13%;
+  width: 4rem;
   /* background-color: red; */
 }
 .glass {

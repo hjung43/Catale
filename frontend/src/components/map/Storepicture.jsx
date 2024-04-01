@@ -2,31 +2,36 @@ import styles from "./Storepicture.module.css";
 import Clickyes from "../../assets/icon/Clickyes.png";
 import Clickno from "../../assets/icon/Clickno.png";
 import { useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination } from "swiper/modules";
+import s from "classnames";
+import "swiper/css";
+import "swiper/css/pagination";
 
 export default function Storepicture({ images, storenumber }) {
-  const [picturenumber, setPicturenumber] = useState(0);
-  const numberData = [0, 1, 2];
-
   return (
     <>
       <div className={styles.picturemain}>
-        <div className={styles.가게사진}>
-          <img src={images[picturenumber]} alt="" />
-        </div>
-        <div className={styles.numberbox}>
-          {numberData.map((number) => (
-            <div
-              className={styles.number}
-              onClick={() => setPicturenumber(number)}
-            >
-              {number === picturenumber ? (
-                <img className={styles.click} src={Clickyes} alt="" />
-              ) : (
-                <img className={styles.click} src={Clickno} alt="" />
-              )}
-            </div>
-          ))}
-        </div>
+        <Swiper
+          className={styles.swiper}
+          spaceBetween={30}
+          slidesPerView={1}
+          loop={true}
+          modules={[Pagination]}
+          pagination={{
+            clickable: true,
+          }}
+        >
+          <SwiperSlide>
+            <img src={images[0]} alt="" className={styles.img} />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src={images[1]} alt="" className={styles.img} />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src={images[2]} alt="" className={styles.img} />
+          </SwiperSlide>
+        </Swiper>
       </div>
     </>
   );
