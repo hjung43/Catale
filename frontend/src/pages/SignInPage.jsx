@@ -78,23 +78,6 @@ export default function SignInPage() {
     }
   };
 
-  // /* 알림 함수 */
-  // const showToast = (string) => {
-  //   toast.error(`${string}`, {
-  //     style: {
-  //       border: "1px solid #713200",
-  //       padding: "16px",
-  //       color: "#713200",
-  //       zIndex: "100",
-  //     },
-  //     iconTheme: {
-  //       primary: "#713200",
-  //       secondary: "#FFFAEE",
-  //     },
-  //     position: "top-center",
-  //   });
-  // };
-
   return (
     <Container>
       <Toaster position="top-center" />

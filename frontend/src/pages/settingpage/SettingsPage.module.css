@@ -130,6 +130,7 @@
 .no {
   z-index: -1;
 }
+
 .modal {
   position: fixed;
   bottom: 0;
@@ -210,4 +211,16 @@ input::placeholder {
 }
 .icon {
   width: 1rem;
+}
+.로딩 {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: rgba(104, 104, 104, 0.473);
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
