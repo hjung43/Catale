@@ -1,29 +1,13 @@
-.가게사진 {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  width: 90%;
-  display: flex;
-  justify-content: center;
-}
-.가게사진 img {
-  border-radius: 10px;
-  width: 100%;
-  height: 270px;
-}
 .picturemain {
   background-color: #464a6d;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding-top: 1rem;
-  padding-bottom: 1.1rem;
+  padding: 1rem;
 }
-.numberbox {
-  display: flex;
-  gap: 0.6rem;
+.swiper {
+  width: 100%;
 }
-
-.click {
-  width: 0.8rem;
+.img {
+  width: 100%;
+  object-fit: cover;
+  height: 20rem;
+  border-radius: 1rem;
 }

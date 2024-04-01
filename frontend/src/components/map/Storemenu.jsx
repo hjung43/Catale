@@ -80,6 +80,9 @@ export default function Storemenu({ menus, storenumber, storename }) {
                             : styles.칵테일하나
                         }
                       >
+                        {menu.signature && (
+                          <div className={styles.signature}>SIGNATURE</div>
+                        )}
                         <div
                           className={styles.칵테일사진}
                           style={{

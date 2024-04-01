@@ -25,18 +25,46 @@
   background-color: rgb(48, 51, 84);
   border: solid 2px rgb(106, 113, 142);
 }
+@keyframes moveBackground {
+  0% {
+    background-position: 0 0; /* 시작 지점 */
+  }
+  20% {
+    background-position: 10% 0; /* 시작 지점 */
+  }
+  80% {
+    background-position: 90% 0; /* 시작 지점 */
+  }
+  100% {
+    background-position: 100% 0; /* 끝 지점 */
+  }
+}
+
 .시그니쳐박스 {
+  position: relative;
   background: linear-gradient(
     135deg,
-    #707398 0%,
-    #9c9ec6 33%,
-    #caccf5 66%,
+    #9c9ec6 0%,
+    #97bfdd 25%,
+    #9c9ec6 50%,
+    #c98dc2 75%,
     #9c9ec6 100%
   );
+  background-size: 200% 100%; /* 배경을 두 배로 넓게 만들어서 움직이는 효과를 줘 */
   border: solid 2px var(--main7);
-  transform: 0.5s;
-  /* animation: ; */
+  animation: moveBackground 3s linear infinite alternate; /* 'alternate' 추가해서 좌우로 번갈아가며 이동하도록 설정 */
 }
+.signature {
+  position: absolute;
+  top: 0rem;
+  right: 0.8rem;
+  color: var(--main1);
+  font-size: small;
+  padding: 0.3rem;
+  background-color: var(--main7);
+  border-radius: 0 0 0.2rem 0.2rem;
+}
+
 .칵테일사진 {
   width: 4rem;
   height: 4rem;
