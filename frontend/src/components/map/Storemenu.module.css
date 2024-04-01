@@ -1,87 +1,60 @@
-.menumain {
-  background-color: #1f2544;
-}
 .메뉴폰트 {
-  padding: 1.3rem 1rem 0.5rem 1rem;
+  padding: 2rem 1rem 1rem;
   font-size: large;
 }
-.칵테일하나 {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  width: 100%;
-  background-color: rgb(48, 51, 84);
-  border: solid 2px rgb(106, 113, 142);
-  border-radius: 10px;
-  padding: 0.4rem 0rem;
-  box-shadow: 0px 0px 10px 0px rgba(172, 162, 191, 0.5);
-}
-.시그니쳐박스 {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  width: 100%;
-  background-color: rgb(107, 107, 23);
-  border: solid 2px rgb(250, 238, 144);
-  border-radius: 10px;
-  padding: 0.4rem 0rem;
-  box-shadow: 0px 0px 10px 0px rgba(172, 162, 191, 0.5);
-}
 .boxtop {
-  padding: 1.3rem 1rem 0.5rem 1rem;
-}
-
-/* 
-
-
-*/
-.칵테일박스박스 {
-  margin: 1rem 0rem 0rem;
-}
-.칵테일정보창 {
-  display: flex;
-  width: 96%;
-  justify-content: space-around;
-  font-size: medium;
-  padding-left: 0.8rem;
-  padding-top: 0.3rem;
-}
-.칵테일오른쪽 {
-  /* background-color: beige; */
-  width: 8rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
-}
-.칵테일사진 {
-  width: 5rem;
-  height: 5rem;
-  border-radius: 100px;
-}
-.칵테일가격 {
-  /* background-color: aliceblue; */
-  min-width: 5.4rem;
-  font-size: smaller;
-}
-.칵테일도수 {
-  min-width: 3.5rem;
-  /* background-color: aquamarine; */
-  font-size: smaller;
-}
-.칵테일박스 {
-  padding-bottom: 1rem;
-}
-.칵테일이름 {
-  font-size: smaller;
-  /* background-color: aliceblue; */
-}
-.boxtop {
+  padding: 1rem 2rem 0;
   display: flex;
   justify-content: space-between;
 }
-.정보창가기 {
+.칵테일박스박스 {
+  margin: 1rem;
+}
+.시그니쳐박스,
+.칵테일하나 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border-radius: 1rem;
+  padding: 0.8rem;
+  box-shadow: 0px 0px 10px 0px rgba(172, 162, 191, 0.5);
+}
+
+.칵테일하나 {
+  background-color: rgb(48, 51, 84);
+  border: solid 2px rgb(106, 113, 142);
+}
+.시그니쳐박스 {
+  background: linear-gradient(
+    135deg,
+    #707398 0%,
+    #9c9ec6 33%,
+    #caccf5 66%,
+    #9c9ec6 100%
+  );
+  border: solid 2px var(--main7);
+  transform: 0.5s;
+  /* animation: ; */
+}
+.칵테일사진 {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 1rem;
+}
+.mid {
+  flex-grow: 1;
+}
+.칵테일가격 {
+  font-size: smaller;
+}
+.칵테일도수 {
+  font-size: smaller;
+}
+
+.칵테일이름 {
+  margin-bottom: 0.5rem;
+}
+.arrow {
   width: 1rem;
-  /* background-color: aliceblue; */
 }
