@@ -10,6 +10,9 @@ import { useState } from "react";
 import FileInput from "../../components/common/FileInput";
 import { changePassword, changeNickname, changeImg } from "../../api/Member";
 import { useNavigate } from "react-router";
+import Lottie from "lottie-react";
+import Cocktail1 from "../../assets/lottie/Cocktail1.json";
+import toast, { Toaster } from "react-hot-toast";
 
 export default function SettingsPage() {
   const navigate = useNavigate();
@@ -31,6 +34,7 @@ export default function SettingsPage() {
   const [nicknameErrorMessage, setNicknameErrorMessage] = useState(
     "대소문자, 한글, 숫자, _(언더바) 입력가능 / 3~10글자 "
   );
+  const [loading, setLoading] = useState(false);
   const handleChangePw = (e) => {
     const { name, value } = e.target;
     setPassword((prev) => ({
@@ -53,14 +57,29 @@ export default function SettingsPage() {
   };
   const submitImg = async () => {
     if (value.frameImage !== null) {
+      setLoading(true);
+
       const formData = new FormData();
       formData.append("file", value.frameImage);
-      console.log(formData);
-      const frameImageURL = await changeImg(formData);
-      console.log(frameImageURL);
-      await setUser({ ...data, profileImageUrl: frameImageURL.data });
+
+      try {
+        const frameImageURL = await changeImg(formData);
+        await setUser({ ...data, profileImageUrl: frameImageURL.data });
+        toast.success(`이미지변경 성공 !`, {
+          position: "top-center",
+        });
+      } catch (error) {
+        toast.error(`이미지변경 실패`, {
+          position: "top-center",
+        });
+        console.error("Error uploading image:", error);
+        // 에러 발생 시 로직 추가 (예: 에러 메시지 표시 등)
+      } finally {
+        setLoading(false);
+      }
     }
   };
+
   const submitPassword = async () => {
     const newPassword = {
       originPassword: password.originpw,
@@ -103,7 +122,13 @@ export default function SettingsPage() {
   return (
     <Container>
       <Headerwb title={"계정 설정"} />
-      <div className={styles.box}>메롱</div>
+      <Toaster position="top-center" />
+      {loading && (
+        <div className={styles.로딩}>
+          <Lottie animationData={Cocktail1} className={styles.lottie} />
+        </div>
+      )}
+      <div className={styles.box}></div>
       <div className={styles.box2}>
         <div className={styles.profile_box}>
           <FileInput
@@ -137,13 +162,13 @@ export default function SettingsPage() {
           </div>
           <img src={arrow} alt="arrow" className={styles.icon} />
         </div>
-        <div
+        {/* <div
           className={styles.dis_item}
           onClick={() => navigate("deleteaccount")}
         >
           <div className={styles.dis_text}>계정탈퇴</div>
           <img src={arrow} alt="arrow" className={styles.icon} />
-        </div>
+        </div> */}
         <div className={styles.btn} onClick={() => navigate(-1)}>
           완료
         </div>
