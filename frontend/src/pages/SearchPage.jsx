@@ -161,6 +161,11 @@ export default function SearchPage() {
                     setCocktailList={setCocktailList}
                   />
                 ))}
+                {searchlist.length === 0 && (
+                  <>
+                    <div>검색결과가 없어용 ㅠㅠ</div>
+                  </>
+                )}
               </div>
             </div>
           </>
