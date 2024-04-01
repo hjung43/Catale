@@ -17,9 +17,12 @@ import { useNavigate } from "react-router-dom";
 import { alctalk, opttalk } from "../../components/data/searchtalk";
 import useUserStore from "../../store/useUserStore";
 import { logout } from "../../api/Member";
+import close from "../../assets/common/close.png";
+import s from "classnames";
 
 export default function MyPage() {
   const user = useUserStore((state) => state.user);
+  const [modal, setModal] = useState(false);
   const currentDate = new Date();
   const [chartOptions, setChartOptions] = useState({
     options: {
@@ -150,7 +153,7 @@ export default function MyPage() {
               src={logouticon}
               alt="logout"
               className={styles.logout}
-              onClick={() => handleLogout()}
+              onClick={() => setModal(true)}
             />
           </div>
         </div>
@@ -215,6 +218,37 @@ export default function MyPage() {
             <MyFeel />
           </div>
         </Box>
+      </div>
+      <div
+        className={s(styles.blur, modal ? styles.active : styles.no)}
+        onClick={() => setModal(false)}
+      ></div>
+      <div className={s(styles.modal, !modal && styles.none)}>
+        <div className={styles.delete_top}>
+          <img
+            src={close}
+            alt="close"
+            className={styles.icon}
+            onClick={() => setModal(false)}
+          />
+          <div className={styles.delete_title}>로그아웃</div>
+          <div className={styles.icon}></div>
+        </div>
+        <div className={styles.delete_text}>로그아웃 하겠습니까?</div>
+        <div className={styles.delete_bottom}>
+          <div className={styles.delete_cancel} onClick={() => setModal(false)}>
+            취소
+          </div>
+          <div
+            className={styles.delete_delete}
+            onClick={() => {
+              handleLogout();
+              setModal(false);
+            }}
+          >
+            빠이
+          </div>
+        </div>
       </div>
       <Nav num={5} />
     </Container>
