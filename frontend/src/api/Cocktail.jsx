@@ -92,10 +92,11 @@ export async function cocktailmelike(option) {
 }
 
 //내가 리뷰남긴 칵테일 조회
-export async function cocktailmereview(option) {
+export async function cocktailmereview(option, page) {
   const params = {
-    page: option.page,
-    size: option.size,
+    page: page,
+    size: 300,
+    sort: option,
   };
   try {
     const response = await axios.get(BASE_URL + "/reviewed", { params });

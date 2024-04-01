@@ -7,21 +7,28 @@ import arrow_active from "../../assets/common/arrow4.png";
 import { useState, useEffect } from "react";
 import ReviewItem from "../../components/my/ReviewItem";
 import { cocktailmereview } from "../../api/Cocktail";
-import { getreview } from "../../api/Review";
-import useUserStore from "../../store/useUserStore";
+// import { getreview } from "../../api/Review";
+// import useUserStore from "../../store/useUserStore";
 
 export default function MyCocktailPage() {
-  const user = useUserStore((state) => state.user);
+  // const user = useUserStore((state) => state.user);
+  const orderList = [
+    "createdAt,desc",
+    "createdAt,asc",
+    "rate,desc",
+    "rate,asc",
+  ];
+
   const [order, setOrder] = useState(true);
-  const [rotate, setrotate] = useState([0, 0]);
+  const [rotate, setrotate] = useState([180, 180]);
   const [list, setList] = useState([]);
   const [page, setPage] = useState(0);
 
   useEffect(() => {
     async function fetchlikeData() {
       try {
-        const response = await cocktailmereview(user.memberId);
-        console.log(response);
+        const response = await cocktailmereview(orderList[0], page);
+        // console.log(response);
         setList([...list, ...response.data]);
       } catch (error) {
         console.error("데이터불러오기실패");
@@ -30,24 +37,44 @@ export default function MyCocktailPage() {
     fetchlikeData();
   }, [page]);
 
-  const changeOrder = (num) => {
+  const changeOrder = async (num) => {
     if (num === 0 && !order) {
+      //내가 고른게 날짜순이고 원래는 평점순을 눌러놨었다.
       setOrder(true);
-      setrotate([0, 0]);
+      setrotate([180, 180]);
+      const response = await cocktailmereview(orderList[0], 0);
+      setList(response.data);
     } else if (num === 1 && order) {
+      //내가 고른게 평점순이고 원래는 날짜순을 눌러놨었다.
       setOrder(false);
-      setrotate([0, 0]);
+      setrotate([180, 180]);
+      const response = await cocktailmereview(orderList[2], 0);
+      setList(response.data);
     } else if (num === 0 && order) {
-      if (rotate[0] === 0) {
-        setrotate([180, 0]);
+      //내가 고른게 날짜순이고 날짜순을 눌러놨었다.
+      if (rotate[0] === 180) {
+        //지금 오름차순이다.
+        setrotate([0, 180]);
+        const response = await cocktailmereview(orderList[1], 0);
+        setList(response.data);
       } else {
-        setrotate([0, 0]);
+        //지금 내림차순이다.
+        setrotate([180, 180]);
+        const response = await cocktailmereview(orderList[0], 0);
+        setList(response.data);
       }
     } else if (num === 1 && !order) {
-      if (rotate[1] === 0) {
-        setrotate([0, 180]);
+      //내가 고른게 평점순이고 평점순을 눌러놨었다.
+      if (rotate[1] === 180) {
+        //지금 오름차순이다.
+        setrotate([180, 0]);
+        const response = await cocktailmereview(orderList[3], 0);
+        setList(response.data);
       } else {
-        setrotate([0, 0]);
+        //지금 내림차순이다.
+        setrotate([180, 180]);
+        const response = await cocktailmereview(orderList[2], 0);
+        setList(response.data);
       }
     }
   };

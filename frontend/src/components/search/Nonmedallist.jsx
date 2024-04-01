@@ -47,60 +47,59 @@ export default function Nonmedallist({ index, response, setList }) {
   };
 
   return (
-    <>
-      <>
-        <div className={styles.메인박스}>
-          <div className={styles.cocktail}>
-            {index === 1 && (
-              <div className={styles.등수}>
-                <img src={은색} alt="" className={styles.왕관2} />
-              </div>
-            )}
-            {index === 2 && (
-              <div className={styles.등수}>
-                <img src={동색} alt="" className={styles.왕관2} />
-              </div>
-            )}
-            {index !== 1 && index !== 2 && (
-              <div className={styles.등수}>{index + 1}등</div>
-            )}
-            <div className={styles.묶음}>
-              <div
-                className={styles.name}
-                onClick={() => navigate(`/cocktail/${response.id}`)}
-              >
-                {response.name}
-              </div>
-              <div className={styles.content}>{response.content}</div>
-            </div>
-            <div className={styles.왼쪽}>
-              <img
-                src={response.like ? like : noneLike}
-                alt="like"
-                className={styles.like}
-                onClick={toggleLike} // 클릭하면 toggleLike 함수를 호출
-              />
-              <div
-                className={styles.glass_cover}
-                style={{
-                  background: `linear-gradient(180deg, ${response.color3} ${
-                    num[response.glass][0]
-                  }%, ${response.color2} ${num[response.glass][1]}%, ${
-                    response.color1
-                  } ${num[response.glass][2]}%, ${response.color1} 100%)`,
-                }}
-                onClick={() => navigate(`/cocktail/${response.id}`)}
-              >
-                <img
-                  src={glasses[response.glass]}
-                  alt="glass"
-                  className={styles.glass}
-                />
-              </div>
-            </div>
+    <div className={styles.cocktail}>
+      <div className={styles.top}>
+        {index === 1 && (
+          <div className={styles.등수}>
+            <img src={은색} alt="" className={styles.왕관2} />
+          </div>
+        )}
+        {index === 2 && (
+          <div className={styles.등수}>
+            <img src={동색} alt="" className={styles.왕관2} />
+          </div>
+        )}
+        {index !== 1 && index !== 2 && (
+          <div className={styles.등수}>{index + 1}등</div>
+        )}
+
+        <div
+          className={styles.name}
+          onClick={() => navigate(`/cocktail/${response.id}`)}
+        >
+          {response.name}
+        </div>
+        <div className={styles.하트}>
+          <img
+            src={response.like ? like : noneLike}
+            alt="like"
+            className={styles.like}
+            onClick={toggleLike} // 클릭하면 toggleLike 함수를 호출
+          />
+        </div>
+      </div>
+      <div className={styles.bottom}>
+        <div className={styles.content}>{response.content}</div>
+        <div className={styles.왼쪽}>
+          <div
+            className={styles.glass_cover}
+            style={{
+              background: `linear-gradient(180deg, ${response.color3} ${
+                num[response.glass][0]
+              }%, ${response.color2} ${num[response.glass][1]}%, ${
+                response.color1
+              } ${num[response.glass][2]}%, ${response.color1} 100%)`,
+            }}
+            onClick={() => navigate(`/cocktail/${response.id}`)}
+          >
+            <img
+              src={glasses[response.glass]}
+              alt="glass"
+              className={styles.glass}
+            />
           </div>
         </div>
-      </>
-    </>
+      </div>
+    </div>
   );
 }

@@ -121,7 +121,8 @@
   padding: 4rem 0rem 1rem;
 }
 .mood {
-  font-size: large;
+  font-size: larger;
+  padding: 0.3rem 0.6rem;
 }
 .mood1 {
   color: var(--feel1);
@@ -184,9 +185,12 @@
   font-size: larger;
 }
 .폰트들 {
-  padding: 0.3rem;
+  font-size: large;
+  padding: 0.3rem 0.6rem;
+  border-radius: 0.3rem;
 }
 .감정들 {
   display: flex;
-  gap: 0.3rem;
+  gap: 0.5rem;
+  margin: 0.5rem 0.3rem;
 }
