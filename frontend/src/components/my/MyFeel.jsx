@@ -2,8 +2,11 @@ import styles from "./MyFeel.module.css";
 import React, { useState, useEffect } from "react";
 import Chart from "react-apexcharts";
 import { mooddata } from "../../api/Member";
+import Popup from "../../components/common/Popup";
+import card from "../../assets/common/card.png";
 
 export default function MyFeel() {
+  const [add, setAdd] = useState(0);
   const [chartOptions, setChartOptions] = useState({
     options: {
       tooltip: {
@@ -64,15 +67,10 @@ export default function MyFeel() {
       try {
         const feel = await mooddata(today);
         const { veryBad, bad, soso, good, veryGood } = feel.data;
+        setAdd(veryBad + bad + soso + good + veryGood);
         setChartOptions((prevOptions) => ({
           ...prevOptions,
-          series: [
-            veryBad ? veryBad : 1,
-            bad ? bad : 1,
-            soso ? soso : 1,
-            good ? good : 1,
-            veryGood ? veryGood : 1,
-          ],
+          series: [veryBad, bad, soso, good, veryGood],
         }));
       } catch (error) {
         console.error(error);
@@ -88,11 +86,22 @@ export default function MyFeel() {
 
   return (
     <>
-      <Chart
-        options={chartOptions.options}
-        series={chartOptions.series}
-        type="donut"
-      />
+      {add !== 0 ? (
+        <Chart
+          options={chartOptions.options}
+          series={chartOptions.series}
+          type="donut"
+        />
+      ) : (
+        <div className={styles.popup}>
+          <Popup
+            img={card}
+            subText={`아직 이번달에 기록을 하지 않았어요!`}
+            text={"바텐더와 대화하러가기"}
+            src={"/bar"}
+          />
+        </div>
+      )}
     </>
   );
 }

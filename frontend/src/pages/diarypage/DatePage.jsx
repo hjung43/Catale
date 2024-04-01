@@ -170,13 +170,7 @@ export default function DatePage() {
               </div>
             </div>
             <div className={styles.title}>오늘의 이야기</div>
-            <div
-              className={s(
-                styles[`mood${response.mood}`],
-                styles.mood,
-                styles.폰트들
-              )}
-            >
+            <div className={s(styles[`mood${response.mood}`], styles.mood)}>
               {mood[response.mood]}
             </div>
             <div>
@@ -192,8 +186,6 @@ export default function DatePage() {
                       style={{
                         color: fontcolor[index],
                         backgroundColor: backcolor[index],
-                        borderRadius: 10,
-                        padding: 6,
                       }}
                       className={styles.폰트들}
                     >
@@ -206,8 +198,6 @@ export default function DatePage() {
                       style={{
                         color: fontcolor[index],
                         backgroundColor: backcolor[index],
-                        borderRadius: 10,
-                        padding: 6,
                       }}
                       className={styles.폰트들}
                     >

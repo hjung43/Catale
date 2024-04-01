@@ -63,6 +63,12 @@
   width: 13%;
   /* background-color: red; */
 }
+.하트 {
+  display: flex;
+  justify-content: flex-end;
+  width: 13%;
+  /* background-color: red; */
+}
 .glass {
   width: 100%;
   transform: scale(1.1);
@@ -72,12 +78,12 @@
   font-size: larger;
   text-shadow: 0 0 5px #cdf5ff;
   text-align: center;
-  margin: 0rem 0rem 0.5rem;
   color: #ffffff;
+  line-height: 0;
 }
 .content {
   width: 90%;
-  height: 55px;
+  height: 3.9rem;
   overflow: auto;
   margin: 0 auto;
   letter-spacing: 0.05rem;
@@ -87,55 +93,17 @@
 }
 
 .cocktail {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   border: solid 2px var(--main6);
   box-shadow: 0 0 20px 0 var(--main3);
   border-radius: 1rem;
-  width: 90%;
-  overflow: auto;
-  padding: 0.5rem 0.5rem;
+  padding: 0.5rem;
   transition: 0.7s;
-  z-index: 1;
+  margin: 0.5rem;
   background: linear-gradient(180deg, #b5c7ec 0%, #7d9dd8 50%, #d6c3f4 100%);
 }
-.묶음 {
-  /* background-color: red; */
-  width: 59%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-}
-.메인박스 {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-.일등 {
-  position: absolute;
-  top: 2.5rem;
-  left: 2.2rem;
-  font-size: larger;
-  animation: changeColor2 2s infinite alternate;
-}
-@keyframes changeColor2 {
-  0% {
-    color: #f3d4a8;
-  } /* 초기 색상 */
-  50% {
-    color: #fbbfaa;
-  } /* 중간 색상 */
-  100% {
-    color: #eddfa1;
-  } /* 최종 색상 */
-}
+
 .왕관2 {
-  width: 2rem;
+  width: 1.6rem;
 }
 .like {
   width: 1.6rem;
@@ -146,4 +114,16 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+}
+.bottom {
+  display: flex;
+  padding: 0 0.5rem;
+  align-items: center;
+  gap: 1rem;
 }

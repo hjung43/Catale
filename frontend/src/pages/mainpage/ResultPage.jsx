@@ -79,7 +79,16 @@ export default function ResultPage() {
       <Headerwb title={"오늘의 결과"} />
       <div className={styles.main}>
         <div className={styles.title}>
-          기분좋고 행복한 하루에
+          {emotions.map((emo, i) => {
+            const index = (emo - (emo % 10)) / 10;
+            const j = emo % 10;
+            if (emotions.length - 1 > i) {
+              return <span>{mood2[index][j]} </span>;
+            } else {
+              return <span>{mood1[index][j]} </span>;
+            }
+          })}{" "}
+          하루에
           <br />
           딱맞는 칵테일을 찾았어요!
         </div>
