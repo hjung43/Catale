@@ -1,30 +1,47 @@
-.header {
-  /* width: 100%; */
+/* Headerwb.module.css */
+
+/* .부모요소 스타일 */
+.부모요소 {
+  width: 100%;
   max-width: 450px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* .header 스타일 */
+.header {
+  width: 100%;
   display: flex;
-  align-items: flex-start;
+  max-width: 450px;
+  align-items: center;
   justify-content: space-between;
-  padding: 1rem;
   position: fixed;
-  top: 0px;
-  left: 0;
-  right: 0;
+  top: 0;
   z-index: 2;
   background-color: #00000018;
   backdrop-filter: blur(10px);
 }
+
+/* .left 스타일 */
 .left {
   width: 10%;
 }
+
 .left img {
   width: 20px;
+  padding: 1rem;
 }
+
+/* .right 스타일 */
 .right {
   width: 10%;
   text-align: end;
 }
+
+/* .title 스타일 */
 .title {
   font-size: larger;
   width: 80%;
   text-align: center;
+  padding: 1rem;
 }

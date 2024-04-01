@@ -94,12 +94,18 @@ export default function CocktailDetailPage() {
 
   return (
     <Container>
-      <Headerwb title={cocktail.name} />
-      <img
-        src={nowlike ? like : noneLike}
-        alt="like"
-        className={styles.like}
-        onClick={() => toggleLike()}
+      <Headerwb
+        title={cocktail.name}
+        children={
+          <>
+            <img
+              src={nowlike ? like : noneLike}
+              alt="like"
+              className={styles.like}
+              onClick={() => toggleLike()}
+            />
+          </>
+        }
       />
       <div className={styles.top}>
         <Swiper
