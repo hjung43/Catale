@@ -177,7 +177,9 @@
 }
 .delete_cancel,
 .delete_delete {
-  padding: 0.7rem 4rem;
+  text-align: center;
+  flex-grow: 1;
+  padding: 0.7rem;
   border-radius: 0.7rem;
 }
 .delete_cancel {
