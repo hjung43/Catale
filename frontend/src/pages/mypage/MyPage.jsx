@@ -120,6 +120,8 @@ export default function MyPage() {
       localStorage.clear(); // 로컬 스토리지 초기화
       navigate("/"); // "/"로 이동
     } catch (error) {
+      localStorage.clear(); // 로컬 스토리지 초기화
+      navigate("/"); // "/"로 이동
       console.error("로그아웃 에러:", error);
     }
   };

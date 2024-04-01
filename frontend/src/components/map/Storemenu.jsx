@@ -78,8 +78,15 @@ export default function Storemenu({ menus, storenumber, storename }) {
                             onClick={() =>
                               navigate(`../../cocktail/${menu.cocktailId}`)
                             }
+                            key={menu.id}
                           >
-                            <div key={menu.id} className={styles.칵테일하나}>
+                            <div
+                              className={
+                                menu.signature
+                                  ? styles.시그니쳐박스
+                                  : styles.칵테일하나
+                              }
+                            >
                               {/* 칵테일 사진을 표시 */}
                               <div className={styles.칵테일오른쪽}>
                                 <div
