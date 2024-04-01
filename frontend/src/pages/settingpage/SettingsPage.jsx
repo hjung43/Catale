@@ -140,7 +140,7 @@ export default function SettingsPage() {
           className={styles.item}
           onClick={() => setModal([false, false, true])}
         >
-          <div>
+          <div className={styles.변경박스}>
             <div className={styles.item_text}>프로필사진 변경</div>
             <div className={styles.item_subtext}>
               5MB이하 사진만 가능합니다.
@@ -152,7 +152,7 @@ export default function SettingsPage() {
           className={styles.item}
           onClick={() => setModal([true, false, false])}
         >
-          <div>
+          <div className={styles.변경박스}>
             <div className={styles.item_text}>닉네임 변경</div>
             <div className={styles.item_subtext}>{user.nickname}</div>
           </div>
@@ -162,7 +162,7 @@ export default function SettingsPage() {
           className={styles.item}
           onClick={() => setModal([false, true, false])}
         >
-          <div>
+          <div className={styles.변경박스}>
             <div className={styles.item_text}>비밀번호 변경</div>
             <div className={styles.item_subtext}>
               보안을 위해 3개월에 1번 변경 권장

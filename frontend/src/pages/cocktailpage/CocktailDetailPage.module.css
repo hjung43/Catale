@@ -87,6 +87,7 @@
   margin: 2rem 0;
   font-size: x-large;
 }
+
 .like {
   position: fixed;
   width: 1.6rem;
@@ -100,10 +101,10 @@
   overflow: hidden;
 }
 .popup {
+  width: 100%;
+  max-width: 450px;
   position: fixed;
   bottom: 0.5rem;
-  right: 0.5rem;
-  left: 0.5rem;
   transform: 0.5;
   animation: eff 1.5s infinite;
 }
