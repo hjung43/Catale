@@ -30,7 +30,7 @@ export default function ChangePreferencePage() {
       if (response.status === "SUCCESS") {
         console.log("취향변경이 완료되었습니다.");
         setUser(formData);
-        navigate("../my");
+        navigate("/my");
       } else {
         console.log("에러 발생");
       }
