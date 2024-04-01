@@ -6,8 +6,25 @@
   border: 2px solid white;
 }
 .flex {
+  width: 100%;
+  height: 100%;
+  /* background-color: red; */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 1rem;
+}
+.가이드북 {
+  width: 60%;
+  margin-bottom: 1rem;
+}
+.박스 {
+  display: flex;
+  justify-content: space-around;
+  gap: 1rem;
+}
+.사용법 {
+  font-size: larger;
+  color: aliceblue;
 }

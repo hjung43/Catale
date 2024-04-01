@@ -74,7 +74,7 @@ export default function MainPage() {
     setTodayemo([]);
     setSeletnum(0);
     setTodayalc(user.alc);
-    useTodayStore.getState().setToday(false); // today 상태 변경
+    // useTodayStore.getState().setToday(false); // today 상태 변경
   };
 
   return (
