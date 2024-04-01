@@ -23,6 +23,7 @@ public class ReviewRepositoryImpl implements ReviewRepositoryCustom{
                 .from(review)
                 .where(review.cocktail.id.eq(cocktailId)
                         .and(review.isDeleted.eq(false)))
+                .orderBy(review.createdAt.desc())
                 .offset(page.getOffset())
                 .limit(page.getPageSize())
                 .fetch());
