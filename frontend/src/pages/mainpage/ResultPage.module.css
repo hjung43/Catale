@@ -38,16 +38,23 @@
 }
 .main {
   margin: 4rem 1rem 2rem;
+  overflow-y: hidden;
 }
-.cover {
-  background: #10214399;
-  min-height: 100vh;
-  padding: 5rem 2rem 2rem;
+.card {
+  margin: 1rem 0;
+  background: linear-gradient(
+    180deg,
+    #28575c 0%,
+    #2e425f 33%,
+    #442e5a 66%,
+    #4b264e 100%
+  );
+  border-radius: 1rem;
 }
+
 .detail,
 .cocktail {
   border: solid 2px var(--main6);
-  box-shadow: 0 0 20px 0 var(--main3);
   padding: 1rem;
   border-radius: 1rem;
 }
@@ -95,7 +102,6 @@
   justify-content: space-between;
   margin: 1rem 0 0;
 }
-.cocktail_right,
 .cocktail_left {
   display: flex;
   align-items: center;
@@ -111,4 +117,28 @@
   border-radius: 0.3rem;
   font-size: x-small;
   font-weight: 100;
+}
+.container_box {
+  margin: 1rem 0;
+  width: 100%;
+  overflow: auto;
+}
+.container {
+  overflow: auto;
+  width: 300%;
+  display: flex;
+}
+.text {
+  text-align: center;
+  font-size: smaller;
+}
+.title {
+  font-size: larger;
+  margin: 1rem 0;
+  line-height: 1.5rem;
+  text-align: center;
+}
+.subTitle {
+  margin: 2rem 0 1rem;
+  font-size: large;
 }

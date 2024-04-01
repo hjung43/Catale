@@ -1,6 +1,5 @@
 import ContainerMain from "../../components/common/ContainerMain";
 import styles from "./ResultPage.module.css";
-import Nav from "../../components/common/Nav";
 import React, { useEffect, useState } from "react";
 import Headerwb from "../../components/common/Headerwb";
 import { cocktailtoday } from "../../api/Diary";
@@ -11,11 +10,15 @@ import glass4 from "../../assets/glass/glass4.png";
 import glass5 from "../../assets/glass/glass5.png";
 import glass6 from "../../assets/glass/glass6.png";
 import glass7 from "../../assets/glass/glass7.png";
+import like from "../../assets/common/like.png";
 import s from "classnames";
 import { mood1, mood2 } from "../mainpage/Emodata/Emotionthree";
+import { useNavigate } from "react-router-dom";
 
 export default function ResultPage() {
+  const navigate = useNavigate();
   const [emotions, setEmotions] = useState([]);
+  const [list, setList] = useState([]);
   const [resultData, setResultData] = useState({});
 
   useEffect(() => {
@@ -26,7 +29,6 @@ export default function ResultPage() {
         month: currentDate.getMonth() + 1,
         day: currentDate.getDate(),
       };
-      console.log(today);
 
       try {
         const response = await cocktailtoday(today);
@@ -39,6 +41,7 @@ export default function ResultPage() {
             response.data.emotion3,
           ].filter((ele) => ele !== 0)
         );
+        setList(response.data.recommendedCocktailList);
       } catch (error) {
         console.error("Error fetching cocktail today:", error);
       }
@@ -66,8 +69,7 @@ export default function ResultPage() {
     [35, 45, 55],
     [25, 40, 55],
   ];
-  console.log(emotions);
-  // cocktail.glass 값과 num 배열의 인덱스를 검증합니다.
+
   const validGlassIndex =
     resultData.glass >= 0 && resultData.glass < num.length;
   const numIndex = validGlassIndex ? resultData.glass : 0;
@@ -77,10 +79,14 @@ export default function ResultPage() {
       <Headerwb title={"오늘의 결과"} />
       <div className={styles.main}>
         <div className={styles.title}>
-          기분좋고 행복한 <br />
-          서또카늘님에게 딱맞는 칵테일을 찾았어요!
+          기분좋고 행복한 하루에
+          <br />
+          딱맞는 칵테일을 찾았어요!
         </div>
-        <div className={styles.card}>
+        <div
+          className={styles.card}
+          onClick={() => navigate(`/cocktail/${resultData.cocktailId}`)}
+        >
           <div className={styles.cocktail}>
             <div
               className={styles.glass_cover}
@@ -104,12 +110,44 @@ export default function ResultPage() {
                   return <div>{mood1[index][j]}</div>;
                 })}
               </div>
-              <div className={styles.cocktail_right}></div>
+              <div></div>
             </div>
           </div>
         </div>
-        <div className={styles.a}>칵테일이름과 비슷한 칵테일</div>
-        <div className={styles.a}>대충 맵</div>
+        <div className={styles.subTitle}>
+          {resultData.name}와(과) 비슷한 칵테일
+        </div>
+        <div className={styles.container_box}>
+          <div className={styles.container}>
+            {list.map((cocktail, i) => {
+              const validGlassIndex2 =
+                cocktail.glass >= 0 && cocktail.glass < num.length;
+              const numIndex2 = validGlassIndex2 ? cocktail.glass : 0;
+              const glassCoverStyle2 = `linear-gradient(180deg, ${cocktail.color3} ${num[numIndex2][0]}%, ${cocktail.color2} ${num[numIndex2][1]}%, ${cocktail.color1} ${num[numIndex2][2]}%, ${cocktail.color1} 100%)`;
+              return (
+                <div
+                  className={styles.box}
+                  key={i}
+                  onClick={() => navigate(`/cocktail/${cocktail.cocktailId}`)}
+                >
+                  <div
+                    className={styles.glass_cover}
+                    style={{
+                      background: glassCoverStyle2,
+                    }}
+                  >
+                    <img
+                      src={glasses[cocktail.glass]}
+                      alt="glass"
+                      className={styles.glass}
+                    />
+                  </div>
+                  <div className={styles.text}>{cocktail.name}</div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
       </div>
     </ContainerMain>
   );
