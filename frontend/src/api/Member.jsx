@@ -103,3 +103,13 @@ export async function mooddata(month) {
     throw error;
   }
 }
+
+//회원가입시 유저가 좋아하는 칵테일 넘겨주기
+export async function chooselist(cocktaillist) {
+  try {
+    const response = await axios.post(BASE_URL + "/choose", cocktaillist);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+}

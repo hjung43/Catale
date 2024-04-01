@@ -56,8 +56,11 @@ export default function SignInPage() {
           social: res.data.memberInfo.social,
           check: res.data.check,
         });
-        if (res.data.memberInfo.alc == -1) navigate(`../preference`);
-        else {
+        if (res.data.memberInfo.alc == -1) {
+          const isToday = await todaydiary();
+          await setToday(isToday.data);
+          navigate(`../preference`);
+        } else {
           const isToday = await todaydiary();
           await setToday(isToday.data);
           toast.success(`로그인 성공 !`, {

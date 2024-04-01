@@ -190,7 +190,7 @@ export default function MyPage() {
           </div>
           <div
             className={styles.changePreference}
-            onClick={() => navigate("../preference")}
+            onClick={() => navigate("changepreference")}
           >
             <img src={edit} alt="edit" className={styles.edit_icon} />
             <div>취향변경</div>
