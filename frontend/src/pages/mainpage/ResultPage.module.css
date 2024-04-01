@@ -103,12 +103,13 @@
   justify-content: space-between;
   margin: 1rem 0 0;
 }
+.cocktail_right,
 .cocktail_left {
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
-.icon {
+.icon2 {
   width: 1.5rem;
   transform: translateY(-0.1rem);
 }
@@ -145,4 +146,73 @@
 }
 .box {
   padding-bottom: 1rem;
+}
+/* 모달 */
+
+.modal {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  background-color: var(--main4);
+  padding: 2rem;
+  border-radius: 2rem 2rem 0 0;
+  transition: 0.5s;
+}
+.none {
+  transform: translateY(20rem);
+}
+.icon {
+  width: 1rem;
+}
+.blur {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #00000000;
+  backdrop-filter: blur(5px);
+  transition: background-color 0.8s;
+}
+.active {
+  background-color: #464a6d97;
+  z-index: 1;
+}
+.no {
+  z-index: -1;
+}
+/* 모달 안 */
+
+.delete_top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.delete_title {
+  font-size: larger;
+}
+.delete_text {
+  text-align: center;
+}
+.mood {
+  font-size: larger;
+  padding: 0.3rem 0.6rem;
+}
+.mood1 {
+  color: var(--feel1);
+}
+.mood2 {
+  color: var(--feel2);
+}
+.mood3 {
+  color: var(--feel3);
+}
+.mood4 {
+  color: var(--feel4);
+}
+.mood5 {
+  color: var(--feel5);
 }
