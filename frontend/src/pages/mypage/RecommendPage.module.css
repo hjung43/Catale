@@ -48,3 +48,10 @@
   color: var(--main4);
   margin: 0.3rem 0;
 }
+.검색결과 {
+  margin: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding-bottom: 3rem;
+}

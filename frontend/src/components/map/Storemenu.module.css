@@ -42,6 +42,7 @@
 
 .시그니쳐박스 {
   position: relative;
+  border: solid 2px var(--main7);
   background: linear-gradient(
     135deg,
     #9c9ec6 0%,
@@ -50,9 +51,8 @@
     #c98dc2 75%,
     #9c9ec6 100%
   );
-  background-size: 200% 100%; /* 배경을 두 배로 넓게 만들어서 움직이는 효과를 줘 */
-  border: solid 2px var(--main7);
-  animation: moveBackground 3s linear infinite alternate; /* 'alternate' 추가해서 좌우로 번갈아가며 이동하도록 설정 */
+  background-size: 200% 100%;
+  animation: moveBackground 3s linear infinite alternate;
 }
 .signature {
   position: absolute;

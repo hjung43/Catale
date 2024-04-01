@@ -46,6 +46,20 @@
   box-shadow: 0 10px 20px -5px #181b4ce6;
   animation: eff 1.5s infinite;
 }
+@keyframes moveBackground {
+  0% {
+    background-position: 0 0; /* 시작 지점 */
+  }
+  20% {
+    background-position: 10% 0; /* 시작 지점 */
+  }
+  80% {
+    background-position: 90% 0; /* 시작 지점 */
+  }
+  100% {
+    background-position: 100% 0; /* 끝 지점 */
+  }
+}
 @keyframes eff {
   0% {
     transform: rotate(1deg);
@@ -59,7 +73,7 @@
 }
 .등수 {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   width: 4rem;
   /* background-color: red; */
 }
@@ -86,7 +100,7 @@
   height: 55px;
   overflow: auto;
   margin: 0 auto;
-  letter-spacing: 0.05rem;
+  letter-spacing: 0.03rem;
   line-height: 1.3em;
   font-size: 0.75rem;
   color: #1b3250;
@@ -100,7 +114,33 @@
   padding: 0.5rem;
   transition: 0.7s;
   margin: 0.5rem;
-  background: linear-gradient(180deg, #b5c7ec 0%, #7d9dd8 50%, #d6c3f4 100%);
+}
+.silver {
+  background: linear-gradient(
+    135deg,
+    #acafe4 0%,
+    #a7c8e3 25%,
+    #92c1e7 50%,
+    #bbb0d6 75%,
+    #e2c5e6 100%
+  );
+  background-size: 200% 100%;
+  animation: moveBackground 3s linear infinite alternate;
+}
+.bronze {
+  background: linear-gradient(
+    135deg,
+    #f18379 0%,
+    #eeb49d 25%,
+    #eeaf77 50%,
+    #eebb9d 75%,
+    #eea49d 100%
+  );
+  background-size: 200% 100%;
+  animation: moveBackground 3s linear infinite alternate;
+}
+.none {
+  background-color: var(--main4);
 }
 /* 수직 스크롤바 스타일 */
 ::-webkit-scrollbar {
