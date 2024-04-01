@@ -2,6 +2,7 @@ import s from "classnames";
 import styles from "./Storebos.module.css";
 import Box from "../common/Box";
 import { useNavigate } from "react-router-dom";
+import arrow from "../../assets/common/arrow3.png";
 
 function Storebox({ store, nowclick }) {
   const navigate = useNavigate();
@@ -27,6 +28,7 @@ function Storebox({ store, nowclick }) {
               영업시간 : {store.영업시간}
             </div>
           </div>
+          <img src={arrow} alt="arrow" className={styles.arrow} />
         </div>
       </Box>
     </div>
