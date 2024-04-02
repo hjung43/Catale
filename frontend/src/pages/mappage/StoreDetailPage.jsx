@@ -26,7 +26,6 @@ export default function StoreDetailPage() {
   useEffect(() => {
     const fetchData = async () => {
       const response = await getstoredetail(storenumber);
-      console.log(response);
       setStoredata(response);
       setMenus(response.menus);
       setImages(response.images);

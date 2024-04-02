@@ -103,7 +103,6 @@ export default function SettingsPage() {
       name: password.nickname,
     };
     const res = await changeNickname(newName);
-    console.log(res);
     if (res.status === "FAILED" || res.status === "ERROR") {
       setNicknameErrorMessage(
         res.status === "FAILED" ? res.errors[0].message : res.message

@@ -28,7 +28,6 @@ export default function MyCocktailPage() {
     async function fetchlikeData() {
       try {
         const response = await cocktailmereview(orderList[0], page);
-        // console.log(response);
         setList([...list, ...response.data]);
       } catch (error) {
         console.error("데이터불러오기실패");

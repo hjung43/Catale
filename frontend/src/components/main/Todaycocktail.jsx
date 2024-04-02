@@ -41,7 +41,6 @@ export default function Todaycocktail({
 
     try {
       const result = await recommendtoday(today);
-      console.log(result);
 
       const updatedToday = {
         ...today,
@@ -49,11 +48,9 @@ export default function Todaycocktail({
       };
 
       const savadiaryResponse = await savadiary(updatedToday);
-      console.log("Diary saved:", savadiaryResponse);
 
       useTodayStore.getState().setToday(true); // today 상태 변경
     } catch (error) {
-      console.error("Error:", error);
     } finally {
       setIsLoading(false); // 로딩 상태 해제
       setTalknum(talknum + 1); // talknum 업데이트

@@ -48,7 +48,6 @@ export default function CocktailBox({
       )
     );
     cocktaillike(cocktail.cocktailId);
-    // console.log(searchlist);
     setCocktailList(searchlist);
   };
   return (

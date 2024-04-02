@@ -22,12 +22,9 @@ export default function PreferencePage() {
   };
 
   const sendDataToServer = async () => {
-    console.log(formData);
     try {
       const response = await preference(formData);
-      console.log(response);
       if (response.status === "SUCCESS") {
-        console.log("취향변경이 완료되었습니다.");
         setUser(formData);
         navigate("../choosecocktail");
       } else {
