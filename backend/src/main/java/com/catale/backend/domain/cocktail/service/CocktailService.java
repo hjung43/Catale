@@ -160,10 +160,12 @@ public class CocktailService {
 
     @Transactional
     public TodayCocktailResponseDto getTodayCocktail(Authentication authentication, TodayCocktailRequestDto request) {
+        log.info("???");
         Member member = memberService.findMember(authentication.getName());
         Long memberId = member.getId();
 
         //먼저 오늘의 기분과 연관된 색의 칵테일을 하나 선정
+        log.info("여기까지");
         List<Cocktail> cocktailList = cocktailRepository.findAll();
         Cocktail matchedCocktail = findBestMatchingItems(cocktailList, request.getEmotion1(), request.getEmotion2(), request.getEmotion3(), request.getAlc());
         TodayCocktailResponseDto responseDto = new TodayCocktailResponseDto(matchedCocktail);
@@ -183,32 +185,40 @@ public class CocktailService {
                                     simpleInfoDto.setLike(likeService.checkisLiked(memberId, cocktail.getId()));
                                     return simpleInfoDto;
                               }).toList();
-
+        log.info("dto:" + responseDto);
         responseDto.setRecommendedCocktailList(simpleInfoDtos);
         return responseDto;
     }
 
 
     @Transactional
-    public List<CocktailGetResponseDto> getMemberRecommendCocktail(Authentication authentication){
+    public List<CocktailListResponseDto> getMemberRecommendCocktail(Authentication authentication){
         Member member = memberService.findMember(authentication.getName());
         Long memberId = member.getId();
 
-        // FastAPI 호출, 이용자 맞춤 추천 칵테일 Id list 반환
-        List<Long> recommendedIdList = apiService.getMemberRecommendResponse(memberId).block();
-        // id -> dto로 변환
-        List<CocktailGetResponseDto> responseDtoList = recommendedIdList.stream()
+        int alc = member.getAlc();
+        int sweet = member.getSweet();
+        int sour = member.getSour();
+        int bitter = member.getBitter();
+        int sparking = member.getSparking();
+
+        int[] preference = new int[5];
+        preference[0] = alc;
+        preference[1] = sweet;
+        preference[2] = sour;
+        preference[3] = bitter;
+        preference[4] = sparking;
+
+        return apiService.getMemberRecommendResponse(preference).stream()
                 .map(id -> {
                     Cocktail cocktail = cocktailRepository.findById(id)
                             .orElseThrow(CocktailNotFoundException::new);
                     return cocktail;
                 }).map(cocktail -> {
-                    CocktailGetResponseDto cocktailDto = new CocktailGetResponseDto(cocktail);
+                    CocktailListResponseDto cocktailDto = new CocktailListResponseDto(cocktail.getId(), cocktail.getName(), cocktail.getColor1(), cocktail.getColor2(), cocktail.getColor3(), cocktail.getGlass(), cocktail.getContent());
                     cocktailDto.setLike(likeService.checkisLiked(memberId, cocktail.getId()));
                     return cocktailDto;
                 }).toList();
-
-        return responseDtoList;
     }
 
     @Transactional
@@ -240,7 +250,45 @@ public class CocktailService {
         return searchedList;
     }
 
-
+    //    @Transactional
+//    public List<CocktailListResponseDto> getMemberRecommendCocktail(Authentication authentication){
+//        Member member = memberService.findMember(authentication.getName());
+//        Long memberId = member.getId();
+//
+//        // FastAPI 호출, 이용자 맞춤 추천 칵테일 Id list 반환
+//        GetMemberRecommendDto recommendDto = new GetMemberRecommendDto();
+//        recommendDto.setMemberId(memberId);
+//
+//        List<PreferenceDto> preferenceDtoList = new ArrayList<>();
+//        List<Member> memberList = memberRepository.findAll();
+//
+//        for(Member m : memberList){
+//            PreferenceDto preference = PreferenceDto.builder()
+//                                                    .memberId(m.getId())
+//                                                    .alc(m.getAlc())
+//                                                    .sparking(m.getSparking())
+//                                                    .bitter(m.getBitter())
+//                                                    .sweet(m.getSweet())
+//                                                    .sour(m.getSour())
+//                                                    .build();
+//            preferenceDtoList.add(preference);
+//            log.info(preference);
+//        }
+//        recommendDto.setPreferenceDtoList(preferenceDtoList);
+////        apiService.getMemberRecommendResponse(recommendDto);
+//        log.info("start:");
+//        log.info(recommendDto);
+//        return apiService.getMemberRecommendResponse(recommendDto).stream()
+//                .map(id -> {
+//                    Cocktail cocktail = cocktailRepository.findById(id)
+//                            .orElseThrow(CocktailNotFoundException::new);
+//                    return cocktail;
+//                }).map(cocktail -> {
+//                    CocktailListResponseDto cocktailDto = new CocktailListResponseDto(cocktail.getId(), cocktail.getName(), cocktail.getColor1(), cocktail.getColor2(), cocktail.getColor3(), cocktail.getGlass(), cocktail.getContent());
+//                    cocktailDto.setLike(likeService.checkisLiked(memberId, cocktail.getId()));
+//                    return cocktailDto;
+//                }).toList();
+//    }
 
 
 
