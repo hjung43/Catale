@@ -71,7 +71,6 @@ export default function DiaryPage() {
       try {
         const response = await monthdiary(year, month);
         setResponse(response.data); // 데이터를 상태에 저장
-        console.log(response.data); // 데이터 확인용
       } catch (error) {
         console.error(error);
       }

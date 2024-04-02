@@ -39,7 +39,6 @@ export default function CocktailDetailPage() {
   const [reviewList, setReviewList] = useState([]);
   const [select, setSelect] = useState(-1);
   const [storedata, setStoredata] = useState([...markerdataB, ...markerdataG]);
-  // console.log(storedata);
 
   const glasses = [
     glass1,
@@ -77,7 +76,6 @@ export default function CocktailDetailPage() {
   useEffect(() => {
     const fetchData = async () => {
       const cocktails = await cocktaildetail(cocktailId);
-      console.log(cocktails.data);
       const review = await getreview(cocktails.data.id);
       setReviewList(review.data);
       setCocktail(cocktails.data);

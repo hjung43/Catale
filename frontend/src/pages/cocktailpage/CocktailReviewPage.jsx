@@ -66,9 +66,7 @@ export default function CocktailReviewPage() {
 
   const handleSubmit = (e) => {
     if (percent.content !== "" && percent.rate !== 0) {
-      console.log(percent);
       const response = writereview(percent);
-      console.log(response);
       navigate(-1);
     } else {
       toast.success(`다채워라`, {

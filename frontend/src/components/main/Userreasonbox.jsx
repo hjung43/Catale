@@ -47,10 +47,6 @@ export default function Userreasonbox({
     setTodayreason(e.target.value);
   };
 
-  const check = () => {
-    console.log(todayreason);
-  };
-
   return (
     <>
       <div className={styles.감정선택칸}>
@@ -82,7 +78,6 @@ export default function Userreasonbox({
           </div>
         </>
         {/* 텍스트 입력 필드 */}
-        {/* <button onClick={check}>추가</button> */}
         {open && (
           <div>
             <input

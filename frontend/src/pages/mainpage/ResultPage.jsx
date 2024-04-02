@@ -35,7 +35,6 @@ export default function ResultPage() {
       try {
         const response = await cocktailtoday(today);
         setResultData(response.data);
-        console.log(response.data); // 데이터 확인용
         setEmotions(
           [
             response.data.emotion1,

@@ -55,14 +55,10 @@ export default function SearchPage() {
   const clicknonbase = () => {
     setOptions({ ...options, base: -1 });
     setOptionstrue({ ...optionstrue, base: true });
-    // console.log(options.base);
-    // console.log(optionstrue.base);
   };
   const clickbase = (index) => {
     setOptions({ ...options, base: index });
     setOptionstrue({ ...optionstrue, base: false });
-    // console.log(options.base);
-    // console.log(optionstrue.base);
   };
 
   const handlesearch = async () => {
@@ -110,7 +106,6 @@ export default function SearchPage() {
       const formData = { page: 0, size: 30 };
       try {
         const response = await getcocktaillist(formData);
-        // console.log(response.data);
         setList([...list, ...response.data]);
       } catch (error) {
         console.error("데이터불러오기실패");

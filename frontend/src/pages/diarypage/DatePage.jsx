@@ -98,8 +98,6 @@ export default function DatePage() {
   //       )
   //     : [];
 
-  console.log(emotions);
-
   return (
     <Container>
       <Headerwb title={formattedDate} />

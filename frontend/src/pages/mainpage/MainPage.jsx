@@ -50,11 +50,8 @@ export default function MainPage() {
   // usertakl에서 0은 없는거 1은 대화 2,3,4,5,6,7은 특정고르기
 
   const [todayalc, setTodayalc] = useState(user.alc);
-  console.log(todayalc);
 
   useEffect(() => {
-    console.log(today);
-
     async function fetchMyData() {
       try {
         if (today) {

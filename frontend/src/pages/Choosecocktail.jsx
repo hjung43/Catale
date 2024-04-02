@@ -44,13 +44,10 @@ export default function Choosecocktail() {
   };
 
   const sendDataToServer = async () => {
-    console.log(formData);
     try {
       const cocktailIds = formData;
       const response = await chooselist({ cocktailIds });
-      console.log(response);
       if (response.status === "SUCCESS") {
-        console.log("추가완료.");
         navigate("../guidePage");
       } else {
         console.log("에러 발생");
