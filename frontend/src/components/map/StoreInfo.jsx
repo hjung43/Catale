@@ -77,7 +77,7 @@ export default function StoreInfo({ selectedStore, storedata }) {
           {storedata.parkAvailable && (
             <div className={styles.store_flex}>
               <img src={store5} alt="store" className={styles.store_img} />
-              <div>주변공원 있음</div>
+              <div>주차 가능</div>
             </div>
           )}
         </div>
