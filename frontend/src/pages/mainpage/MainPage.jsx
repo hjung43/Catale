@@ -19,7 +19,7 @@ import Cattalk11 from "../../components/main/Cattalk11";
 import Userreasonbox from "../../components/main/Userreasonbox";
 import Usercomment from "../../components/main/Usercomment";
 import { selectcolor } from "./Emodata/Emocolor";
-import cocktail from "../../assets/bartender/cocktail.png";
+import cocktail from "../../assets/bartender/오늘의칵테일1.png";
 import useUserStore from "../../store/useUserStore";
 import useTodayStore from "../../store/useTodayStore";
 import Cattalk20 from "../../components/main/Cattalk20";
