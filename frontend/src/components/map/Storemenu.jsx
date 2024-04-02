@@ -2,6 +2,7 @@ import styles from "./Storemenu.module.css";
 import { useState } from "react";
 import Box from "../common/Box";
 import { useNavigate } from "react-router-dom";
+import arrow from "../../assets/common/arrow4.png";
 export default function Storemenu({ menus, storenumber, storename }) {
   // 도수에 따라 메뉴를 그룹화하는 함수
 
@@ -29,6 +30,7 @@ export default function Storemenu({ menus, storenumber, storename }) {
   const [cocktailVisibility, setCocktailVisibility] = useState(
     new Array(6).fill(true) // 도수별 그룹 개수만큼 초기값 생성
   );
+  const [deg, setDeg] = useState([0, 0, 0, 0, 0, 0]);
 
   const toggleCocktailVisibility = (index) => {
     const newVisibility = [...cocktailVisibility];
@@ -61,7 +63,16 @@ export default function Storemenu({ menus, storenumber, storename }) {
                         : "30도 이상"}{" "}
                     </div>
                     <div onClick={() => toggleCocktailVisibility(index)}>
-                      {cocktailVisibility[index] ? "숨기기" : "보이기"}
+                      <img
+                        src={arrow}
+                        alt="arrow"
+                        className={styles.arrow}
+                        style={
+                          cocktailVisibility[index]
+                            ? { transform: `rotate(${deg[index]}deg)` }
+                            : { transform: `rotate(${deg[index] + 180}deg)` }
+                        }
+                      />
                     </div>
                   </div>
                   {cocktailVisibility[index] && (

@@ -30,7 +30,10 @@
 .boxtop {
   padding: 1.3rem 1rem 0.5rem 1rem;
 }
-
+.arrow {
+  transition: 0.5s;
+  width: 1.5rem;
+}
 /* 
 
 
