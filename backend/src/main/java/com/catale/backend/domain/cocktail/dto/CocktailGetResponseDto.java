@@ -38,6 +38,7 @@ public class CocktailGetResponseDto {
     private int likeCount;
     private int fruit;
     private boolean isLike;
+    private List<Long> storeIdList;
 
 
     public CocktailGetResponseDto(Cocktail cocktail) {
