@@ -11,6 +11,8 @@ import com.catale.backend.domain.like.repository.LikeRepository;
 import com.catale.backend.domain.like.service.LikeService;
 import com.catale.backend.domain.member.entity.Member;
 import com.catale.backend.domain.member.service.MemberService;
+import com.catale.backend.domain.menu.dto.MenuGetResponseDto;
+import com.catale.backend.domain.menu.repository.MenuRepository;
 import com.catale.backend.domain.review.repository.ReviewRepository;
 import com.catale.backend.global.exception.cocktail.CocktailNotFoundException;
 
@@ -47,6 +49,7 @@ public class CocktailService {
     private final LikeService likeService;
     private final ReviewRepository reviewRepository;
     private final RecommendApiService apiService;
+    private final MenuRepository menuRepository;
 
     //칵테일 전체 리스트 조회
     @Transactional
@@ -91,6 +94,8 @@ public class CocktailService {
         if(!likeDto.isEmpty()){
             cocktailDto.setLike(true);
         }
+        List<Long> storeIdList = menuRepository.findByCocktilId(cocktailId).orElse(new ArrayList<>());
+        cocktailDto.setStoreIdList(storeIdList);
         return cocktailDto;
 
     }
@@ -184,6 +189,7 @@ public class CocktailService {
         responseDto.setRecommendedCocktailList(simpleInfoDtos);
         return responseDto;
     }
+
 
     @Transactional
     public List<CocktailListResponseDto> getMemberRecommendCocktail(Authentication authentication){

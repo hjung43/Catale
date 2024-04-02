@@ -13,4 +13,5 @@ public interface CocktailRepositoryCustom {
     Optional<List<CocktailSimpleInfoDto>> searchByKeyword(String keyword, Pageable page);
     Optional<List<CocktailSimpleInfoDto>> searchByOption(int base, int alc, int sweet, int sour, int bitter, int sparkling, Pageable page);
     Optional<List<CoctailMyreviewResponseDto>> getCocktailMyReviewList(Long memberId, Pageable page);
+
 }
