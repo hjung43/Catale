@@ -9,7 +9,7 @@ import 마이1 from "../assets/guide/마이1.png";
 import 메인0 from "../assets/guide/메인0.png";
 import 메인1 from "../assets/guide/메인1.png";
 import 메인2 from "../assets/guide/메인2.png";
-import 지도1 from "../assets/guide/지도1.png";
+// import 지도1 from "../assets/guide/지도1.png";
 
 export default function GuidePage() {
   const [list, setList] = useState([]);
@@ -18,7 +18,7 @@ export default function GuidePage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    setList([마이1, 지도1, 검색1, 검색2, 메인0, 메인1, 메인2, 달력1]);
+    setList([마이1, 검색1, 검색2, 메인0, 메인1, 메인2, 달력1]);
   }, []);
 
   const handleNextPage = () => {
@@ -49,14 +49,15 @@ export default function GuidePage() {
         <div className={styles.박스}>
           <div onClick={handlePrevPage}>이전</div>
           <span>
-            현재 페이지: {currentPage + 1} / {list.length}
+            {currentPage + 1} / {list.length}
           </span>
           <div onClick={handleNextPage}>다음</div>
         </div>
-        {/* 고양이 대화 링크 */}
-        <div className={styles.고양이대화} onClick={() => navigate(`/bar`)}>
-          고양이랑 대화하러가기
-        </div>
+        {currentPage === list.length - 1 && (
+          <div className={styles.고양이대화} onClick={() => navigate(`/bar`)}>
+            고양이랑 대화하러가기
+          </div>
+        )}
       </div>
     </Container>
   );
