@@ -57,7 +57,7 @@ export default function Storemenu({ menus, storenumber, storename }) {
                     ? "16도 - 20도"
                     : index === 4
                     ? "21도 - 30도"
-                    : "30도 이상"}
+                    : "31도 이상"}
                 </div>
                 <div onClick={() => toggleCocktailVisibility(index)}>
                   {cocktailVisibility[index] ? "숨기기" : "보이기"}
