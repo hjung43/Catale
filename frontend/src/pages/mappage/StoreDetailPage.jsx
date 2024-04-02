@@ -46,7 +46,7 @@ export default function StoreDetailPage() {
         <Map
           nowlocatex={nowlocatex}
           nowlocatey={nowlocatey}
-          level="2"
+          level="1"
           markerData={selectedStore.selectedStore}
         />
         {storedata && menus && images && (
