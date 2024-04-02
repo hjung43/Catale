@@ -116,6 +116,9 @@
   font-size: x-small;
   font-weight: 100;
 }
+.cocktail_right div {
+  font-size: small;
+}
 .title {
   font-size: x-large;
   padding: 4rem 0rem 1rem;

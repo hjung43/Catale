@@ -49,7 +49,7 @@ export default function WelcomePage() {
             회원가입
           </div>
         </div>
-        <div className={styles.버전}>version-0.124</div>
+        <div className={styles.버전}>version-0.124.1</div>
       </div>
     </Container>
   );

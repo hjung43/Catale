@@ -33,10 +33,10 @@ export default function MyFeel() {
           fontFamily: "GongGothicMedium",
         },
       },
-      labels: ["very bad", "bad", "soso", "good", "very good"],
+      labels: ["", "", "", "", ""],
       legend: {
         formatter: function (val, opts) {
-          return val + " - " + opts.w.globals.series[opts.seriesIndex];
+          return val + " : " + opts.w.globals.series[opts.seriesIndex] + "일";
         },
         fontSize: "15px",
         fontFamily: "GongGothicMedium",
