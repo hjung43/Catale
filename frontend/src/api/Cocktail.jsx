@@ -2,10 +2,10 @@ import axios from "axios";
 const BASE_URL = "https://api.silvstone.xyz/api/v1/cocktail";
 
 //칵테일 전체 조회
-export async function getcocktaillist() {
+export async function getcocktaillist(option) {
   const params = {
-    page: 0,
-    size: 219,
+    page: option.page,
+    size: option.size,
   };
   try {
     const response = await axios.get(BASE_URL, { params });

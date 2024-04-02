@@ -119,7 +119,41 @@
     transform: scale(1);
   }
 }
-
+.가게모음집 {
+  display: flex;
+  overflow-x: auto;
+  gap: 0.5rem;
+}
+.판매중인칵테일바 {
+  padding: 2rem 0rem;
+  color: #ffffff;
+  font-size: x-large;
+  /* -webkit-text-stroke: 1px rgb(0, 0, 0); */
+  /* text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5); */
+}
+.가게사진 {
+  width: 70px;
+  height: 70px;
+  border-radius: 10px;
+}
+.가게이름 {
+  font-size: small;
+  width: 100px;
+  text-align: center;
+  color: #ffffff;
+}
+.가게하나 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.313);
+  border: solid 2px white;
+  padding: 0.4rem 0rem;
+  gap: 0.4rem;
+  border-radius: 10px;
+  margin-bottom: 0.6rem;
+}
 /* 모달 */
 
 .modal {
