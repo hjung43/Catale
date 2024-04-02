@@ -1,9 +1,6 @@
 package com.catale.backend.domain.cocktail.controller;
 
-import com.catale.backend.domain.cocktail.dto.CocktailGetLikeResponseDto;
-import com.catale.backend.domain.cocktail.dto.CocktailGetResponseDto;
-import com.catale.backend.domain.cocktail.dto.CoctailMyreviewResponseDto;
-import com.catale.backend.domain.cocktail.dto.TodayCocktailRequestDto;
+import com.catale.backend.domain.cocktail.dto.*;
 import com.catale.backend.domain.cocktail.service.CocktailService;
 import com.catale.backend.domain.member.entity.Member;
 import com.catale.backend.domain.member.service.MemberService;

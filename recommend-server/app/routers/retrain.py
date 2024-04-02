@@ -20,6 +20,9 @@ async def retrain_exist_user(
         item_features: ItemFeatures = Depends(ItemFeatures),
 ):
     logging.debug("사용자 피드백 실시간 반영 : {}".format(memberData))
+    logging.info("data")
+    logging.info(item_features.data)
+    
     background_tasks.add_task(
         fit_partial_user, memberData.ratings, memberData.preferences, item_features.data
     )

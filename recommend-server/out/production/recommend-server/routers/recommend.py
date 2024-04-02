@@ -66,6 +66,6 @@ async def rec_similar_cocktail(
 
 @rec.get("/async/", status_code=202)
 async def rec_async(background_tasks: BackgroundTasks):
-    a = 100
+    a = 0
     print(a)
     return background_tasks.add_task(retrain_model)

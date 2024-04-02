@@ -5,7 +5,8 @@ import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
 # 희소 행렬을 CSR(Compressed Sparse Row) 형식으로 표현
 from scipy.sparse import csr_matrix
-
+import pandas as pd
+from sklearn.metrics.pairwise import cosine_similarity
 import logging
 
 from lightfm import LightFM
@@ -63,3 +64,30 @@ def predict_similar_cocktail(cocktail_id: int, item_features, k: int = 5):
         )
     )
     return np.argsort(-scores)[1 : k + 1].tolist()
+
+
+
+def user_recommend_cocktail(cocktail_features: List[int], item_features, k: int = 5):
+   # 입력된 특성 정보를 DataFrame으로 변환
+    logging.info(item_features.columns.tolist()[1:])
+    logging.info(len(cocktail_features))
+    logging.info(len(item_features.columns.tolist()[1:]))
+    input_features_df = pd.DataFrame([cocktail_features], columns=item_features.columns.tolist()[1:])
+    
+    logging.info("1")
+    # item_features 데이터프레임에서 숫자형 특성만을 추출
+    item_feat = item_features[item_features.columns.tolist()[1:]]
+    logging.info("2")
+    
+    # 입력된 칵테일 특성과 item_features의 모든 칵테일 특성 사이의 코사인 유사도 계산
+    cosine_sim = cosine_similarity(input_features_df, item_feat)
+    logging.info("3")
+    
+    # 첫 번째 행(입력된 칵테일 특성)에 대한 유사도 점수를 기반으로 유사도가 높은 상위 k개의 칵테일 인덱스 추출
+    # argsort()는 작은 값부터 정렬하므로, -cosine_sim[0]을 사용하여 큰 값부터 정렬
+    top_indices = np.argsort(-cosine_sim[0])[:k]
+    
+    # 인덱스를 사용하여 가장 유사한 k개의 칵테일 ID 추출
+    similar_cocktails = item_features.iloc[top_indices]['cocktail_id'].tolist()
+    
+    return similar_cocktails
