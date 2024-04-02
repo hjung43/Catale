@@ -20,6 +20,7 @@ import static com.catale.backend.domain.review.entity.QReview.review;
 public class CocktailRepositoryImpl implements CocktailRepositoryCustom {
     private final JPAQueryFactory query;
 
+    //칵테일 전체 조회
     @Override
     public Optional<List<CocktailListResponseDto>> getCocktails(Pageable page) {
         return Optional.ofNullable(query.select(Projections.constructor(CocktailListResponseDto.class,
@@ -32,6 +33,7 @@ public class CocktailRepositoryImpl implements CocktailRepositoryCustom {
                 .fetch());
     }
 
+    //좋아요한 칵테일들 조회
     @Override
     public Optional<List<CocktailGetLikeResponseDto>> getLikeCoctails(Long memberId, Pageable page) {
         return Optional.ofNullable(query.select(Projections.constructor(CocktailGetLikeResponseDto.class,
@@ -48,6 +50,8 @@ public class CocktailRepositoryImpl implements CocktailRepositoryCustom {
     }
 
 
+    //키워드로 칵테일 검색 - 칵테일 이름에 한 함
+    @Override
     public Optional<List<CocktailSimpleInfoDto>> searchByKeyword(String keyword, Pageable page){
         return Optional.ofNullable(query.select(Projections.constructor(CocktailSimpleInfoDto.class, cocktail))
                 .from(cocktail)
@@ -57,6 +61,7 @@ public class CocktailRepositoryImpl implements CocktailRepositoryCustom {
                 .fetch());
     }
 
+    //옵션으로 칵테일 검색 - 도수, 베이스 술, 단맛, 신맛, 쓴맛, 탄산 정도
     @Override
     public Optional<List<CocktailSimpleInfoDto>> searchByOption(int base, int alc, int sweet, int sour, int bitter, int sparkling, Pageable page) {
         return Optional.ofNullable(query.select(Projections.constructor(CocktailSimpleInfoDto.class, cocktail))
@@ -67,6 +72,8 @@ public class CocktailRepositoryImpl implements CocktailRepositoryCustom {
                 .fetch());
     }
 
+    //내가 쓴 리뷰 쓴 칵테일 조회 - 내가 먹어본 칵테일
+    @Override
     public Optional<List<CoctailMyreviewResponseDto>> getCocktailMyReviewList(Long memberId, Pageable page) {
         Sort sort = page.getSort();
 
