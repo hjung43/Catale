@@ -2,7 +2,7 @@ import ContainerMain from "../../components/common/ContainerMain";
 import styles from "./MainPage.module.css";
 import Nav from "../../components/common/Nav";
 import 배경바 from "../../assets/bartender/꼬질냥.gif";
-import 배경바2 from "../../assets/bartender/임시바배경.png";
+import 배경바2 from "../../assets/bartender/자산4.png";
 import React from "react";
 import { useState, useEffect } from "react";
 import Cattalkbox from "../../components/main/Cattalkbox";
