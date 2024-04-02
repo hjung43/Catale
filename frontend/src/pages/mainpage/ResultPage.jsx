@@ -1,7 +1,7 @@
 import ContainerMain from "../../components/common/ContainerMain";
 import styles from "./ResultPage.module.css";
 import React, { useEffect, useState } from "react";
-import Headerwb from "../../components/common/Headerwb";
+import HeaderResult from "../../components/common/HeaderResult";
 import { cocktailtoday } from "../../api/Diary";
 import glass1 from "../../assets/glass/glass1.png";
 import glass2 from "../../assets/glass/glass2.png";
@@ -86,7 +86,7 @@ export default function ResultPage() {
   const glassCoverStyle = `linear-gradient(180deg, ${resultData.color3} ${num[numIndex][0]}%, ${resultData.color2} ${num[numIndex][1]}%, ${resultData.color1} ${num[numIndex][2]}%, ${resultData.color1} 100%)`;
   return (
     <ContainerMain>
-      <Headerwb title={"오늘의 결과"} />
+      <HeaderResult title={"오늘의 결과"} />
       <div className={styles.main}>
         <div className={styles.title}>
           {emotions.map((emo, i) => {
