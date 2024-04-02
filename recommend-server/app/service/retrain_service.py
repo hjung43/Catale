@@ -18,13 +18,29 @@ def fit_partial_user(
 ):
     try:
         dataset = load_dataset()
+        logging.info("1")
         model = load_rec_model()
+        logging.info("2")
         rating_df = make_rating_df(ratings)
+        
+        logging.info("3 여기서 문제터짐")
+        logging.info("rating_df")
+        # logging.info(rating_df)
+        logging.info(rating_df.head())
+        logging.info(rating_df.info())
+
+        logging.info("dataset")
+        logging.info(dataset)
+
         interactions, weights = make_interactions(rating_df, dataset)
+        # interactions, weights = make_interactions(rating_df)
+        logging.info("4")
         preference_df = make_user_features_df(preferences)
+        logging.info("5")
         user_meta, item_meta = make_features(
             preference_df=preference_df, item_features=item_features, dataset=dataset
         )
+        logging.info("6")
         # add error detection logic
         model.fit_partial(
             interactions=interactions,
@@ -34,9 +50,13 @@ def fit_partial_user(
             epochs=3,
             verbose=False,
         )
+        logging.info("7")
         rating_df = concat_ratings(rating_df=rating_df)
+        logging.info("8")
         user_features_df = concat_user_features(user_features_df=preference_df)
+        logging.info("9")
         rating_df.to_csv(settings.RATING_FILE, encoding=settings.ENCODING)
+        logging.info("10")
         user_features_df.to_csv(settings.USER_FEATURES_FILE, encoding=settings.ENCODING)
         logging.info("train_rating.csv and user_features is updated")
         update_model(model, settings.MODEL_PATH + settings.MODEL_NAME)

@@ -4,7 +4,9 @@ from common.config import settings
 
 class ItemFeatures:
     __instance = None
-    data = None
+    data = pd.read_csv(
+            settings.ITEM_FEATURES_FILE, index_col=0, encoding=settings.ENCODING
+        )
 
     def __new__(cls):
         if cls.__instance is None:
@@ -12,7 +14,7 @@ class ItemFeatures:
         return cls.__instance
 
     def __init__(self):
-        if self.data is None:
+          if self.data is None:
             self.load_item_features()
 
     def load_item_features(self):

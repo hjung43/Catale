@@ -55,12 +55,20 @@ def make_interactions(rating_df, dataset):
 def make_features(preference_df, item_features, dataset):
     # make user features
     preference_source = make_source(preference_df)
-    preference_meta = dataset.build_user_features(
-        preference_source, normalize=False)
+    logging.info("preferencesource")
+    logging.info(preference_source)
+    # preference_meta = dataset.build_user_features(
+    #     preference_source)
+    dataset = Dataset()
+    preference_meta = dataset.build_user_features(data=preference_source, normalize=False)
+
     # make item features
-    item_features = item_features[
-        ["cocktail_id", "price_tier"] + item_features.columns.tolist()[4:]
-        ]
+    # item_features = item_features[
+    #     "cocktail_id" + item_features.columns.tolist()[3:]
+    #     ]
+    item_features = item_features[['cocktail_id'] + item_features.columns.tolist()[3:]]
+    logging.info("modelutil 69줄")
+    logging.info(item_features)
     item_source = make_source(item_features)
     item_meta = dataset.build_item_features(item_source, normalize=False)
     return preference_meta, item_meta
@@ -93,13 +101,13 @@ def concat_user_features(user_features_df):
 
 # 변경된 모델/데이터셋을 파일 시스템에 업데이트
 def update_model(model, path):
-    logging.debug("whizzle_model.pkl is updated")
+    logging.debug("catale_model.pkl is updated")
     with open(path, "wb") as f:
         pickle.dump(model, f)
 
 
 def update_dataset(dataset, path):
-    logging.debug("whizzle_dataset.pkl is updated")
+    logging.debug("catale_dataset.pkl is updated")
     with open(path, "wb") as f:
         pickle.dump(dataset, f)
 

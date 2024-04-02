@@ -59,7 +59,7 @@ def make_features(preference_df, item_features, dataset):
         preference_source, normalize=False)
     # make item features
     item_features = item_features[
-        ["cocktail_id", "price_tier"] + item_features.columns.tolist()[4:]
+        ["cocktail_id"] + item_features.columns.tolist()[3:]
         ]
     item_source = make_source(item_features)
     item_meta = dataset.build_item_features(item_source, normalize=False)
