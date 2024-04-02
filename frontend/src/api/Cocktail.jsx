@@ -47,6 +47,8 @@ export async function recommendtoday(today) {
 //칵테일 이름으로 검색하기
 export async function cocktailsearchname(name) {
   const params = {
+    page: 0,
+    size: 219,
     keyword: name,
   };
   try {
