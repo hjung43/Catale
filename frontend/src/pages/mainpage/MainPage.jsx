@@ -24,12 +24,14 @@ import useTodayStore from "../../store/useTodayStore";
 import Cattalk20 from "../../components/main/Cattalk20";
 import { useNavigate } from "react-router-dom";
 import Todaycocktail from "../../components/main/Todaycocktail";
+import { todaydiary } from "../../api/Diary";
 
 export default function MainPage() {
   const navigate = useNavigate();
   //유저를 일단 담아놓고~
   const user = useUserStore((state) => state.user);
   const today = useTodayStore((state) => state.today);
+  const setToday = useTodayStore((state) => state.setToday);
   //대화의 순서
   const [talknum, setTalknum] = useState(1);
   const [selectnum, setSeletnum] = useState(0);
@@ -51,10 +53,11 @@ export default function MainPage() {
 
   useEffect(() => {
     console.log(today);
+
     async function fetchMyData() {
       try {
         if (today) {
-          //여기서 오늘대화의 결고를 가져오는걸 써야해
+          //여기서 오늘대화의 결과를 가져오는걸 써야해
           setTalknum(25);
         }
       } catch (error) {
