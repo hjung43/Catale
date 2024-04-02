@@ -47,6 +47,8 @@ export async function recommendtoday(today) {
 //칵테일 이름으로 검색하기
 export async function cocktailsearchname(name) {
   const params = {
+    page: 0,
+    size: 219,
     keyword: name,
   };
   try {
@@ -67,7 +69,7 @@ export async function cocktailsearchoption(option) {
     bitter: option.bitter,
     sparkling: option.sparkling,
     page: 0,
-    size: 159,
+    size: 219,
   };
   try {
     const response = await axios.get(BASE_URL + "/option", { params });
@@ -80,8 +82,8 @@ export async function cocktailsearchoption(option) {
 //내가 좋아하는 칵테일 조회
 export async function cocktailmelike(option) {
   const params = {
-    page: option.page,
-    size: option.size,
+    page: 0,
+    size: 219,
   };
   try {
     const response = await axios.get(BASE_URL + "/like", { params });

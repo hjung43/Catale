@@ -1,80 +1,64 @@
-:root {
-  /* 배경색 */
-  --main1: #1f2544;
-  /* 대부분의 틀, 흰색배경의 텍스트색 */
-  --main2: #464a6d;
-  /* 칵테일이미지의 배경색 */
-  --main3: #707398;
-  /* 모든 배경의 서브텍스트색 */
-  --main4: #9c9ec6;
-  /* 이미지색 */
-  --main5: #caccf5;
-  /* stroke색, 흰색배경색 */
-  --main6: #e6e7ff;
-  /* 텍스트색 */
-  --main7: #fafaff;
-
-  /* 포인트색 */
-  --point: linear-gradient(
-    135deg,
-    #6deefc 0%,
-    #7ab0fd 33%,
-    #bb7ef8 66%,
-    #eb75f5 100%
-  );
-
-  /* 취소버튼, 일요일 등등 */
-  --no: #ff9c9c;
-
-  /* 토요일, 완료 등등 */
-  --yes: #a4b8ff;
-
-  /* 기분색 */
-  --feel1: #9a5cff;
-  --feel2: #e59cff;
-  --feel3: #fbdfff;
-  --feel4: #ffd4ca;
-  --feel5: #ffb0b0;
-}
 .box {
   background-color: var(--main2);
   /* padding: 35vh 0; */
   position: fixed;
-  height: 70vh;
+  height: 80vh;
   color: #00000000;
-  top: 30vh;
+  top: 20vh;
   left: 0;
   right: 0;
   z-index: 0;
   /* overflow: auto; */
   /* position: relative; */
 }
+.변경박스 {
+  width: 80%;
+}
 .box2 {
-  position: relative;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
   z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 450px;
+}
+.img_box {
+  margin: 10vh auto 1rem;
+  width: 10rem;
+}
+.img {
+  width: 10rem;
+  height: 10rem;
+  object-fit: cover;
+  margin: 0 auto;
+  border-radius: 5rem;
 }
 .profile_box {
-  width: 100%;
-  padding: 17vh 0 0;
+  height: 15rem;
+  padding: 1rem;
   display: flex;
   justify-content: center;
 }
 .profile {
-  /* position: absolute;
-  left: 50%;
-  top: -50%; */
-  width: 10rem;
-  border-radius: 5rem;
+  width: 15rem;
+  border-radius: 7.5rem;
 }
 .icon {
   width: 1.5rem;
 }
 .img_set {
   margin: 11rem 1rem 1rem;
-  height: 1rem;
+  /* height: 1rem; */
 }
 .inputButton {
   text-align: center;
+  padding: 1rem;
+  background-color: #7ab0fd;
 }
 .dis_item,
 .item {
@@ -88,6 +72,7 @@
 .item {
   background-color: var(--main6);
   box-shadow: 0 0 5px 0 var(--main6);
+  width: 80%;
 }
 .dis_item {
   background-color: dimgray;
@@ -104,10 +89,10 @@
 .btn {
   position: fixed;
   bottom: 1.5rem;
-  right: 0.5rem;
-  left: 0.5rem;
   padding: 1rem;
   margin: 0.5rem;
+  width: 80%;
+  max-width: 360px;
   background: var(--point);
   border-radius: 1rem;
   color: #ffffffd6;

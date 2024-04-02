@@ -26,7 +26,6 @@ export default function StoreDetailPage() {
   useEffect(() => {
     const fetchData = async () => {
       const response = await getstoredetail(storenumber);
-      console.log(response);
       setStoredata(response);
       setMenus(response.menus);
       setImages(response.images);
@@ -46,7 +45,7 @@ export default function StoreDetailPage() {
         <Map
           nowlocatex={nowlocatex}
           nowlocatey={nowlocatey}
-          level="2"
+          level="1"
           markerData={selectedStore.selectedStore}
         />
         {storedata && menus && images && (

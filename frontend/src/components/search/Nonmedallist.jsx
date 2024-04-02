@@ -13,9 +13,9 @@ import { cocktaillike } from "../../api/Cocktail";
 import { useNavigate } from "react-router-dom";
 import 은색 from "../../assets/icon/은색.png";
 import 동색 from "../../assets/icon/동색.png";
+import s from "classnames";
 
 export default function Nonmedallist({ index, response, setList }) {
-  // console.log(index);
   const navigate = useNavigate();
   const glasses = [
     glass1,
@@ -47,7 +47,12 @@ export default function Nonmedallist({ index, response, setList }) {
   };
 
   return (
-    <div className={styles.cocktail}>
+    <div
+      className={s(
+        styles.cocktail,
+        index === 1 ? styles.silver : index === 2 ? styles.bronze : styles.none
+      )}
+    >
       <div className={styles.top}>
         {index === 1 && (
           <div className={styles.등수}>

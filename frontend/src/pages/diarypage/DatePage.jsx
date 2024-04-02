@@ -79,6 +79,7 @@ export default function DatePage() {
   ];
 
   const mood = [
+    "",
     "많이 속상했던 날..",
     "조금 속상했던 날..",
     "그럭저럭인 날",
@@ -96,8 +97,6 @@ export default function DatePage() {
   //         (e) => e !== 0
   //       )
   //     : [];
-
-  console.log(emotions);
 
   return (
     <Container>

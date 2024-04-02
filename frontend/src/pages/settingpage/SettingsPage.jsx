@@ -18,7 +18,7 @@ export default function SettingsPage() {
   const navigate = useNavigate();
   const user = useUserStore((state) => state.user);
   const setUser = useUserStore((state) => state.setUser);
-  const [modal, setModal] = useState([false, false]);
+  const [modal, setModal] = useState([false, false, false]);
   const [frameimgurl, setFrameimgurl] = useState(user.profileImageUrl);
   const [value, setValue] = useState({});
   const [data, setData] = useState(user);
@@ -73,9 +73,9 @@ export default function SettingsPage() {
           position: "top-center",
         });
         console.error("Error uploading image:", error);
-        // 에러 발생 시 로직 추가 (예: 에러 메시지 표시 등)
       } finally {
         setLoading(false);
+        setModal([false, false, false]);
       }
     }
   };
@@ -89,7 +89,7 @@ export default function SettingsPage() {
     if (res.status === "ERROR") {
       setErrorMessage(res.message);
     } else {
-      setModal([false, false]);
+      setModal([false, false, false]);
       setPassword({
         pw: "",
         check: "",
@@ -103,7 +103,6 @@ export default function SettingsPage() {
       name: password.nickname,
     };
     const res = await changeNickname(newName);
-    console.log(res);
     if (res.status === "FAILED" || res.status === "ERROR") {
       setNicknameErrorMessage(
         res.status === "FAILED" ? res.errors[0].message : res.message
@@ -116,7 +115,7 @@ export default function SettingsPage() {
         originpw: "",
         nickname: "",
       });
-      setModal([false, false]);
+      setModal([false, false, false]);
     }
   };
   return (
@@ -130,31 +129,39 @@ export default function SettingsPage() {
       )}
       <div className={styles.box}></div>
       <div className={styles.box2}>
-        <div className={styles.profile_box}>
-          <FileInput
-            className={styles.profile}
-            name="frameImage"
-            value={value.frameImage}
-            onChange={handleChangeValue}
-            initialPreview={frameimgurl}
-          />
+        <div
+          className={styles.img_box}
+          onClick={() => setModal([false, false, true])}
+        >
+          <img src={user.profileImageUrl} alt="url" className={styles.img} />
         </div>
-        <div className={styles.img_set}>
-          {value.frameImage && (
-            <div className={styles.inputButton} onClick={() => submitImg()}>
-              프로필 사진 변경
+        <div
+          className={styles.item}
+          onClick={() => setModal([false, false, true])}
+        >
+          <div className={styles.변경박스}>
+            <div className={styles.item_text}>프로필사진 변경</div>
+            <div className={styles.item_subtext}>
+              5MB이하 사진만 가능합니다.
             </div>
-          )}
+          </div>
+          <img src={arrow} alt="arrow" className={styles.icon} />
         </div>
-        <div className={styles.item} onClick={() => setModal([true, false])}>
-          <div>
+        <div
+          className={styles.item}
+          onClick={() => setModal([true, false, false])}
+        >
+          <div className={styles.변경박스}>
             <div className={styles.item_text}>닉네임 변경</div>
             <div className={styles.item_subtext}>{user.nickname}</div>
           </div>
           <img src={arrow} alt="arrow" className={styles.icon} />
         </div>
-        <div className={styles.item} onClick={() => setModal([false, true])}>
-          <div>
+        <div
+          className={styles.item}
+          onClick={() => setModal([false, true, false])}
+        >
+          <div className={styles.변경박스}>
             <div className={styles.item_text}>비밀번호 변경</div>
             <div className={styles.item_subtext}>
               보안을 위해 3개월에 1번 변경 권장
@@ -162,13 +169,6 @@ export default function SettingsPage() {
           </div>
           <img src={arrow} alt="arrow" className={styles.icon} />
         </div>
-        {/* <div
-          className={styles.dis_item}
-          onClick={() => navigate("deleteaccount")}
-        >
-          <div className={styles.dis_text}>계정탈퇴</div>
-          <img src={arrow} alt="arrow" className={styles.icon} />
-        </div> */}
         <div className={styles.btn} onClick={() => navigate(-1)}>
           완료
         </div>
@@ -177,9 +177,9 @@ export default function SettingsPage() {
       <div
         className={s(
           styles.blur,
-          modal[0] || modal[1] ? styles.active : styles.no
+          modal[0] || modal[1] || modal[2] ? styles.active : styles.no
         )}
-        onClick={() => setModal([false, false])}
+        onClick={() => setModal([false, false, false])}
       ></div>
 
       <div className={s(styles.modal, !modal[0] && styles.none)}>
@@ -188,7 +188,7 @@ export default function SettingsPage() {
             src={close}
             alt="close"
             className={styles.icon}
-            onClick={() => setModal([false, false])}
+            onClick={() => setModal([false, false, false])}
           />
           <div className={styles.title}>닉네임변경</div>
           <div className={styles.icon}></div>
@@ -215,7 +215,7 @@ export default function SettingsPage() {
             src={close}
             alt="close"
             className={styles.icon}
-            onClick={() => setModal([false, false])}
+            onClick={() => setModal([false, false, false])}
           />
           <div className={styles.title}>비밀번호변경</div>
           <div className={styles.icon}></div>
@@ -252,6 +252,30 @@ export default function SettingsPage() {
 
         <div className={styles.error}>{errorMessage}</div>
         <div className={styles.btn2} onClick={() => submitPassword()}>
+          확인
+        </div>
+      </div>
+      <div className={s(styles.modal, !modal[2] && styles.none)}>
+        <div className={styles.flex}>
+          <img
+            src={close}
+            alt="close"
+            className={styles.icon}
+            onClick={() => setModal([false, false, false])}
+          />
+          <div className={styles.title}>프로필사진 변경</div>
+          <div className={styles.icon}></div>
+        </div>
+        <div className={styles.profile_box}>
+          <FileInput
+            className={styles.profile}
+            name="frameImage"
+            value={value.frameImage}
+            onChange={handleChangeValue}
+            initialPreview={frameimgurl}
+          />
+        </div>
+        <div className={styles.btn2} onClick={() => submitImg()}>
           확인
         </div>
       </div>

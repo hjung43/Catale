@@ -3,6 +3,8 @@ import Container from "../../components/common/Container";
 import Headerwb from "../../components/common/Headerwb";
 import styles from "./RecommendPage.module.css";
 import CocktailBoxBig from "../../components/main/CocktailBoxBig";
+import Medallist from "../../components/search/Medallist";
+import Nonmedallist from "../../components/search/Nonmedallist";
 
 export default function RecommendPage() {
   const [list, setList] = useState([]);
@@ -66,13 +68,26 @@ export default function RecommendPage() {
           서또카늘 님의 취향을 기반으로 추천하는 칵테일입니다.
         </div>
       </div>
-      <div className={styles.main}>
-        {list.map((cocktail) => (
-          <CocktailBoxBig
-            cocktail={cocktail}
-            key={cocktail.id}
-            setList={setList}
-          />
+      <div className={styles.검색결과}>
+        {list.map((data, index) => (
+          <>
+            {index === 0 && (
+              <Medallist
+                key={index}
+                index={index}
+                response={data}
+                setList={setList}
+              />
+            )}
+            {index !== 0 && (
+              <Nonmedallist
+                key={index}
+                index={index}
+                response={data}
+                setList={setList}
+              />
+            )}
+          </>
         ))}
       </div>
     </Container>

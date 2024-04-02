@@ -15,7 +15,6 @@ export default function LikedCocktailPage() {
     async function fetchlikeData() {
       try {
         const response = await cocktailmelike(user.memberId);
-        console.log(response);
         setList([...list, ...response.data]);
       } catch (error) {
         console.error("데이터불러오기실패");

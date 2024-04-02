@@ -7,15 +7,9 @@ export default function Usercomment({
   setTodaycomment,
   setSelectcheck,
 }) {
-  // const [writecomment , setWritecomment] = useState("");
-
   const handleCustomReasonChange = (e) => {
     setTodaycomment(e.target.value);
   };
-
-  // const checkcomment = () => {
-  //   console.log(todaycomment);
-  // };
 
   useEffect(() => {
     if (todaycomment != "") {

@@ -14,12 +14,6 @@ axios.interceptors.request.use(
       return config;
     }
 
-    // if (isTokenExpired) {
-    //   const res = await renewToken(accessToken);
-    //   localStorage.setItem("accessToken", res);
-    //   localStorage.setItem("tokenTimestamp", Date.now());
-    // }
-
     config.headers["Authorization"] = `Bearer ${accessToken}`;
     return config;
   },
@@ -29,16 +23,6 @@ axios.interceptors.request.use(
     //return Promise.reject(error);
   }
 );
-// if ("serviceWorker" in navigator) {
-//   navigator.serviceWorker
-//     .register("/sw.js")
-//     .then(function (registration) {
-//       console.log("Service Worker registered with scope:", registration.scope);
-//     })
-//     .catch(function (err) {
-//       console.log("Service Worker registration failed", err);
-//     });
-// }
 
 export default function App() {
   useEffect(() => {

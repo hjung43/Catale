@@ -33,10 +33,10 @@ export default function MyFeel() {
           fontFamily: "GongGothicMedium",
         },
       },
-      labels: ["very bad", "bad", "soso", "good", "very good"],
+      labels: ["", "", "", "", ""],
       legend: {
         formatter: function (val, opts) {
-          return val + " - " + opts.w.globals.series[opts.seriesIndex];
+          return val + " : " + opts.w.globals.series[opts.seriesIndex] + "일";
         },
         fontSize: "15px",
         fontFamily: "GongGothicMedium",
@@ -96,8 +96,8 @@ export default function MyFeel() {
         <div className={styles.popup}>
           <Popup
             img={card}
-            subText={`아직 이번달에 기록을 하지 않았어요!`}
-            text={"바텐더와 대화하러가기"}
+            subText={`아직 이번달에 기록이 없어요!`}
+            text={"기록하러 가기"}
             src={"/bar"}
           />
         </div>

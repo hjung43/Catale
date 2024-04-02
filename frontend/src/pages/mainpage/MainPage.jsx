@@ -1,7 +1,8 @@
 import ContainerMain from "../../components/common/ContainerMain";
 import styles from "./MainPage.module.css";
 import Nav from "../../components/common/Nav";
-import 배경바 from "../../assets/bartender/임시바배경.png";
+import 배경바 from "../../assets/bartender/꼬질냥.gif";
+import 배경바2 from "../../assets/bartender/자산8.png";
 import React from "react";
 import { useState, useEffect } from "react";
 import Cattalkbox from "../../components/main/Cattalkbox";
@@ -18,18 +19,20 @@ import Cattalk11 from "../../components/main/Cattalk11";
 import Userreasonbox from "../../components/main/Userreasonbox";
 import Usercomment from "../../components/main/Usercomment";
 import { selectcolor } from "./Emodata/Emocolor";
-import cocktail from "../../assets/bartender/오늘의칵테일.png";
+import cocktail from "../../assets/bartender/오늘의칵테일1.png";
 import useUserStore from "../../store/useUserStore";
 import useTodayStore from "../../store/useTodayStore";
 import Cattalk20 from "../../components/main/Cattalk20";
 import { useNavigate } from "react-router-dom";
 import Todaycocktail from "../../components/main/Todaycocktail";
+import { todaydiary } from "../../api/Diary";
 
 export default function MainPage() {
   const navigate = useNavigate();
   //유저를 일단 담아놓고~
   const user = useUserStore((state) => state.user);
   const today = useTodayStore((state) => state.today);
+  const setToday = useTodayStore((state) => state.setToday);
   //대화의 순서
   const [talknum, setTalknum] = useState(1);
   const [selectnum, setSeletnum] = useState(0);
@@ -47,14 +50,12 @@ export default function MainPage() {
   // usertakl에서 0은 없는거 1은 대화 2,3,4,5,6,7은 특정고르기
 
   const [todayalc, setTodayalc] = useState(user.alc);
-  console.log(todayalc);
 
   useEffect(() => {
-    console.log(today);
     async function fetchMyData() {
       try {
         if (today) {
-          //여기서 오늘대화의 결고를 가져오는걸 써야해
+          //여기서 오늘대화의 결과를 가져오는걸 써야해
           setTalknum(25);
         }
       } catch (error) {
@@ -74,7 +75,7 @@ export default function MainPage() {
     setTodayemo([]);
     setSeletnum(0);
     setTodayalc(user.alc);
-    useTodayStore.getState().setToday(false); // today 상태 변경
+    // useTodayStore.getState().setToday(false); // today 상태 변경
   };
 
   return (
@@ -122,6 +123,7 @@ export default function MainPage() {
         {/* 이거로 지금 배경바 크기를 지정해놨음 */}
         <div className={styles.aspectcontainer}>
           <div className={styles.aspectcontent}>
+            <img className={styles.배경바2} src={배경바2} alt="" />
             <img className={styles.배경바} src={배경바} alt="" />
             {(talknum === 24 || talknum === 25) && (
               <div

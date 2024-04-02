@@ -55,14 +55,10 @@ export default function SearchPage() {
   const clicknonbase = () => {
     setOptions({ ...options, base: -1 });
     setOptionstrue({ ...optionstrue, base: true });
-    // console.log(options.base);
-    // console.log(optionstrue.base);
   };
   const clickbase = (index) => {
     setOptions({ ...options, base: index });
     setOptionstrue({ ...optionstrue, base: false });
-    // console.log(options.base);
-    // console.log(optionstrue.base);
   };
 
   const handlesearch = async () => {
@@ -110,7 +106,6 @@ export default function SearchPage() {
       const formData = { page: 0, size: 30 };
       try {
         const response = await getcocktaillist(formData);
-        // console.log(response.data);
         setList([...list, ...response.data]);
       } catch (error) {
         console.error("데이터불러오기실패");
@@ -142,9 +137,12 @@ export default function SearchPage() {
               onChange={handleChange}
             />
           </div>
-          <div className={styles.이퀄박스} onClick={() => setModal(true)}>
-            <img className={styles.이퀄} src={이퀄} alt="" />
-          </div>
+          <img
+            className={styles.이퀄}
+            src={이퀄}
+            alt=""
+            onClick={() => setModal(true)}
+          />
         </div>
 
         {check && (
@@ -161,6 +159,11 @@ export default function SearchPage() {
                     setCocktailList={setCocktailList}
                   />
                 ))}
+                {searchlist.length === 0 && (
+                  <>
+                    <div>검색결과가 없어용 ㅠㅠ</div>
+                  </>
+                )}
               </div>
             </div>
           </>

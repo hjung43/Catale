@@ -1,21 +1,45 @@
-.menumain {
-  background-color: #1f2544;
-}
 .메뉴폰트 {
-  padding: 1.3rem 1rem 0.5rem 1rem;
+  padding: 2rem 1rem 1rem;
   font-size: large;
 }
+.boxtop {
+  padding: 1rem 2rem 0;
+  display: flex;
+  justify-content: space-between;
+}
+.칵테일박스박스 {
+  margin: 1rem;
+}
+.시그니쳐박스,
 .칵테일하나 {
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  width: 100%;
-  background-color: rgb(48, 51, 84);
-  border: solid 2px rgb(106, 113, 142);
-  border-radius: 10px;
-  padding: 0.4rem 0rem;
+  justify-content: space-between;
+  gap: 1rem;
+  border-radius: 1rem;
+  padding: 0.8rem;
   box-shadow: 0px 0px 10px 0px rgba(172, 162, 191, 0.5);
 }
+
+.칵테일하나 {
+  background-color: rgb(48, 51, 84);
+  border: solid 2px rgb(106, 113, 142);
+}
+@keyframes moveBackground {
+  0% {
+    background-position: 0 0; /* 시작 지점 */
+  }
+  20% {
+    background-position: 10% 0; /* 시작 지점 */
+  }
+  80% {
+    background-position: 90% 0; /* 시작 지점 */
+  }
+  100% {
+    background-position: 100% 0; /* 끝 지점 */
+  }
+}
+
 .시그니쳐박스 {
   display: flex;
   align-items: center;
@@ -58,33 +82,25 @@
   align-items: center;
   gap: 0.5rem;
 }
+
 .칵테일사진 {
-  width: 5rem;
-  height: 5rem;
-  border-radius: 100px;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 1rem;
+}
+.mid {
+  flex-grow: 1;
 }
 .칵테일가격 {
-  /* background-color: aliceblue; */
-  min-width: 5.4rem;
   font-size: smaller;
 }
 .칵테일도수 {
-  min-width: 3.5rem;
-  /* background-color: aquamarine; */
   font-size: smaller;
 }
-.칵테일박스 {
-  padding-bottom: 1rem;
-}
+
 .칵테일이름 {
-  font-size: smaller;
-  /* background-color: aliceblue; */
+  margin-bottom: 0.5rem;
 }
-.boxtop {
-  display: flex;
-  justify-content: space-between;
-}
-.정보창가기 {
+.arrow {
   width: 1rem;
-  /* background-color: aliceblue; */
 }

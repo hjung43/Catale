@@ -122,16 +122,17 @@ export default function Storemenu({ menus, storenumber, storename }) {
                               </div>
                             </div>
                           </div>
-                        ))}
-                      </Box>
+                        </div>
+                        <img src={arrow} alt="arrow" className={styles.arrow} />
+                      </div>
                     </div>
-                  )}
+                  ))}
                 </div>
               )}
-            </>
-          ))}
-        </div>
-      </div>
+            </div>
+          )}
+        </>
+      ))}
     </>
   );
 }

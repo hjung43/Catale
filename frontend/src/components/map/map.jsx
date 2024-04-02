@@ -9,9 +9,6 @@ function makeInfowindowContent(title) {
     </div>
   `;
 }
-// function notNowclick(title) {
-//   console.log(title);
-// }
 const allData = [...markerdataB, ...markerdataG];
 
 export default function Map({
@@ -53,7 +50,6 @@ export default function Map({
       kakao.maps.event.addListener(marker, "click", function () {
         // 마커 위에 인포윈도우를 표시합니다
         setNowclick(el.number);
-        console.log(el.number);
       });
 
       kakao.maps.event.addListener(

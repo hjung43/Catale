@@ -28,10 +28,8 @@ export default function SignUpPage() {
     handleChange(e);
   };
   const handleSubmit = async (e) => {
-    console.log(formData);
     try {
       const data = await signup(formData);
-      console.log(data);
 
       if (data.status === "SUCCESS") {
         toast.success(`회원가입 성공 !`, {

@@ -9,11 +9,11 @@
 
 .FileInput-preview {
   display: block;
-  width: 10rem;
-  height: 10rem;
+  width: 15rem;
+  height: 15rem;
   object-position: center;
   object-fit: cover;
-  border-radius: 5rem;
+  border-radius: 7.5rem;
 }
 
 .FileInput-preview.selected {

@@ -11,13 +11,7 @@ import "./FileInput.css";
  * @param {string} initialPreview - 초기 미리보기 이미지 경로
  * @param {Function} onChange - 파일 변경 시 호출되는 콜백 함수
  */
-export default function FileInput({
-  className = "",
-  name,
-  value,
-  initialPreview,
-  onChange,
-}) {
+function FileInput({ className = "", name, value, initialPreview, onChange }) {
   // 파일 미리보기 상태
   const [preview, setPreview] = useState(initialPreview);
 
@@ -78,3 +72,5 @@ export default function FileInput({
     </div>
   );
 }
+
+export default FileInput;
