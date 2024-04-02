@@ -166,8 +166,10 @@ public class MemberService {
     }
 
     @Transactional
-    public Long updateNickname(Long memberId, NicknameRequestDto requestDto) {
+    public Long updateNickname(Authentication authentication, NicknameRequestDto requestDto) {
 
+        Member me = findMember(authentication.getName());
+        Long memberId = me.getId();
 
         memberRepository.searchByNickname(requestDto.getName()).ifPresent(this::throwDuplicateNicknameException);
         return memberRepository.updateMemberNickname(memberId, requestDto.getName());
@@ -192,9 +194,10 @@ public class MemberService {
         }
     }
 
-
     @Transactional
-    public Long updatePassword(Long memberId, PasswordRequestDto requestDto){
+    public Long updatePassword(Authentication authentication, PasswordRequestDto requestDto){
+        Member me = findMember(authentication.getName());
+        Long memberId = me.getId();
 
         Member member = memberRepository.findById(memberId).orElseThrow(MemberNotFoundException::new);
 

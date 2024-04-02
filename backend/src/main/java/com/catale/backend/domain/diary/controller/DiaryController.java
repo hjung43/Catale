@@ -49,10 +49,8 @@ DiaryController {
     public ResponseEntity<?> postDiary(
             @Parameter(hidden = true) Authentication authentication,
                                        @Valid @RequestBody DiaryGetRequestDto dto){
-        Member me = memberService.findMember(authentication.getName());
-        Long memberId = me.getId();
 
-        Long diaryId = diaryService.postDiary(memberId, dto);
+        Long diaryId = diaryService.postDiary(authentication, dto);
         return response.success(ResponseCode.DIARY_CREATED,diaryId);
     }
     @Operation(summary = "다이어리 삭제", description = "다이어리 삭제")
@@ -70,10 +68,8 @@ DiaryController {
             @Parameter(hidden = true) Authentication authentication,
                                            @RequestParam int year, @RequestParam int month){
 
-        Member me = memberService.findMember(authentication.getName());
-        Long memberId = me.getId();
 
-        List<DiaryMonthResponseDto> list = diaryService.getDiarys(year,month,memberId);
+        List<DiaryMonthResponseDto> list = diaryService.getDiarys(year,month,authentication);
         return response.success(ResponseCode.MONTHLY_DIARY_LIST_FETCHED,list);
     }
     @Operation(summary = "날짜로 다이어리 상세 조회", description = "날짜로 다이어리 상세 조회")
@@ -82,10 +78,10 @@ DiaryController {
             @Parameter(hidden = true) Authentication authentication,
             @RequestParam int year, @RequestParam int month, @RequestParam int day){
 
-        Member me = memberService.findMember(authentication.getName());
-        Long memberId = me.getId();
+//        Member me = memberService.findMember(authentication.getName());
+//        Long memberId = me.getId();
 
-        DiaryGetResponseDto dto = diaryService.getDiaryDetailByDate(memberId, year,month,day);
+        DiaryGetResponseDto dto = diaryService.getDiaryDetailByDate(authentication, year,month,day);
         return response.success(ResponseCode.DIARY_INFO_FETCHED,dto);
     }
 
@@ -94,10 +90,8 @@ DiaryController {
     public ResponseEntity<?> getIsExistTodayDiary(
             @Parameter(hidden = true) Authentication authentication){
 
-        Member me = memberService.findMember(authentication.getName());
-        Long memberId = me.getId();
 
-        boolean isExsitTodayDiary = diaryService.isExsitTodayDiary(memberId);
+        boolean isExsitTodayDiary = diaryService.isExsitTodayDiary(authentication);
         if(!isExsitTodayDiary){
             return response.success(ResponseCode.TODAY_DIARY_NOT_FOUND,isExsitTodayDiary);
         }

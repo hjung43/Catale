@@ -4,6 +4,7 @@ import com.catale.backend.domain.member.entity.Member;
 import com.catale.backend.domain.member.service.MemberService;
 import com.catale.backend.domain.review.dto.ReviewGetRequestDto;
 import com.catale.backend.domain.review.dto.ReviewGetResponseDto;
+import com.catale.backend.domain.review.dto.ReviewListResponseDto;
 import com.catale.backend.domain.review.service.ReviewService;
 import com.catale.backend.global.format.code.ApiResponse;
 import com.catale.backend.global.format.response.ResponseCode;
@@ -34,24 +35,23 @@ public class ReviewController {
 
     @Operation(summary = "칵테일별 리뷰 전체 조회", description = "각 칵테일 별 전체 리뷰 조회")
     @GetMapping("/{cocktailId}")
-    public ResponseEntity<?> getReviews(@PathVariable Long cocktailId,
+    public ResponseEntity<?> getReviews(@PathVariable(name = "cocktailId") Long cocktailId,
                                         @PageableDefault(page = 0, size = 10) Pageable page){
 
-        List<ReviewGetResponseDto> reviewList = reviewService.getReviews(cocktailId, page);
+        List<ReviewListResponseDto> reviewList = reviewService.getReviews(cocktailId, page);
         return response.success(ResponseCode.REVIEW_LIST_FETCHED,reviewList);
     }
     @Operation(summary = "칵테일 리뷰 작성", description = "칵테일에 대한 리뷰 작성")
     @PostMapping
     public ResponseEntity<?> postReview(@Parameter(hidden = true) Authentication authentication,
                                         @Valid @RequestBody ReviewGetRequestDto dto){
-        Member me = memberService.findMember(authentication.getName());
-        Long memberId = me.getId();
-        Long reviewId = reviewService.postReview(memberId, dto);
+
+        Long reviewId = reviewService.postReview(authentication, dto);
         return response.success(ResponseCode.REVIEW_CREATED,reviewId);
     }
     @Operation(summary = "칵테일 리뷰 삭제", description = "칵테일 리뷰 삭제")
     @DeleteMapping("/{reviewId}")
-    public ResponseEntity<?> deletReview(@PathVariable Long reviewId){
+    public ResponseEntity<?> deletReview(@PathVariable(name = "reviewId") Long reviewId){
         Long id = reviewService.deleteReview(reviewId);
         return response.success(ResponseCode.REVIEW_DELETED);
     }

@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Optional;
 
 @Tag(name = "Image 컨트롤러", description = "Image Controller API")
@@ -38,15 +39,20 @@ public class ImageController {
     public ResponseEntity<?> putMemberImage(@Parameter(hidden = true) Authentication authentication,
                                             @RequestPart(value = "file") MultipartFile multipartFile)throws IOException {
 
-        Member me = memberService.findMember(authentication.getName());
-        Long memberId = me.getId();
 
-        String imageUrl = imageService.updateMemberImage(memberId, multipartFile);
+
+        String imageUrl = imageService.updateMemberImage(authentication, multipartFile);
         return response.success(ResponseCode.IMAGE_UPDATED,imageUrl);
     }
     @PostMapping(value = "cocktail/image/{cocktailId}", consumes = "multipart/form-data")
     public ResponseEntity<?> postCocktailImage (@PathVariable Long cocktailId, @RequestPart(value = "file") MultipartFile multipartFile)throws IOException{
         String imageUrl = imageService.saveCocktailImage(cocktailId,multipartFile);
         return response.success(ResponseCode.IMAGE_UPDATED,imageUrl);
+    }
+
+    @PostMapping(value = "store/image/{storeId}", consumes = "multipart/form-data")
+    public ResponseEntity<?> postStoreImages (@PathVariable Long storeId, @RequestPart(value = "file") List<MultipartFile> multipartFiles)throws IOException{
+        List<String> images = imageService.saveStoreImage(storeId, multipartFiles);
+        return response.success(ResponseCode.STORE_IMAGE_POST, images);
     }
 }

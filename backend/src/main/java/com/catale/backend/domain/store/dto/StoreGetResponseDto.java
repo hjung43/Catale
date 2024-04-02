@@ -32,11 +32,11 @@ public class StoreGetResponseDto {
         this.petAvailable = store.isPetAvailable();
         this.wifiAvailable = store.isWifiAvailable();
         this.parkAvailable = store.isParkAvailable();
-        List<MenuGetResponseDto> menuList = new ArrayList<>();
-        for (Menu menu : store.getMenus()){
-            menuList.add(new MenuGetResponseDto(menu));
-        }
-        this.menus = menuList;
+//        List<MenuGetResponseDto> menuList = new ArrayList<>();
+//        for (Menu menu : store.getMenus()){
+//            menuList.add(new MenuGetResponseDto(menu));
+//        }
+//        this.menus = menuList;
         List<String> imageList = new ArrayList<>();
         for (Image image : store.getImages()){
             imageList.add(image.getUrl());

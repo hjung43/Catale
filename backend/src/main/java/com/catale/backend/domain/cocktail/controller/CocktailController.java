@@ -1,9 +1,6 @@
 package com.catale.backend.domain.cocktail.controller;
 
-import com.catale.backend.domain.cocktail.dto.CocktailGetLikeResponseDto;
-import com.catale.backend.domain.cocktail.dto.CocktailGetResponseDto;
-import com.catale.backend.domain.cocktail.dto.CoctailMyreviewResponseDto;
-import com.catale.backend.domain.cocktail.dto.TodayCocktailRequestDto;
+import com.catale.backend.domain.cocktail.dto.*;
 import com.catale.backend.domain.cocktail.service.CocktailService;
 import com.catale.backend.domain.member.entity.Member;
 import com.catale.backend.domain.member.service.MemberService;
@@ -38,11 +35,9 @@ public class CocktailController {
     public ResponseEntity<?> getAllCocktailList(
             @Parameter(hidden = true) Authentication authentication,
             @PageableDefault(page = 0, size = 10) Pageable page) {
-        log.info("getname" + authentication.getName());
-        Member me = memberService.findMember(authentication.getName());
-        Long memberId = me.getId();
 
-        return response.success(ResponseCode.COCKTAIL_LIST_FETCHED, cocktailService.getAllCocktails(memberId, page));
+
+        return response.success(ResponseCode.COCKTAIL_LIST_FETCHED, cocktailService.getAllCocktails(authentication, page));
     }
 
     @Operation(summary = "내가 좋아요한 칵테일 조회", description = "내가 좋아요한 칵테일 리스트 조회")
@@ -50,10 +45,8 @@ public class CocktailController {
     public ResponseEntity<?> getLikcCocktailList(
             @Parameter(hidden = true) Authentication authentication,
                                                  @PageableDefault(page = 0, size = 10) Pageable page){
-        Member me = memberService.findMember(authentication.getName());
-        Long memberId = me.getId();
 
-        List<CocktailGetLikeResponseDto> list = cocktailService.getLikeCocktails(memberId, page);
+        List<CocktailGetLikeResponseDto> list = cocktailService.getLikeCocktails(authentication, page);
         return response.success(ResponseCode.LIKED_COCKTAIL_LIST_FETCHED, list);
     }
     @Operation(summary = "칵테일 상세 조회", description = "칵테일 상세 조회")
@@ -62,10 +55,7 @@ public class CocktailController {
             @Parameter(hidden = true) Authentication authentication,
             @PathVariable Long cocktailId){
 
-        Member me = memberService.findMember(authentication.getName());
-        Long memberId = me.getId();
-
-        CocktailGetResponseDto cocktail = cocktailService.getCocktailDetail(memberId, cocktailId);
+        CocktailGetResponseDto cocktail = cocktailService.getCocktailDetail(authentication, cocktailId);
         return response.success(ResponseCode.COCKTAIL_DETAIL_FETCHED, cocktail);
     }
 
@@ -74,9 +64,8 @@ public class CocktailController {
     public ResponseEntity<?> cocktailLike(
             @Parameter(hidden = true) Authentication authentication,
             @PathVariable(name = "cocktailId") Long cocktailId){
-        Member me = memberService.findMember(authentication.getName());
-        Long memberId = me.getId();
-        return response.success(ResponseCode.COCKTAIL_DETAIL_FETCHED, cocktailService.getCocktailLikeResult(memberId, cocktailId));
+
+        return response.success(ResponseCode.COCKTAIL_DETAIL_FETCHED, cocktailService.getCocktailLikeResult(authentication, cocktailId));
     }
 
     @Operation(summary = "오늘의 칵테일, 연관 칵테일", description = "오늘의 칵테일(상세정보포함), 연관 칵테일 목록 조회(상세정보 미포함)")
@@ -133,10 +122,8 @@ public class CocktailController {
             @Parameter(hidden = true) Authentication authentication,
             @PageableDefault(sort ="createdAt,desc" , page = 0, size = 10) Pageable page
     ){
-        Member me = memberService.findMember(authentication.getName());
-        Long memberId = me.getId();
 
-        List<CoctailMyreviewResponseDto> list = cocktailService.getCocktailMyReviewList(memberId, page);
+        List<CoctailMyreviewResponseDto> list = cocktailService.getCocktailMyReviewList(authentication, page);
         return response.success(ResponseCode.REVIEW_COCKTAIL_LIST_FETCHED, list);
     }
 
