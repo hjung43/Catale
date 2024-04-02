@@ -26,8 +26,11 @@ import { useEffect, useState } from "react";
 import { cocktaildetail } from "../../api/Cocktail";
 import { cocktaillike } from "../../api/Cocktail";
 import { deletereview, getreview } from "../../api/Review";
+import { markerdataB, markerdataG } from "../../components/map/data/markerData";
+import { useNavigate } from "react-router-dom";
 
 export default function CocktailDetailPage() {
+  const navigate = useNavigate();
   const { cocktailId } = useParams();
   const setCocktail = useCocktailStore((state) => state.setCocktail);
   const cocktail = useCocktailStore((state) => state.cocktail);
@@ -35,6 +38,8 @@ export default function CocktailDetailPage() {
   const [modal, setModal] = useState(false);
   const [reviewList, setReviewList] = useState([]);
   const [select, setSelect] = useState(-1);
+  const [storedata, setStoredata] = useState([]);
+  console.log(storedata);
 
   const glasses = [
     glass1,
@@ -70,6 +75,7 @@ export default function CocktailDetailPage() {
   const glassCoverStyle = `linear-gradient(180deg, ${cocktail.color3} ${num[numIndex][0]}%, ${cocktail.color2} ${num[numIndex][1]}%, ${cocktail.color1} ${num[numIndex][2]}%, ${cocktail.color1} 100%)`;
 
   useEffect(() => {
+    setStoredata([...markerdataB, ...markerdataG]);
     const fetchData = async () => {
       const cocktails = await cocktaildetail(cocktailId);
       console.log(cocktails.data);
@@ -154,6 +160,43 @@ export default function CocktailDetailPage() {
             <CocktailDetail cocktail={cocktail} btn={false} />
           </div>
           <div className={styles.ingredient}>{cocktail.ingredient}</div>
+
+          {cocktail.storeIdList.length !== 0 && (
+            <>
+              <div className={styles.판매중인칵테일바}>판매중인 칵테일바</div>
+              <div className={styles.가게모음집}>
+                {cocktail.storeIdList.map((storeId) => {
+                  // markerdataB와 markerdataG를 합친 배열에서 해당 가게 정보 찾기
+                  const storeInfo = storedata.find(
+                    (store) => store.number === storeId
+                  );
+                  // 해당 가게 정보가 있을 때 가게 이름 출력
+                  if (storeInfo) {
+                    return (
+                      <div
+                        className={styles.가게하나}
+                        key={storeInfo.number}
+                        onClick={() =>
+                          navigate(`../../map/detail/${storeInfo.number}`)
+                        }
+                      >
+                        <div
+                          className={styles.가게사진}
+                          style={{
+                            background: `url("${storeInfo.url}") no-repeat center/cover`,
+                          }}
+                        ></div>
+                        <div className={styles.가게이름}>{storeInfo.title}</div>
+                      </div>
+                    );
+                  } else {
+                    return null;
+                  }
+                })}
+              </div>
+            </>
+          )}
+
           <div className={styles.review}>{cocktail.name} 리뷰</div>
           <div>
             <Review

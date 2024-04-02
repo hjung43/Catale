@@ -17,7 +17,8 @@ export default function Choosecocktail() {
   useEffect(() => {
     async function fetchlistData() {
       try {
-        const response = await getcocktaillist();
+        const formData = { page: 0, size: 219 };
+        const response = await getcocktaillist(formData);
         setList(response.data);
         window.scrollTo(0, 0);
       } catch (error) {
