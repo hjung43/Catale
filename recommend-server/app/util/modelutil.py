@@ -57,20 +57,27 @@ def make_features(preference_df, item_features, dataset):
     preference_source = make_source(preference_df)
     logging.info("preferencesource")
     logging.info(preference_source)
-    # preference_meta = dataset.build_user_features(
-    #     preference_source)
-    dataset = Dataset()
-    preference_meta = dataset.build_user_features(data=preference_source, normalize=False)
-
+    preference_meta = dataset.build_user_features(preference_source)
+    # dataset = Dataset()
+    logging.info("modelutil_1")
+    logging.info("modelutil_dataset")
+    logging.info(dataset)
+    # dataset = Dataset()
+    # preference_meta = dataset.build_user_features(data=preference_source, normalize=False)
+    logging.info("preference_meta")
+    logging.info(preference_meta)
     # make item features
     # item_features = item_features[
-    #     "cocktail_id" + item_features.columns.tolist()[3:]
+    #     ["cocktail_id"] + item_features.columns.tolist()[1:]
     #     ]
-    item_features = item_features[['cocktail_id'] + item_features.columns.tolist()[3:]]
+    logging.info("modelutil_2")
+    item_features = item_features[item_features.columns.tolist()[0:]]
     logging.info("modelutil 69줄")
     logging.info(item_features)
     item_source = make_source(item_features)
-    item_meta = dataset.build_item_features(item_source, normalize=False)
+    logging.info("modelutil item_source")
+    logging.info(item_source)
+    item_meta = dataset.build_item_features(item_source)
     return preference_meta, item_meta
 
 

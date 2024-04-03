@@ -27,23 +27,62 @@ from util.modelutil import (
 def predict_personal_cocktail(preferences: List[Preference], item_features):
     # 추천 모델과 데이터셋을 로드
     model = load_rec_model()
-    dataset = load_dataset()
+    dataset = Dataset()
+    user_id = preferences[0].user_id
+    item_ids = np.arange(item_features.shape[0])
+    users_id = np.full_like(item_ids, user_id)
+    item_feat = item_features[item_features.columns.tolist()[1:]]
+    logging.info("item_feat")
+    logging.info(item_feat)
+    dataset.fit(users_id, item_ids, item_features=['alc','sweet','sour','bitter','sparking'])
+    # dataset = load_dataset()
+
+    logging.info("rec_service_dataset")
+    logging.info(dataset)
     # 사용자의 선호도에서 사용자 특성 데이터프레임을 생성
     preference_df = make_user_features_df(preferences)
+    logging.info("rec_service_1")
     # 사용자 메타데이터(user_meta)와 아이템 메타데이터(item_meta)를 생성
     user_meta, item_meta = make_features(preference_df, item_features, dataset)
-    item_ids = np.arange(item_features.shape[0])
+    logging.info("user_meta")
+    logging.info(user_meta)
+    logging.info("item_meta")
+    logging.info(item_meta)
+
+    # 아이템의 개수만큼의 연속된 정수 배열 생성 
+    item_ids = np.arange(item_feat.shape[0])
+    logging.info("item_ids")
+    logging.info(item_ids)
+
     # 모든 아이템에 대한 사용자의 예측 점수를 계산
     scores = model.predict(
-        user_ids=preferences[0].user_id
-        if preferences[0].user_id == 0
-        else settings.N_USERS + preferences[0].user_id,
+        user_ids=preferences[0].user_id,
+        # if preferences[0].user_id == 0
+        # else settings.N_USERS + preferences[0].user_id,
         item_ids=item_ids,
         user_features=user_meta,
         item_features=item_meta,
     )
     # 계산된 점수를 내림차순으로 정렬하고, 상위 N개의 아이템 인덱스를 리스트로 반환
     return np.argsort(-scores).tolist()
+
+# 사용자의 선호도(preferences)와 아이템 특성(item_features)을 바탕으로 개인화된 칵테일 추천 생성
+# def predict_personal_cocktail(preferences: List[Preference], item_features):
+#     model = load_rec_model()
+
+#     # 특정 사용자에 대한 모든 아이템의 예측 점수 계산
+#     user_id = preferences[0].user_id
+
+#     item_ids = np.arange(item_features.shape[0])
+#     users_id = np.full_like(item_ids, user_id)
+    
+#     predictions = model.predict(users_id, item_ids)
+
+#     # 예측 점수를 기반으로 상위 N개 아이템 추천
+#     N = 5
+#     top_items_indices = np.argsort(-predictions)[:N]
+#     # print(f"Top {N} recommendations for user {user_id}: {top_items_indices}")
+#     return np.argsort(-top_items_indices).tolist()
 
 
 def predict_similar_cocktail(cocktail_id: int, item_features, k: int = 5):
