@@ -1,10 +1,6 @@
 import styles from "./Storepicture.module.css";
-import Clickyes from "../../assets/icon/Clickyes.png";
-import Clickno from "../../assets/icon/Clickno.png";
-import { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
-import s from "classnames";
 import "swiper/css";
 import "swiper/css/pagination";
 
