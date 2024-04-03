@@ -49,8 +49,10 @@ export default function Todaycocktail({
       const savadiaryResponse = await savadiary(updatedToday);
     } catch (error) {
     } finally {
-      setIsLoading(false); // 로딩 상태 해제
-      setTalknum(talknum + 1); // talknum 업데이트
+      setTimeout(() => {
+        setIsLoading(false); // 로딩 상태 해제
+        setTalknum(talknum + 1); // talknum 업데이트
+      }, 1600);
     }
   };
 
