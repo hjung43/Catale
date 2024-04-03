@@ -78,6 +78,7 @@ public class CocktailController {
             cocktailService.getTodayCocktail(authentication, todayCocktailRequestDto));
     }
 
+    /* lightfm 학습 모델 기반 유저 개인별 칵테일 추천 */
     @Operation(summary = "사용자 맞춤 칵테일 추천", description = "사용자 맞춤 추천 칵테일 리스트 조회(상세정보 포함)")
     @GetMapping("/recommend")
     public ResponseEntity<?> getMemberRecommendCocktail(
