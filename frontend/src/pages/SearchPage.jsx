@@ -118,6 +118,12 @@ export default function SearchPage() {
     setSearchname(e.target.value);
   };
 
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      handlesearch();
+    }
+  };
+
   return (
     <Container>
       <Header>검색</Header>
@@ -135,6 +141,7 @@ export default function SearchPage() {
               type="text"
               value={searchname}
               onChange={handleChange}
+              onKeyPress={handleKeyPress}
             />
           </div>
           <img
