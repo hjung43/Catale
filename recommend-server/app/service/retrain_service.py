@@ -17,6 +17,7 @@ def fit_partial_user(
         ratings: List[Rating], preferences: List[Preference], item_features
 ):
     try:
+        dataset = Dataset()
         dataset = load_dataset()
         logging.info("1")
         model = load_rec_model()
