@@ -35,7 +35,7 @@ export default function StoreDetailPage() {
 
   const nowlocatex = selectedStore.lat;
   const nowlocatey = selectedStore.lng;
-
+  const click = (number) => {};
   const navigate = useNavigate();
 
   return (
@@ -47,6 +47,7 @@ export default function StoreDetailPage() {
           nowlocatey={nowlocatey}
           level="1"
           markerData={selectedStore.selectedStore}
+          setNowclick={click}
         />
         {storedata && menus && images && (
           <>
