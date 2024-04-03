@@ -7,11 +7,8 @@ import arrow_active from "../../assets/common/arrow4.png";
 import { useState, useEffect } from "react";
 import ReviewItem from "../../components/my/ReviewItem";
 import { cocktailmereview } from "../../api/Cocktail";
-// import { getreview } from "../../api/Review";
-// import useUserStore from "../../store/useUserStore";
 
 export default function MyCocktailPage() {
-  // const user = useUserStore((state) => state.user);
   const orderList = [
     "createdAt,desc",
     "createdAt,asc",
