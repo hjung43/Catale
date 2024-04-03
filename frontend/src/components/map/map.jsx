@@ -39,24 +39,24 @@ export default function Map({
         map: map,
         position: new kakao.maps.LatLng(el.lat, el.lng),
       });
-      const infowindow = new kakao.maps.InfoWindow({
-        content: makeInfowindowContent(el.title),
-      });
+      // const infowindow = new kakao.maps.InfoWindow({
+      // content: makeInfowindowContent(el.title),
+      // });
       kakao.maps.event.addListener(
         marker,
         "mouseover",
-        makeOverListener(map, marker, infowindow)
+        makeOverListener(map, marker)
       );
       kakao.maps.event.addListener(marker, "click", function () {
         // 마커 위에 인포윈도우를 표시합니다
         setNowclick(el.number);
       });
 
-      kakao.maps.event.addListener(
-        marker,
-        "mouseout",
-        makeOutListener(infowindow)
-      );
+      // kakao.maps.event.addListener(
+      //   marker,
+      //   "mouseout",
+      //   makeOutListener(infowindow)
+      // );
     });
   };
 

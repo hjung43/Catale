@@ -27,11 +27,21 @@ export default function MapPage() {
           <div className={styles.main}>
             <div className={styles.동이름}>봉명동</div>
             {markerdataB.map((data) => (
-              <Storebox key={data.number} store={data} nowclick={nowclick} />
+              <Storebox
+                key={data.number}
+                store={data}
+                nowclick={nowclick}
+                onClick={setNowclick}
+              />
             ))}
             <div className={styles.동이름}>궁동</div>
             {markerdataG.map((data) => (
-              <Storebox key={data.number} store={data} nowclick={nowclick} />
+              <Storebox
+                key={data.number}
+                store={data}
+                nowclick={nowclick}
+                onClick={setNowclick}
+              />
             ))}
           </div>
         </div>
