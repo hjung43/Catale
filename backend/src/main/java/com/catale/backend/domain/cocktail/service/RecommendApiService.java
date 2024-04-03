@@ -26,6 +26,7 @@ public class RecommendApiService {
                                                     .build();
 
 
+
       /* 오늘의 칵테일과 유사한 칵테일 추천결과 반환 */
       public List<Long> getTodayCocktailResponse(Long cocktailId) {
             log.info("apiService 진입");
