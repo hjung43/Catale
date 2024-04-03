@@ -27,4 +27,13 @@ public class MenuRepositoryImpl implements MenuRepositoryCustom{
                 .fetch()
         );
     }
+
+    @Override
+    public Optional<List<Long>> findByCocktilId(Long cocktailId) {
+        return Optional.ofNullable(query.select(Projections.constructor(Long.class, menu.store.id))
+                        .from(menu)
+                        .where(menu.cocktail.id.eq(cocktailId))
+                        .fetch()
+        );
+    }
 }

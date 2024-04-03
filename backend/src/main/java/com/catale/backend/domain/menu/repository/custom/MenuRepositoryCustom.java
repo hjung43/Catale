@@ -8,4 +8,5 @@ import java.util.Optional;
 public interface MenuRepositoryCustom {
 
     Optional<List<MenuGetResponseDto>> getMenuList(Long storeId);
+    Optional<List<Long>> findByCocktilId(Long cocktailId);
 }

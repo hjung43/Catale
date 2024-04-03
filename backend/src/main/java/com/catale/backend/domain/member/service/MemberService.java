@@ -194,6 +194,7 @@ public class MemberService {
         }
     }
 
+
     @Transactional
     public Long updatePassword(Authentication authentication, PasswordRequestDto requestDto){
         Member me = findMember(authentication.getName());

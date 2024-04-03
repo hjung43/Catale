@@ -24,6 +24,7 @@ public class ReviewRepositoryImpl implements ReviewRepositoryCustom{
                         .leftJoin(member).on(review.member.id.eq(member.id))
                 .where(review.cocktail.id.eq(cocktailId)
                         .and(review.isDeleted.eq(false)))
+                .orderBy(review.createdAt.desc())
                 .offset(page.getOffset())
                 .limit(page.getPageSize())
                 .fetch());
