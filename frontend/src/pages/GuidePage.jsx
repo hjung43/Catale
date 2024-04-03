@@ -2,13 +2,13 @@ import Container from "../components/common/Container";
 import styles from "./GuidePage.module.css";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import 검색1 from "../assets/guide/검색1.png";
-import 검색2 from "../assets/guide/검색2.png";
-import 달력1 from "../assets/guide/달력1.png";
-import 마이1 from "../assets/guide/마이1.png";
-import 메인0 from "../assets/guide/메인0.png";
-import 메인1 from "../assets/guide/메인1.png";
-import 메인2 from "../assets/guide/메인2.png";
+import 검색1 from "../assets/guide/가이드1.jpg";
+import 검색2 from "../assets/guide/가이드2.jpg";
+import 달력1 from "../assets/guide/가이드3.jpg";
+import 마이1 from "../assets/guide/가이드4.jpg";
+import 메인0 from "../assets/guide/가이드5.jpg";
+import 메인1 from "../assets/guide/가이드6.jpg";
+import 메인2 from "../assets/guide/가이드7.jpg";
 // import 지도1 from "../assets/guide/지도1.png";
 
 export default function GuidePage() {
