@@ -14,7 +14,6 @@ import setting from "../../assets/common/setting.png";
 import logouticon from "../../assets/common/logout.png";
 import edit from "../../assets/common/edit.png";
 import { useNavigate } from "react-router-dom";
-import { alctalk, opttalk } from "../../components/data/searchtalk";
 import useUserStore from "../../store/useUserStore";
 import { logout } from "../../api/Member";
 import close from "../../assets/common/close.png";

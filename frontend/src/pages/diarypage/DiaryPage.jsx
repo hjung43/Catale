@@ -17,6 +17,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import Popup from "../../components/common/Popup";
 import { monthdiary, todaydiary } from "../../api/Diary";
+import s from "classnames";
 
 export default function DiaryPage() {
   const navigate = useNavigate();
@@ -25,7 +26,7 @@ export default function DiaryPage() {
   const [year, setYear] = useState(today.getFullYear());
   const [month, setMonth] = useState(today.getMonth());
   const [response, setResponse] = useState([]);
-  const [istoday, setToday] = useState(false);
+  const [istoday, setToday] = useState(true);
 
   // 달의 첫째 날과 마지막 날 구하기
   const firstDayOfMonth = new Date(year, month, 1); // 해당 월의 첫째 날을 구함
@@ -81,8 +82,8 @@ export default function DiaryPage() {
     async function fetchMyData() {
       const istoday = await todaydiary();
       try {
-        if (istoday.data) {
-          setToday(true);
+        if (!istoday.data) {
+          setToday(false);
         }
       } catch (error) {
         console.error("데이터를 가져오는 데 실패했습니다:", error);
@@ -91,54 +92,6 @@ export default function DiaryPage() {
 
     fetchMyData();
   }, []);
-
-  // const response = [
-  //   {
-  //     id: 1,
-  //     createdAt: "2024-03-08T11:58:20.551705",
-  //     mood: 1,
-  //     color1: "#6deefc",
-  //     color2: "#7ab0fd",
-  //     color3: "#eb75f5",
-  //     glass: 1,
-  //   },
-  //   {
-  //     id: 2,
-  //     createdAt: "2024-03-09T11:58:20.551705",
-  //     mood: 2,
-  //     color1: "#20595f",
-  //     color2: "#7afd94",
-  //     color3: "#f3f575",
-  //     glass: 2,
-  //   },
-  //   {
-  //     id: 3,
-  //     createdAt: "2024-03-14T11:58:20.551705",
-  //     mood: 3,
-  //     color1: "#9cba57",
-  //     color2: "#7ad3fd",
-  //     color3: "#f57575",
-  //     glass: 3,
-  //   },
-  //   {
-  //     id: 4,
-  //     createdAt: "2024-03-16T11:58:20.551705",
-  //     mood: 4,
-  //     color1: "#57ba6e",
-  //     color2: "#9f7afd",
-  //     color3: "#84f575",
-  //     glass: 4,
-  //   },
-  //   {
-  //     id: 5,
-  //     createdAt: "2024-03-17T11:58:20.551705",
-  //     mood: 5,
-  //     color1: "#dbd65e",
-  //     color2: "#fdc27a",
-  //     color3: "#f59375",
-  //     glass: 5,
-  //   },
-  // ];
 
   // response에서 createdAt 속성 추출하여 특별한 날짜 배열 생성
   const specialDates = response.map((item) => item.createdAt.split("T")[0]);
@@ -167,7 +120,7 @@ export default function DiaryPage() {
       <div className={styles.main}>
         <div>
           {!istoday && (
-            <div className={styles.popup}>
+            <div className={s(styles.popup, !istoday && styles.motion)}>
               <Popup
                 img={card}
                 subText={`아직 오늘의 기록을 하지 않았어요!`}
