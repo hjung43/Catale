@@ -20,7 +20,7 @@ export default function GuidePage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    setList([마이1, 검색1, 검색2, 메인0, 메인1, 메인2, 달력1]);
+    setList([검색1, 검색2, 달력1, 메인0, 메인1, 마이1, 메인2]);
   }, []);
 
   return (
