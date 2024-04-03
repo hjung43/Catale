@@ -1,9 +1,7 @@
 import { useState } from "react";
-import { Await, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { login } from "../api/Member";
-import { todaydiary } from "../api/Diary";
 import useUserStore from "../store/useUserStore";
-import useTodayStore from "../store/useTodayStore";
 import styles from "./SignInPage.module.css";
 import toast, { Toaster } from "react-hot-toast";
 import Container from "../components/common/Container";
@@ -13,7 +11,6 @@ export default function SignInPage() {
 
   // 유저상태 전역 관리를 위한 코드
   const { user, setUser } = useUserStore();
-  const setToday = useTodayStore((state) => state.setToday);
 
   /* 상태 */
   const [formData, setFormData] = useState({
@@ -57,12 +54,8 @@ export default function SignInPage() {
           check: res.data.check,
         });
         if (res.data.memberInfo.alc == -1) {
-          const isToday = await todaydiary();
-          await setToday(isToday.data);
           navigate(`../preference`);
         } else {
-          const isToday = await todaydiary();
-          await setToday(isToday.data);
           toast.success(`로그인 성공 !`, {
             position: "top-center",
           });

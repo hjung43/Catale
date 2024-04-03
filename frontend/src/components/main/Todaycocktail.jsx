@@ -2,7 +2,6 @@ import styles from "./Todaycocktail.module.css";
 import React, { useState, useEffect } from "react";
 import { recommendtoday } from "../../api/Cocktail";
 import { savadiary } from "../../api/Diary";
-import useTodayStore from "../../store/useTodayStore";
 import Lottie from "lottie-react";
 import Cocktail1 from "../../assets/lottie/Cocktail1.json";
 
@@ -48,8 +47,6 @@ export default function Todaycocktail({
       };
 
       const savadiaryResponse = await savadiary(updatedToday);
-
-      useTodayStore.getState().setToday(true); // today 상태 변경
     } catch (error) {
     } finally {
       setIsLoading(false); // 로딩 상태 해제

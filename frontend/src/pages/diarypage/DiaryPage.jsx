@@ -15,9 +15,8 @@ import glass6 from "../../assets/glass/glass6.png";
 import glass7 from "../../assets/glass/glass7.png";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
-import useTodayStore from "../../store/useTodayStore";
 import Popup from "../../components/common/Popup";
-import { monthdiary } from "../../api/Diary";
+import { monthdiary, todaydiary } from "../../api/Diary";
 
 export default function DiaryPage() {
   const navigate = useNavigate();
@@ -26,7 +25,7 @@ export default function DiaryPage() {
   const [year, setYear] = useState(today.getFullYear());
   const [month, setMonth] = useState(today.getMonth());
   const [response, setResponse] = useState([]);
-  const istoday = useTodayStore((state) => state.today);
+  const [istoday, setToday] = useState(false);
 
   // 달의 첫째 날과 마지막 날 구하기
   const firstDayOfMonth = new Date(year, month, 1); // 해당 월의 첫째 날을 구함
@@ -78,6 +77,20 @@ export default function DiaryPage() {
 
     fetchdiary();
   }, [month]);
+  useEffect(() => {
+    async function fetchMyData() {
+      const istoday = await todaydiary();
+      try {
+        if (istoday.data) {
+          setToday(true);
+        }
+      } catch (error) {
+        console.error("데이터를 가져오는 데 실패했습니다:", error);
+      }
+    }
+
+    fetchMyData();
+  }, []);
 
   // const response = [
   //   {
