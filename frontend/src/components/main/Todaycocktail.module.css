@@ -39,4 +39,5 @@
 }
 .lottie {
   width: 70%;
+  max-width: 380px;
 }
