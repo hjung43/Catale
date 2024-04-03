@@ -162,3 +162,73 @@
   width: 1.5rem;
   margin-right: 1.5rem;
 }
+
+/* 모달 */
+
+.modal {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  background-color: var(--main1);
+  padding: 2rem;
+  border-radius: 2rem 2rem 0 0;
+  transition: 0.5s;
+}
+.none {
+  transform: translateY(20rem);
+}
+.icon {
+  width: 1rem;
+}
+.blur {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #00000000;
+  backdrop-filter: blur(5px);
+  transition: background-color 0.8s;
+}
+.active {
+  background-color: #464a6d97;
+  z-index: 1;
+}
+.no {
+  z-index: -1;
+}
+/* 모달 안 */
+
+.delete_top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.delete_title {
+  font-size: larger;
+}
+.delete_text {
+  text-align: center;
+}
+.delete_bottom {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin: 2rem 1rem 1rem;
+}
+.delete_cancel,
+.delete_delete {
+  text-align: center;
+  flex-grow: 1;
+  padding: 0.7rem;
+  border-radius: 0.7rem;
+}
+.delete_cancel {
+  background-color: var(--main2);
+}
+.delete_delete {
+  background-color: var(--no);
+}

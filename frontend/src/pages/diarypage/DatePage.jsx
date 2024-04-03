@@ -24,11 +24,13 @@ import {
 } from "../mainpage/Emodata/Emocolor";
 import { useNavigate } from "react-router-dom";
 import trash from "../../assets/common/trash.png";
+import close from "../../assets/common/close.png";
 
 export default function DatePage() {
   const navigate = useNavigate();
   const { diaryId } = useParams();
   const [detail, setDetail] = useState(false);
+  const [modal, setModal] = useState(false);
   const [emotions, setEmotions] = useState([]);
   const [response, setResponse] = useState();
   useEffect(() => {
@@ -107,7 +109,7 @@ export default function DatePage() {
           src={trash}
           alt="trash"
           className={styles.trash}
-          onClick={() => handledeletediary(diaryId)}
+          onClick={() => setModal(true)}
         />
       </Headerwb>
       {!response && (
@@ -221,6 +223,37 @@ export default function DatePage() {
           </div>
         </div>
       )}
+      <div
+        className={s(styles.blur, modal ? styles.active : styles.no)}
+        onClick={() => setModal(false)}
+      ></div>
+      <div className={s(styles.modal, !modal && styles.none)}>
+        <div className={styles.delete_top}>
+          <img
+            src={close}
+            alt="close"
+            className={styles.icon}
+            onClick={() => setModal(false)}
+          />
+          <div className={styles.delete_title}>일기 삭제</div>
+          <div className={styles.icon}></div>
+        </div>
+        <div className={styles.delete_text}>일기를 삭제하시겠습니까?</div>
+        <div className={styles.delete_bottom}>
+          <div className={styles.delete_cancel} onClick={() => setModal(false)}>
+            취소
+          </div>
+          <div
+            className={styles.delete_delete}
+            onClick={() => {
+              handledeletediary(diaryId);
+              setModal(false);
+            }}
+          >
+            삭제
+          </div>
+        </div>
+      </div>
     </Container>
   );
 }
