@@ -34,7 +34,7 @@ export default function Cattalkbox({
     ) {
       //3번일때는 랜덤으로 보내줘잉~
       showText(
-        cattalk[talkarr[selectnum].cattalk].talk[Math.floor(Math.random() * 4)]
+        cattalk[talkarr[selectnum].cattalk].talk[Math.floor(Math.random() * 15)]
       );
     }
   }, [talknum, talkarr, selectnum]);
