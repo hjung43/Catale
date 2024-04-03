@@ -22,8 +22,10 @@ import {
   fontcolor,
   backcolor,
 } from "../mainpage/Emodata/Emocolor";
+import { useNavigate } from "react-router-dom";
 
 export default function DatePage() {
+  const navigate = useNavigate();
   const { diaryId } = useParams();
   const [detail, setDetail] = useState(false);
   const [emotions, setEmotions] = useState([]);
@@ -91,12 +93,6 @@ export default function DatePage() {
   const formattedDate = createdAt
     ? `${String(createdAt.getMonth() + 1)}월 ${String(createdAt.getDate())}일`
     : "";
-  // const emotions =
-  //   response?.emotion1 && response?.emotion2 && response?.emotion3
-  //     ? [response.emotion1, response.emotion2, response.emotion3].filter(
-  //         (e) => e !== 0
-  //       )
-  //     : [];
 
   return (
     <Container>
@@ -129,6 +125,7 @@ export default function DatePage() {
                         response.color1
                       } ${num[response.glass][2]}%, ${response.color1} 100%)`,
                     }}
+                    onClick={() => navigate(`/cocktail/${response.cocktailId}`)}
                   >
                     <img
                       src={glasses[response.glass]}
