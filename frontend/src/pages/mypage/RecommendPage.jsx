@@ -5,10 +5,10 @@ import styles from "./RecommendPage.module.css";
 import Medallist from "../../components/search/Medallist";
 import Nonmedallist from "../../components/search/Nonmedallist";
 import { recommendcocktails } from "../../api/Cocktail";
-
+import useUserStore from "../../store/useUserStore";
 export default function RecommendPage() {
   const [list, setList] = useState([]);
-
+  const user = useUserStore((state) => state.user);
   useEffect(() => {
     async function fetchlikeData() {
       try {
@@ -28,7 +28,7 @@ export default function RecommendPage() {
       <div className={styles.title}>
         <div className={styles.main_title}>오늘의 추천</div>
         <div className={styles.sub_title}>
-          서또카늘 님의 취향을 기반으로 추천하는 칵테일입니다.
+          {user.nickname} 님의 취향을 기반으로 추천하는 칵테일입니다.
         </div>
       </div>
       <div className={styles.검색결과}>
