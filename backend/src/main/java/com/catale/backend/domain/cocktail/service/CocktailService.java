@@ -190,7 +190,7 @@ public class CocktailService {
         return responseDto;
     }
 
-
+    /* lightfm 학습 모델 기반 유저 개인별 칵테일 추천 */
     @Transactional
     public List<CocktailListResponseDto> getMemberRecommendCocktail(Authentication authentication){
         Member member = memberService.findMember(authentication.getName());
@@ -203,22 +203,40 @@ public class CocktailService {
         int sparking = member.getSparking();
 
         int[] preference = new int[5];
+
         preference[0] = alc;
         preference[1] = sweet;
         preference[2] = sour;
         preference[3] = bitter;
         preference[4] = sparking;
 
-        return apiService.getMemberRecommendResponse(preference).stream()
-                .map(id -> {
-                    Cocktail cocktail = cocktailRepository.findById(id)
-                            .orElseThrow(CocktailNotFoundException::new);
-                    return cocktail;
-                }).map(cocktail -> {
-                    CocktailListResponseDto cocktailDto = new CocktailListResponseDto(cocktail.getId(), cocktail.getName(), cocktail.getColor1(), cocktail.getColor2(), cocktail.getColor3(), cocktail.getGlass(), cocktail.getContent());
-                    cocktailDto.setLike(likeService.checkisLiked(memberId, cocktail.getId()));
-                    return cocktailDto;
-                }).toList();
+        /* 사용자 아이디 1~10 / 그외 임시로 구별해서 요청 */
+
+        //1~10인경우
+        if(memberId >= 1 && memberId <= 10){
+            return apiService.getPersonalRecommendResponse(memberId.intValue()).stream()
+                    .map(id -> {
+                        Cocktail cocktail = cocktailRepository.findById(id)
+                                .orElseThrow(CocktailNotFoundException::new);
+                        return cocktail;
+                    }).map(cocktail -> {
+                        CocktailListResponseDto cocktailDto = new CocktailListResponseDto(cocktail.getId(), cocktail.getName(), cocktail.getColor1(), cocktail.getColor2(), cocktail.getColor3(), cocktail.getGlass(), cocktail.getContent());
+                        cocktailDto.setLike(likeService.checkisLiked(memberId, cocktail.getId()));
+                        return cocktailDto;
+                    }).toList();
+        }else{
+            return apiService.getUserRecommendResponse(preference).stream()
+                    .map(id -> {
+                        Cocktail cocktail = cocktailRepository.findById(id)
+                                .orElseThrow(CocktailNotFoundException::new);
+                        return cocktail;
+                    }).map(cocktail -> {
+                        CocktailListResponseDto cocktailDto = new CocktailListResponseDto(cocktail.getId(), cocktail.getName(), cocktail.getColor1(), cocktail.getColor2(), cocktail.getColor3(), cocktail.getGlass(), cocktail.getContent());
+                        cocktailDto.setLike(likeService.checkisLiked(memberId, cocktail.getId()));
+                        return cocktailDto;
+                    }).toList();
+        }
+
     }
 
     @Transactional

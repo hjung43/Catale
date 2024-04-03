@@ -46,9 +46,14 @@ def make_source(data):
 
 # 사용자-아이템 상호작용 데이터를 입력으로 받아, LightFM 모델에서 사용할 상호작용 데이터를 생성
 def make_interactions(rating_df, dataset):
+    dataset = Dataset()
+
     rating_source = list(
         zip(rating_df["user_id"], rating_df["cocktail_id"], rating_df["rating"])
     )
+    logging.info("modelutil_rating_source")
+    logging.info("rating_source")
+    logging.info(rating_source)
     return dataset.build_interactions(rating_source)
 
 # 사용자와 아이템의 메타데이터를 바탕으로 특성을 생성
@@ -60,7 +65,9 @@ def make_features(preference_df, item_features, dataset):
     # preference_meta = dataset.build_user_features(
     #     preference_source)
     dataset = Dataset()
-    preference_meta = dataset.build_user_features(data=preference_source, normalize=False)
+    logging.info("modelutil_dataset")
+    logging.info(dataset)
+    preference_meta = dataset.build_user_features(preference_source, normalize=False)
 
     # make item features
     # item_features = item_features[

@@ -5,7 +5,7 @@ import time
 import random
 
 from service.recommend_service import predict_personal_cocktail, predict_similar_cocktail, user_recommend_cocktail
-# from models.dto.data_class import PersonalcocktailRequest
+from models.dto.data_class import PersonalcocktailRequest
 from common.context.ItemFeatures import ItemFeatures
 
 
@@ -23,26 +23,17 @@ async def retrain_model():
     else:
         return "one"
 
-
-# @rec.post("/personal", status_code=200)
-# async def rec_personal_cocktail(
-#         personal_cocktail_request: PersonalcocktailRequest = Body(...),
-#         item_features: ItemFeatures = Depends(ItemFeatures),
-# ):
-#     logging.info("test!!!!")
-#     logging.info(item_features)
-#     logging.info("test2222")
-#     logging.info(item_features.data)
-#     logging.info(
-#         "실제 사용자 : {}\n추천 조회 id : {}\nPreference : {}".format(
-#             personal_cocktail_request.user_id,
-#             personal_cocktail_request.preferences[0].user_id,
-#             personal_cocktail_request.preferences[0],
-#         )
-#     )
-#     return predict_personal_cocktail(
-#         personal_cocktail_request.preferences, item_features.data
-#     )
+# user_id 1~10 
+@rec.get("/personal/{user_id}", status_code=200)
+async def rec_personal_cocktail(
+        user_id: int,
+        item_features: ItemFeatures = Depends(ItemFeatures),
+):
+    logging.info("personal rec router 진입")
+    
+    return predict_personal_cocktail(
+        user_id, item_features.data
+    )
 
 
 # 오늘의 칵테일과 유사한 칵테일 추천결과 반환
@@ -57,9 +48,9 @@ async def rec_similar_cocktail(
     return predict_similar_cocktail(cocktail_id, item_features.data)
 
 
-# 유저별 맞춤 추천 칵테일 추천결과 반환
+# # user_id 11 이상 
 @rec.post("/personal", status_code=200)
-async def rec_personal_cocktail(
+async def rec_user_cocktail(
         numbers: List[int],
         item_features: ItemFeatures = Depends(ItemFeatures),
 ):
