@@ -14,7 +14,7 @@ import { mood1, mood2 } from "../mainpage/Emodata/Emotionthree";
 import s from "classnames";
 import { useState, useEffect } from "react";
 import CocktailDetail from "../../components/diary/CocktailDetail";
-import { detaildiary } from "../../api/Diary";
+import { deletediary, detaildiary } from "../../api/Diary";
 import Lottie from "lottie-react";
 import Cocktail1 from "../../assets/lottie/Cocktail1.json";
 import {
@@ -23,6 +23,7 @@ import {
   backcolor,
 } from "../mainpage/Emodata/Emocolor";
 import { useNavigate } from "react-router-dom";
+import trash from "../../assets/common/trash.png";
 
 export default function DatePage() {
   const navigate = useNavigate();
@@ -94,9 +95,21 @@ export default function DatePage() {
     ? `${String(createdAt.getMonth() + 1)}월 ${String(createdAt.getDate())}일`
     : "";
 
+  const handledeletediary = async (id) => {
+    await deletediary(id);
+    navigate(-1);
+  };
+
   return (
     <Container>
-      <Headerwb title={formattedDate} />
+      <Headerwb title={formattedDate}>
+        <img
+          src={trash}
+          alt="trash"
+          className={styles.trash}
+          onClick={() => handledeletediary(diaryId)}
+        />
+      </Headerwb>
       {!response && (
         <div className={styles.로딩중}>
           <Lottie animationData={Cocktail1} className={styles.lottie} />
