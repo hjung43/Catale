@@ -21,8 +21,8 @@ import org.springframework.web.reactive.function.client.WebClient;
 public class RecommendApiService {
 
       private final WebClient webClient = WebClient.builder()
-                                                   .baseUrl("https://fastapi.silvstone.xyz/rec")
-//              .baseUrl("http://localhost:8000/rec")
+//                                                   .baseUrl("https://fastapi.silvstone.xyz/rec")
+              .baseUrl("http://localhost:8000/rec")
                                                     .build();
 
 
@@ -38,8 +38,17 @@ public class RecommendApiService {
       }
 
 
-      /* 유저별 개인 맞춤 칵테일 추천결과 반환 */
-      public List<Long> getMemberRecommendResponse(int[] preference) {
+      /* memberId 1~10 */
+      public List<Long> getPersonalRecommendResponse(int memberId) {
+            return webClient.get()
+                    .uri("/personal/{user_id}", memberId)
+                    .retrieve()
+                    .bodyToFlux(Long.class)
+                    .toStream().collect(Collectors.toList());
+      }
+
+      /* 1~10 이외 */
+      public List<Long> getUserRecommendResponse(int[] preference) {
             return webClient.post()
                     .uri("/personal")
                     .contentType(MediaType.APPLICATION_JSON)
