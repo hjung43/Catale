@@ -21,8 +21,8 @@ import org.springframework.web.reactive.function.client.WebClient;
 public class RecommendApiService {
 
       private final WebClient webClient = WebClient.builder()
-                                                   .baseUrl("https://fastapi.silvstone.xyz/rec")
-//              .baseUrl("http://localhost:8000/rec")
+//                                                   .baseUrl("https://fastapi.silvstone.xyz/rec")
+              .baseUrl("http://localhost:8000/rec")
                                                     .build();
 
 
