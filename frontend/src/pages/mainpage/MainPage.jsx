@@ -23,6 +23,7 @@ import useUserStore from "../../store/useUserStore";
 import Cattalk20 from "../../components/main/Cattalk20";
 import { useNavigate } from "react-router-dom";
 import Todaycocktail from "../../components/main/Todaycocktail";
+import { todaydiary } from "../../api/Diary";
 
 export default function MainPage() {
   const navigate = useNavigate();
@@ -73,7 +74,6 @@ export default function MainPage() {
     setTodayemo([]);
     setSeletnum(0);
     setTodayalc(user.alc);
-    // useTodayStore.getState().setToday(false); // today 상태 변경
   };
 
   return (
@@ -100,7 +100,6 @@ export default function MainPage() {
                       className={styles.이모지하나하나}
                       style={{
                         backgroundColor: selectcolor[Math.floor(emo / 10)],
-                        // boxShadow: `0px 0px 10px 0px rgba(255, 255, 255, 0.54)`,
                       }}
                     ></div>
                   ))}

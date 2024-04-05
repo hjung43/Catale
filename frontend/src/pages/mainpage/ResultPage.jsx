@@ -15,6 +15,7 @@ import s from "classnames";
 import { mood1, mood2 } from "../mainpage/Emodata/Emotionthree";
 import close from "../../assets/common/close.png";
 import { useNavigate } from "react-router-dom";
+import { selectcolor } from "./Emodata/Emocolor";
 
 export default function ResultPage() {
   const navigate = useNavigate();
@@ -194,9 +195,25 @@ export default function ResultPage() {
               const index = (emo - (emo % 10)) / 10;
               const j = emo % 10;
               if (emotions.length - 1 > i) {
-                return <span>{mood2[index][j]} </span>;
+                return (
+                  <span
+                    style={{
+                      color: selectcolor[Math.floor(emo / 10)],
+                    }}
+                  >
+                    {mood2[index][j]}{" "}
+                  </span>
+                );
               } else {
-                return <span>{mood1[index][j]} </span>;
+                return (
+                  <span
+                    style={{
+                      color: selectcolor[Math.floor(emo / 10)],
+                    }}
+                  >
+                    {mood1[index][j]}{" "}
+                  </span>
+                );
               }
             })}{" "}
             <br />
