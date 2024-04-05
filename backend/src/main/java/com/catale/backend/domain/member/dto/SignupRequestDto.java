@@ -13,7 +13,7 @@ import lombok.*;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class SignupRequestDto {
 
-    @Email(message = "올바른 형식의 이메일 주소를 입력해 주십시오.")
+    @Pattern(regexp="^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])+[.][a-zA-Z]{2,3}$", message="올바른 형식의 이메일 주소를 입력해 주십시오.")
     @NotEmpty(message = "이메일 필드는 필수 정보입니다. 공란으로 두실 수 없습니다.")
     @Schema(description = "이메일", example = "user1@ssafy.com")
     private String email;
