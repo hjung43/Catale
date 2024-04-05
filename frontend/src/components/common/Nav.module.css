@@ -1,14 +1,14 @@
 .nav {
   display: flex;
   justify-content: space-around;
-  background-color: #1f2544;
+  background-color: var(--main1);
   position: fixed;
   z-index: 2;
   bottom: 0px;
   width: 100%;
   align-items: center;
   padding: 1rem 0rem 2rem 0rem;
-  box-shadow: 0 0 10px 10px #1f2544;
+  box-shadow: 0 0 10px 10px var(--main1);
   max-width: 450px;
 }
 

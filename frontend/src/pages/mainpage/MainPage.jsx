@@ -1,4 +1,4 @@
-import ContainerMain from "../../components/common/ContainerMain";
+import Container from "../../components/common/Container";
 import styles from "./MainPage.module.css";
 import Nav from "../../components/common/Nav";
 import 배경바 from "../../assets/bartender/꼬질냥.gif";
@@ -13,8 +13,7 @@ import Usertodayemo from "../../components/main/Usertodayemo";
 import 고양이말풍선 from "../../assets/bartender/고양이말풍선.png";
 import 유저말풍선 from "../../assets/bartender/유저말풍선.png";
 import Useremothree from "../../components/main/Useremothree";
-import { mood1, mood2 } from "../mainpage/Emodata/Emotionthree";
-import { reasonone } from "./Emodata/Reasonone";
+import { mood1 } from "../mainpage/Emodata/Emotionthree";
 import Cattalk11 from "../../components/main/Cattalk11";
 import Userreasonbox from "../../components/main/Userreasonbox";
 import Usercomment from "../../components/main/Usercomment";
@@ -25,7 +24,6 @@ import useTodayStore from "../../store/useTodayStore";
 import Cattalk20 from "../../components/main/Cattalk20";
 import { useNavigate } from "react-router-dom";
 import Todaycocktail from "../../components/main/Todaycocktail";
-import { todaydiary } from "../../api/Diary";
 
 export default function MainPage() {
   const navigate = useNavigate();
@@ -79,7 +77,7 @@ export default function MainPage() {
   };
 
   return (
-    <ContainerMain>
+    <Container>
       <div className={styles.main}>
         {talknum >= 8 && nowemonum !== -1 && (
           <>
@@ -277,6 +275,6 @@ export default function MainPage() {
         )}
       </div>
       <Nav num={3} />
-    </ContainerMain>
+    </Container>
   );
 }

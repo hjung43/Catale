@@ -1,6 +1,6 @@
 .box {
   padding: 1rem;
-  background-color: #464a6d;
+  background-color: var(--main2);
   border-radius: 1rem;
   margin: 1rem;
 }

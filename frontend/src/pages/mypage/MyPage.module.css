@@ -10,7 +10,6 @@
 }
 .main {
   padding: 4rem 0 6rem;
-  /* height: calc(var(--vh, 1vh) * 100); */
 }
 .recommendTitle {
   display: flex;

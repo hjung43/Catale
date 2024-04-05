@@ -1,4 +1,4 @@
-import ContainerMain from "../../components/common/ContainerMain";
+import Container from "../../components/common/Container";
 import styles from "./ResultPage.module.css";
 import React, { useEffect, useState } from "react";
 import HeaderResult from "../../components/common/HeaderResult";
@@ -84,7 +84,7 @@ export default function ResultPage() {
   const numIndex = validGlassIndex ? resultData.glass : 0;
   const glassCoverStyle = `linear-gradient(180deg, ${resultData.color3} ${num[numIndex][0]}%, ${resultData.color2} ${num[numIndex][1]}%, ${resultData.color1} ${num[numIndex][2]}%, ${resultData.color1} 100%)`;
   return (
-    <ContainerMain>
+    <Container>
       <HeaderResult title={"오늘의 결과"} />
       <div className={styles.main}>
         <div className={styles.title}>
@@ -209,6 +209,6 @@ export default function ResultPage() {
           <div>{resultData.comment}</div>
         </div>
       </div>
-    </ContainerMain>
+    </Container>
   );
 }
