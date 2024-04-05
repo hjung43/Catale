@@ -20,7 +20,6 @@ import Usercomment from "../../components/main/Usercomment";
 import { selectcolor } from "./Emodata/Emocolor";
 import cocktail from "../../assets/bartender/오늘의칵테일1.png";
 import useUserStore from "../../store/useUserStore";
-import useTodayStore from "../../store/useTodayStore";
 import Cattalk20 from "../../components/main/Cattalk20";
 import { useNavigate } from "react-router-dom";
 import Todaycocktail from "../../components/main/Todaycocktail";
@@ -29,8 +28,7 @@ export default function MainPage() {
   const navigate = useNavigate();
   //유저를 일단 담아놓고~
   const user = useUserStore((state) => state.user);
-  const today = useTodayStore((state) => state.today);
-  const setToday = useTodayStore((state) => state.setToday);
+  const [today, setToday] = useState(false);
   //대화의 순서
   const [talknum, setTalknum] = useState(1);
   const [selectnum, setSeletnum] = useState(0);
@@ -51,8 +49,10 @@ export default function MainPage() {
 
   useEffect(() => {
     async function fetchMyData() {
+      const istoday = await todaydiary();
       try {
-        if (today) {
+        if (istoday.data) {
+          setToday(true);
           //여기서 오늘대화의 결과를 가져오는걸 써야해
           setTalknum(25);
         }

@@ -34,7 +34,7 @@ export default function Cattalkbox({
     ) {
       //3번일때는 랜덤으로 보내줘잉~
       showText(
-        cattalk[talkarr[selectnum].cattalk].talk[Math.floor(Math.random() * 4)]
+        cattalk[talkarr[selectnum].cattalk].talk[Math.floor(Math.random() * 15)]
       );
     }
   }, [talknum, talkarr, selectnum]);
@@ -54,6 +54,10 @@ export default function Cattalkbox({
 
   const handleNext = () => {
     setTalknum(talknum + 1);
+  };
+
+  const handleNext2 = () => {
+    setTalknum(talknum + 2);
   };
 
   const renderTextWithLineBreaks = (text) => {
@@ -102,12 +106,19 @@ export default function Cattalkbox({
           {talknum !== 24 &&
             talkarr.cat === 1 &&
             talknum !== 23 &&
+            talknum !== 17 &&
             talknum !== 25 && (
               <div className={styles.고양이다음} onClick={() => handleNext()}>
                 <div className={styles.click}>click !</div>
                 <div className={styles.역삼각형}></div>
               </div>
             )}
+          {talknum === 17 && (
+            <div className={styles.고양이다음} onClick={() => handleNext2()}>
+              <div className={styles.click}>click !</div>
+              <div className={styles.역삼각형}></div>
+            </div>
+          )}
         </div>
       )}
       {selectnum === -1 && talkarr.cat !== 0 && talkarr.cat === 3 && (

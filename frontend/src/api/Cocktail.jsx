@@ -107,3 +107,12 @@ export async function cocktailmereview(option, page) {
     throw error;
   }
 }
+// 사용자 맞춤 칵테일 추천
+export async function recommendcocktails() {
+  try {
+    const response = await axios.get(BASE_URL + "/recommend");
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+}

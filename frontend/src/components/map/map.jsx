@@ -39,24 +39,24 @@ export default function Map({
         map: map,
         position: new kakao.maps.LatLng(el.lat, el.lng),
       });
-      const infowindow = new kakao.maps.InfoWindow({
-        content: makeInfowindowContent(el.title),
-      });
-      kakao.maps.event.addListener(
-        marker,
-        "mouseover",
-        makeOverListener(map, marker, infowindow)
-      );
+      // const infowindow = new kakao.maps.InfoWindow({
+      // content: makeInfowindowContent(el.title),
+      // });
+      // kakao.maps.event.addListener(
+      //   marker,
+      //   "mouseover",
+      //   makeOverListener(map, marker)
+      // );
       kakao.maps.event.addListener(marker, "click", function () {
         // 마커 위에 인포윈도우를 표시합니다
         setNowclick(el.number);
       });
 
-      kakao.maps.event.addListener(
-        marker,
-        "mouseout",
-        makeOutListener(infowindow)
-      );
+      // kakao.maps.event.addListener(
+      //   marker,
+      //   "mouseout",
+      //   makeOutListener(infowindow)
+      // );
     });
   };
 
@@ -65,18 +65,18 @@ export default function Map({
   }, []);
 
   // 인포윈도우를 표시하는 클로저를 만드는 함수
-  function makeOverListener(map, marker, infowindow) {
-    return function () {
-      infowindow.open(map, marker);
-    };
-  }
+  // function makeOverListener(map, marker, infowindow) {
+  //   return function () {
+  //     infowindow.open(map, marker);
+  //   };
+  // }
 
   // 인포윈도우를 닫는 클로저를 만드는 함수
-  function makeOutListener(infowindow) {
-    return function () {
-      infowindow.close();
-    };
-  }
+  // function makeOutListener(infowindow) {
+  //   return function () {
+  //     infowindow.close();
+  //   };
+  // }
 
   return <div className={styles.map} ref={mapRef}></div>;
 }

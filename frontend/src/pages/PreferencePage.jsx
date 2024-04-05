@@ -41,6 +41,7 @@ export default function PreferencePage() {
     <Container>
       <div className={styles.main}>
         <div className={styles.폰트들}>
+          <div className={styles.폰트2}>캣테일에 오신것을 환영합니다</div>
           <div className={styles.폰트}>당신의 즐겨마시는</div>
           <div className={styles.폰트}>술 취향을 선택해주세요 !</div>
         </div>
