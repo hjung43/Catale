@@ -80,10 +80,6 @@ export default function MyFeel() {
     fetchdiary();
   }, []);
 
-  // if (chartOptions.series.every((value) => value === 0)) {
-  //   return null;
-  // }
-
   return (
     <>
       {add !== 0 ? (

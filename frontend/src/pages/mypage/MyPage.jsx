@@ -63,13 +63,6 @@ export default function MyPage() {
           },
         },
       },
-      // dataLabels: {
-      //   enabled: true,
-      //   background: {
-      //     enabled: true,
-      //     borderRadius: 2,
-      //   },
-      // },
       markers: {
         size: 3,
         hover: {

@@ -1,4 +1,4 @@
-import ContainerMain from "../../components/common/ContainerMain";
+import Container from "../../components/common/Container";
 import styles from "./ResultPage.module.css";
 import React, { useEffect, useState } from "react";
 import HeaderResult from "../../components/common/HeaderResult";
@@ -15,6 +15,7 @@ import s from "classnames";
 import { mood1, mood2 } from "../mainpage/Emodata/Emotionthree";
 import close from "../../assets/common/close.png";
 import { useNavigate } from "react-router-dom";
+import { selectcolor } from "./Emodata/Emocolor";
 
 export default function ResultPage() {
   const navigate = useNavigate();
@@ -84,7 +85,7 @@ export default function ResultPage() {
   const numIndex = validGlassIndex ? resultData.glass : 0;
   const glassCoverStyle = `linear-gradient(180deg, ${resultData.color3} ${num[numIndex][0]}%, ${resultData.color2} ${num[numIndex][1]}%, ${resultData.color1} ${num[numIndex][2]}%, ${resultData.color1} 100%)`;
   return (
-    <ContainerMain>
+    <Container>
       <HeaderResult title={"오늘의 결과"} />
       <div className={styles.main}>
         <div className={styles.title}>
@@ -194,9 +195,25 @@ export default function ResultPage() {
               const index = (emo - (emo % 10)) / 10;
               const j = emo % 10;
               if (emotions.length - 1 > i) {
-                return <span>{mood2[index][j]} </span>;
+                return (
+                  <span
+                    style={{
+                      color: selectcolor[Math.floor(emo / 10)],
+                    }}
+                  >
+                    {mood2[index][j]}{" "}
+                  </span>
+                );
               } else {
-                return <span>{mood1[index][j]} </span>;
+                return (
+                  <span
+                    style={{
+                      color: selectcolor[Math.floor(emo / 10)],
+                    }}
+                  >
+                    {mood1[index][j]}{" "}
+                  </span>
+                );
               }
             })}{" "}
             <br />
@@ -209,6 +226,6 @@ export default function ResultPage() {
           <div>{resultData.comment}</div>
         </div>
       </div>
-    </ContainerMain>
+    </Container>
   );
 }

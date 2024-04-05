@@ -30,11 +30,9 @@
   justify-content: center;
   align-items: center;
   gap: 4rem;
-  /* background-color: #e6e7ff; */
   height: calc(var(--vh, 1vh) * 100);
 }
 .inputContainer {
-  /* background-color: #9c9ec6; */
   width: 100%;
   display: flex;
   justify-content: space-between;

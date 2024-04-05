@@ -1,4 +1,4 @@
-import ContainerMain from "../../components/common/ContainerMain";
+import Container from "../../components/common/Container";
 import styles from "./MainPage.module.css";
 import Nav from "../../components/common/Nav";
 import 배경바 from "../../assets/bartender/꼬질냥.gif";
@@ -74,11 +74,10 @@ export default function MainPage() {
     setTodayemo([]);
     setSeletnum(0);
     setTodayalc(user.alc);
-    // useTodayStore.getState().setToday(false); // today 상태 변경
   };
 
   return (
-    <ContainerMain>
+    <Container>
       <div className={styles.main}>
         {talknum >= 8 && nowemonum !== -1 && (
           <>
@@ -101,7 +100,6 @@ export default function MainPage() {
                       className={styles.이모지하나하나}
                       style={{
                         backgroundColor: selectcolor[Math.floor(emo / 10)],
-                        // boxShadow: `0px 0px 10px 0px rgba(255, 255, 255, 0.54)`,
                       }}
                     ></div>
                   ))}
@@ -276,6 +274,6 @@ export default function MainPage() {
         )}
       </div>
       <Nav num={3} />
-    </ContainerMain>
+    </Container>
   );
 }

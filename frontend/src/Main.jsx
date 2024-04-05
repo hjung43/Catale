@@ -15,7 +15,6 @@ import DiaryPage from "./pages/diarypage/DiaryPage";
 import DatePage from "./pages/diarypage/DatePage";
 import SearchPage from "./pages/SearchPage";
 import MyPage from "./pages/mypage/MyPage";
-import MonthlyMoodPage from "./pages/mypage/MonthlyMoodPage";
 import RecommendPage from "./pages/mypage/RecommendPage";
 import ChangePreferencePage from "./pages/mypage/ChangePreferencePage";
 import MyCocktailPage from "./pages/mypage/MyCocktailPage";
@@ -61,7 +60,6 @@ function Main() {
           <Route path="search" element={<SearchPage />} />
           <Route path="my">
             <Route index element={<MyPage />} />
-            <Route path="monthlymood" element={<MonthlyMoodPage />} />
             <Route path="recommend" element={<RecommendPage />} />
             <Route path="changepreference" element={<ChangePreferencePage />} />
             <Route path="mycocktail" element={<MyCocktailPage />} />
