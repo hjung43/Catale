@@ -76,13 +76,6 @@ public class MemberController {
         return response.success(ResponseCode.EMAIL_VERIFIED_SUCCESS, memberService.checkEmailDuplication(requestDto));
     }
 
-//    @Operation(summary = "닉네임 중복 확인", description = "회원가입 시 닉네임 중복 확인")
-//    @PostMapping("/nickname/verification")
-//    public ResponseEntity<?> nicknameVerification(@Valid @RequestBody NicknameDoubleCheckRequestDto responseDto){
-//
-//        return response.success(ResponseCode.NICKNAME_AVAILABLE, memberService.checkNicknameDuplication(responseDto));
-//    }
-
     @Operation(summary = "취향정보 등록/수정 요청", description = "회원 취향정보 등록/수정 요청")
     @PostMapping("/preference")
     public ResponseEntity<?> postPreference(@Parameter(hidden = true) Authentication authentication,
@@ -142,47 +135,6 @@ public class MemberController {
 
         return response.success(ResponseCode.SIGNUP_LIKED_COCKTAIL_LIST_FETCHED, cocktailService.postCocktailLikeList(authentication, requestDto));
     }
-
-
-
-//    @Operation(summary = "소셜 회원가입", description = "소셜 회원가입")
-//    @PostMapping("/social")
-//    public ResponseEntity<?> signupBySocial(@Valid @RequestBody SignupRequestDto requestDto,
-//                                            BindingResult bindingResult) {
-//        return response.success(ResponseCode.MEMBER_SIGNUP_SUCCESS.getMessage());
-//    }
-//
-//
-//    @Operation(summary = "인증코드 인증 요청", description = "메일로 받은 인증코드를 입력해서 인증 요청")
-//    @PostMapping("/email/verify")
-//    public ResponseEntity<?> emailVerify(@Valid @RequestBody EmailCheckRequestDto requestDto,
-//                                         BindingResult bindingResult,
-//                                         HttpServletResponse servletResponse) {
-//
-//        if (bindingResult.hasErrors()) {
-//            return response.fail(bindingResult);
-//        }
-//
-//        return response.success(ResponseCode.EMAIL_VERIFIED_SUCCESS,
-//                mailService.confirmAuthCode(requestDto.getEmail(), requestDto.getAuthNum(), servletResponse));
-//    }
-//
-//    @Operation(summary = "닉네임 중복 검사", description = "닉네임의 중복 여부를 검사")
-//    @GetMapping("/nickname/{nickname}/exists")
-//    public ResponseEntity<?> nicknameExists(@Nickname @PathVariable String nickname) {
-//        boolean result = memberService.checkNicknameDuplication(nickname);
-//        return response.success(result ? ResponseCode.DUPLICATE_NICKNAME : ResponseCode.NICKNAME_AVAILABLE, result);
-//    }
-//
-//
-//
-//    @Operation(summary = "소셜 로그인", description = "소셜 로그인")
-//    @PostMapping("/login/social")
-//    public ResponseEntity<?> loginBySocial(@RequestBody LoginRequestDto member) {
-//        return new ResponseEntity<>(HttpStatus.OK);
-//    }
-//
-
 
 
 }

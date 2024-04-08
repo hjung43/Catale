@@ -1,10 +1,16 @@
 package com.catale.backend.domain.member.service;
 
+import com.catale.backend.domain.cocktail.dto.MemberDataDto;
+import com.catale.backend.domain.cocktail.dto.PreferenceDto;
+import com.catale.backend.domain.cocktail.dto.RatingDto;
+import com.catale.backend.domain.cocktail.service.RecommendApiService;
 import com.catale.backend.domain.image.entity.Image;
 import com.catale.backend.domain.image.repository.ImageRepository;
 import com.catale.backend.domain.member.dto.*;
 import com.catale.backend.domain.member.entity.Member;
 import com.catale.backend.domain.member.repository.MemberRepository;
+import com.catale.backend.domain.review.entity.Review;
+import com.catale.backend.domain.review.repository.ReviewRepository;
 import com.catale.backend.global.exception.member.*;
 import com.catale.backend.global.jwt.TokenInfo;
 import com.catale.backend.global.jwt.provider.TokenProvider;
@@ -19,6 +25,8 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Log4j2
@@ -34,6 +42,8 @@ public class MemberService {
     private final TokenProvider tokenProvider;
     private final TokenService tokenService;
     private final CookieUtil cookieUtil;
+    private final RecommendApiService recommendApiService;
+    private final ReviewRepository reviewRepository;
 
 
 
@@ -137,7 +147,25 @@ public class MemberService {
     @Transactional
     public Long postPreference(Authentication authentication, PostPreferenceRequestDto requestDto) {
         Member member = findMember(authentication.getName());
+        Long memberId = member.getId();
         member.updatePreference(requestDto.getAlc(), requestDto.getSweet(), requestDto.getSour(), requestDto.getBitter(), requestDto.getSparking());
+
+////      유저가 등록한 취향정보 반영하여 모델 재학습 로직
+//        PreferenceDto preference = new PreferenceDto(memberId.intValue(), requestDto.getAlc(), requestDto.getSweet(), requestDto.getSour(), requestDto.getBitter(), requestDto.getSparking());
+//        List<PreferenceDto> preferenceDtoList = new ArrayList<>();
+//        preferenceDtoList.add(preference);
+////      사용자 리뷰정보가 없을경우 기본 정보 추가
+//        RatingDto defaultRating = new RatingDto(memberId.intValue(), 1, 0);
+//        List<RatingDto> defaultRatingDtoList = new ArrayList<>();
+//        defaultRatingDtoList.add(defaultRating);
+//        List<RatingDto> reviewList = reviewRepository.findAllRatingsByMemberId(memberId).orElse(defaultRatingDtoList);
+//        MemberDataDto memberData = MemberDataDto.builder()
+//                                                .preferences(preferenceDtoList)
+//                                                .ratings(reviewList)
+//                                                .build();
+//        log.info(memberData);
+//        recommendApiService.retrainExistUserPreference(memberData);
+
         return member.getId();
     }
 

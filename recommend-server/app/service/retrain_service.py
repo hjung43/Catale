@@ -7,74 +7,104 @@ import numpy as np
 from lightfm import LightFM
 from lightfm.data import Dataset
 from lightfm.evaluation import precision_at_k, auc_score, recall_at_k, reciprocal_rank
+from common.context.ItemFeatures import ItemFeatures
 
 from models.dto.data_class import Rating, Preference
 from util.modelutil import *
 from util.optimizer import Optimizer
 
+# 기존에 학습시킨 사용자의 새 기호정보를 기반으로 재학습
+import logging
+from typing import List
 
-def fit_partial_user(
-        ratings: List[Rating], preferences: List[Preference], item_features
+def fit_partial_user_preference(
+        ratings: List[Rating],
+        preference: List[Preference],
+        item_features
 ):
     try:
+        # 저장된 dataset, model 불러오기
         dataset = Dataset()
         dataset = load_dataset()
-        logging.info("1")
         model = load_rec_model()
-        logging.info("2")
-        rating_df = make_rating_df(ratings)
         
-        logging.info("3 여기서 문제터짐")
-        logging.info("rating_df")
-        # logging.info(rating_df)
-        logging.info(rating_df.head())
-        logging.info(rating_df.info())
+        logging.info(ratings)
+        logging.info("데이터셋과 모델 로드 완료")
+        
 
-        logging.info("dataset")
-        logging.info(dataset)
+        # 평점 정보 dataframe 생성
+        rating_df = make_rating_df(ratings)
+        logging.info(rating_df)
+        logging.info("평점 정보 dataframe 생성 완료")
 
+        # LightFM 모델에서 사용할 상호작용 데이터 생성
         interactions, weights = make_interactions(rating_df, dataset)
-        # interactions, weights = make_interactions(rating_df)
-        logging.info("4")
-        preference_df = make_user_features_df(preferences)
-        logging.info("5")
-        user_meta, item_meta = make_features(
-            preference_df=preference_df, item_features=item_features, dataset=dataset
-        )
-        logging.info("6")
-        # add error detection logic
+        logging.info("상호작용 데이터 생성 완료")
+
+        # 사용자의 선호도 정보를 dataframe으로 변환
+        preference_df = make_user_features_df(preference)
+        logging.info("사용자 선호도 정보 dataframe 변환 완료")
+
+        # 사용자 및 항목 메타데이터 생성
+        # user_meta, item_meta = make_features(
+        #     preference_df=preference_df, item_features=item_features, dataset=dataset
+        # )
+        user_source = make_source(preference_df)
+        item_source = make_source(item_features.data)
+        logging.info("source")
+       
+        item_meta = dataset.build_item_features(item_source, normalize=False)
+        user_meta = dataset.build_user_features(user_source, normalize=False)
+        logging.info("meta")
+        
+        logging.info("tq")
+        # interactions, weights = dataset.build_interactions(zip(item_features['user_id'], item_features['cocktail_id'], item_features['rating']))
+        interactions, weights = make_interactions(rating_df, dataset)
+        logging.info("사용자 및 항목 메타데이터 생성 완료")
+
+        # 생성된 데이터를 기반으로 모델 재학습
         model.fit_partial(
             interactions=interactions,
             sample_weight=weights,
             user_features=user_meta,
             item_features=item_meta,
-            epochs=3,
+            epochs=1,
             verbose=False,
         )
-        logging.info("7")
+        logging.info("모델 부분 재학습 완료")
+
+        # 중복 제거하여 신규 사용자 정보를 기존 정보에 통합
         rating_df = concat_ratings(rating_df=rating_df)
-        logging.info("8")
-        user_features_df = concat_user_features(user_features_df=preference_df)
-        logging.info("9")
+        # 중복 제거해서 신규 사용자 정보를 기존 정보에 통합하기
+        user_features_df = concat_user_features(user_features_df=preference_df)  
         rating_df.to_csv(settings.RATING_FILE, encoding=settings.ENCODING)
-        logging.info("10")
+        logging.info("사용자 특성 정보 통합 완료")
+
+        # 사용자 특성 정보 저장
         user_features_df.to_csv(settings.USER_FEATURES_FILE, encoding=settings.ENCODING)
-        logging.info("train_rating.csv and user_features is updated")
+        logging.info("사용자 특성 정보 저장 완료")
+
+        # 새로 학습한 모델 업데이트
         update_model(model, settings.MODEL_PATH + settings.MODEL_NAME)
+        logging.info("모델 업데이트 완료(마지막)")
+
     except Exception as e:
-        logging.error("기존 사용자 모델 재학습 오류 : {}".format(e.args[0]))
+        logging.error(f"기존 사용자 모델 재학습 오류: {e}", exc_info=True)
+
+    
 
 
+# 이전에 학습시키지 않았던 사용자를 반영한 재학습
 def refitting(
         time, ratings: List[Rating], preferences: List[Preference], item_features
 ):
     new_rating_df = make_rating_df(ratings=ratings)
     new_user_features_fd = make_user_features_df(preferences)
     rating_df = concat_ratings(new_rating_df)
-    user_features = concat_user_features(new_user_features_fd)
+    user_features = concat_user_features(user_features_df=new_user_features_fd)
 
     cols = user_features.columns.tolist()[1:]
-    item_features = item_features[["cocktail_id"] + cols]
+    # item_features = item_features[["cocktail_id"] + cols]
 
     dataset = dataset_fit(
         users=np.arange(user_features.user_id.max() + 1),
@@ -90,13 +120,13 @@ def refitting(
     )
     test_interactions, _ = make_interactions(rating_df=test_data, dataset=dataset)
 
-    # Hyper Parameter Search
-    optimizer = Optimizer(
-        interactions, weights, test_interactions, user_meta, item_meta
-    )
-    hyper_params = optimizer.train(15)
+    # # Hyper Parameter Search
+    # optimizer = Optimizer(
+    #     interactions, weights, test_interactions, user_meta, item_meta
+    # )
+    # hyper_params = optimizer.train(15)
 
-    logging.info("Hyper Params Optimization - {}".format(hyper_params))
+    # logging.info("Hyper Params Optimization - {}".format(hyper_params))
 
     model = LightFM(
         no_components=hyper_params["no_components"],
@@ -112,7 +142,7 @@ def refitting(
         sample_weight=weights,
         item_features=item_meta,
         user_features=user_meta,
-        epochs=5,
+        epochs=1,
         verbose=True,
     )
 
@@ -124,17 +154,17 @@ def refitting(
     update_dataset(dataset, settings.DATASET_PATH + settings.DATASET_NAME)
     rating_df.to_csv(settings.RATING_FILE, encoding=settings.ENCODING)
     user_features.to_csv(settings.USER_FEATURES_FILE, encoding=settings.ENCODING)
-    logging.info("모델, 데이터셋 백업")
-    logging.info(
-        "dataset path : {} model path : {}".format(
-            create_backup_path("dataset", "pkl", time),
-            create_backup_path("model", "pkl", time),
-        )
-    )
-    with open(create_backup_path("dataset", "pkl", time), "wb") as f:
-        pickle.dump(dataset, f)
-    with open(create_backup_path("model", "pkl", time), "wb") as f:
-        pickle.dump(model, f)
+    # logging.info("모델, 데이터셋 백업")
+    # logging.info(
+    #     "dataset path : {} model path : {}".format(
+    #         create_backup_path("dataset", "pkl", time),
+    #         create_backup_path("model", "pkl", time),
+    #     )
+    # )
+    # with open(create_backup_path("dataset", "pkl", time), "wb") as f:
+    #     pickle.dump(dataset, f)
+    # with open(create_backup_path("model", "pkl", time), "wb") as f:
+    #     pickle.dump(model, f)
     logging.info(
         "---------------------------------------[저장 성공]---------------------------------------"
     )
@@ -151,9 +181,51 @@ def refitting(
             precision, recall, auc, mrr
         )
     )
+    logging.info("refitting 끝")
 
     return precision, recall, auc, mrr
 
+# def fit_partial_user(
+#         ratings: List[Rating], preferences: List[Preference], item_features
+# ):
+#     try:
+#         # 저장된 dataset, model 불러오기
+#         dataset = Dataset()
+#         dataset = load_dataset()
+#         model = load_rec_model()
+       
+#         # 평점 정보 dataframe 생성 
+#         rating_df = make_rating_df(ratings)
+#         # LightFM 모델에서 사용할 상호작용 데이터를 생성
+#         interactions, weights = make_interactions(rating_df, dataset)
+#         # 사용자의 선호도 정보를 dataframe으로 변환
+#         preference_df = make_user_features_df(preferences)
+       
+#         user_meta, item_meta = make_features(
+#             preference_df=preference_df, item_features=item_features, dataset=dataset
+#         )
+       
+#         # 생성된 데이터를 기반으로 모델 재학습 
+#         model.fit_partial(
+#             interactions=interactions,
+#             sample_weight=weights,
+#             user_features=user_meta,
+#             item_features=item_meta,
+#             epochs=3,
+#             verbose=False,
+#         )
+      
+#         rating_df = concat_ratings(rating_df=rating_df)
+
+#         # 중복 제거해서 신규 사용자 정보를 기존 정보에 통합하기
+#         user_features_df = concat_user_features(user_features_df=preference_df)  
+#         rating_df.to_csv(settings.RATING_FILE, encoding=settings.ENCODING)
+#         user_features_df.to_csv(settings.USER_FEATURES_FILE, encoding=settings.ENCODING)
+#         # 새로 학습한 모델 업데이트 
+#         update_model(model, settings.MODEL_PATH + settings.MODEL_NAME)
+
+#     except Exception as e:
+#         logging.error("기존 사용자 모델 재학습 오류 : {}".format(e.args[0]))
 
 def dataset_fit(users, items, cols):
     dataset = Dataset()
