@@ -3,21 +3,20 @@ package com.catale.backend.domain.cocktail.dto;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 @Getter
 @Setter
 @ToString
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class PreferenceDto {
 
     /* 각 member들의 선호도 data */
 
     @NotNull
-    private Long memberId;
+    private int memberId;
 
     @NotNull
     @Min(0)

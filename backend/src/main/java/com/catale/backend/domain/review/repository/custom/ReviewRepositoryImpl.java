@@ -1,5 +1,6 @@
 package com.catale.backend.domain.review.repository.custom;
 
+import com.catale.backend.domain.cocktail.dto.RatingDto;
 import com.catale.backend.domain.review.dto.ReviewGetResponseDto;
 import com.catale.backend.domain.review.dto.ReviewListResponseDto;
 import com.querydsl.core.types.Projections;
@@ -36,6 +37,15 @@ public class ReviewRepositoryImpl implements ReviewRepositoryCustom{
                         .and(review.member.id.eq(memberId))
                         .and(review.isDeleted.eq(false)))
                 .orderBy(review.createdAt.desc())
+                .fetch());
+    }
+
+    @Override
+    public Optional<List<RatingDto>> findAllRatingsByMemberId(Long memberId) {
+        return Optional.ofNullable(query.select(Projections.constructor(RatingDto.class, review.member.id.intValue(), review.cocktail.id.intValue(), review.rate))
+                .from(review)
+                .where(review.member.id.eq(memberId)
+                        .and(review.isDeleted.eq(false)))
                 .fetch());
     }
 
