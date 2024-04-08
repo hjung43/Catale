@@ -17,7 +17,7 @@ def load_dataset():
     return pickle.load(open(settings.DATASET_PATH + settings.DATASET_NAME, "rb"))
 
 
-# 사용자의 평점 데이터를 입력으로 받아, pandas 데이터프레임을 생성
+# 사용자의 새 평점 데이터를 입력으로 받아, pandas 데이터프레임을 생성
 def make_rating_df(ratings):
     return pd.DataFrame(
         [
@@ -47,11 +47,12 @@ def make_source(data):
 # 사용자-아이템 상호작용 데이터를 입력으로 받아, LightFM 모델에서 사용할 상호작용 데이터를 생성
 def make_interactions(rating_df, dataset):
     dataset = Dataset()
+    dataset = load_dataset()
 
     rating_source = list(
         zip(rating_df["user_id"], rating_df["cocktail_id"], rating_df["rating"])
     )
-    logging.info("modelutil_rating_source")
+    # logging.info("modelutil_rating_source")
     logging.info("rating_source")
     logging.info(rating_source)
     return dataset.build_interactions(rating_source)
@@ -73,11 +74,14 @@ def make_features(preference_df, item_features, dataset):
     # item_features = item_features[
     #     "cocktail_id" + item_features.columns.tolist()[3:]
     #     ]
-    item_features = item_features[['cocktail_id'] + item_features.columns.tolist()[3:]]
+    # item_features = item_features[['cocktail_id'] + item_features.columns.tolist()[3:]]
     logging.info("modelutil 69줄")
     logging.info(item_features)
+
+    # LightFM 모델의 사용자 또는 아이템 특성을 생성하는 데 사용할 수 있는 소스 데이터를 생성
     item_source = make_source(item_features)
     item_meta = dataset.build_item_features(item_source, normalize=False)
+
     return preference_meta, item_meta
 
 
@@ -95,16 +99,37 @@ def concat_ratings(rating_df):
         subset=["user_id", "cocktail_id"], keep="last", inplace=True)
     return ratings
 
-
+#  새로운 사용자 데이터를 기존 데이터에 통합, 기존 사용자 정보는 삭제하고 중복 제거
 def concat_user_features(user_features_df):
+    # 기존 사용자 특성 데이터 불러오기, user_id를 인덱스로 설정
     user_features = pd.read_csv(
-        settings.USER_FEATURES_FILE, index_col=0, encoding=settings.ENCODING
+        settings.USER_FEATURES_FILE, encoding=settings.ENCODING
     )
-    user_features = pd.concat(
-        [user_features, user_features_df], ignore_index=True)
-    user_features.drop_duplicates(
-        subset=["user_id"], keep="last", inplace=True)
+    
+    # user_id를 인덱스로 설정
+    user_features.set_index('user_id', inplace=True)
+    
+    # 새로운 데이터 처리
+    for index, row in user_features_df.iterrows():
+        user_id = row.get('user_id')
+        if user_id in user_features.index:
+            # user_id가 존재하면 해당 위치에 데이터 업데이트
+            user_features.loc[user_id] = row
+        else:
+            # user_id가 존재하지 않으면 해당 user_id 위치에 삽입
+            user_features = user_features.append(row.rename({'user_id': user_id}))
+
+     # 'Unnamed: 0' 컬럼이 존재하는지 확인하고, 존재한다면 제거
+    if 'Unnamed: 0' in user_features.columns:
+        user_features.drop(columns=['Unnamed: 0'], inplace=True)
+
+    # 인덱스 리셋 및 1부터 시작하도록 조정하지 않고, user_id를 인덱스로 유지
+    # 변경된 데이터프레임을 CSV 파일로 저장, 인덱스 포함
+    user_features.reset_index(inplace=True)
+    user_features.to_csv(settings.USER_FEATURES_FILE, encoding=settings.ENCODING, index=False)
+
     return user_features
+
 
 # 변경된 모델/데이터셋을 파일 시스템에 업데이트
 def update_model(model, path):

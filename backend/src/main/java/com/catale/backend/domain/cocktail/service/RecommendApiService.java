@@ -1,13 +1,14 @@
 package com.catale.backend.domain.cocktail.service;
 
-import com.catale.backend.domain.cocktail.dto.CocktailListResponseDto;
+import com.catale.backend.domain.cocktail.dto.*;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.catale.backend.domain.cocktail.dto.GetMemberRecommendDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.HttpClientErrorException;
@@ -38,7 +39,7 @@ public class RecommendApiService {
       }
 
 
-      /* memberId 1~10 */
+      /* 기존에 학습된 사용자 맞춤 추천 칵테일 결과 반환 */
       public List<Long> getPersonalRecommendResponse(int memberId) {
             return webClient.get()
                     .uri("/personal/{user_id}", memberId)
@@ -47,7 +48,21 @@ public class RecommendApiService {
                     .toStream().collect(Collectors.toList());
       }
 
-      /* 1~10 이외 */
+      /* 사용자의 새로운 취향정보 반영 retraining */
+      public void retrainExistUserPreference(MemberDataDto memberData) {
+            webClient.post()
+                    .uri("/retrain/exist")
+                    .accept(MediaType.APPLICATION_JSON)
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .bodyValue(memberData)
+                    .retrieve()
+                    .bodyToMono(Void.class)
+                    .block();
+
+      }
+
+
+//      /* 1~102 이외 */
       public List<Long> getUserRecommendResponse(int[] preference) {
             return webClient.post()
                     .uri("/personal")
@@ -58,15 +73,4 @@ public class RecommendApiService {
                     .bodyToFlux(Long.class)
                     .toStream().collect(Collectors.toList());
       }
-
-//      private List<Long> recWebClientCall(PersonalWhiskyCallDto personalWhiskyCallDto) throws HttpClientErrorException.UnprocessableEntity, HttpServerErrorException.InternalServerError {
-//            return webClient.post()
-//                    .uri("/rec/personal-whisky")
-//                    .contentType(MediaType.APPLICATION_JSON)
-//                    .accept(MediaType.APPLICATION_JSON)
-//                    .bodyValue(personalWhiskyCallDto)
-//                    .retrieve()
-//                    .bodyToFlux(Long.class)
-//                    .toStream().collect(Collectors.toList());
-//      }
 }
