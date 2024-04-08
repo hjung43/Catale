@@ -1,7 +1,11 @@
 package com.catale.backend.domain.review.service;
 
+import com.catale.backend.domain.cocktail.dto.MemberDataDto;
+import com.catale.backend.domain.cocktail.dto.PreferenceDto;
+import com.catale.backend.domain.cocktail.dto.RatingDto;
 import com.catale.backend.domain.cocktail.entity.Cocktail;
 import com.catale.backend.domain.cocktail.repository.CocktailRepository;
+import com.catale.backend.domain.cocktail.service.RecommendApiService;
 import com.catale.backend.domain.member.entity.Member;
 import com.catale.backend.domain.member.repository.MemberRepository;
 import com.catale.backend.domain.member.service.MemberService;
@@ -14,6 +18,7 @@ import com.catale.backend.global.exception.member.MemberNotFoundException;
 import com.catale.backend.global.exception.review.ReviewListNotFoundException;
 import com.catale.backend.global.exception.review.ReviewNotFoundException;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
@@ -23,7 +28,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-
+@Log4j2
 @Service
 @RequiredArgsConstructor
 public class ReviewService {
@@ -32,6 +37,7 @@ public class ReviewService {
     private final ReviewRepository reviewRepository;
     private final CocktailRepository cocktailRepository;
     private final MemberRepository memberRepository;
+    private final RecommendApiService recommendApiService;
 
     @Transactional
     public List<ReviewListResponseDto> getReviews(Long cocktailId, Pageable page){
@@ -57,6 +63,23 @@ public class ReviewService {
                 .sparking(dto.getSparking())
                 .build();
         Review r = reviewRepository.save(review);
+
+////      유저가 등록한 취향정보 반영하여 모델 재학습 로직
+//        PreferenceDto preference = new PreferenceDto(memberId.intValue(), requestDto.getAlc(), requestDto.getSweet(), requestDto.getSour(), requestDto.getBitter(), requestDto.getSparking());
+//        List<PreferenceDto> preferenceDtoList = new ArrayList<>();
+//        preferenceDtoList.add(preference);
+////      사용자 리뷰정보가 없을경우 기본 정보 추가
+//        RatingDto defaultRating = new RatingDto(memberId.intValue(), 1, 0);
+//        List<RatingDto> defaultRatingDtoList = new ArrayList<>();
+//        defaultRatingDtoList.add(defaultRating);
+//        List<RatingDto> reviewList = reviewRepository.findAllRatingsByMemberId(memberId).orElse(defaultRatingDtoList);
+//        MemberDataDto memberData = MemberDataDto.builder()
+//                .preferences(preferenceDtoList)
+//                .ratings(reviewList)
+//                .build();
+//        log.info(memberData);
+//        recommendApiService.retrainExistUserPreference(memberData);
+
         return r.getId();
     }
 

@@ -205,10 +205,10 @@ public class CocktailService {
         preference[3] = bitter;
         preference[4] = sparking;
 
-        /* 사용자 아이디 1~10 / 그외 임시로 구별해서 요청 */
+        /* 사용자 아이디 1~102 / 그외 임시로 구별해서 요청 */
 
-        //1~10인경우
-        if(memberId >= 1 && memberId <= 10){
+        //1~108 (최대 학습 사용자)
+        if(memberId >= 1 && memberId <= 102){
             return apiService.getPersonalRecommendResponse(memberId.intValue()).stream()
                     .map(id -> {
                         Cocktail cocktail = cocktailRepository.findById(id)
