@@ -746,7 +746,7 @@ useUserStore.jsx`
 
 ### 회원가입
 
- <img src="/uploads/b41aa2ffe5288a11e04228baec89fb39/회원가입.gif  width="200" height="400"/>
+ <img src="http://uploads/b41aa2ffe5288a11e04228baec89fb39/회원가입.gif  width="200" height="400"/>
 - 이메일 중복 확인 : 이메일이 이미 사용중인 이메일인지 확인
 - 비밀번호 유효성 검사 : 영문 소문자, 숫자 각 1개 이상 조합하여 5-20자
 - 닉네임 유효성 검사 : 영문자,한글, 숫자 및 언더바를 포함할 수 있으며 3-10자
