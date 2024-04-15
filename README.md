@@ -61,10 +61,6 @@ Mybrary는 사용자들이 더욱 만족할 수 있는 SNS 경험을 제공하�
 
 ## ✅ 멤버소개
 
-![팀원소개](etc/팀원소개.PNG)
-
-<!--
-
 ## ✅ 기술스택
 
 **Environment**  
@@ -89,6 +85,11 @@ Mybrary는 사용자들이 더욱 만족할 수 있는 SNS 경험을 제공하�
 ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
 ![Notion](https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=Notion&logoColor=white)
 ![Mattermost](https://img.shields.io/badge/-Mattermost-blue?style=for-the-badge&logo=mattermost&logoColor=white)
+
+
+![팀원소개](etc/팀원소개.PNG)
+
+<!--
 
 
 <table>
