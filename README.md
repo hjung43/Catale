@@ -744,10 +744,8 @@ useUserStore.jsx`
 
 ### 01. 회원가입, 로그인 🧑👩
 
-![/s10-bigdata-recom-sub2/S10P22B306/-/blob/main/etc/01.%ED%9A%8C%EC%9B%90%EA%B0%80%EC%9E%85_%EB%A1%9C%EA%B7%B8%EC%9D%B8.gif](/s10-bigdata-recom-sub2/S10P22B306/-/blob/main/etc/01.%ED%9A%8C%EC%9B%90%EA%B0%80%EC%9E%85_%EB%A1%9C%EA%B7%B8%EC%9D%B8.gif)
-
 ### 회원가입
-
+![회원가입](/uploads/b41aa2ffe5288a11e04228baec89fb39/회원가입.gif)
 - 이메일 중복 확인 : 이메일이 이미 사용중인 이메일인지 확인
 - 비밀번호 유효성 검사 : 영문 소문자, 숫자 각 1개 이상 조합하여 5-20자
 - 닉네임 유효성 검사 : 영문자,한글, 숫자 및 언더바를 포함할 수 있으며 3-10자
