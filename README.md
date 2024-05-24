@@ -3,7 +3,7 @@
 
 <h1> 캣테일 : 칵테일에 이야기 한방울</h1>
 
-![logo](assets/mainlogo.jpg)
+![logo](assets/maincat.gif)
 
 <h4> 나의 기분과 취향에 맞는 오늘의 칵테일 추천 서비스 </h4>
 </div>
