@@ -847,22 +847,10 @@ Catale을 더욱 개선된 서비스로 발전시키기 위해 세 가지 확장
 ## ✅ 멤버 소개 및 프로젝트 후기
 | 고은석 | 최준호 | 서만기 |
 | --- | --- | --- |
-| ![eun](./assets/eun.jpg) | ![jun](./assets/jun.jpg) | ![gi](./assets/gi.jpg) |
-| - k8s를 이용한 인프라 구축
-- CI/CD 파이프라인 설계
-- 실시간 모니터링 시스템 구축 | - 대화 알고리즘 
-- UI/UX 디자인 개발
-- API 연결 | - 프로젝트 디자인
-- asset 일러스트 작업
-- API 연결 |
+| <img src="./assets/eun.jpg" width="200"/> | <img src="./assets/jun.jpg" width="200"/> | <img src="./assets/gi.jpg" width="200"/> |
+| - k8s를 이용한 인프라 구축<br>- CI/CD 파이프라인 설계<br>- 실시간 모니터링 시스템 구축 | - 대화 알고리즘 <br>- UI/UX 디자인 개발<br>- API 연결 | - 프로젝트 디자인<br>- asset 일러스트 작업<br>- API 연결 |
 
 | 최소영 | 심규리 | 유호정 |
 | --- | --- | --- |
-| ![young](./assets/ypung.jpg) | ![ri](./assets/ri.jpg) | ![ho](./assets/ho.PNG) |
-| - Light FM 사용 추천 알고리즘 구현
-- 회원 API 구현 및 보안 설계
-- Fast API 파이썬 서버 설계 | - API 명세서, ERD 작성
-- 다이어리, 스토어, 메뉴, 리뷰 API 구현
-- 전체 API 기능 테스트 및 버그 수정 | - 기능 명세서, ERD 작성
-- 칵테일, 이미지, 좋아요 API 구현
-- amazon S3 파일 업로드 구현 |
+| <img src="./assets/young.jpg" width="200"/> | <img src="./assets/ri.jpg" width="200"/> | <img src="./assets/ho.PNG" width="200"/> |
+| - Light FM 사용 추천 알고리즘 구현<br>- 회원 API 구현 및 보안 설계<br>- Fast API 파이썬 서버 설계 | - API 명세서, ERD 작성<br>- 다이어리, 스토어, 메뉴, 리뷰 API 구현<br>- 전체 API 기능 테스트 및 버그 수정 | - 기능 명세서, ERD 작성<br>- 칵테일, 이미지, 좋아요 API 구현<br>- amazon S3 파일 업로드 구현 |
