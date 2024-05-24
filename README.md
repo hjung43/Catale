@@ -302,269 +302,269 @@ Catale을 더욱 개선된 서비스로 발전시키기 위해 세 가지 확장
 <summary>Frontend</summary>
 <div>
 
-📦src
- ┣ 📂api
- ┃ ┣ 📂common
- ┃ ┃ ┗ 📜Token.jsx
- ┃ ┣ 📜Cocktail.jsx
- ┃ ┣ 📜Diary.jsx
- ┃ ┣ 📜Image.jsx
- ┃ ┣ 📜Member.jsx
- ┃ ┣ 📜Review.jsx
- ┃ ┗ 📜Store.jsx
- ┣ 📂assets
- ┃ ┣ 📂bartender
- ┃ ┃ ┣ 📜cocktail.png
- ┃ ┃ ┣ 📜emo1.png
- ┃ ┃ ┣ 📜emo2.png
- ┃ ┃ ┣ 📜emo3.png
- ┃ ┃ ┣ 📜emo4.png
- ┃ ┃ ┣ 📜emo5.png
- ┃ ┃ ┣ 📜emobox.png
- ┃ ┃ ┣ 📜고양이말풍선.png
- ┃ ┃ ┣ 📜꼬질냥.gif
- ┃ ┃ ┣ 📜연필.png
- ┃ ┃ ┣ 📜오늘의칵테일1.png
- ┃ ┃ ┣ 📜유저말풍선.png
- ┃ ┃ ┣ 📜자산8.png
- ┃ ┃ ┣ 📜종이비행기.png
- ┃ ┃ ┗ 📜파란말풍선.png
- ┃ ┣ 📂common
- ┃ ┃ ┣ 📜arrow1.png
- ┃ ┃ ┣ 📜arrow2.png
- ┃ ┃ ┣ 📜arrow3.png
- ┃ ┃ ┣ 📜arrow4.png
- ┃ ┃ ┣ 📜arrow5.png
- ┃ ┃ ┣ 📜card.png
- ┃ ┃ ┣ 📜check.png
- ┃ ┃ ┣ 📜close.png
- ┃ ┃ ┣ 📜diary.png
- ┃ ┃ ┣ 📜edit.png
- ┃ ┃ ┣ 📜like.png
- ┃ ┃ ┣ 📜logout.png
- ┃ ┃ ┣ 📜minus1.png
- ┃ ┃ ┣ 📜minus2.png
- ┃ ┃ ┣ 📜noneLike.png
- ┃ ┃ ┣ 📜noneStar.png
- ┃ ┃ ┣ 📜pentagon.png
- ┃ ┃ ┣ 📜plus1.png
- ┃ ┃ ┣ 📜plus2.png
- ┃ ┃ ┣ 📜profile.png
- ┃ ┃ ┣ 📜review.png
- ┃ ┃ ┣ 📜setting.png
- ┃ ┃ ┣ 📜star.png
- ┃ ┃ ┣ 📜store1.png
- ┃ ┃ ┣ 📜store2.png
- ┃ ┃ ┣ 📜store3.png
- ┃ ┃ ┣ 📜store4.png
- ┃ ┃ ┣ 📜store5.png
- ┃ ┃ ┣ 📜trash.png
- ┃ ┃ ┗ 📜웰컴.png
- ┃ ┣ 📂glass
- ┃ ┃ ┣ 📜glass1.png
- ┃ ┃ ┣ 📜glass2.png
- ┃ ┃ ┣ 📜glass3.png
- ┃ ┃ ┣ 📜glass4.png
- ┃ ┃ ┣ 📜glass5.png
- ┃ ┃ ┣ 📜glass6.png
- ┃ ┃ ┗ 📜glass7.png
- ┃ ┣ 📂guide
- ┃ ┃ ┣ 📜가이드1.jpg
- ┃ ┃ ┣ 📜가이드2.jpg
- ┃ ┃ ┣ 📜가이드3.jpg
- ┃ ┃ ┣ 📜가이드4.jpg
- ┃ ┃ ┣ 📜가이드5.jpg
- ┃ ┃ ┣ 📜가이드6.jpg
- ┃ ┃ ┗ 📜가이드7.jpg
- ┃ ┣ 📂icon
- ┃ ┃ ┣ 📜calA.png
- ┃ ┃ ┣ 📜calB.png
- ┃ ┃ ┣ 📜Clickno.png
- ┃ ┃ ┣ 📜Clickyes.png
- ┃ ┃ ┣ 📜homeA.png
- ┃ ┃ ┣ 📜homeB.png
- ┃ ┃ ┣ 📜IconInsta.png
- ┃ ┃ ┣ 📜IconMap.png
- ┃ ┃ ┣ 📜IconTel.png
- ┃ ┃ ┣ 📜IconTime.png
- ┃ ┃ ┣ 📜mapA.png
- ┃ ┃ ┣ 📜mapB.png
- ┃ ┃ ┣ 📜searchA.png
- ┃ ┃ ┣ 📜searchB.png
- ┃ ┃ ┣ 📜userA.png
- ┃ ┃ ┣ 📜userB.png
- ┃ ┃ ┣ 📜검색돋보기.png
- ┃ ┃ ┣ 📜동색.png
- ┃ ┃ ┣ 📜왕관.png
- ┃ ┃ ┣ 📜은색.png
- ┃ ┃ ┣ 📜이퀄라이저.png
- ┃ ┃ ┗ 📜체크이미지.png
- ┃ ┣ 📂lottie
- ┃ ┃ ┣ 📜Cocktail1.json
- ┃ ┃ ┗ 📜Cocktail2.json
- ┃ ┗ 📂store
- ┃ ┃ ┣ 📜럭키바.jpg
- ┃ ┃ ┣ 📜리케리케라운지.jpg
- ┃ ┃ ┗ 📜사막의하얀꽃.jpg
- ┣ 📂components
- ┃ ┣ 📂common
- ┃ ┃ ┣ 📜Box.jsx
- ┃ ┃ ┣ 📜Box.module.css
- ┃ ┃ ┣ 📜Container.jsx
- ┃ ┃ ┣ 📜Container.module.css
- ┃ ┃ ┣ 📜ContainerMain.jsx
- ┃ ┃ ┣ 📜ContainerMain.module.css
- ┃ ┃ ┣ 📜FileInput.css
- ┃ ┃ ┣ 📜FileInput.jsx
- ┃ ┃ ┣ 📜Header.jsx
- ┃ ┃ ┣ 📜Header.module.css
- ┃ ┃ ┣ 📜HeaderResult.jsx
- ┃ ┃ ┣ 📜Headerwb.jsx
- ┃ ┃ ┣ 📜Headerwb.module.css
- ┃ ┃ ┣ 📜Nav.jsx
- ┃ ┃ ┣ 📜Nav.module.css
- ┃ ┃ ┣ 📜Popup.jsx
- ┃ ┃ ┣ 📜Popup.module.css
- ┃ ┃ ┗ 📜ScrollToTop.jsx
- ┃ ┣ 📂data
- ┃ ┃ ┣ 📜base.jsx
- ┃ ┃ ┗ 📜searchtalk.jsx
- ┃ ┣ 📂diary
- ┃ ┃ ┣ 📜CocktailDetail.jsx
- ┃ ┃ ┗ 📜CocktailDetail.module.css
- ┃ ┣ 📂main
- ┃ ┃ ┣ 📜Cattalk11.jsx
- ┃ ┃ ┣ 📜Cattalk20.jsx
- ┃ ┃ ┣ 📜Cattalkbox.jsx
- ┃ ┃ ┣ 📜Cattalkbox.module.css
- ┃ ┃ ┣ 📜CocktailBox.jsx
- ┃ ┃ ┣ 📜CocktailBox.module.css
- ┃ ┃ ┣ 📜CocktailBox2.jsx
- ┃ ┃ ┣ 📜CocktailBox3.jsx
- ┃ ┃ ┣ 📜CocktailBox3.module.css
- ┃ ┃ ┣ 📜CocktailBoxBig.jsx
- ┃ ┃ ┣ 📜CocktailBoxBig.module.css
- ┃ ┃ ┣ 📜Cocktailsearchbox.jsx
- ┃ ┃ ┣ 📜Todaycocktail.jsx
- ┃ ┃ ┣ 📜Todaycocktail.module.css
- ┃ ┃ ┣ 📜Usercomment.jsx
- ┃ ┃ ┣ 📜Usercomment.module.css
- ┃ ┃ ┣ 📜Useremothree.jsx
- ┃ ┃ ┣ 📜Useremothree.module.css
- ┃ ┃ ┣ 📜Userreasonbox.jsx
- ┃ ┃ ┣ 📜Userreasonbox.module.css
- ┃ ┃ ┣ 📜Userselctbox.jsx
- ┃ ┃ ┣ 📜Userselctbox.module.css
- ┃ ┃ ┣ 📜Usertalkbox.jsx
- ┃ ┃ ┣ 📜Usertalkbox.module.css
- ┃ ┃ ┣ 📜Usertodayemo.jsx
- ┃ ┃ ┗ 📜Usertodayemo.module.css
- ┃ ┣ 📂map
- ┃ ┃ ┣ 📂data
- ┃ ┃ ┃ ┗ 📜markerData.jsx
- ┃ ┃ ┣ 📜map.jsx
- ┃ ┃ ┣ 📜map.module.css
- ┃ ┃ ┣ 📜Storebos.module.css
- ┃ ┃ ┣ 📜Storebox.jsx
- ┃ ┃ ┣ 📜StoreInfo.jsx
- ┃ ┃ ┣ 📜StoreInfo.module.css
- ┃ ┃ ┣ 📜Storemenu.jsx
- ┃ ┃ ┣ 📜Storemenu.module.css
- ┃ ┃ ┣ 📜Storepicture.jsx
- ┃ ┃ ┗ 📜Storepicture.module.css
- ┃ ┣ 📂my
- ┃ ┃ ┣ 📜MyFeel.jsx
- ┃ ┃ ┣ 📜MyFeel.module.css
- ┃ ┃ ┣ 📜ReviewItem.jsx
- ┃ ┃ ┗ 📜ReviewItem.module.css
- ┃ ┣ 📂review
- ┃ ┃ ┣ 📜Review.jsx
- ┃ ┃ ┗ 📜Review.module.css
- ┃ ┗ 📂search
- ┃ ┃ ┣ 📜Medallist.jsx
- ┃ ┃ ┣ 📜Medallist.module.css
- ┃ ┃ ┣ 📜Nonmedallist.jsx
- ┃ ┃ ┣ 📜Nonmedallist.module.css
- ┃ ┃ ┣ 📜Searchbase.jsx
- ┃ ┃ ┣ 📜Searchbase.module.css
- ┃ ┃ ┣ 📜Searchoption.jsx
- ┃ ┃ ┗ 📜Searchoption.module.css
- ┣ 📂pages
- ┃ ┣ 📂cocktailpage
- ┃ ┃ ┣ 📜CocktailDetailPage.jsx
- ┃ ┃ ┣ 📜CocktailDetailPage.module.css
- ┃ ┃ ┣ 📜CocktailReviewPage.jsx
- ┃ ┃ ┗ 📜CocktailReviewPage.module.css
- ┃ ┣ 📂commonpage
- ┃ ┃ ┣ 📜ErrorPage.jsx
- ┃ ┃ ┗ 📜ErrorPage.module.css
- ┃ ┣ 📂diarypage
- ┃ ┃ ┣ 📜DatePage.jsx
- ┃ ┃ ┣ 📜DatePage.module.css
- ┃ ┃ ┣ 📜DiaryPage.jsx
- ┃ ┃ ┗ 📜DiaryPage.module.css
- ┃ ┣ 📂mainpage
- ┃ ┃ ┣ 📂Emodata
- ┃ ┃ ┃ ┣ 📜Emocolor.jsx
- ┃ ┃ ┃ ┣ 📜Emotionthree.jsx
- ┃ ┃ ┃ ┗ 📜Reasonone.jsx
- ┃ ┃ ┣ 📂Talkdata
- ┃ ┃ ┃ ┣ 📜Cattalk.jsx
- ┃ ┃ ┃ ┣ 📜Selecttalk.jsx
- ┃ ┃ ┃ ┣ 📜Talkarr.jsx
- ┃ ┃ ┃ ┗ 📜Usertalk.jsx
- ┃ ┃ ┣ 📜MainPage.jsx
- ┃ ┃ ┣ 📜MainPage.module.css
- ┃ ┃ ┣ 📜ResultPage.jsx
- ┃ ┃ ┗ 📜ResultPage.module.css
- ┃ ┣ 📂mappage
- ┃ ┃ ┣ 📜MapPage.jsx
- ┃ ┃ ┣ 📜MapPage.module.css
- ┃ ┃ ┣ 📜StoreDetailPage.jsx
- ┃ ┃ ┗ 📜StoreDetailPage.module.css
- ┃ ┣ 📂mypage
- ┃ ┃ ┣ 📜ChangePreferencePage.jsx
- ┃ ┃ ┣ 📜ChangePreferencePage.module.css
- ┃ ┃ ┣ 📜LikedCocktailPage.jsx
- ┃ ┃ ┣ 📜LikedCocktailPage.module.css
- ┃ ┃ ┣ 📜MonthlyMoodPage.jsx
- ┃ ┃ ┣ 📜MonthlyMoodPage.module.css
- ┃ ┃ ┣ 📜MyCocktailPage.jsx
- ┃ ┃ ┣ 📜MyCocktailPage.module.css
- ┃ ┃ ┣ 📜MyPage.jsx
- ┃ ┃ ┣ 📜MyPage.module.css
- ┃ ┃ ┣ 📜RecommendPage.jsx
- ┃ ┃ ┗ 📜RecommendPage.module.css
- ┃ ┣ 📂settingpage
- ┃ ┃ ┣ 📜DeleteAccountPage.jsx
- ┃ ┃ ┣ 📜DeleteAccountPage.module.css
- ┃ ┃ ┣ 📜SettingsPage.jsx
- ┃ ┃ ┗ 📜SettingsPage.module.css
- ┃ ┣ 📜Choosecocktail.jsx
- ┃ ┣ 📜Choosecocktail.module.css
- ┃ ┣ 📜GuidePage.jsx
- ┃ ┣ 📜GuidePage.module.css
- ┃ ┣ 📜PreferencePage.jsx
- ┃ ┣ 📜PreferencePage.module.css
- ┃ ┣ 📜SearchPage.jsx
- ┃ ┣ 📜SearchPage.module.css
- ┃ ┣ 📜SignInPage.jsx
- ┃ ┣ 📜SignInPage.module.css
- ┃ ┣ 📜SignUpPage.jsx
- ┃ ┣ 📜SignUpPage.module.css
- ┃ ┣ 📜WelcomePage.jsx
- ┃ ┗ 📜WelcomePage.module.css
- ┣ 📂store
- ┃ ┣ 📜useCocktailStore.jsx
- ┃ ┣ 📜useSearchStore.jsx
- ┃ ┗ 📜useUserStore.jsx
- ┣ 📜App.css
- ┣ 📜App.jsx
- ┣ 📜index.css
- ┣ 📜index.jsx
- ┣ 📜Main.jsx
- ┣ 📜service-worker.js
- ┗ 📜serviceWorkerRegistration.js
+    📦src
+    ┣ 📂api
+    ┃ ┣ 📂common
+    ┃ ┃ ┗ 📜Token.jsx
+    ┃ ┣ 📜Cocktail.jsx
+    ┃ ┣ 📜Diary.jsx
+    ┃ ┣ 📜Image.jsx
+    ┃ ┣ 📜Member.jsx
+    ┃ ┣ 📜Review.jsx
+    ┃ ┗ 📜Store.jsx
+    ┣ 📂assets
+    ┃ ┣ 📂bartender
+    ┃ ┃ ┣ 📜cocktail.png
+    ┃ ┃ ┣ 📜emo1.png
+    ┃ ┃ ┣ 📜emo2.png
+    ┃ ┃ ┣ 📜emo3.png
+    ┃ ┃ ┣ 📜emo4.png
+    ┃ ┃ ┣ 📜emo5.png
+    ┃ ┃ ┣ 📜emobox.png
+    ┃ ┃ ┣ 📜고양이말풍선.png
+    ┃ ┃ ┣ 📜꼬질냥.gif
+    ┃ ┃ ┣ 📜연필.png
+    ┃ ┃ ┣ 📜오늘의칵테일1.png
+    ┃ ┃ ┣ 📜유저말풍선.png
+    ┃ ┃ ┣ 📜자산8.png
+    ┃ ┃ ┣ 📜종이비행기.png
+    ┃ ┃ ┗ 📜파란말풍선.png
+    ┃ ┣ 📂common
+    ┃ ┃ ┣ 📜arrow1.png
+    ┃ ┃ ┣ 📜arrow2.png
+    ┃ ┃ ┣ 📜arrow3.png
+    ┃ ┃ ┣ 📜arrow4.png
+    ┃ ┃ ┣ 📜arrow5.png
+    ┃ ┃ ┣ 📜card.png
+    ┃ ┃ ┣ 📜check.png
+    ┃ ┃ ┣ 📜close.png
+    ┃ ┃ ┣ 📜diary.png
+    ┃ ┃ ┣ 📜edit.png
+    ┃ ┃ ┣ 📜like.png
+    ┃ ┃ ┣ 📜logout.png
+    ┃ ┃ ┣ 📜minus1.png
+    ┃ ┃ ┣ 📜minus2.png
+    ┃ ┃ ┣ 📜noneLike.png
+    ┃ ┃ ┣ 📜noneStar.png
+    ┃ ┃ ┣ 📜pentagon.png
+    ┃ ┃ ┣ 📜plus1.png
+    ┃ ┃ ┣ 📜plus2.png
+    ┃ ┃ ┣ 📜profile.png
+    ┃ ┃ ┣ 📜review.png
+    ┃ ┃ ┣ 📜setting.png
+    ┃ ┃ ┣ 📜star.png
+    ┃ ┃ ┣ 📜store1.png
+    ┃ ┃ ┣ 📜store2.png
+    ┃ ┃ ┣ 📜store3.png
+    ┃ ┃ ┣ 📜store4.png
+    ┃ ┃ ┣ 📜store5.png
+    ┃ ┃ ┣ 📜trash.png
+    ┃ ┃ ┗ 📜웰컴.png
+    ┃ ┣ 📂glass
+    ┃ ┃ ┣ 📜glass1.png
+    ┃ ┃ ┣ 📜glass2.png
+    ┃ ┃ ┣ 📜glass3.png
+    ┃ ┃ ┣ 📜glass4.png
+    ┃ ┃ ┣ 📜glass5.png
+    ┃ ┃ ┣ 📜glass6.png
+    ┃ ┃ ┗ 📜glass7.png
+    ┃ ┣ 📂guide
+    ┃ ┃ ┣ 📜가이드1.jpg
+    ┃ ┃ ┣ 📜가이드2.jpg
+    ┃ ┃ ┣ 📜가이드3.jpg
+    ┃ ┃ ┣ 📜가이드4.jpg
+    ┃ ┃ ┣ 📜가이드5.jpg
+    ┃ ┃ ┣ 📜가이드6.jpg
+    ┃ ┃ ┗ 📜가이드7.jpg
+    ┃ ┣ 📂icon
+    ┃ ┃ ┣ 📜calA.png
+    ┃ ┃ ┣ 📜calB.png
+    ┃ ┃ ┣ 📜Clickno.png
+    ┃ ┃ ┣ 📜Clickyes.png
+    ┃ ┃ ┣ 📜homeA.png
+    ┃ ┃ ┣ 📜homeB.png
+    ┃ ┃ ┣ 📜IconInsta.png
+    ┃ ┃ ┣ 📜IconMap.png
+    ┃ ┃ ┣ 📜IconTel.png
+    ┃ ┃ ┣ 📜IconTime.png
+    ┃ ┃ ┣ 📜mapA.png
+    ┃ ┃ ┣ 📜mapB.png
+    ┃ ┃ ┣ 📜searchA.png
+    ┃ ┃ ┣ 📜searchB.png
+    ┃ ┃ ┣ 📜userA.png
+    ┃ ┃ ┣ 📜userB.png
+    ┃ ┃ ┣ 📜검색돋보기.png
+    ┃ ┃ ┣ 📜동색.png
+    ┃ ┃ ┣ 📜왕관.png
+    ┃ ┃ ┣ 📜은색.png
+    ┃ ┃ ┣ 📜이퀄라이저.png
+    ┃ ┃ ┗ 📜체크이미지.png
+    ┃ ┣ 📂lottie
+    ┃ ┃ ┣ 📜Cocktail1.json
+    ┃ ┃ ┗ 📜Cocktail2.json
+    ┃ ┗ 📂store
+    ┃ ┃ ┣ 📜럭키바.jpg
+    ┃ ┃ ┣ 📜리케리케라운지.jpg
+    ┃ ┃ ┗ 📜사막의하얀꽃.jpg
+    ┣ 📂components
+    ┃ ┣ 📂common
+    ┃ ┃ ┣ 📜Box.jsx
+    ┃ ┃ ┣ 📜Box.module.css
+    ┃ ┃ ┣ 📜Container.jsx
+    ┃ ┃ ┣ 📜Container.module.css
+    ┃ ┃ ┣ 📜ContainerMain.jsx
+    ┃ ┃ ┣ 📜ContainerMain.module.css
+    ┃ ┃ ┣ 📜FileInput.css
+    ┃ ┃ ┣ 📜FileInput.jsx
+    ┃ ┃ ┣ 📜Header.jsx
+    ┃ ┃ ┣ 📜Header.module.css
+    ┃ ┃ ┣ 📜HeaderResult.jsx
+    ┃ ┃ ┣ 📜Headerwb.jsx
+    ┃ ┃ ┣ 📜Headerwb.module.css
+    ┃ ┃ ┣ 📜Nav.jsx
+    ┃ ┃ ┣ 📜Nav.module.css
+    ┃ ┃ ┣ 📜Popup.jsx
+    ┃ ┃ ┣ 📜Popup.module.css
+    ┃ ┃ ┗ 📜ScrollToTop.jsx
+    ┃ ┣ 📂data
+    ┃ ┃ ┣ 📜base.jsx
+    ┃ ┃ ┗ 📜searchtalk.jsx
+    ┃ ┣ 📂diary
+    ┃ ┃ ┣ 📜CocktailDetail.jsx
+    ┃ ┃ ┗ 📜CocktailDetail.module.css
+    ┃ ┣ 📂main
+    ┃ ┃ ┣ 📜Cattalk11.jsx
+    ┃ ┃ ┣ 📜Cattalk20.jsx
+    ┃ ┃ ┣ 📜Cattalkbox.jsx
+    ┃ ┃ ┣ 📜Cattalkbox.module.css
+    ┃ ┃ ┣ 📜CocktailBox.jsx
+    ┃ ┃ ┣ 📜CocktailBox.module.css
+    ┃ ┃ ┣ 📜CocktailBox2.jsx
+    ┃ ┃ ┣ 📜CocktailBox3.jsx
+    ┃ ┃ ┣ 📜CocktailBox3.module.css
+    ┃ ┃ ┣ 📜CocktailBoxBig.jsx
+    ┃ ┃ ┣ 📜CocktailBoxBig.module.css
+    ┃ ┃ ┣ 📜Cocktailsearchbox.jsx
+    ┃ ┃ ┣ 📜Todaycocktail.jsx
+    ┃ ┃ ┣ 📜Todaycocktail.module.css
+    ┃ ┃ ┣ 📜Usercomment.jsx
+    ┃ ┃ ┣ 📜Usercomment.module.css
+    ┃ ┃ ┣ 📜Useremothree.jsx
+    ┃ ┃ ┣ 📜Useremothree.module.css
+    ┃ ┃ ┣ 📜Userreasonbox.jsx
+    ┃ ┃ ┣ 📜Userreasonbox.module.css
+    ┃ ┃ ┣ 📜Userselctbox.jsx
+    ┃ ┃ ┣ 📜Userselctbox.module.css
+    ┃ ┃ ┣ 📜Usertalkbox.jsx
+    ┃ ┃ ┣ 📜Usertalkbox.module.css
+    ┃ ┃ ┣ 📜Usertodayemo.jsx
+    ┃ ┃ ┗ 📜Usertodayemo.module.css
+    ┃ ┣ 📂map
+    ┃ ┃ ┣ 📂data
+    ┃ ┃ ┃ ┗ 📜markerData.jsx
+    ┃ ┃ ┣ 📜map.jsx
+    ┃ ┃ ┣ 📜map.module.css
+    ┃ ┃ ┣ 📜Storebos.module.css
+    ┃ ┃ ┣ 📜Storebox.jsx
+    ┃ ┃ ┣ 📜StoreInfo.jsx
+    ┃ ┃ ┣ 📜StoreInfo.module.css
+    ┃ ┃ ┣ 📜Storemenu.jsx
+    ┃ ┃ ┣ 📜Storemenu.module.css
+    ┃ ┃ ┣ 📜Storepicture.jsx
+    ┃ ┃ ┗ 📜Storepicture.module.css
+    ┃ ┣ 📂my
+    ┃ ┃ ┣ 📜MyFeel.jsx
+    ┃ ┃ ┣ 📜MyFeel.module.css
+    ┃ ┃ ┣ 📜ReviewItem.jsx
+    ┃ ┃ ┗ 📜ReviewItem.module.css
+    ┃ ┣ 📂review
+    ┃ ┃ ┣ 📜Review.jsx
+    ┃ ┃ ┗ 📜Review.module.css
+    ┃ ┗ 📂search
+    ┃ ┃ ┣ 📜Medallist.jsx
+    ┃ ┃ ┣ 📜Medallist.module.css
+    ┃ ┃ ┣ 📜Nonmedallist.jsx
+    ┃ ┃ ┣ 📜Nonmedallist.module.css
+    ┃ ┃ ┣ 📜Searchbase.jsx
+    ┃ ┃ ┣ 📜Searchbase.module.css
+    ┃ ┃ ┣ 📜Searchoption.jsx
+    ┃ ┃ ┗ 📜Searchoption.module.css
+    ┣ 📂pages
+    ┃ ┣ 📂cocktailpage
+    ┃ ┃ ┣ 📜CocktailDetailPage.jsx
+    ┃ ┃ ┣ 📜CocktailDetailPage.module.css
+    ┃ ┃ ┣ 📜CocktailReviewPage.jsx
+    ┃ ┃ ┗ 📜CocktailReviewPage.module.css
+    ┃ ┣ 📂commonpage
+    ┃ ┃ ┣ 📜ErrorPage.jsx
+    ┃ ┃ ┗ 📜ErrorPage.module.css
+    ┃ ┣ 📂diarypage
+    ┃ ┃ ┣ 📜DatePage.jsx
+    ┃ ┃ ┣ 📜DatePage.module.css
+    ┃ ┃ ┣ 📜DiaryPage.jsx
+    ┃ ┃ ┗ 📜DiaryPage.module.css
+    ┃ ┣ 📂mainpage
+    ┃ ┃ ┣ 📂Emodata
+    ┃ ┃ ┃ ┣ 📜Emocolor.jsx
+    ┃ ┃ ┃ ┣ 📜Emotionthree.jsx
+    ┃ ┃ ┃ ┗ 📜Reasonone.jsx
+    ┃ ┃ ┣ 📂Talkdata
+    ┃ ┃ ┃ ┣ 📜Cattalk.jsx
+    ┃ ┃ ┃ ┣ 📜Selecttalk.jsx
+    ┃ ┃ ┃ ┣ 📜Talkarr.jsx
+    ┃ ┃ ┃ ┗ 📜Usertalk.jsx
+    ┃ ┃ ┣ 📜MainPage.jsx
+    ┃ ┃ ┣ 📜MainPage.module.css
+    ┃ ┃ ┣ 📜ResultPage.jsx
+    ┃ ┃ ┗ 📜ResultPage.module.css
+    ┃ ┣ 📂mappage
+    ┃ ┃ ┣ 📜MapPage.jsx
+    ┃ ┃ ┣ 📜MapPage.module.css
+    ┃ ┃ ┣ 📜StoreDetailPage.jsx
+    ┃ ┃ ┗ 📜StoreDetailPage.module.css
+    ┃ ┣ 📂mypage
+    ┃ ┃ ┣ 📜ChangePreferencePage.jsx
+    ┃ ┃ ┣ 📜ChangePreferencePage.module.css
+    ┃ ┃ ┣ 📜LikedCocktailPage.jsx
+    ┃ ┃ ┣ 📜LikedCocktailPage.module.css
+    ┃ ┃ ┣ 📜MonthlyMoodPage.jsx
+    ┃ ┃ ┣ 📜MonthlyMoodPage.module.css
+    ┃ ┃ ┣ 📜MyCocktailPage.jsx
+    ┃ ┃ ┣ 📜MyCocktailPage.module.css
+    ┃ ┃ ┣ 📜MyPage.jsx
+    ┃ ┃ ┣ 📜MyPage.module.css
+    ┃ ┃ ┣ 📜RecommendPage.jsx
+    ┃ ┃ ┗ 📜RecommendPage.module.css
+    ┃ ┣ 📂settingpage
+    ┃ ┃ ┣ 📜DeleteAccountPage.jsx
+    ┃ ┃ ┣ 📜DeleteAccountPage.module.css
+    ┃ ┃ ┣ 📜SettingsPage.jsx
+    ┃ ┃ ┗ 📜SettingsPage.module.css
+    ┃ ┣ 📜Choosecocktail.jsx
+    ┃ ┣ 📜Choosecocktail.module.css
+    ┃ ┣ 📜GuidePage.jsx
+    ┃ ┣ 📜GuidePage.module.css
+    ┃ ┣ 📜PreferencePage.jsx
+    ┃ ┣ 📜PreferencePage.module.css
+    ┃ ┣ 📜SearchPage.jsx
+    ┃ ┣ 📜SearchPage.module.css
+    ┃ ┣ 📜SignInPage.jsx
+    ┃ ┣ 📜SignInPage.module.css
+    ┃ ┣ 📜SignUpPage.jsx
+    ┃ ┣ 📜SignUpPage.module.css
+    ┃ ┣ 📜WelcomePage.jsx
+    ┃ ┗ 📜WelcomePage.module.css
+    ┣ 📂store
+    ┃ ┣ 📜useCocktailStore.jsx
+    ┃ ┣ 📜useSearchStore.jsx
+    ┃ ┗ 📜useUserStore.jsx
+    ┣ 📜App.css
+    ┣ 📜App.jsx
+    ┣ 📜index.css
+    ┣ 📜index.jsx
+    ┣ 📜Main.jsx
+    ┣ 📜service-worker.js
+    ┗ 📜serviceWorkerRegistration.js
 
 </div>
 </details>
@@ -572,121 +572,161 @@ Catale을 더욱 개선된 서비스로 발전시키기 위해 세 가지 확장
 <summary>FastAPI</summary>
 <div>
 
-📦recommend-server
- ┣ 📂.idea
- ┃ ┣ 📂inspectionProfiles
- ┃ ┃ ┗ 📜Project_Default.xml
- ┃ ┣ 📜.gitignore
- ┃ ┣ 📜misc.xml
- ┃ ┣ 📜modules.xml
- ┃ ┣ 📜recommend-server.iml
- ┃ ┗ 📜vcs.xml
- ┣ 📂app
- ┃ ┣ 📂common
- ┃ ┃ ┣ 📂context
- ┃ ┃ ┃ ┗ 📜ItemFeatures.py
- ┃ ┃ ┣ 📜config.py
- ┃ ┃ ┗ 📜__init__.py
- ┃ ┣ 📂models
- ┃ ┃ ┣ 📂dto
- ┃ ┃ ┃ ┣ 📜data_class.py
- ┃ ┃ ┃ ┗ 📜__init__.py
- ┃ ┃ ┣ 📂save
- ┃ ┃ ┃ ┣ 📜catale_dataset.pkl
- ┃ ┃ ┃ ┣ 📜cocktail - 복사본.csv
- ┃ ┃ ┃ ┣ 📜cocktail.csv
- ┃ ┃ ┃ ┣ 📜cocktail_features.csv
- ┃ ┃ ┃ ┣ 📜cocktail_index.csv
- ┃ ┃ ┃ ┣ 📜fdsfsd.txt
- ┃ ┃ ┃ ┣ 📜item_features - 복사본.csv
- ┃ ┃ ┃ ┣ 📜item_features.csv
- ┃ ┃ ┃ ┣ 📜rating.csv
- ┃ ┃ ┃ ┣ 📜test_ratings.csv
- ┃ ┃ ┃ ┣ 📜train_ratings.csv
- ┃ ┃ ┃ ┣ 📜user_features - 복사본.csv
- ┃ ┃ ┃ ┣ 📜user_features.csv
- ┃ ┃ ┃ ┣ 📜user_index.csv
- ┃ ┃ ┃ ┣ 📜user_preferences - 복사본.csv
- ┃ ┃ ┃ ┣ 📜user_preferences.csv
- ┃ ┃ ┃ ┗ 📜__init__.py
- ┃ ┃ ┣ 📜catale_dataset.pkl
- ┃ ┃ ┣ 📜catale_model.pkl
- ┃ ┃ ┗ 📜__init__.py
- ┃ ┣ 📂routers
- ┃ ┃ ┣ 📜recommend.py
- ┃ ┃ ┣ 📜retrain.py
- ┃ ┃ ┗ 📜__init__.py
- ┃ ┣ 📂service
- ┃ ┃ ┣ 📜recommend_service.py
- ┃ ┃ ┣ 📜retrain_service.py
- ┃ ┃ ┣ 📜sample_data_produce.py
- ┃ ┃ ┗ 📜__init__.py
- ┃ ┣ 📂util
- ┃ ┃ ┣ 📜modelutil.py
- ┃ ┃ ┣ 📜optimizer.py
- ┃ ┃ ┗ 📜__init__.py
- ┃ ┣ 📜crud.py
- ┃ ┣ 📜database.py
- ┃ ┣ 📜item_similarity.py
- ┃ ┣ 📜main.py
- ┃ ┣ 📜schemas.py
- ┃ ┗ 📜__init__.py
- ┣ 📂model
- ┃ ┣ 📂v1
- ┃ ┃ ┗ 📜user_rating_model_v1.pkl
- ┃ ┗ 📜user_rating_model_v1.pkl
- ┣ 📂out
- ┃ ┗ 📂production
- ┃ ┃ ┗ 📂recommend-server
- ┃ ┃ ┃ ┣ 📂common
- ┃ ┃ ┃ ┃ ┣ 📂context
- ┃ ┃ ┃ ┃ ┃ ┗ 📜ItemFeatures.py
- ┃ ┃ ┃ ┃ ┣ 📜config.py
- ┃ ┃ ┃ ┃ ┗ 📜__init__.py
- ┃ ┃ ┃ ┣ 📂models
- ┃ ┃ ┃ ┃ ┣ 📂dto
- ┃ ┃ ┃ ┃ ┃ ┣ 📜data_class.py
- ┃ ┃ ┃ ┃ ┃ ┗ 📜__init__.py
- ┃ ┃ ┃ ┃ ┣ 📂save
- ┃ ┃ ┃ ┃ ┃ ┣ 📜cocktail_features.csv
- ┃ ┃ ┃ ┃ ┃ ┣ 📜test_ratings.csv
- ┃ ┃ ┃ ┃ ┃ ┣ 📜train_ratings.csv
- ┃ ┃ ┃ ┃ ┃ ┣ 📜user_preferences.csv
- ┃ ┃ ┃ ┃ ┃ ┣ 📜user_rating_model_v1.pkl
- ┃ ┃ ┃ ┃ ┃ ┗ 📜__init__.py
- ┃ ┃ ┃ ┃ ┣ 📜modelv1.py
- ┃ ┃ ┃ ┃ ┗ 📜__init__.py
- ┃ ┃ ┃ ┣ 📂routers
- ┃ ┃ ┃ ┃ ┣ 📜recommend.py
- ┃ ┃ ┃ ┃ ┣ 📜retrain.py
- ┃ ┃ ┃ ┃ ┗ 📜__init__.py
- ┃ ┃ ┃ ┣ 📂service
- ┃ ┃ ┃ ┃ ┣ 📜recommend_service.py
- ┃ ┃ ┃ ┃ ┣ 📜retrain_service.py
- ┃ ┃ ┃ ┃ ┣ 📜sample_data_produce.py
- ┃ ┃ ┃ ┃ ┗ 📜__init__.py
- ┃ ┃ ┃ ┣ 📂util
- ┃ ┃ ┃ ┃ ┣ 📜modelutil.py
- ┃ ┃ ┃ ┃ ┣ 📜optimizer.py
- ┃ ┃ ┃ ┃ ┗ 📜__init__.py
- ┃ ┃ ┃ ┣ 📜crud.py
- ┃ ┃ ┃ ┣ 📜database.py
- ┃ ┃ ┃ ┣ 📜item_similarity.py
- ┃ ┃ ┃ ┣ 📜main.py
- ┃ ┃ ┃ ┣ 📜schemas.py
- ┃ ┃ ┃ ┗ 📜__init__.py
- ┣ 📜.env
- ┣ 📜.env.dev
- ┣ 📜.env.prod
- ┣ 📜.gitignore
- ┣ 📜Dockerfile
- ┗ 📜requirements.txt
+    📦recommend-server
+    ┣ 📂.idea
+    ┃ ┣ 📂inspectionProfiles
+    ┃ ┃ ┗ 📜Project_Default.xml
+    ┃ ┣ 📜.gitignore
+    ┃ ┣ 📜misc.xml
+    ┃ ┣ 📜modules.xml
+    ┃ ┣ 📜recommend-server.iml
+    ┃ ┗ 📜vcs.xml
+    ┣ 📂app
+    ┃ ┣ 📂common
+    ┃ ┃ ┣ 📂context
+    ┃ ┃ ┃ ┗ 📜ItemFeatures.py
+    ┃ ┃ ┣ 📜config.py
+    ┃ ┃ ┗ 📜__init__.py
+    ┃ ┣ 📂models
+    ┃ ┃ ┣ 📂dto
+    ┃ ┃ ┃ ┣ 📜data_class.py
+    ┃ ┃ ┃ ┗ 📜__init__.py
+    ┃ ┃ ┣ 📂save
+    ┃ ┃ ┃ ┣ 📜catale_dataset.pkl
+    ┃ ┃ ┃ ┣ 📜cocktail - 복사본.csv
+    ┃ ┃ ┃ ┣ 📜cocktail.csv
+    ┃ ┃ ┃ ┣ 📜cocktail_features.csv
+    ┃ ┃ ┃ ┣ 📜cocktail_index.csv
+    ┃ ┃ ┃ ┣ 📜fdsfsd.txt
+    ┃ ┃ ┃ ┣ 📜item_features - 복사본.csv
+    ┃ ┃ ┃ ┣ 📜item_features.csv
+    ┃ ┃ ┃ ┣ 📜rating.csv
+    ┃ ┃ ┃ ┣ 📜test_ratings.csv
+    ┃ ┃ ┃ ┣ 📜train_ratings.csv
+    ┃ ┃ ┃ ┣ 📜user_features - 복사본.csv
+    ┃ ┃ ┃ ┣ 📜user_features.csv
+    ┃ ┃ ┃ ┣ 📜user_index.csv
+    ┃ ┃ ┃ ┣ 📜user_preferences - 복사본.csv
+    ┃ ┃ ┃ ┣ 📜user_preferences.csv
+    ┃ ┃ ┃ ┗ 📜__init__.py
+    ┃ ┃ ┣ 📜catale_dataset.pkl
+    ┃ ┃ ┣ 📜catale_model.pkl
+    ┃ ┃ ┗ 📜__init__.py
+    ┃ ┣ 📂routers
+    ┃ ┃ ┣ 📜recommend.py
+    ┃ ┃ ┣ 📜retrain.py
+    ┃ ┃ ┗ 📜__init__.py
+    ┃ ┣ 📂service
+    ┃ ┃ ┣ 📜recommend_service.py
+    ┃ ┃ ┣ 📜retrain_service.py
+    ┃ ┃ ┣ 📜sample_data_produce.py
+    ┃ ┃ ┗ 📜__init__.py
+    ┃ ┣ 📂util
+    ┃ ┃ ┣ 📜modelutil.py
+    ┃ ┃ ┣ 📜optimizer.py
+    ┃ ┃ ┗ 📜__init__.py
+    ┃ ┣ 📜crud.py
+    ┃ ┣ 📜database.py
+    ┃ ┣ 📜item_similarity.py
+    ┃ ┣ 📜main.py
+    ┃ ┣ 📜schemas.py
+    ┃ ┗ 📜__init__.py
+    ┣ 📂model
+    ┃ ┣ 📂v1
+    ┃ ┃ ┗ 📜user_rating_model_v1.pkl
+    ┃ ┗ 📜user_rating_model_v1.pkl
+    ┣ 📂out
+    ┃ ┗ 📂production
+    ┃ ┃ ┗ 📂recommend-server
+    ┃ ┃ ┃ ┣ 📂common
+    ┃ ┃ ┃ ┃ ┣ 📂context
+    ┃ ┃ ┃ ┃ ┃ ┗ 📜ItemFeatures.py
+    ┃ ┃ ┃ ┃ ┣ 📜config.py
+    ┃ ┃ ┃ ┃ ┗ 📜__init__.py
+    ┃ ┃ ┃ ┣ 📂models
+    ┃ ┃ ┃ ┃ ┣ 📂dto
+    ┃ ┃ ┃ ┃ ┃ ┣ 📜data_class.py
+    ┃ ┃ ┃ ┃ ┃ ┗ 📜__init__.py
+    ┃ ┃ ┃ ┃ ┣ 📂save
+    ┃ ┃ ┃ ┃ ┃ ┣ 📜cocktail_features.csv
+    ┃ ┃ ┃ ┃ ┃ ┣ 📜test_ratings.csv
+    ┃ ┃ ┃ ┃ ┃ ┣ 📜train_ratings.csv
+    ┃ ┃ ┃ ┃ ┃ ┣ 📜user_preferences.csv
+    ┃ ┃ ┃ ┃ ┃ ┣ 📜user_rating_model_v1.pkl
+    ┃ ┃ ┃ ┃ ┃ ┗ 📜__init__.py
+    ┃ ┃ ┃ ┃ ┣ 📜modelv1.py
+    ┃ ┃ ┃ ┃ ┗ 📜__init__.py
+    ┃ ┃ ┃ ┣ 📂routers
+    ┃ ┃ ┃ ┃ ┣ 📜recommend.py
+    ┃ ┃ ┃ ┃ ┣ 📜retrain.py
+    ┃ ┃ ┃ ┃ ┗ 📜__init__.py
+    ┃ ┃ ┃ ┣ 📂service
+    ┃ ┃ ┃ ┃ ┣ 📜recommend_service.py
+    ┃ ┃ ┃ ┃ ┣ 📜retrain_service.py
+    ┃ ┃ ┃ ┃ ┣ 📜sample_data_produce.py
+    ┃ ┃ ┃ ┃ ┗ 📜__init__.py
+    ┃ ┃ ┃ ┣ 📂util
+    ┃ ┃ ┃ ┃ ┣ 📜modelutil.py
+    ┃ ┃ ┃ ┃ ┣ 📜optimizer.py
+    ┃ ┃ ┃ ┃ ┗ 📜__init__.py
+    ┃ ┃ ┃ ┣ 📜crud.py
+    ┃ ┃ ┃ ┣ 📜database.py
+    ┃ ┃ ┃ ┣ 📜item_similarity.py
+    ┃ ┃ ┃ ┣ 📜main.py
+    ┃ ┃ ┃ ┣ 📜schemas.py
+    ┃ ┃ ┃ ┗ 📜__init__.py
+    ┣ 📜.env
+    ┣ 📜.env.dev
+    ┣ 📜.env.prod
+    ┣ 📜.gitignore
+    ┣ 📜Dockerfile
+    ┗ 📜requirements.txt
 
 </div>
 </details>
+
 ## ✅ 산출물
 
-### ERD
+<details>
+<summary> ERD </summary>
+<div>
+
+![ERD](./assets/erd.png)
+
+</div>
+</details>
+<details>
+<summary> 시스템 아키텍처 </summary>
+<div>
+
+![ddd](./assets/아키텍처.png)
+
+</div>
+</details>
+<details>
+<summary> 기능 명세서</summary>
+<div>
+
+[기능 명세서 링크](https://smiling-park-873.notion.site/526c62f3514e4ac9ba2dae875318873c)
+
+</div>
+</details>
+<details>
+<summary> 와이어 프레임 </summary>
+<div>
+
+[와이어 프레임 링크](https://www.figma.com/design/Z5GDcnvpHY68Qle3BHEbGH/CatTale?node-id=242-2757)
+
+</div>
+</details>
+<details>
+<summary> API 명세서</summary>
+<div>
+
+[API 명세서 링크](https://smiling-park-873.notion.site/API-e997fb927fcf4eb5926a726b33666c58?pvs=4)
+
+</div>
+</details>
 
 
 
