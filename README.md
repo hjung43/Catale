@@ -63,241 +63,241 @@ Catale을 더욱 개선된 서비스로 발전시키기 위해 세 가지 확장
 <summary>Backend</summary>
 <div>
 
-📦src
- ┣ 📂main
- ┃ ┣ 📂java
- ┃ ┃ ┗ 📂com
- ┃ ┃ ┃ ┗ 📂catale
- ┃ ┃ ┃ ┃ ┗ 📂backend
- ┃ ┃ ┃ ┃ ┃ ┣ 📂domain
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂base
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜BaseEntity.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂cocktail
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂controller
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜CocktailController.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂dto
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜CocktailGetLikeResponseDto.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜CocktailGetResponseDto.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜CocktailLikeListRequestDto.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜CocktailLikeResponseDto.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜CocktailListResponseDto.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜CocktailSimpleInfoDto.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜CoctailMyreviewResponseDto.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜GetMemberRecommendDto.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜PreferenceDto.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜TodayCocktailRequestDto.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜TodayCocktailResponseDto.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂entity
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜Cocktail.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂repository
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂custom
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜CocktailRepositoryCustom.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜CocktailRepositoryImpl.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜CocktailRepository.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂service
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜CocktailService.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜RecommendApiService.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂diary
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂controller
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜DiaryController.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂dto
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜DiaryGetRequestDto.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜DiaryGetResponseDto.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜DiaryMonthResponseDto.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜MoodCntResponseDto.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂entity
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜Diary.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂repository
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂custom
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜DiaryRepositoryCustom.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜DiaryRepositoryImpl.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜DiaryRepository.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂service
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜DiaryService.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂image
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂controller
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ImageController.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂dto
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜MemberImageUpdateRequestDto.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂entity
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜Image.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂repository
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂custom
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ImageRepositoryCustom.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ImageRepositoryImpl.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ImageRepository.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂service
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ImageService.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂like
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂dto
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜LikeResponseDto.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂entity
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜Like.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂repository
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂custom
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜LikeRepositoryCustom.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜LikeRepositoryImpl.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜LikeRepository.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂service
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜LikeService.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂member
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂controller
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜MemberController.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂dto
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜EmailValidationRequestDto.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜EmailValidationResponseDto.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜LoginRequestDto.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜LoginResponseDto.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜MemberInfo.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜MemberInfoDto.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜NicknameDoubleCheckRequestDto.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜NicknameRequestDto.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜PasswordRequestDto.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜PasswordValidationRequestDto.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜PostPreferenceRequestDto.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜SignupRequestDto.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂entity
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜Member.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂repository
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂custom
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜MemberRepositoryCustom.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜MemberRepositoryImpl.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜MemberRepository.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂service
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜MemberService.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂menu
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂dto
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜MenuGetResponseDto.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂entity
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜Menu.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂repository
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂custom
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜MenuRepositoryCustom.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜MenuRepositoryImpl.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜MenuRepository.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂review
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂controller
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ReviewController.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂dto
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ReviewGetRequestDto.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ReviewGetResponseDto.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ReviewListResponseDto.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂entity
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜Review.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂repository
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂custom
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ReviewRepositoryCustom.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ReviewRepositoryImpl.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ReviewRepository.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂service
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ReviewService.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂store
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂controller
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜StoreController.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂dto
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜StoreGetResponseDto.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂entity
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜Store.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂repository
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜StoreRepository.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂service
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜StoreService.java
- ┃ ┃ ┃ ┃ ┃ ┣ 📂global
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂annotation
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜AccessToken.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜Nickname.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂config
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜MailConfig.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜QuerydslConfig.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜RedisConfig.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜S3Config.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜SecurityConfig.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜SwaggerConfig.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜WebConfig.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂entrypoint
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜JwtAuthenticationEntryPoint.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂exception
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂cocktail
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜CocktailNotFoundException.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂diary
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜DiaryCreateException.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜DiaryDeleteException.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜DiaryNotFoundException.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂email
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜FailedMessageTransmissionException.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜InvalidAuthCodeException.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂image
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜FileTypeIncorrectException.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ImageFileNotFoundException.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ImageNotFoundException.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ImageRegisterException.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ImageUpdateException.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂jwt
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜AccessTokenNotFoundException.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜RefreshTokenNotFoundException.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜UnauthorizedAccessException.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂member
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜DuplicateEmailException.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜DuplicateNicknameException.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜EmailNotFoundException.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜InvalidLoginAttemptException.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜InvalidNicknameException.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜InvalidPasswordException.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜MemberNotFoundException.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜MissingPathVariableException.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜PasswordMismatchException.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ProfileUpdateException.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂review
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ReviewCreateException.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ReviewDeleteException.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ReviewListNotFoundException.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ReviewNotFoundException.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂filter
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜EmailVerificationFilter.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜JwtAuthenticationFilter.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜TokenExceptionFilter.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜TokenRefreshRequestFilter.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂format
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂code
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ApiResponse.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜FilterResponse.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂response
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ErrorCode.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ResponseCode.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂handler
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜GlobalExceptionHandler.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂initializer
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜RedisInitializer.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂interceptor
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜NicknameValidInterceptor.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂jwt
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂provider
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜TokenProvider.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂repository
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜RefreshTokenRepository.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂service
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜TokenService.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜RefreshToken.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜TokenInfo.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂resolver
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜AccessTokenArgumentResolver.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜NicknameValidArgumentResolver.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂util
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂cookie
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜DevCookieUtil.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ProdCookieUtil.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜CookieUtil.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜FilterUtil.java
- ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜RedisUtil.java
- ┃ ┃ ┃ ┃ ┃ ┗ 📜BackendApplication.java
- ┃ ┗ 📂resources
- ┃ ┃ ┗ 📜application.yml
- ┗ 📂test
- ┃ ┗ 📂java
- ┃ ┃ ┗ 📂com
- ┃ ┃ ┃ ┗ 📂catale
- ┃ ┃ ┃ ┃ ┗ 📂backend
- ┃ ┃ ┃ ┃ ┃ ┗ 📜BackendApplicationTests.java
+    📦src
+    ┣ 📂main
+    ┃ ┣ 📂java
+    ┃ ┃ ┗ 📂com
+    ┃ ┃ ┃ ┗ 📂catale
+    ┃ ┃ ┃ ┃ ┗ 📂backend
+    ┃ ┃ ┃ ┃ ┃ ┣ 📂domain
+    ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂base
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜BaseEntity.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂cocktail
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂controller
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜CocktailController.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂dto
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜CocktailGetLikeResponseDto.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜CocktailGetResponseDto.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜CocktailLikeListRequestDto.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜CocktailLikeResponseDto.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜CocktailListResponseDto.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜CocktailSimpleInfoDto.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜CoctailMyreviewResponseDto.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜GetMemberRecommendDto.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜PreferenceDto.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜TodayCocktailRequestDto.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜TodayCocktailResponseDto.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂entity
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜Cocktail.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂repository
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂custom
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜CocktailRepositoryCustom.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜CocktailRepositoryImpl.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜CocktailRepository.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂service
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜CocktailService.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜RecommendApiService.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂diary
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂controller
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜DiaryController.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂dto
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜DiaryGetRequestDto.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜DiaryGetResponseDto.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜DiaryMonthResponseDto.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜MoodCntResponseDto.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂entity
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜Diary.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂repository
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂custom
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜DiaryRepositoryCustom.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜DiaryRepositoryImpl.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜DiaryRepository.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂service
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜DiaryService.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂image
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂controller
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ImageController.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂dto
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜MemberImageUpdateRequestDto.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂entity
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜Image.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂repository
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂custom
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ImageRepositoryCustom.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ImageRepositoryImpl.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ImageRepository.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂service
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ImageService.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂like
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂dto
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜LikeResponseDto.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂entity
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜Like.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂repository
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂custom
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜LikeRepositoryCustom.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜LikeRepositoryImpl.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜LikeRepository.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂service
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜LikeService.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂member
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂controller
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜MemberController.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂dto
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜EmailValidationRequestDto.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜EmailValidationResponseDto.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜LoginRequestDto.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜LoginResponseDto.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜MemberInfo.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜MemberInfoDto.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜NicknameDoubleCheckRequestDto.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜NicknameRequestDto.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜PasswordRequestDto.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜PasswordValidationRequestDto.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜PostPreferenceRequestDto.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜SignupRequestDto.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂entity
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜Member.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂repository
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂custom
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜MemberRepositoryCustom.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜MemberRepositoryImpl.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜MemberRepository.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂service
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜MemberService.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂menu
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂dto
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜MenuGetResponseDto.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂entity
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜Menu.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂repository
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂custom
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜MenuRepositoryCustom.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜MenuRepositoryImpl.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜MenuRepository.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂review
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂controller
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ReviewController.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂dto
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ReviewGetRequestDto.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ReviewGetResponseDto.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ReviewListResponseDto.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂entity
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜Review.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂repository
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂custom
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ReviewRepositoryCustom.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ReviewRepositoryImpl.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ReviewRepository.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂service
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ReviewService.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂store
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂controller
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜StoreController.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂dto
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜StoreGetResponseDto.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂entity
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜Store.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂repository
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜StoreRepository.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂service
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜StoreService.java
+    ┃ ┃ ┃ ┃ ┃ ┣ 📂global
+    ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂annotation
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜AccessToken.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜Nickname.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂config
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜MailConfig.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜QuerydslConfig.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜RedisConfig.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜S3Config.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜SecurityConfig.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜SwaggerConfig.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜WebConfig.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂entrypoint
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜JwtAuthenticationEntryPoint.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂exception
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂cocktail
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜CocktailNotFoundException.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂diary
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜DiaryCreateException.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜DiaryDeleteException.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜DiaryNotFoundException.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂email
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜FailedMessageTransmissionException.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜InvalidAuthCodeException.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂image
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜FileTypeIncorrectException.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ImageFileNotFoundException.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ImageNotFoundException.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ImageRegisterException.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ImageUpdateException.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂jwt
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜AccessTokenNotFoundException.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜RefreshTokenNotFoundException.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜UnauthorizedAccessException.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂member
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜DuplicateEmailException.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜DuplicateNicknameException.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜EmailNotFoundException.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜InvalidLoginAttemptException.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜InvalidNicknameException.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜InvalidPasswordException.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜MemberNotFoundException.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜MissingPathVariableException.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜PasswordMismatchException.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ProfileUpdateException.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂review
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ReviewCreateException.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ReviewDeleteException.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ReviewListNotFoundException.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ReviewNotFoundException.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂filter
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜EmailVerificationFilter.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜JwtAuthenticationFilter.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜TokenExceptionFilter.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜TokenRefreshRequestFilter.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂format
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂code
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ApiResponse.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜FilterResponse.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂response
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ErrorCode.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ResponseCode.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂handler
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜GlobalExceptionHandler.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂initializer
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜RedisInitializer.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂interceptor
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜NicknameValidInterceptor.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂jwt
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂provider
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜TokenProvider.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂repository
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜RefreshTokenRepository.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂service
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜TokenService.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜RefreshToken.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜TokenInfo.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂resolver
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜AccessTokenArgumentResolver.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜NicknameValidArgumentResolver.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂util
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂cookie
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜DevCookieUtil.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ProdCookieUtil.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜CookieUtil.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜FilterUtil.java
+    ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜RedisUtil.java
+    ┃ ┃ ┃ ┃ ┃ ┗ 📜BackendApplication.java
+    ┃ ┗ 📂resources
+    ┃ ┃ ┗ 📜application.yml
+    ┗ 📂test
+    ┃ ┗ 📂java
+    ┃ ┃ ┗ 📂com
+    ┃ ┃ ┃ ┗ 📂catale
+    ┃ ┃ ┃ ┃ ┗ 📂backend
+    ┃ ┃ ┃ ┃ ┃ ┗ 📜BackendApplicationTests.java
 
 </div>
 </details>
