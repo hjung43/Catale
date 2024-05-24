@@ -28,27 +28,11 @@
 **🚩 기술 스택**
 |  | skills |
 | --- | --- |
-| Backend | <img src="https://img.shields.io/badge/springboot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white">
-<img src="https://img.shields.io/badge/springsecurity-6DB33F?style=for-the-badge&logo=springsecurity&logoColor=white">
-<img src="https://img.shields.io/badge/fastapi-009688?style=for-the-badge&logo=fastapi&logoColor=white">
-<img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white">
-<img src="https://img.shields.io/badge/amazons3-569A31?style=for-the-badge&logo=amazons3&logoColor=white"> |
-| Frontend | <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=white">
-<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white"> |
-| Infra | <img src="https://img.shields.io/badge/amazonec2-FF9900?style=for-the-badge&logo=amazonec2&logoColor=white">
-<img src="https://img.shields.io/badge/docker-2496ED?style=for-the-badge&logo=amazonec2&logoColor=white">
-<img src="https://img.shields.io/badge/ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white">
-<img src="https://img.shields.io/badge/nginx-009639?style=for-the-badge&logo=nginx&logoColor=white">
-<img src="https://img.shields.io/badge/argo-EF7B4D?style=for-the-badge&logo=argo&logoColor=white">
-<img src="https://img.shields.io/badge/kubernetes-326CE5?style=for-the-badge&logo=kubernetes&logoColor=white">
-<img src="https://img.shields.io/badge/helm-0F1689?style=for-the-badge&logo=helm&logoColor=white">
-<img src="https://img.shields.io/badge/jenkins-D24939?style=for-the-badge&logo=jenkins&logoColor=white"> |
-| 모니터링 툴 | <img src="https://img.shields.io/badge/grafana-F46800?style=for-the-badge&logo=grafana&logoColor=white">
-<img src="https://img.shields.io/badge/prometheus-E6522C?style=for-the-badge&logo=prometheus&logoColor=white"> |
-| 협업 툴 | <img src="https://img.shields.io/badge/gitlab-FC6D26?style=for-the-badge&logo=gitlab&logoColor=white">
-<img src="https://img.shields.io/badge/jira-0052CC?style=for-the-badge&logo=jira&logoColor=white">
-<img src="https://img.shields.io/badge/notion-000000?style=for-the-badge&logo=notion&logoColor=white">
-<img src="https://img.shields.io/badge/swagger-85EA2D?style=for-the-badge&logo=swagger&logoColor=white"> |
+| Backend | <img src="https://img.shields.io/badge/springboot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white"><br><img src="https://img.shields.io/badge/springsecurity-6DB33F?style=for-the-badge&logo=springsecurity&logoColor=white"><br><img src="https://img.shields.io/badge/fastapi-009688?style=for-the-badge&logo=fastapi&logoColor=white"><br><img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white"><br><img src="https://img.shields.io/badge/amazons3-569A31?style=for-the-badge&logo=amazons3&logoColor=white"> |
+| Frontend | <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=white"><br><img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white"> |
+| Infra | <img src="https://img.shields.io/badge/amazonec2-FF9900?style=for-the-badge&logo=amazonec2&logoColor=white"><br><img src="https://img.shields.io/badge/docker-2496ED?style=for-the-badge&logo=amazonec2&logoColor=white"><br><img src="https://img.shields.io/badge/ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white"><br><img src="https://img.shields.io/badge/nginx-009639?style=for-the-badge&logo=nginx&logoColor=white"><br><img src="https://img.shields.io/badge/argo-EF7B4D?style=for-the-badge&logo=argo&logoColor=white"><br><img src="https://img.shields.io/badge/kubernetes-326CE5?style=for-the-badge&logo=kubernetes&logoColor=white"><br><img src="https://img.shields.io/badge/helm-0F1689?style=for-the-badge&logo=helm&logoColor=white"><br><img src="https://img.shields.io/badge/jenkins-D24939?style=for-the-badge&logo=jenkins&logoColor=white"> |
+| 모니터링 툴 | <img src="https://img.shields.io/badge/grafana-F46800?style=for-the-badge&logo=grafana&logoColor=white"><br><img src="https://img.shields.io/badge/prometheus-E6522C?style=for-the-badge&logo=prometheus&logoColor=white"> |
+| 협업 툴 | <img src="https://img.shields.io/badge/gitlab-FC6D26?style=for-the-badge&logo=gitlab&logoColor=white"><br><img src="https://img.shields.io/badge/jira-0052CC?style=for-the-badge&logo=jira&logoColor=white"><br><img src="https://img.shields.io/badge/notion-000000?style=for-the-badge&logo=notion&logoColor=white"><br><img src="https://img.shields.io/badge/swagger-85EA2D?style=for-the-badge&logo=swagger&logoColor=white"> |
 | 디자인 | <img src="https://img.shields.io/badge/figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white"> |
 
 
@@ -75,668 +59,634 @@ Catale을 더욱 개선된 서비스로 발전시키기 위해 세 가지 확장
 
 ## ✅ 프로젝트 구조
 
-### Back-end
-
-`+---classes
-|   |   |   \---java
-|   |   |       +---main
-|   |   |       |   \---com
-|   |   |       |       \---catale
-|   |   |       |           \---backend
-|   |   |       |               |   BackendApplication.class
-|   |   |       |               |
-|   |   |       |               +---domain
-|   |   |       |               |   +---base
-|   |   |       |               |   |       BaseEntity.class
-|   |   |       |               |   |       QBaseEntity.class
-|   |   |       |               |   |
-|   |   |       |               |   +---cocktail
-|   |   |       |               |   |   +---controller
-|   |   |       |               |   |   |       CocktailController.class
-|   |   |       |               |   |   |
-|   |   |       |               |   |   +---dto
-|   |   |       |               |   |   |       CocktailGetLikeResponseDto.class
-|   |   |       |               |   |   |       CocktailGetResponseDto.class
-|   |   |       |               |   |   |       CocktailLikeListRequestDto.class
-|   |   |       |               |   |   |       CocktailLikeResponseDto.class
-|   |   |       |               |   |   |       CocktailListResponseDto.class
-|   |   |       |               |   |   |       CocktailSimpleInfoDto.class
-|   |   |       |               |   |   |       CoctailMyreviewResponseDto.class
-|   |   |       |               |   |   |       TodayCocktailRequestDto.class
-|   |   |       |               |   |   |       TodayCocktailResponseDto.class
-|   |   |       |               |   |   |
-|   |   |       |               |   |   +---entity
-|   |   |       |               |   |   |       Cocktail$CocktailBuilder.class
-|   |   |       |               |   |   |       Cocktail.class
-|   |   |       |               |   |   |       QCocktail.class
-|   |   |       |               |   |   |
-|   |   |       |               |   |   +---repository
-|   |   |       |               |   |   |   |   CocktailRepository.class
-|   |   |       |               |   |   |   |
-|   |   |       |               |   |   |   \---custom
-|   |   |       |               |   |   |           CocktailRepositoryCustom.class
-|   |   |       |               |   |   |           CocktailRepositoryImpl.class
-|   |   |       |               |   |   |
-|   |   |       |               |   |   \---service
-|   |   |       |               |   |           CocktailService$1CocktailDiff.class
-|   |   |       |               |   |           CocktailService.class
-|   |   |       |               |   |           RecommendApiService$1.class
-|   |   |       |               |   |           RecommendApiService$2.class
-|   |   |       |               |   |           RecommendApiService.class
-|   |   |       |               |   |
-|   |   |       |               |   +---diary
-|   |   |       |               |   |   +---controller
-|   |   |       |               |   |   |       DiaryController.class
-|   |   |       |               |   |   |
-|   |   |       |               |   |   +---dto
-|   |   |       |               |   |   |       DiaryGetRequestDto.class
-|   |   |       |               |   |   |       DiaryGetResponseDto.class
-|   |   |       |               |   |   |       DiaryMonthResponseDto.class
-|   |   |       |               |   |   |       MoodCntResponseDto.class
-|   |   |       |               |   |   |
-|   |   |       |               |   |   +---entity
-|   |   |       |               |   |   |       Diary$DiaryBuilder.class
-|   |   |       |               |   |   |       Diary.class
-|   |   |       |               |   |   |       QDiary.class
-|   |   |       |               |   |   |
-|   |   |       |               |   |   +---repository
-|   |   |       |               |   |   |   |   DiaryRepository.class
-|   |   |       |               |   |   |   |
-|   |   |       |               |   |   |   \---custom
-|   |   |       |               |   |   |           DiaryRepositoryCustom.class
-|   |   |       |               |   |   |           DiaryRepositoryImpl.class
-|   |   |       |               |   |   |
-|   |   |       |               |   |   \---service
-|   |   |       |               |   |           DiaryService.class
-|   |   |       |               |   |
-|   |   |       |               |   +---image
-|   |   |       |               |   |   +---controller
-|   |   |       |               |   |   |       ImageController.class
-|   |   |       |               |   |   |
-|   |   |       |               |   |   +---dto
-|   |   |       |               |   |   |       MemberImageUpdateRequestDto.class
-|   |   |       |               |   |   |
-|   |   |       |               |   |   +---entity
-|   |   |       |               |   |   |       Image$ImageBuilder.class
-|   |   |       |               |   |   |       Image.class
-|   |   |       |               |   |   |       QImage.class
-|   |   |       |               |   |   |
-|   |   |       |               |   |   +---repository
-|   |   |       |               |   |   |   |   ImageRepository.class
-|   |   |       |               |   |   |   |
-|   |   |       |               |   |   |   \---custom
-|   |   |       |               |   |   |           ImageRepositoryCustom.class
-|   |   |       |               |   |   |           ImageRepositoryImpl.class
-|   |   |       |               |   |   |
-|   |   |       |               |   |   \---service
-|   |   |       |               |   |           ImageService.class
-|   |   |       |               |   |
-|   |   |       |               |   +---like
-|   |   |       |               |   |   +---dto
-|   |   |       |               |   |   |       LikeResponseDto.class
-|   |   |       |               |   |   |
-|   |   |       |               |   |   +---entity
-|   |   |       |               |   |   |       Like$LikeBuilder.class
-|   |   |       |               |   |   |       Like.class
-|   |   |       |               |   |   |       QLike.class
-|   |   |       |               |   |   |
-|   |   |       |               |   |   +---repository
-|   |   |       |               |   |   |   |   LikeRepository.class
-|   |   |       |               |   |   |   |
-|   |   |       |               |   |   |   \---custom
-|   |   |       |               |   |   |           LikeRepositoryCustom.class
-|   |   |       |               |   |   |           LikeRepositoryImpl.class
-|   |   |       |               |   |   |
-|   |   |       |               |   |   \---service
-|   |   |       |               |   |           LikeService.class
-|   |   |       |               |   |
-|   |   |       |               |   +---member
-|   |   |       |               |   |   +---controller
-|   |   |       |               |   |   |       MemberController.class
-|   |   |       |               |   |   |
-|   |   |       |               |   |   +---dto
-|   |   |       |               |   |   |       EmailValidationRequestDto.class
-|   |   |       |               |   |   |       EmailValidationResponseDto.class
-|   |   |       |               |   |   |       LoginRequestDto.class
-|   |   |       |               |   |   |       LoginResponseDto$LoginResponseDtoBuilder.class
-|   |   |       |               |   |   |       LoginResponseDto.class
-|   |   |       |               |   |   |       MemberInfo$MemberInfoBuilder.class
-|   |   |       |               |   |   |       MemberInfo.class
-|   |   |       |               |   |   |       MemberInfoDto.class
-|   |   |       |               |   |   |       NicknameDoubleCheckRequestDto.class
-|   |   |       |               |   |   |       NicknameRequestDto$NicknameRequestDtoBuilder.class
-|   |   |       |               |   |   |       NicknameRequestDto.class
-|   |   |       |               |   |   |       PasswordRequestDto$PasswordRequestDtoBuilder.class
-|   |   |       |               |   |   |       PasswordRequestDto.class
-|   |   |       |               |   |   |       PasswordValidationRequestDto.class
-|   |   |       |               |   |   |       PostPreferenceRequestDto$PostPreferenceRequestDtoBuilder.class
-|   |   |       |               |   |   |       PostPreferenceRequestDto.class
-|   |   |       |               |   |   |       SignupRequestDto.class
-|   |   |       |               |   |   |
-|   |   |       |               |   |   +---entity
-|   |   |       |               |   |   |       Member$MemberBuilder.class
-|   |   |       |               |   |   |       Member.class
-|   |   |       |               |   |   |       QMember.class
-|   |   |       |               |   |   |
-|   |   |       |               |   |   +---repository
-|   |   |       |               |   |   |   |   MemberRepository.class
-|   |   |       |               |   |   |   |
-|   |   |       |               |   |   |   \---custom
-|   |   |       |               |   |   |           MemberRepositoryCustom.class
-|   |   |       |               |   |   |           MemberRepositoryImpl.class
-|   |   |       |               |   |   |
-|   |   |       |               |   |   \---service
-|   |   |       |               |   |           MemberService.class
-|   |   |       |               |   |
-|   |   |       |               |   +---menu
-|   |   |       |               |   |   +---dto
-|   |   |       |               |   |   |       MenuGetResponseDto.class
-|   |   |       |               |   |   |
-|   |   |       |               |   |   +---entity
-|   |   |       |               |   |   |       Menu$MenuBuilder.class
-|   |   |       |               |   |   |       Menu.class
-|   |   |       |               |   |   |       QMenu.class
-|   |   |       |               |   |   |
-|   |   |       |               |   |   \---repository
-|   |   |       |               |   |       |   MenuRepository.class
-|   |   |       |               |   |       |
-|   |   |       |               |   |       \---custom
-|   |   |       |               |   |               MenuRepositoryCustom.class
-|   |   |       |               |   |               MenuRepositoryImpl.class
-|   |   |       |               |   |
-|   |   |       |               |   +---review
-|   |   |       |               |   |   +---controller
-|   |   |       |               |   |   |       ReviewController.class
-|   |   |       |               |   |   |
-|   |   |       |               |   |   +---dto
-|   |   |       |               |   |   |       ReviewGetRequestDto.class
-|   |   |       |               |   |   |       ReviewGetResponseDto.class
-|   |   |       |               |   |   |       ReviewListResponseDto.class
-|   |   |       |               |   |   |
-|   |   |       |               |   |   +---entity
-|   |   |       |               |   |   |       QReview.class
-|   |   |       |               |   |   |       Review$ReviewBuilder.class
-|   |   |       |               |   |   |       Review.class
-|   |   |       |               |   |   |
-|   |   |       |               |   |   +---repository
-|   |   |       |               |   |   |   |   ReviewRepository.class
-|   |   |       |               |   |   |   |
-|   |   |       |               |   |   |   \---custom
-|   |   |       |               |   |   |           ReviewRepositoryCustom.class
-|   |   |       |               |   |   |           ReviewRepositoryImpl.class
-|   |   |       |               |   |   |
-|   |   |       |               |   |   \---service
-|   |   |       |               |   |           ReviewService.class
-|   |   |       |               |   |
-|   |   |       |               |   \---store
-|   |   |       |               |       +---controller
-|   |   |       |               |       |       StoreController.class
-|   |   |       |               |       |
-|   |   |       |               |       +---dto
-|   |   |       |               |       |       StoreGetResponseDto.class
-|   |   |       |               |       |
-|   |   |       |               |       +---entity
-|   |   |       |               |       |       QStore.class
-|   |   |       |               |       |       Store$StoreBuilder.class
-|   |   |       |               |       |       Store.class
-|   |   |       |               |       |
-|   |   |       |               |       +---repository
-|   |   |       |               |       |       StoreRepository.class
-|   |   |       |               |       |
-|   |   |       |               |       \---service
-|   |   |       |               |               StoreService.class
-|   |   |       |               |
-|   |   |       |               \---global
-|   |   |       |                   +---annotation
-|   |   |       |                   |       AccessToken.class
-|   |   |       |                   |       Nickname.class
-|   |   |       |                   |
-|   |   |       |                   +---config
-|   |   |       |                   |       QuerydslConfig.class
-|   |   |       |                   |       RedisConfig.class
-|   |   |       |                   |       S3Config.class
-|   |   |       |                   |       SecurityConfig.class
-|   |   |       |                   |       SwaggerConfig.class
-|   |   |       |                   |       WebConfig.class
-|   |   |       |                   |
-|   |   |       |                   +---entrypoint
-|   |   |       |                   |       JwtAuthenticationEntryPoint.class
-|   |   |       |                   |
-|   |   |       |                   +---exception
-|   |   |       |                   |   +---cocktail
-|   |   |       |                   |   |       CocktailNotFoundException.class
-|   |   |       |                   |   |
-|   |   |       |                   |   +---diary
-|   |   |       |                   |   |       DiaryCreateException.class
-|   |   |       |                   |   |       DiaryDeleteException.class
-|   |   |       |                   |   |       DiaryNotFoundException.class
-|   |   |       |                   |   |
-|   |   |       |                   |   +---email
-|   |   |       |                   |   |       FailedMessageTransmissionException.class
-|   |   |       |                   |   |       InvalidAuthCodeException.class
-|   |   |       |                   |   |
-|   |   |       |                   |   +---image
-|   |   |       |                   |   |       FileTypeIncorrectException.class
-|   |   |       |                   |   |       ImageFileNotFoundException.class
-|   |   |       |                   |   |       ImageNotFoundException.class
-|   |   |       |                   |   |       ImageRegisterException.class
-|   |   |       |                   |   |       ImageUpdateException.class
-|   |   |       |                   |   |
-|   |   |       |                   |   +---jwt
-|   |   |       |                   |   |       AccessTokenNotFoundException.class
-|   |   |       |                   |   |       RefreshTokenNotFoundException.class
-|   |   |       |                   |   |       UnauthorizedAccessException.class
-|   |   |       |                   |   |
-|   |   |       |                   |   +---member
-|   |   |       |                   |   |       DuplicateEmailException.class
-|   |   |       |                   |   |       DuplicateNicknameException.class
-|   |   |       |                   |   |       EmailNotFoundException.class
-|   |   |       |                   |   |       InvalidLoginAttemptException.class
-|   |   |       |                   |   |       InvalidNicknameException.class
-|   |   |       |                   |   |       InvalidPasswordException.class
-|   |   |       |                   |   |       MemberNotFoundException.class
-|   |   |       |                   |   |       MissingPathVariableException.class
-|   |   |       |                   |   |       PasswordMismatchException.class
-|   |   |       |                   |   |       ProfileUpdateException.class
-|   |   |       |                   |   |
-|   |   |       |                   |   \---review
-|   |   |       |                   |           ReviewCreateException.class
-|   |   |       |                   |           ReviewDeleteException.class
-|   |   |       |                   |           ReviewListNotFoundException.class
-|   |   |       |                   |           ReviewNotFoundException.class
-|   |   |       |                   |
-|   |   |       |                   +---filter
-|   |   |       |                   |       EmailVerificationFilter.class
-|   |   |       |                   |       JwtAuthenticationFilter.class
-|   |   |       |                   |       TokenExceptionFilter.class
-|   |   |       |                   |       TokenRefreshRequestFilter.class
-|   |   |       |                   |
-|   |   |       |                   +---format
-|   |   |       |                   |   +---code
-|   |   |       |                   |   |       ApiResponse$ErroredBody$ErroredBodyBuilder.class
-|   |   |       |                   |   |       ApiResponse$ErroredBody.class
-|   |   |       |                   |   |       ApiResponse$FailedBody$FailedBodyBuilder.class
-|   |   |       |                   |   |       ApiResponse$FailedBody.class
-|   |   |       |                   |   |       ApiResponse$FieldError$FieldErrorBuilder.class
-|   |   |       |                   |   |       ApiResponse$FieldError.class
-|   |   |       |                   |   |       ApiResponse$PagedBody$PagedBodyBuilder.class
-|   |   |       |                   |   |       ApiResponse$PagedBody.class
-|   |   |       |                   |   |       ApiResponse$SucceededBody$SucceededBodyBuilder.class
-|   |   |       |                   |   |       ApiResponse$SucceededBody.class
-|   |   |       |                   |   |       ApiResponse.class
-|   |   |       |                   |   |       FilterResponse.class
-|   |   |       |                   |   |
-|   |   |       |                   |   \---response
-|   |   |       |                   |           ErrorCode.class
-|   |   |       |                   |           ResponseCode.class
-|   |   |       |                   |
-|   |   |       |                   +---handler
-|   |   |       |                   |       GlobalExceptionHandler.class
-|   |   |       |                   |
-|   |   |       |                   +---initializer
-|   |   |       |                   |       RedisInitializer.class
-|   |   |       |                   |
-|   |   |       |                   +---interceptor
-|   |   |       |                   |       NicknameValidInterceptor.class
-|   |   |       |                   |
-|   |   |       |                   +---jwt
-|   |   |       |                   |   |   RefreshToken$RefreshTokenBuilder.class
-|   |   |       |                   |   |   RefreshToken.class
-|   |   |       |                   |   |   TokenInfo$TokenInfoBuilder.class
-|   |   |       |                   |   |   TokenInfo.class
-|   |   |       |                   |   |
-|   |   |       |                   |   +---provider
-|   |   |       |                   |   |       TokenProvider.class
-|   |   |       |                   |   |
-|   |   |       |                   |   +---repository
-|   |   |       |                   |   |       RefreshTokenRepository.class
-|   |   |       |                   |   |
-|   |   |       |                   |   \---service
-|   |   |       |                   |           TokenService.class
-|   |   |       |                   |
-|   |   |       |                   +---resolver
-|   |   |       |                   |       AccessTokenArgumentResolver.class
-|   |   |       |                   |       NicknameValidArgumentResolver.class
-|   |   |       |                   |
-|   |   |       |                   \---util
-|   |   |       |                       |   CookieUtil.class
-|   |   |       |                       |   FilterUtil.class
-|   |   |       |                       |   RedisUtil.class
-|   |   |       |                       |
-|   |   |       |                       \---cookie
-|   |   |       |                               DevCookieUtil.class
-|   |   |       |                               ProdCookieUtil.class
-|   |   |       |
-|   |   |       \---test
-|   |   |           \---com
-|   |   |               \---catale
-|   |   |                   \---backend
-|   |   |                           BackendApplicationTests.class`
-
-### Front-end
-
-`|   package-lock.json
-|   package.json
-|
-+---conf
-|   \---conf.d
-|           default.conf
-|
-+---public
-|   |   index.html
-|   |   manifest.json
-|   |
-|   \---icons
-|           apple-touch-icon-114x114.png
-|           apple-touch-icon-120x120.png
-|           apple-touch-icon-144x144.png
-|           apple-touch-icon-152x152.png
-|           apple-touch-icon-57x57.png
-|           apple-touch-icon-60x60.png
-|           apple-touch-icon-72x72.png
-|           apple-touch-icon-76x76.png
-|           code.txt
-|           favicon-128.png
-|           favicon-16x16.png
-|           favicon-196x196.png
-|           favicon-32x32.png
-|           favicon-96x96.png
-|           favicon.ico
-|           mstile-144x144.png
-|           mstile-150x150.png
-|           mstile-310x150.png
-|           mstile-310x310.png
-|           mstile-70x70.png
-|
-\---src
-|   App.css
-|   App.jsx
-|   index.css
-|   index.jsx
-|   Main.jsx
-|   service-worker.js
-|   serviceWorkerRegistration.js
-|
-+---api
-|   |   Cocktail.jsx
-|   |   Diary.jsx
-|   |   Image.jsx
-|   |   Member.jsx
-|   |   Review.jsx
-|   |   Store.jsx
-|   |
-|   \---common
-|           Token.jsx
-|
-+---assets
-|   +---bartender
-|   |       cocktail.png
-|   |       emo1.png
-|   |       emo2.png
-|   |       emo3.png
-|   |       emo4.png
-|   |       emo5.png
-|   |       emobox.png
-|   |       ▒▒▒▒̸▒ǳ▒▒.png
-|   |       ▒▒▒▒▒▒.gif
-|   |       ▒▒▒▒.png
-|   |       ▒▒▒▒▒▒Ĭ▒▒▒▒1.png
-|   |       ▒▒▒▒▒▒ǳ▒▒.png
-|   |       ▒ڻ▒8.png
-|   |       ▒▒▒̺▒▒▒▒.png
-|   |       ▒Ķ▒▒▒ǳ▒▒.png
-|   |
-|   +---common
-|   |       arrow1.png
-|   |       arrow2.png
-|   |       arrow3.png
-|   |       arrow4.png
-|   |       arrow5.png
-|   |       card.png
-|   |       check.png
-|   |       close.png
-|   |       diary.png
-|   |       edit.png
-|   |       like.png
-|   |       logout.png
-|   |       minus1.png
-|   |       minus2.png
-|   |       noneLike.png
-|   |       noneStar.png
-|   |       pentagon.png
-|   |       plus1.png
-|   |       plus2.png
-|   |       profile.png
-|   |       review.png
-|   |       setting.png
-|   |       star.png
-|   |       store1.png
-|   |       store2.png
-|   |       store3.png
-|   |       store4.png
-|   |       store5.png
-|   |       trash.png
-|   |       ▒▒▒▒.png
-|   |
-|   +---glass
-|   |       glass1.png
-|   |       glass2.png
-|   |       glass3.png
-|   |       glass4.png
-|   |       glass5.png
-|   |       glass6.png
-|   |       glass7.png
-|   |
-|   +---guide
-|   |       ▒▒▒̵▒1.jpg
-|   |       ▒▒▒̵▒2.jpg
-|   |       ▒▒▒̵▒3.jpg
-|   |       ▒▒▒̵▒4.jpg
-|   |       ▒▒▒̵▒5.jpg
-|   |       ▒▒▒̵▒6.jpg
-|   |       ▒▒▒̵▒7.jpg
-|   |
-|   +---icon
-|   |       calA.png
-|   |       calB.png
-|   |       Clickno.png
-|   |       Clickyes.png
-|   |       homeA.png
-|   |       homeB.png
-|   |       IconInsta.png
-|   |       IconMap.png
-|   |       IconTel.png
-|   |       IconTime.png
-|   |       mapA.png
-|   |       mapB.png
-|   |       searchA.png
-|   |       searchB.png
-|   |       userA.png
-|   |       userB.png
-|   |       ▒˻▒▒▒▒▒▒▒.png
-|   |       ▒▒▒▒.png
-|   |       ▒հ▒.png
-|   |       ▒▒▒▒.png
-|   |       ▒▒▒▒▒▒▒▒▒▒.png
-|   |       üũ▒̹▒▒▒.png
-|   |
-|   +---lottie
-|   |       Cocktail1.json
-|   |       Cocktail2.json
-|   |
-|   \---store
-|           ▒▒Ű▒▒.jpg
-|           ▒▒▒ɸ▒▒ɶ▒▒▒▒.jpg
-|           ▒縷▒▒▒Ͼ▒▒.jpg
-|
-+---components
-|   +---common
-|   |       Box.jsx
-|   |       Box.module.css
-|   |       Container.jsx
-|   |       Container.module.css
-|   |       FileInput.css
-|   |       FileInput.jsx
-|   |       Header.jsx
-|   |       Header.module.css
-|   |       HeaderResult.jsx
-|   |       Headerwb.jsx
-|   |       Headerwb.module.css
-|   |       Nav.jsx
-|   |       Nav.module.css
-|   |       Popup.jsx
-|   |       Popup.module.css
-|   |       ScrollToTop.jsx
-|   |
-|   +---data
-|   |       base.jsx
-|   |       searchtalk.jsx
-|   |
-|   +---diary
-|   |       CocktailDetail.jsx
-|   |       CocktailDetail.module.css
-|   |
-|   +---main
-|   |       Cattalk11.jsx
-|   |       Cattalk20.jsx
-|   |       Cattalkbox.jsx
-|   |       Cattalkbox.module.css
-|   |       CocktailBox.jsx
-|   |       CocktailBox.module.css
-|   |       CocktailBox2.jsx
-|   |       CocktailBox3.jsx
-|   |       CocktailBox3.module.css
-|   |       CocktailBoxBig.jsx
-|   |       CocktailBoxBig.module.css
-|   |       Cocktailsearchbox.jsx
-|   |       Todaycocktail.jsx
-|   |       Todaycocktail.module.css
-|   |       Usercomment.jsx
-|   |       Usercomment.module.css
-|   |       Useremothree.jsx
-|   |       Useremothree.module.css
-|   |       Userreasonbox.jsx
-|   |       Userreasonbox.module.css
-|   |       Userselctbox.jsx
-|   |       Userselctbox.module.css
-|   |       Usertalkbox.jsx
-|   |       Usertalkbox.module.css
-|   |       Usertodayemo.jsx
-|   |       Usertodayemo.module.css
-|   |
-|   +---map
-|   |   |   map.jsx
-|   |   |   map.module.css
-|   |   |   Storebos.module.css
-|   |   |   Storebox.jsx
-|   |   |   StoreInfo.jsx
-|   |   |   StoreInfo.module.css
-|   |   |   Storemenu.jsx
-|   |   |   Storemenu.module.css
-|   |   |   Storepicture.jsx
-|   |   |   Storepicture.module.css
-|   |   |
-|   |   \---data
-|   |           markerData.jsx
-|   |
-|   +---my
-|   |       MyFeel.jsx
-|   |       MyFeel.module.css
-|   |       ReviewItem.jsx
-|   |       ReviewItem.module.css
-|   |
-|   +---review
-|   |       Review.jsx
-|   |       Review.module.css
-|   |
-|   \---search
-|           Medallist.jsx
-|           Medallist.module.css
-|           Nonmedallist.jsx
-|           Nonmedallist.module.css
-|           Searchbase.jsx
-|           Searchbase.module.css
-|           Searchoption.jsx
-|           Searchoption.module.css
-|
-+---pages
-|   |   Choosecocktail.jsx
-|   |   Choosecocktail.module.css
-|   |   GuidePage.jsx
-|   |   GuidePage.module.css
-|   |   PreferencePage.jsx
-|   |   PreferencePage.module.css
-|   |   SearchPage.jsx
-|   |   SearchPage.module.css
-|   |   SignInPage.jsx
-|   |   SignInPage.module.css
-|   |   SignUpPage.jsx
-|   |   SignUpPage.module.css
-|   |   WelcomePage.jsx
-|   |   WelcomePage.module.css
-|   |
-|   +---cocktailpage
-|   |       CocktailDetailPage.jsx
-|   |       CocktailDetailPage.module.css
-|   |       CocktailReviewPage.jsx
-|   |       CocktailReviewPage.module.css
-|   |
-|   +---commonpage
-|   |       ErrorPage.jsx
-|   |       ErrorPage.module.css
-|   |
-|   +---diarypage
-|   |       DatePage.jsx
-|   |       DatePage.module.css
-|   |       DiaryPage.jsx
-|   |       DiaryPage.module.css
-|   |
-|   +---mainpage
-|   |   |   MainPage.jsx
-|   |   |   MainPage.module.css
-|   |   |   ResultPage.jsx
-|   |   |   ResultPage.module.css
-|   |   |
-|   |   +---Emodata
-|   |   |       Emocolor.jsx
-|   |   |       Emotionthree.jsx
-|   |   |       Reasonone.jsx
-|   |   |
-|   |   \---Talkdata
-|   |           Cattalk.jsx
-|   |           Selecttalk.jsx
-|   |           Talkarr.jsx
-|   |           Usertalk.jsx
-|   |
-|   +---mappage
-|   |       MapPage.jsx
-|   |       MapPage.module.css
-|   |       StoreDetailPage.jsx
-|   |       StoreDetailPage.module.css
-|   |
-|   +---mypage
-|   |       ChangePreferencePage.jsx
-|   |       ChangePreferencePage.module.css
-|   |       LikedCocktailPage.jsx
-|   |       LikedCocktailPage.module.css
-|   |       MyCocktailPage.jsx
-|   |       MyCocktailPage.module.css
-|   |       MyPage.jsx
-|   |       MyPage.module.css
-|   |       RecommendPage.jsx
-|   |       RecommendPage.module.css
-|   |
-|   \---settingpage
-|           DeleteAccountPage.jsx
-|           DeleteAccountPage.module.css
-|           SettingsPage.jsx
-|           SettingsPage.module.css
-|
-\---store
-useCocktailStore.jsx
-useSearchStore.jsx
-useUserStore.jsx`
-
+<details>
+<summary>**Backend**</summary>
+<div>
+```bash
+📦src
+ ┣ 📂main
+ ┃ ┣ 📂java
+ ┃ ┃ ┗ 📂com
+ ┃ ┃ ┃ ┗ 📂catale
+ ┃ ┃ ┃ ┃ ┗ 📂backend
+ ┃ ┃ ┃ ┃ ┃ ┣ 📂domain
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂base
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜BaseEntity.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂cocktail
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂controller
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜CocktailController.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂dto
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜CocktailGetLikeResponseDto.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜CocktailGetResponseDto.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜CocktailLikeListRequestDto.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜CocktailLikeResponseDto.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜CocktailListResponseDto.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜CocktailSimpleInfoDto.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜CoctailMyreviewResponseDto.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜GetMemberRecommendDto.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜PreferenceDto.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜TodayCocktailRequestDto.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜TodayCocktailResponseDto.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂entity
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜Cocktail.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂repository
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂custom
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜CocktailRepositoryCustom.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜CocktailRepositoryImpl.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜CocktailRepository.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂service
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜CocktailService.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜RecommendApiService.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂diary
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂controller
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜DiaryController.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂dto
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜DiaryGetRequestDto.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜DiaryGetResponseDto.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜DiaryMonthResponseDto.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜MoodCntResponseDto.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂entity
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜Diary.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂repository
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂custom
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜DiaryRepositoryCustom.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜DiaryRepositoryImpl.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜DiaryRepository.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂service
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜DiaryService.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂image
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂controller
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ImageController.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂dto
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜MemberImageUpdateRequestDto.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂entity
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜Image.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂repository
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂custom
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ImageRepositoryCustom.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ImageRepositoryImpl.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ImageRepository.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂service
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ImageService.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂like
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂dto
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜LikeResponseDto.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂entity
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜Like.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂repository
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂custom
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜LikeRepositoryCustom.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜LikeRepositoryImpl.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜LikeRepository.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂service
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜LikeService.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂member
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂controller
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜MemberController.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂dto
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜EmailValidationRequestDto.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜EmailValidationResponseDto.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜LoginRequestDto.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜LoginResponseDto.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜MemberInfo.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜MemberInfoDto.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜NicknameDoubleCheckRequestDto.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜NicknameRequestDto.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜PasswordRequestDto.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜PasswordValidationRequestDto.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜PostPreferenceRequestDto.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜SignupRequestDto.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂entity
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜Member.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂repository
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂custom
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜MemberRepositoryCustom.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜MemberRepositoryImpl.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜MemberRepository.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂service
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜MemberService.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂menu
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂dto
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜MenuGetResponseDto.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂entity
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜Menu.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂repository
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂custom
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜MenuRepositoryCustom.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜MenuRepositoryImpl.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜MenuRepository.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂review
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂controller
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ReviewController.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂dto
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ReviewGetRequestDto.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ReviewGetResponseDto.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ReviewListResponseDto.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂entity
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜Review.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂repository
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂custom
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ReviewRepositoryCustom.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ReviewRepositoryImpl.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ReviewRepository.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂service
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ReviewService.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂store
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂controller
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜StoreController.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂dto
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜StoreGetResponseDto.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂entity
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜Store.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂repository
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜StoreRepository.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂service
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜StoreService.java
+ ┃ ┃ ┃ ┃ ┃ ┣ 📂global
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂annotation
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜AccessToken.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜Nickname.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂config
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜MailConfig.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜QuerydslConfig.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜RedisConfig.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜S3Config.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜SecurityConfig.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜SwaggerConfig.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜WebConfig.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂entrypoint
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜JwtAuthenticationEntryPoint.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂exception
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂cocktail
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜CocktailNotFoundException.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂diary
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜DiaryCreateException.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜DiaryDeleteException.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜DiaryNotFoundException.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂email
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜FailedMessageTransmissionException.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜InvalidAuthCodeException.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂image
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜FileTypeIncorrectException.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ImageFileNotFoundException.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ImageNotFoundException.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ImageRegisterException.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ImageUpdateException.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂jwt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜AccessTokenNotFoundException.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜RefreshTokenNotFoundException.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜UnauthorizedAccessException.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂member
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜DuplicateEmailException.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜DuplicateNicknameException.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜EmailNotFoundException.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜InvalidLoginAttemptException.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜InvalidNicknameException.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜InvalidPasswordException.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜MemberNotFoundException.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜MissingPathVariableException.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜PasswordMismatchException.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ProfileUpdateException.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂review
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ReviewCreateException.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ReviewDeleteException.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ReviewListNotFoundException.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ReviewNotFoundException.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂filter
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜EmailVerificationFilter.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜JwtAuthenticationFilter.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜TokenExceptionFilter.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜TokenRefreshRequestFilter.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂format
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂code
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ApiResponse.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜FilterResponse.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂response
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜ErrorCode.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ResponseCode.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂handler
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜GlobalExceptionHandler.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂initializer
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜RedisInitializer.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂interceptor
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜NicknameValidInterceptor.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂jwt
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂provider
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜TokenProvider.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂repository
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜RefreshTokenRepository.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂service
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜TokenService.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜RefreshToken.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜TokenInfo.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂resolver
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜AccessTokenArgumentResolver.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜NicknameValidArgumentResolver.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📂util
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📂cookie
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜DevCookieUtil.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜ProdCookieUtil.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜CookieUtil.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜FilterUtil.java
+ ┃ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜RedisUtil.java
+ ┃ ┃ ┃ ┃ ┃ ┗ 📜BackendApplication.java
+ ┃ ┗ 📂resources
+ ┃ ┃ ┗ 📜application.yml
+ ┗ 📂test
+ ┃ ┗ 📂java
+ ┃ ┃ ┗ 📂com
+ ┃ ┃ ┃ ┗ 📂catale
+ ┃ ┃ ┃ ┃ ┗ 📂backend
+ ┃ ┃ ┃ ┃ ┃ ┗ 📜BackendApplicationTests.java
+```
+</div>
+</details>
+<details>
+<summary>**Frontend**</summary>
+<div>
+```bash
+📦src
+ ┣ 📂api
+ ┃ ┣ 📂common
+ ┃ ┃ ┗ 📜Token.jsx
+ ┃ ┣ 📜Cocktail.jsx
+ ┃ ┣ 📜Diary.jsx
+ ┃ ┣ 📜Image.jsx
+ ┃ ┣ 📜Member.jsx
+ ┃ ┣ 📜Review.jsx
+ ┃ ┗ 📜Store.jsx
+ ┣ 📂assets
+ ┃ ┣ 📂bartender
+ ┃ ┃ ┣ 📜cocktail.png
+ ┃ ┃ ┣ 📜emo1.png
+ ┃ ┃ ┣ 📜emo2.png
+ ┃ ┃ ┣ 📜emo3.png
+ ┃ ┃ ┣ 📜emo4.png
+ ┃ ┃ ┣ 📜emo5.png
+ ┃ ┃ ┣ 📜emobox.png
+ ┃ ┃ ┣ 📜고양이말풍선.png
+ ┃ ┃ ┣ 📜꼬질냥.gif
+ ┃ ┃ ┣ 📜연필.png
+ ┃ ┃ ┣ 📜오늘의칵테일1.png
+ ┃ ┃ ┣ 📜유저말풍선.png
+ ┃ ┃ ┣ 📜자산8.png
+ ┃ ┃ ┣ 📜종이비행기.png
+ ┃ ┃ ┗ 📜파란말풍선.png
+ ┃ ┣ 📂common
+ ┃ ┃ ┣ 📜arrow1.png
+ ┃ ┃ ┣ 📜arrow2.png
+ ┃ ┃ ┣ 📜arrow3.png
+ ┃ ┃ ┣ 📜arrow4.png
+ ┃ ┃ ┣ 📜arrow5.png
+ ┃ ┃ ┣ 📜card.png
+ ┃ ┃ ┣ 📜check.png
+ ┃ ┃ ┣ 📜close.png
+ ┃ ┃ ┣ 📜diary.png
+ ┃ ┃ ┣ 📜edit.png
+ ┃ ┃ ┣ 📜like.png
+ ┃ ┃ ┣ 📜logout.png
+ ┃ ┃ ┣ 📜minus1.png
+ ┃ ┃ ┣ 📜minus2.png
+ ┃ ┃ ┣ 📜noneLike.png
+ ┃ ┃ ┣ 📜noneStar.png
+ ┃ ┃ ┣ 📜pentagon.png
+ ┃ ┃ ┣ 📜plus1.png
+ ┃ ┃ ┣ 📜plus2.png
+ ┃ ┃ ┣ 📜profile.png
+ ┃ ┃ ┣ 📜review.png
+ ┃ ┃ ┣ 📜setting.png
+ ┃ ┃ ┣ 📜star.png
+ ┃ ┃ ┣ 📜store1.png
+ ┃ ┃ ┣ 📜store2.png
+ ┃ ┃ ┣ 📜store3.png
+ ┃ ┃ ┣ 📜store4.png
+ ┃ ┃ ┣ 📜store5.png
+ ┃ ┃ ┣ 📜trash.png
+ ┃ ┃ ┗ 📜웰컴.png
+ ┃ ┣ 📂glass
+ ┃ ┃ ┣ 📜glass1.png
+ ┃ ┃ ┣ 📜glass2.png
+ ┃ ┃ ┣ 📜glass3.png
+ ┃ ┃ ┣ 📜glass4.png
+ ┃ ┃ ┣ 📜glass5.png
+ ┃ ┃ ┣ 📜glass6.png
+ ┃ ┃ ┗ 📜glass7.png
+ ┃ ┣ 📂guide
+ ┃ ┃ ┣ 📜가이드1.jpg
+ ┃ ┃ ┣ 📜가이드2.jpg
+ ┃ ┃ ┣ 📜가이드3.jpg
+ ┃ ┃ ┣ 📜가이드4.jpg
+ ┃ ┃ ┣ 📜가이드5.jpg
+ ┃ ┃ ┣ 📜가이드6.jpg
+ ┃ ┃ ┗ 📜가이드7.jpg
+ ┃ ┣ 📂icon
+ ┃ ┃ ┣ 📜calA.png
+ ┃ ┃ ┣ 📜calB.png
+ ┃ ┃ ┣ 📜Clickno.png
+ ┃ ┃ ┣ 📜Clickyes.png
+ ┃ ┃ ┣ 📜homeA.png
+ ┃ ┃ ┣ 📜homeB.png
+ ┃ ┃ ┣ 📜IconInsta.png
+ ┃ ┃ ┣ 📜IconMap.png
+ ┃ ┃ ┣ 📜IconTel.png
+ ┃ ┃ ┣ 📜IconTime.png
+ ┃ ┃ ┣ 📜mapA.png
+ ┃ ┃ ┣ 📜mapB.png
+ ┃ ┃ ┣ 📜searchA.png
+ ┃ ┃ ┣ 📜searchB.png
+ ┃ ┃ ┣ 📜userA.png
+ ┃ ┃ ┣ 📜userB.png
+ ┃ ┃ ┣ 📜검색돋보기.png
+ ┃ ┃ ┣ 📜동색.png
+ ┃ ┃ ┣ 📜왕관.png
+ ┃ ┃ ┣ 📜은색.png
+ ┃ ┃ ┣ 📜이퀄라이저.png
+ ┃ ┃ ┗ 📜체크이미지.png
+ ┃ ┣ 📂lottie
+ ┃ ┃ ┣ 📜Cocktail1.json
+ ┃ ┃ ┗ 📜Cocktail2.json
+ ┃ ┗ 📂store
+ ┃ ┃ ┣ 📜럭키바.jpg
+ ┃ ┃ ┣ 📜리케리케라운지.jpg
+ ┃ ┃ ┗ 📜사막의하얀꽃.jpg
+ ┣ 📂components
+ ┃ ┣ 📂common
+ ┃ ┃ ┣ 📜Box.jsx
+ ┃ ┃ ┣ 📜Box.module.css
+ ┃ ┃ ┣ 📜Container.jsx
+ ┃ ┃ ┣ 📜Container.module.css
+ ┃ ┃ ┣ 📜ContainerMain.jsx
+ ┃ ┃ ┣ 📜ContainerMain.module.css
+ ┃ ┃ ┣ 📜FileInput.css
+ ┃ ┃ ┣ 📜FileInput.jsx
+ ┃ ┃ ┣ 📜Header.jsx
+ ┃ ┃ ┣ 📜Header.module.css
+ ┃ ┃ ┣ 📜HeaderResult.jsx
+ ┃ ┃ ┣ 📜Headerwb.jsx
+ ┃ ┃ ┣ 📜Headerwb.module.css
+ ┃ ┃ ┣ 📜Nav.jsx
+ ┃ ┃ ┣ 📜Nav.module.css
+ ┃ ┃ ┣ 📜Popup.jsx
+ ┃ ┃ ┣ 📜Popup.module.css
+ ┃ ┃ ┗ 📜ScrollToTop.jsx
+ ┃ ┣ 📂data
+ ┃ ┃ ┣ 📜base.jsx
+ ┃ ┃ ┗ 📜searchtalk.jsx
+ ┃ ┣ 📂diary
+ ┃ ┃ ┣ 📜CocktailDetail.jsx
+ ┃ ┃ ┗ 📜CocktailDetail.module.css
+ ┃ ┣ 📂main
+ ┃ ┃ ┣ 📜Cattalk11.jsx
+ ┃ ┃ ┣ 📜Cattalk20.jsx
+ ┃ ┃ ┣ 📜Cattalkbox.jsx
+ ┃ ┃ ┣ 📜Cattalkbox.module.css
+ ┃ ┃ ┣ 📜CocktailBox.jsx
+ ┃ ┃ ┣ 📜CocktailBox.module.css
+ ┃ ┃ ┣ 📜CocktailBox2.jsx
+ ┃ ┃ ┣ 📜CocktailBox3.jsx
+ ┃ ┃ ┣ 📜CocktailBox3.module.css
+ ┃ ┃ ┣ 📜CocktailBoxBig.jsx
+ ┃ ┃ ┣ 📜CocktailBoxBig.module.css
+ ┃ ┃ ┣ 📜Cocktailsearchbox.jsx
+ ┃ ┃ ┣ 📜Todaycocktail.jsx
+ ┃ ┃ ┣ 📜Todaycocktail.module.css
+ ┃ ┃ ┣ 📜Usercomment.jsx
+ ┃ ┃ ┣ 📜Usercomment.module.css
+ ┃ ┃ ┣ 📜Useremothree.jsx
+ ┃ ┃ ┣ 📜Useremothree.module.css
+ ┃ ┃ ┣ 📜Userreasonbox.jsx
+ ┃ ┃ ┣ 📜Userreasonbox.module.css
+ ┃ ┃ ┣ 📜Userselctbox.jsx
+ ┃ ┃ ┣ 📜Userselctbox.module.css
+ ┃ ┃ ┣ 📜Usertalkbox.jsx
+ ┃ ┃ ┣ 📜Usertalkbox.module.css
+ ┃ ┃ ┣ 📜Usertodayemo.jsx
+ ┃ ┃ ┗ 📜Usertodayemo.module.css
+ ┃ ┣ 📂map
+ ┃ ┃ ┣ 📂data
+ ┃ ┃ ┃ ┗ 📜markerData.jsx
+ ┃ ┃ ┣ 📜map.jsx
+ ┃ ┃ ┣ 📜map.module.css
+ ┃ ┃ ┣ 📜Storebos.module.css
+ ┃ ┃ ┣ 📜Storebox.jsx
+ ┃ ┃ ┣ 📜StoreInfo.jsx
+ ┃ ┃ ┣ 📜StoreInfo.module.css
+ ┃ ┃ ┣ 📜Storemenu.jsx
+ ┃ ┃ ┣ 📜Storemenu.module.css
+ ┃ ┃ ┣ 📜Storepicture.jsx
+ ┃ ┃ ┗ 📜Storepicture.module.css
+ ┃ ┣ 📂my
+ ┃ ┃ ┣ 📜MyFeel.jsx
+ ┃ ┃ ┣ 📜MyFeel.module.css
+ ┃ ┃ ┣ 📜ReviewItem.jsx
+ ┃ ┃ ┗ 📜ReviewItem.module.css
+ ┃ ┣ 📂review
+ ┃ ┃ ┣ 📜Review.jsx
+ ┃ ┃ ┗ 📜Review.module.css
+ ┃ ┗ 📂search
+ ┃ ┃ ┣ 📜Medallist.jsx
+ ┃ ┃ ┣ 📜Medallist.module.css
+ ┃ ┃ ┣ 📜Nonmedallist.jsx
+ ┃ ┃ ┣ 📜Nonmedallist.module.css
+ ┃ ┃ ┣ 📜Searchbase.jsx
+ ┃ ┃ ┣ 📜Searchbase.module.css
+ ┃ ┃ ┣ 📜Searchoption.jsx
+ ┃ ┃ ┗ 📜Searchoption.module.css
+ ┣ 📂pages
+ ┃ ┣ 📂cocktailpage
+ ┃ ┃ ┣ 📜CocktailDetailPage.jsx
+ ┃ ┃ ┣ 📜CocktailDetailPage.module.css
+ ┃ ┃ ┣ 📜CocktailReviewPage.jsx
+ ┃ ┃ ┗ 📜CocktailReviewPage.module.css
+ ┃ ┣ 📂commonpage
+ ┃ ┃ ┣ 📜ErrorPage.jsx
+ ┃ ┃ ┗ 📜ErrorPage.module.css
+ ┃ ┣ 📂diarypage
+ ┃ ┃ ┣ 📜DatePage.jsx
+ ┃ ┃ ┣ 📜DatePage.module.css
+ ┃ ┃ ┣ 📜DiaryPage.jsx
+ ┃ ┃ ┗ 📜DiaryPage.module.css
+ ┃ ┣ 📂mainpage
+ ┃ ┃ ┣ 📂Emodata
+ ┃ ┃ ┃ ┣ 📜Emocolor.jsx
+ ┃ ┃ ┃ ┣ 📜Emotionthree.jsx
+ ┃ ┃ ┃ ┗ 📜Reasonone.jsx
+ ┃ ┃ ┣ 📂Talkdata
+ ┃ ┃ ┃ ┣ 📜Cattalk.jsx
+ ┃ ┃ ┃ ┣ 📜Selecttalk.jsx
+ ┃ ┃ ┃ ┣ 📜Talkarr.jsx
+ ┃ ┃ ┃ ┗ 📜Usertalk.jsx
+ ┃ ┃ ┣ 📜MainPage.jsx
+ ┃ ┃ ┣ 📜MainPage.module.css
+ ┃ ┃ ┣ 📜ResultPage.jsx
+ ┃ ┃ ┗ 📜ResultPage.module.css
+ ┃ ┣ 📂mappage
+ ┃ ┃ ┣ 📜MapPage.jsx
+ ┃ ┃ ┣ 📜MapPage.module.css
+ ┃ ┃ ┣ 📜StoreDetailPage.jsx
+ ┃ ┃ ┗ 📜StoreDetailPage.module.css
+ ┃ ┣ 📂mypage
+ ┃ ┃ ┣ 📜ChangePreferencePage.jsx
+ ┃ ┃ ┣ 📜ChangePreferencePage.module.css
+ ┃ ┃ ┣ 📜LikedCocktailPage.jsx
+ ┃ ┃ ┣ 📜LikedCocktailPage.module.css
+ ┃ ┃ ┣ 📜MonthlyMoodPage.jsx
+ ┃ ┃ ┣ 📜MonthlyMoodPage.module.css
+ ┃ ┃ ┣ 📜MyCocktailPage.jsx
+ ┃ ┃ ┣ 📜MyCocktailPage.module.css
+ ┃ ┃ ┣ 📜MyPage.jsx
+ ┃ ┃ ┣ 📜MyPage.module.css
+ ┃ ┃ ┣ 📜RecommendPage.jsx
+ ┃ ┃ ┗ 📜RecommendPage.module.css
+ ┃ ┣ 📂settingpage
+ ┃ ┃ ┣ 📜DeleteAccountPage.jsx
+ ┃ ┃ ┣ 📜DeleteAccountPage.module.css
+ ┃ ┃ ┣ 📜SettingsPage.jsx
+ ┃ ┃ ┗ 📜SettingsPage.module.css
+ ┃ ┣ 📜Choosecocktail.jsx
+ ┃ ┣ 📜Choosecocktail.module.css
+ ┃ ┣ 📜GuidePage.jsx
+ ┃ ┣ 📜GuidePage.module.css
+ ┃ ┣ 📜PreferencePage.jsx
+ ┃ ┣ 📜PreferencePage.module.css
+ ┃ ┣ 📜SearchPage.jsx
+ ┃ ┣ 📜SearchPage.module.css
+ ┃ ┣ 📜SignInPage.jsx
+ ┃ ┣ 📜SignInPage.module.css
+ ┃ ┣ 📜SignUpPage.jsx
+ ┃ ┣ 📜SignUpPage.module.css
+ ┃ ┣ 📜WelcomePage.jsx
+ ┃ ┗ 📜WelcomePage.module.css
+ ┣ 📂store
+ ┃ ┣ 📜useCocktailStore.jsx
+ ┃ ┣ 📜useSearchStore.jsx
+ ┃ ┗ 📜useUserStore.jsx
+ ┣ 📜App.css
+ ┣ 📜App.jsx
+ ┣ 📜index.css
+ ┣ 📜index.jsx
+ ┣ 📜Main.jsx
+ ┣ 📜service-worker.js
+ ┗ 📜serviceWorkerRegistration.js
+```
+</div>
+</details>
+<details>
+<summary>**FastAPI**</summary>
+<div>
+```bash
+📦recommend-server
+ ┣ 📂.idea
+ ┃ ┣ 📂inspectionProfiles
+ ┃ ┃ ┗ 📜Project_Default.xml
+ ┃ ┣ 📜.gitignore
+ ┃ ┣ 📜misc.xml
+ ┃ ┣ 📜modules.xml
+ ┃ ┣ 📜recommend-server.iml
+ ┃ ┗ 📜vcs.xml
+ ┣ 📂app
+ ┃ ┣ 📂common
+ ┃ ┃ ┣ 📂context
+ ┃ ┃ ┃ ┗ 📜ItemFeatures.py
+ ┃ ┃ ┣ 📜config.py
+ ┃ ┃ ┗ 📜__init__.py
+ ┃ ┣ 📂models
+ ┃ ┃ ┣ 📂dto
+ ┃ ┃ ┃ ┣ 📜data_class.py
+ ┃ ┃ ┃ ┗ 📜__init__.py
+ ┃ ┃ ┣ 📂save
+ ┃ ┃ ┃ ┣ 📜catale_dataset.pkl
+ ┃ ┃ ┃ ┣ 📜cocktail - 복사본.csv
+ ┃ ┃ ┃ ┣ 📜cocktail.csv
+ ┃ ┃ ┃ ┣ 📜cocktail_features.csv
+ ┃ ┃ ┃ ┣ 📜cocktail_index.csv
+ ┃ ┃ ┃ ┣ 📜fdsfsd.txt
+ ┃ ┃ ┃ ┣ 📜item_features - 복사본.csv
+ ┃ ┃ ┃ ┣ 📜item_features.csv
+ ┃ ┃ ┃ ┣ 📜rating.csv
+ ┃ ┃ ┃ ┣ 📜test_ratings.csv
+ ┃ ┃ ┃ ┣ 📜train_ratings.csv
+ ┃ ┃ ┃ ┣ 📜user_features - 복사본.csv
+ ┃ ┃ ┃ ┣ 📜user_features.csv
+ ┃ ┃ ┃ ┣ 📜user_index.csv
+ ┃ ┃ ┃ ┣ 📜user_preferences - 복사본.csv
+ ┃ ┃ ┃ ┣ 📜user_preferences.csv
+ ┃ ┃ ┃ ┗ 📜__init__.py
+ ┃ ┃ ┣ 📜catale_dataset.pkl
+ ┃ ┃ ┣ 📜catale_model.pkl
+ ┃ ┃ ┗ 📜__init__.py
+ ┃ ┣ 📂routers
+ ┃ ┃ ┣ 📜recommend.py
+ ┃ ┃ ┣ 📜retrain.py
+ ┃ ┃ ┗ 📜__init__.py
+ ┃ ┣ 📂service
+ ┃ ┃ ┣ 📜recommend_service.py
+ ┃ ┃ ┣ 📜retrain_service.py
+ ┃ ┃ ┣ 📜sample_data_produce.py
+ ┃ ┃ ┗ 📜__init__.py
+ ┃ ┣ 📂util
+ ┃ ┃ ┣ 📜modelutil.py
+ ┃ ┃ ┣ 📜optimizer.py
+ ┃ ┃ ┗ 📜__init__.py
+ ┃ ┣ 📜crud.py
+ ┃ ┣ 📜database.py
+ ┃ ┣ 📜item_similarity.py
+ ┃ ┣ 📜main.py
+ ┃ ┣ 📜schemas.py
+ ┃ ┗ 📜__init__.py
+ ┣ 📂model
+ ┃ ┣ 📂v1
+ ┃ ┃ ┗ 📜user_rating_model_v1.pkl
+ ┃ ┗ 📜user_rating_model_v1.pkl
+ ┣ 📂out
+ ┃ ┗ 📂production
+ ┃ ┃ ┗ 📂recommend-server
+ ┃ ┃ ┃ ┣ 📂common
+ ┃ ┃ ┃ ┃ ┣ 📂context
+ ┃ ┃ ┃ ┃ ┃ ┗ 📜ItemFeatures.py
+ ┃ ┃ ┃ ┃ ┣ 📜config.py
+ ┃ ┃ ┃ ┃ ┗ 📜__init__.py
+ ┃ ┃ ┃ ┣ 📂models
+ ┃ ┃ ┃ ┃ ┣ 📂dto
+ ┃ ┃ ┃ ┃ ┃ ┣ 📜data_class.py
+ ┃ ┃ ┃ ┃ ┃ ┗ 📜__init__.py
+ ┃ ┃ ┃ ┃ ┣ 📂save
+ ┃ ┃ ┃ ┃ ┃ ┣ 📜cocktail_features.csv
+ ┃ ┃ ┃ ┃ ┃ ┣ 📜test_ratings.csv
+ ┃ ┃ ┃ ┃ ┃ ┣ 📜train_ratings.csv
+ ┃ ┃ ┃ ┃ ┃ ┣ 📜user_preferences.csv
+ ┃ ┃ ┃ ┃ ┃ ┣ 📜user_rating_model_v1.pkl
+ ┃ ┃ ┃ ┃ ┃ ┗ 📜__init__.py
+ ┃ ┃ ┃ ┃ ┣ 📜modelv1.py
+ ┃ ┃ ┃ ┃ ┗ 📜__init__.py
+ ┃ ┃ ┃ ┣ 📂routers
+ ┃ ┃ ┃ ┃ ┣ 📜recommend.py
+ ┃ ┃ ┃ ┃ ┣ 📜retrain.py
+ ┃ ┃ ┃ ┃ ┗ 📜__init__.py
+ ┃ ┃ ┃ ┣ 📂service
+ ┃ ┃ ┃ ┃ ┣ 📜recommend_service.py
+ ┃ ┃ ┃ ┃ ┣ 📜retrain_service.py
+ ┃ ┃ ┃ ┃ ┣ 📜sample_data_produce.py
+ ┃ ┃ ┃ ┃ ┗ 📜__init__.py
+ ┃ ┃ ┃ ┣ 📂util
+ ┃ ┃ ┃ ┃ ┣ 📜modelutil.py
+ ┃ ┃ ┃ ┃ ┣ 📜optimizer.py
+ ┃ ┃ ┃ ┃ ┗ 📜__init__.py
+ ┃ ┃ ┃ ┣ 📜crud.py
+ ┃ ┃ ┃ ┣ 📜database.py
+ ┃ ┃ ┃ ┣ 📜item_similarity.py
+ ┃ ┃ ┃ ┣ 📜main.py
+ ┃ ┃ ┃ ┣ 📜schemas.py
+ ┃ ┃ ┃ ┗ 📜__init__.py
+ ┣ 📜.env
+ ┣ 📜.env.dev
+ ┣ 📜.env.prod
+ ┣ 📜.gitignore
+ ┣ 📜Dockerfile
+ ┗ 📜requirements.txt
+```
+</div>
+</details>
 ## ✅ 산출물
 
 ### ERD
