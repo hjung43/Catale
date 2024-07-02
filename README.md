@@ -25,7 +25,7 @@
 **🚩 기술 스택**
 |  | skills |
 | --- | --- |
-| Backend | <img src="https://img.shields.io/badge/springboot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white"> <img src="https://img.shields.io/badge/springsecurity-6DB33F?style=for-the-badge&logo=springsecurity&logoColor=white"> <img src="https://img.shields.io/badge/fastapi-009688?style=for-the-badge&logo=fastapi&logoColor=white"> <img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white"> <img src="https://img.shields.io/badge/amazons3-569A31?style=for-the-badge&logo=amazons3&logoColor=white"> |
+| Backend | <img src="https://img.shields.io/badge/Java-007396?style=for-the-badge&logo=Java&logoColor=white"> <img src="https://img.shields.io/badge/springboot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white"> <img src="https://img.shields.io/badge/springsecurity-6DB33F?style=for-the-badge&logo=springsecurity&logoColor=white"> <img src="https://img.shields.io/badge/fastapi-009688?style=for-the-badge&logo=fastapi&logoColor=white"> <img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white"> <img src="https://img.shields.io/badge/amazons3-569A31?style=for-the-badge&logo=amazons3&logoColor=white"> |
 | Frontend | <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=white"> <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white"> |
 | Infra | <img src="https://img.shields.io/badge/amazonec2-FF9900?style=for-the-badge&logo=amazonec2&logoColor=white"> <img src="https://img.shields.io/badge/docker-2496ED?style=for-the-badge&logo=amazonec2&logoColor=white"> <img src="https://img.shields.io/badge/ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white"> <img src="https://img.shields.io/badge/nginx-009639?style=for-the-badge&logo=nginx&logoColor=white"> <img src="https://img.shields.io/badge/argo-EF7B4D?style=for-the-badge&logo=argo&logoColor=white"> <img src="https://img.shields.io/badge/kubernetes-326CE5?style=for-the-badge&logo=kubernetes&logoColor=white"> <img src="https://img.shields.io/badge/helm-0F1689?style=for-the-badge&logo=helm&logoColor=white"> <img src="https://img.shields.io/badge/jenkins-D24939?style=for-the-badge&logo=jenkins&logoColor=white"> |
 | 모니터링 툴 | <img src="https://img.shields.io/badge/grafana-F46800?style=for-the-badge&logo=grafana&logoColor=white"> <img src="https://img.shields.io/badge/prometheus-E6522C?style=for-the-badge&logo=prometheus&logoColor=white"> |
@@ -833,8 +833,10 @@ Catale을 더욱 개선된 서비스로 발전시키기 위해 세 가지 확장
 
 | 고은석 | 최준호 | 서만기 |
 | --- | --- | --- |
-| <img src="./assets/eun.jpg" width="200"/> | <img src="./assets/jun.jpg" width="200"/> | <img src="./assets/gi.jpg" width="200"/> |
+| <div align="center"><img src="./assets/eun.jpg" width="200"/></div> | <div align="center"><img src="./assets/jun.jpg" width="200"/></div> | <div align="center"><img src="./assets/gi.jpg" width="200"/></div> |
+| <div align="center">Infra</div> | <div align="center">frontend</div> | <div align="center">frontend</div> |
 | - k8s를 이용한 인프라 구축<br>- CI/CD 파이프라인 설계<br>- 실시간 모니터링 시스템 구축 | - 대화 알고리즘 <br>- UI/UX 디자인 개발<br>- API 연결 | - 프로젝트 디자인<br>- asset 일러스트 작업<br>- API 연결 |
-| 최소영 | 심규리 | 유호정 |
-| <img src="./assets/young.jpg" width="200"/> | <img src="./assets/ri.jpg" width="200"/> | <img src="./assets/ho.PNG" width="200"/> |
+| <div align="center">**최소영**</div> | <div align="center">**심규리**</div> | <div align="center">**유호정**</div> |
+| <div align="center"><img src="./assets/young.jpg" width="200"/></div> | <div align="center"><img src="./assets/ri.jpg" width="200"/></div> | <div align="center"><img src="./assets/ho.PNG" width="200"/></div> |
+| <div align="center">backend</div>| <div align="center">backend</div> | <div align="center">backend</div> |
 | - Light FM 사용 추천 알고리즘 구현<br>- 회원 API 구현 및 보안 설계<br>- Fast API 파이썬 서버 설계 | - API 명세서, ERD 작성<br>- 다이어리, 스토어, 메뉴, 리뷰 API 구현<br>- 전체 API 기능 테스트 및 버그 수정 | - 기능 명세서, ERD 작성<br>- 칵테일, 이미지, 좋아요 API 구현<br>- amazon S3 파일 업로드 구현 |
